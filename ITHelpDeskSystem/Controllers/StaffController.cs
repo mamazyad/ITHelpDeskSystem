@@ -11,6 +11,10 @@ using System.Web.Mvc;
 
 namespace ITHelpDeskSystem.Controllers
 {
+    /// <summary>
+    /// Staff controller manage the staff using Staff and StaffViewModel classes
+    /// </summary>
+
     public class StaffController : Controller
     {
 
@@ -57,7 +61,6 @@ namespace ITHelpDeskSystem.Controllers
         {
             var users = db.Staffs.ToList();
             var model = new List<StaffViewModel>();
-
             foreach (var user in users)
             {
                 model.Add(new StaffViewModel
@@ -73,39 +76,39 @@ namespace ITHelpDeskSystem.Controllers
                     ExtensionNumber = user.ExtensionNumber,
                     OfficeNumber = user.OfficeNumber,
                     ManagerialPosition = user.ManagerialPosition,
+                    StaffLevel = user.StaffLevel,
                 });
             }
-
             return View(model);
         }
 
         // GET: Staff/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id != null)
+            var user = UserManager.FindById(id);
+
+            if (user != null)
             {
-                // Convert id to int instead of int?
-                int userId = id ?? default(int);
+                var staff = (Staff)user;
 
-                // find the user in the database
-                var user = UserManager.FindById(userId);
-
-                if (user != null && user is Staff)
+                StaffViewModel model = new StaffViewModel()
                 {
-                    var staff = (Staff)user;
+                    Id = staff.Id,
+                    Email = staff.Email,
+                    FirstName = staff.FirstName,
+                    LastName = staff.LastName,
+                    UserName = staff.UserName,
+                    Department = staff.Department,
+                    JobTitle = staff.JobTitle,
+                    Mobile = staff.Mobile,
+                    ExtensionNumber = staff.ExtensionNumber,
+                    OfficeNumber = staff.OfficeNumber,
+                    ManagerialPosition = staff.ManagerialPosition,
+                    StaffLevel = staff.StaffLevel,
+                    Roles = string.Join(" ", UserManager.GetRoles(id).ToArray())
+                };
 
-                    // Use Automapper instead of copying properties one by one
-                    StaffViewModel model = Mapper.Map<StaffViewModel>(staff);
-
-                    //model.Roles = string.Join(" ", UserManager.GetRoles(userId).ToArray());
-
-                    return View(model);
-                }
-                else
-                {
-                    // Customize the error view: /Views/Shared/Error.cshtml
-                    return View("Error");
-                }
+                return View(model);
             }
             else
             {
@@ -137,11 +140,13 @@ namespace ITHelpDeskSystem.Controllers
                     Mobile = model.Mobile,
                     ExtensionNumber = model.ExtensionNumber,
                     OfficeNumber = model.OfficeNumber,
+                    StaffLevel = model.StaffLevel,
                     ManagerialPosition = model.ManagerialPosition,
                 };
 
                 var result = UserManager.Create(staff, model.Password);
-                db.Staffs.Add(staff);                db.SaveChanges();                if (result.Succeeded)
+               
+                if (result.Succeeded)
                 {
                     return RedirectToAction("Index");
                 }
@@ -151,6 +156,7 @@ namespace ITHelpDeskSystem.Controllers
                 }
             }
 
+            else
             {
                 return View();
             }
@@ -159,7 +165,6 @@ namespace ITHelpDeskSystem.Controllers
         // GET: Staff/Edit/5
         public ActionResult Edit(int id)
         {
-
             var staff = (Staff)UserManager.FindById(id);
             if (staff == null)
             {
@@ -178,9 +183,9 @@ namespace ITHelpDeskSystem.Controllers
                 Mobile = staff.Mobile,
                 ExtensionNumber = staff.ExtensionNumber,
                 OfficeNumber = staff.OfficeNumber,
+                StaffLevel = staff.StaffLevel,
                 ManagerialPosition = staff.ManagerialPosition,
             };
-
             return View(model);
         }
 
@@ -189,14 +194,12 @@ namespace ITHelpDeskSystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int? id, StaffViewModel model)
         {
-            // Exclude Password and ConfirmPassword properties from the model otherwise modelstate is false
             ModelState.Remove("Password");
             ModelState.Remove("ConfirmPassword");
 
             if (ModelState.IsValid && id != null)
             {
 
-                // Convert id to non-nullable int
                 var userId = id ?? default(int);
 
                 var staff = (Staff)UserManager.FindById(userId);
@@ -204,41 +207,20 @@ namespace ITHelpDeskSystem.Controllers
                 {
                     return HttpNotFound();
                 }
-
-                // Update the properties of the v
                 staff.Email = model.Email;
+                staff.UserName = model.UserName;
                 staff.FirstName = model.FirstName;
                 staff.LastName = model.LastName;
-                staff.UserName = model.Email;
                 staff.Mobile = model.Mobile;
                 staff.OfficeNumber = model.OfficeNumber;
                 staff.Department = model.Department;
                 staff.ExtensionNumber = model.ExtensionNumber;
                 staff.JobTitle = model.JobTitle;
-                staff.ManagerialPosition = model.ManagerialPosition;
 
                 var userResult = UserManager.Update(staff);
 
                 if (userResult.Succeeded)
                 {
-                    //var userRoles = UserManager.GetRoles(employee.Id);
-                    // roles = roles ?? new string[] { };
-                    // var roleResult = UserManager.AddToRoles(employee.Id, roles.Except(userRoles).ToArray<string>());
-
-                    //if (!roleResult.Succeeded)
-                    //{
-                    //    ModelState.AddModelError(string.Empty, roleResult.Errors.First());
-                    //    return View();
-                    //}
-
-                    //roleResult = UserManager.RemoveFromRoles(employee.Id, userRoles.Except(roles).ToArray<string>());
-
-                    //if (!roleResult.Succeeded)
-                    //{
-                    //    ModelState.AddModelError(string.Empty, roleResult.Errors.First());
-                    //    return View();
-                    //}
-
                     return RedirectToAction("Index");
                 }
             }
@@ -246,23 +228,33 @@ namespace ITHelpDeskSystem.Controllers
         }
 
         // GET: Staff/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            if (id != null)
-            {
-                var userId = id ?? default(int);
-                var staff = (Staff)UserManager.FindById(userId);
-                if (staff == null)
-                {
-                    return HttpNotFound();
-                }
+            var staff = (Staff)UserManager.FindById(id);
 
-                StaffViewModel model = Mapper.Map<StaffViewModel>(staff);
-                //model.Roles = string.Join(" ", UserManager.GetRoles(userId).ToArray());
-                return View(model);
+            if (staff == null)
+            {
+                    return HttpNotFound();
             }
 
-            return HttpNotFound();
+            StaffViewModel model = new StaffViewModel
+            {
+                Id = staff.Id,
+                UserName = staff.UserName,
+                Email = staff.Email,
+                FirstName = staff.FirstName,
+                LastName = staff.LastName,
+                Department = staff.Department,
+                JobTitle = staff.JobTitle,
+                Mobile = staff.Mobile,
+                ExtensionNumber = staff.ExtensionNumber,
+                OfficeNumber = staff.OfficeNumber,
+                StaffLevel = staff.StaffLevel,
+                ManagerialPosition = staff.ManagerialPosition,
+            };
+
+            return View(model);
+
         }
 
         // POST: Staff/Delete/5

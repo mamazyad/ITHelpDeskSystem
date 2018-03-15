@@ -60,19 +60,19 @@ namespace ITHelpDeskSystem.Controllers
 
             foreach (var item in users)
             {
-                model.Add(new EmployeeViewModel
-                {
-                    Id = item.Id,
-                    Email = item.Email,
-                    UserName = item.UserName,
-                    FirstName = item.FirstName,
-                    LastName = item.LastName,
-                    Department = item.Department,
-                    JobTitle = item.JobTitle,
-                    Mobile = item.Mobile,
-                    ExtensionNumber = item.ExtensionNumber,
-                    OfficeNumber = item.OfficeNumber,
-                });
+                    model.Add(new EmployeeViewModel
+                    {
+                        Id = item.Id,
+                        Email = item.Email,
+                        UserName = item.UserName,
+                        FirstName = item.FirstName,
+                        LastName = item.LastName,
+                        Department = item.Department,
+                        JobTitle = item.JobTitle,
+                        Mobile = item.Mobile,
+                        ExtensionNumber = item.ExtensionNumber,
+                        OfficeNumber = item.OfficeNumber,
+                    });
             }
 
             return View(model);
@@ -83,21 +83,17 @@ namespace ITHelpDeskSystem.Controllers
         {
             if (id != null)
             {
-                // Convert id to int instead of int?
                 int userId = id ?? default(int);
 
-                // find the user in the database
                 var user = UserManager.FindById(userId);
 
-                // Check if the user exists and it is an emplyee not a simple application user
                 if (user != null && user is Employee)
                 {
                     var employee = (Employee)user;
 
-                    // Use Automapper instead of copying properties one by one
                     EmployeeViewModel model = Mapper.Map<EmployeeViewModel>(employee);
 
-                    //model.Roles = string.Join(" ", UserManager.GetRoles(userId).ToArray());
+                   model.Roles = string.Join(" ", UserManager.GetRoles(userId).ToArray());
 
                     return View(model);
                 }
@@ -170,7 +166,6 @@ namespace ITHelpDeskSystem.Controllers
 
             EmployeeViewModel model = new EmployeeViewModel
             {
-                Id = employee.Id,
                 UserName = employee.UserName,
                 Email = employee.Email,
                 FirstName = employee.FirstName,
@@ -181,7 +176,6 @@ namespace ITHelpDeskSystem.Controllers
                 ExtensionNumber = employee.ExtensionNumber,
                 OfficeNumber = employee.OfficeNumber,
             };
-
             return View(model);
         }
 
@@ -190,7 +184,7 @@ namespace ITHelpDeskSystem.Controllers
         // POST: Employee/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int? id, EmployeeViewModel model)
+        public ActionResult Edit(int? id, EmployeeViewModel model, params string[] roles)
         {
             // Exclude Password and ConfirmPassword properties from the model otherwise modelstate is false
             ModelState.Remove("Password");
@@ -223,23 +217,23 @@ namespace ITHelpDeskSystem.Controllers
 
                 if (userResult.Succeeded)
                 {
-                    //var userRoles = UserManager.GetRoles(employee.Id);
-                   // roles = roles ?? new string[] { };
-                   // var roleResult = UserManager.AddToRoles(employee.Id, roles.Except(userRoles).ToArray<string>());
+                    var userRoles = UserManager.GetRoles(employee.Id);
+                    roles = roles ?? new string[] { };
+                    var roleResult = UserManager.AddToRoles(employee.Id, roles.Except(userRoles).ToArray<string>());
 
-                    //if (!roleResult.Succeeded)
-                    //{
-                    //    ModelState.AddModelError(string.Empty, roleResult.Errors.First());
-                    //    return View();
-                    //}
+                    if (!roleResult.Succeeded)
+                    {
+                        ModelState.AddModelError(string.Empty, roleResult.Errors.First());
+                        return View();
+                    }
 
-                    //roleResult = UserManager.RemoveFromRoles(employee.Id, userRoles.Except(roles).ToArray<string>());
+                    roleResult = UserManager.RemoveFromRoles(employee.Id, userRoles.Except(roles).ToArray<string>());
 
-                    //if (!roleResult.Succeeded)
-                    //{
-                    //    ModelState.AddModelError(string.Empty, roleResult.Errors.First());
-                    //    return View();
-                    //}
+                    if (!roleResult.Succeeded)
+                    {
+                        ModelState.AddModelError(string.Empty, roleResult.Errors.First());
+                        return View();
+                    }
 
                     return RedirectToAction("Index");
                 }

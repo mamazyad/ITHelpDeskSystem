@@ -8,11 +8,16 @@ using System.Web;
 namespace ITHelpDeskSystem.ViewModels
 {
     /// <summary>
-    /// Satff view model from the staff model and used by staff controller.
+    /// ITSatff view model from the IT staff model and used by ITStaff controller.
     /// </summary>
 
-    public class StaffViewModel
+    public class ITStaffViewModel
     {
+        public ITStaffViewModel()
+        {
+            Categories = new List<Category>();
+        }
+
         public int Id { get; set; }
 
         [Required]
@@ -57,12 +62,14 @@ namespace ITHelpDeskSystem.ViewModels
         [Display(Name = "Office Number")]
         public string OfficeNumber { get; set; }
 
-        [Display(Name = "Level")]
-        public string StaffLevel { get; set; }
+        public string Speciality { get; set; }
 
-        [Display(Name = "Managerial Position")]
-        public ManagerialPosition? ManagerialPosition { get; set; }
+        public DateTime? StartingDate { get; set; }
+
+        public string Position { get; set; }
 
         public string Roles { get; set; }
+
+        public List<Category> Categories { get; set; }
     }
 }

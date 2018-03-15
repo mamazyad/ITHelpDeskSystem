@@ -18,10 +18,10 @@ namespace ITHelpDeskSystem.ViewModels
         public string IncidentDescription { get; set; }
 
         [Display(Name = "Ticket Priority")]
-        public TicketPriority? TicketPriority { get; set; }
+        public TicketPriority? Priority { get; set; }
 
         [Display(Name = "Ticket Status")]
-        public TicketStatus? TicketStatus { get; set; }
+        public TicketStatus? Status { get; set; }
 
         [Display(Name = "Due Date")]
         public DateTime? DueDate { get; set; }

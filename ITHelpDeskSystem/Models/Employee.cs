@@ -18,7 +18,6 @@ namespace ITHelpDeskSystem.Models
     [Table("Employee")]
     public partial class Employee : ApplicationUser
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Employee()
         {
             Tickets = new HashSet<Ticket>();
@@ -59,11 +58,10 @@ namespace ITHelpDeskSystem.Models
         [StringLength(128)]
         public string OfficeNumber { get; set; }
 
-        public virtual ITStaff ITStaff { get; set; }
+        //public virtual ITStaff ITStaff { get; set; }
 
-        public virtual Staff Staff { get; set; }
+        //public virtual Staff Staff { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ticket> Tickets { get; set; }
     }
 }

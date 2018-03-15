@@ -1,4 +1,9 @@
-﻿using System;
+﻿using AutoMapper;
+using ITHelpDeskSystem.Models;
+using ITHelpDeskSystem.ViewModels;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,11 +13,29 @@ namespace ITHelpDeskSystem.Controllers
 {
     public class TicketController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
+
         // GET: Ticket
         public ActionResult Index()
         {
-            return View();
+            var tickets = db.Tickets.ToList();
+            var model = new List<TicketViewModel>();
+
+            foreach (var item in tickets)
+            {
+                model.Add(new TicketViewModel
+                {
+                    Id = item.TicketId,
+                    Subject = item.Subject,
+                    IncidentDescription = item.IncidentDescription,
+                    Priority = item.Priority,
+                    Status = item.Status,
+                });
+            }
+            return View(model);
         }
+
+    
 
         // GET: Ticket/Details/5
         public ActionResult Details(int id)

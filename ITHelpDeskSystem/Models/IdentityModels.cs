@@ -6,7 +6,6 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace ITHelpDeskSystem.Models
 {
-    // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser<int, CustomUserLogin, CustomUserRole,
     CustomUserClaim>
     {
@@ -56,13 +55,13 @@ namespace ITHelpDeskSystem.Models
                 .WithRequired(e => e.Criterion)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Employee>()
-                .HasOptional(e => e.ITStaff)
-                .WithRequired(e => e.Employee);
+            //modelBuilder.Entity<Employee>()
+            //    .HasOptional(e => e.ITStaff)
+            //    .WithRequired(e => e.Employee);
 
-            modelBuilder.Entity<Employee>()
-                .HasOptional(e => e.Staff)
-                .WithRequired(e => e.Employee);
+            //modelBuilder.Entity<Employee>()
+            //    .HasOptional(e => e.Staff)
+            //    .WithRequired(e => e.Employee);
 
             modelBuilder.Entity<Employee>()
                 .HasMany(e => e.Tickets)
@@ -80,9 +79,9 @@ namespace ITHelpDeskSystem.Models
                 .WithOptional(e => e.ITStaff)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<ITStaff>()
-                .HasOptional(e => e.ITHelpDeskAdmin)
-                .WithRequired(e => e.ITStaff);
+            //modelBuilder.Entity<ITStaff>()
+            //    .HasOptional(e => e.ITHelpDeskAdmin)
+            //    .WithRequired(e => e.ITStaff);
 
             modelBuilder.Entity<ITStaff>()
                 .HasMany(e => e.KnowledgeBases)

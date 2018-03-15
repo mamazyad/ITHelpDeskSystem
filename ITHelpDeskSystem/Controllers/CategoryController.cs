@@ -29,6 +29,7 @@ namespace ITHelpDeskSystem.Controllers
                     Id = item.CategoryId,
                     CategoryName = item.CategoryName,
                     CategoryDescription = item.CategoryDescription,
+                    ITStaff = item.ITStaff.UserName,
                 });
             }
             return View(model);
@@ -46,8 +47,13 @@ namespace ITHelpDeskSystem.Controllers
             {
                 return HttpNotFound();
             }
-
-            CategoryViewModel model = Mapper.Map<Category, CategoryViewModel>(category);
+            var model = new CategoryViewModel
+            {
+                Id = category.CategoryId,
+                CategoryName = category.CategoryName,
+                CategoryDescription = category.CategoryDescription,
+                ITStaff = category.ITStaff.UserName,
+            };
 
             return View(model);
         }
@@ -55,6 +61,7 @@ namespace ITHelpDeskSystem.Controllers
         // GET: Category/Create
         public ActionResult Create()
         {
+            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name");
             return View();
         }
 
@@ -65,13 +72,19 @@ namespace ITHelpDeskSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                Category category = Mapper.Map<CategoryViewModel, Category>(model);
+                var category = new Category
+                {
+                    CategoryId = model.Id,
+                    CategoryName = model.CategoryName,
+                    CategoryDescription = model.CategoryDescription,
+                    ITStaffId = model.ITStaffId,
+                };
 
                 db.Categories.Add(category);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name");
             return View(model);
         }
 
@@ -88,9 +101,15 @@ namespace ITHelpDeskSystem.Controllers
             {
                 return HttpNotFound();
             }
+            CategoryViewModel model = new CategoryViewModel
+            {
+                Id = category.CategoryId,
+                CategoryName = category.CategoryName,
+                CategoryDescription = category.CategoryDescription,
+                ITStaffId = category.ITStaffId,
+            };
 
-            CategoryViewModel model = Mapper.Map<Category, CategoryViewModel>(category);
-
+            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name");
             return View(model);
         }
 
@@ -106,6 +125,7 @@ namespace ITHelpDeskSystem.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name");
             return View(model);
         }
 
@@ -131,8 +151,8 @@ namespace ITHelpDeskSystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Category department = db.Categories.Find(id);
-            db.Categories.Remove(department);
+            Category category = db.Categories.Find(id);
+            db.Categories.Remove(category);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

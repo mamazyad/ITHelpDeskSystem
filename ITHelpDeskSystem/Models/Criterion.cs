@@ -19,7 +19,6 @@ namespace ITHelpDeskSystem.Models
     [Table("Criterion")]
     public partial class Criterion
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Criterion()
         {
             Feedbacks = new HashSet<Feedback>();
@@ -36,7 +35,6 @@ namespace ITHelpDeskSystem.Models
         [StringLength(64)]
         public string TargetGrade { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Feedback> Feedbacks { get; set; }
     }
 }

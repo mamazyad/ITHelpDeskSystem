@@ -19,16 +19,12 @@ namespace ITHelpDeskSystem.Models
     [Table("ITStaff")]
     public partial class ITStaff : Employee
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ITStaff()
         {
             Assignments = new HashSet<Assignment>();
-            Categories = new HashSet<Category>();
             KnowledgeBases = new HashSet<KnowledgeBase>();
+            Categories = new HashSet<Category>();
         }
-
-        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
-        //public int ITStaffId { get; set; }
 
         [StringLength(128)]
         public string Speciality { get; set; }
@@ -38,17 +34,11 @@ namespace ITHelpDeskSystem.Models
         [StringLength(128)]
         public string Position { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
         public virtual ICollection<Assignment> Assignments { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Category> Categories { get; set; }
-
-        public virtual Employee Employee { get; set; }
-
-        public virtual ITHelpDeskAdmin ITHelpDeskAdmin { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KnowledgeBase> KnowledgeBases { get; set; }
+
+        public virtual ICollection<Category> Categories { get; set; }
     }
 }

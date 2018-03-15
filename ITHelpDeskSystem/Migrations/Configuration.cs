@@ -68,7 +68,9 @@ namespace ITHelpDeskSystem.Migrations
                   new Category { CategoryName = "Hardware"},
                   new Category { CategoryName = "Software"},
                   new Category { CategoryName = "Network"},
-                  new Category { CategoryName = "SAP system"}
+                  new Category { CategoryName = "SAP system"},
+                  new Category { CategoryName = "General" }
+
                   );
         }
     }

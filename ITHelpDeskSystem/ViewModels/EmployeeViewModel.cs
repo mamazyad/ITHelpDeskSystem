@@ -7,6 +7,10 @@ using System.Web;
 
 namespace ITHelpDeskSystem.ViewModels
 {
+    /// <summary>
+    /// Employee view model from employee model and used by employee controller.
+    /// </summary>
+
     public class EmployeeViewModel
     {
         public int Id { get; set; }
@@ -57,13 +61,6 @@ namespace ITHelpDeskSystem.ViewModels
         [Display(Name = "Office Number")]
         public string OfficeNumber { get; set; }
 
-        //[Display(Name = "Starting Date")]
-        //public DateTime? StartingDate { get; set; }
-
-        //[Display(Name = "Managerial Position")]
-        //public ManagerialPosition? ManagerialPosition { get; set; }
-
-        //public string Category { get; set; }
-
+        public string Roles { get; set; }
     }
 }

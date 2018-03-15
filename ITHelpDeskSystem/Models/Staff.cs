@@ -19,7 +19,6 @@ namespace ITHelpDeskSystem.Models
     [Table("Staff")]
     public partial class Staff : Employee
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Staff()
         {
             Feedbacks = new HashSet<Feedback>();
@@ -27,23 +26,20 @@ namespace ITHelpDeskSystem.Models
             TicketsCreated = new HashSet<Ticket>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int StaffId { get; set; }
+        //public int StaffId { get; set; }
 
         [StringLength(128)]
         public string StaffLevel { get; set; }
 
         public ManagerialPosition? ManagerialPosition { get; set; }
 
-        public virtual Employee Employee { get; set; }
+        //public virtual Employee Employee { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        
         public virtual ICollection<Feedback> Feedbacks { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ticket> TicketsAccelarated { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ticket> TicketsCreated { get; set; }
     }
 

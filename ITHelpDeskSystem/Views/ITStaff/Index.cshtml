@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ITHelpDeskSystem.ViewModels.StaffViewModel>
+﻿@model IEnumerable<ITHelpDeskSystem.ViewModels.ITStaffViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -48,7 +48,16 @@
             @Html.DisplayNameFor(model => model.OfficeNumber)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.StaffLevel)
+            @Html.DisplayNameFor(model => model.Speciality)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartingDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Position)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Roles)
         </th>
         <th></th>
     </tr>
@@ -92,7 +101,16 @@
             @Html.DisplayFor(modelItem => item.OfficeNumber)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.StaffLevel)
+            @Html.DisplayFor(modelItem => item.Speciality)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartingDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Position)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Roles)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
