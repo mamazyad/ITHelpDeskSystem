@@ -273,16 +273,16 @@
     <Content Include="Views\Employee\Edit.cshtml" />
     <Content Include="Views\Ticket\Create.cshtml" />
     <Content Include="Views\Ticket\Index.cshtml" />
-    <Content Include="Views\Staff\Index.cshtml" />
-    <Content Include="Views\Staff\Details.cshtml" />
-    <Content Include="Views\Staff\Create.cshtml" />
-    <Content Include="Views\Staff\Edit.cshtml" />
-    <Content Include="Views\Staff\Delete.cshtml" />
     <Content Include="Views\ITStaff\Index.cshtml" />
     <Content Include="Views\ITStaff\Details.cshtml" />
     <Content Include="Views\ITStaff\Create.cshtml" />
     <Content Include="Views\ITStaff\Edit.cshtml" />
     <Content Include="Views\ITStaff\Delete.cshtml" />
+    <Content Include="Views\Staff\Index.cshtml" />
+    <Content Include="Views\Staff\Details.cshtml" />
+    <Content Include="Views\Staff\Create.cshtml" />
+    <Content Include="Views\Staff\Edit.cshtml" />
+    <Content Include="Views\Staff\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

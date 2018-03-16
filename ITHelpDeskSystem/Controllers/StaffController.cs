@@ -14,10 +14,8 @@ namespace ITHelpDeskSystem.Controllers
     /// <summary>
     /// Staff controller manage the staff using Staff and StaffViewModel classes
     /// </summary>
-
     public class StaffController : Controller
     {
-
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -131,7 +129,8 @@ namespace ITHelpDeskSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                Staff staff = new Staff
+                // Find department
+                var staff = new Staff
                 {
                     ManagerialPosition = model.ManagerialPosition,
                     UserName = model.UserName,
@@ -147,22 +146,31 @@ namespace ITHelpDeskSystem.Controllers
                 };
 
                 var result = UserManager.Create(staff, model.Password);
-               
+
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index");
+                    //TODO Add user to faculty role (check if Faculty role exists)
+                    var roleResult = UserManager.AddToRoles(staff.Id, "Staff");
+
+                    if (roleResult.Succeeded)
+                    {
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        // Display error messages in the view @Html.ValidationSummary()
+                        ModelState.AddModelError(string.Empty, roleResult.Errors.First());
+                        return View();
+                    }
                 }
                 else
                 {
-
+                    // Display error messages in the view @Html.ValidationSummary()
+                    ModelState.AddModelError(string.Empty, result.Errors.First());
                     return View();
                 }
             }
-
-            else
-            {
-                return View();
-            }
+            return View();
         }
 
         // GET: Staff/Edit/5
@@ -188,6 +196,7 @@ namespace ITHelpDeskSystem.Controllers
                 OfficeNumber = staff.OfficeNumber,
                 StaffLevel = staff.StaffLevel,
                 ManagerialPosition = staff.ManagerialPosition,
+                Roles = string.Join(" ", UserManager.GetRoles(id).ToArray())
             };
             return View(model);
         }
@@ -195,21 +204,19 @@ namespace ITHelpDeskSystem.Controllers
         // POST: Staff/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int? id, StaffViewModel model)
+        public ActionResult Edit(int id, StaffViewModel model)
         {
             ModelState.Remove("Password");
             ModelState.Remove("ConfirmPassword");
 
-            if (ModelState.IsValid && id != null)
+            if (ModelState.IsValid)
             {
-
-                var userId = id ?? default(int);
-
-                var staff = (Staff)UserManager.FindById(userId);
+                var staff = (Staff)UserManager.FindById(id);
                 if (staff == null)
                 {
                     return HttpNotFound();
                 }
+
                 staff.Email = model.Email;
                 staff.UserName = model.UserName;
                 staff.FirstName = model.FirstName;
@@ -227,6 +234,7 @@ namespace ITHelpDeskSystem.Controllers
                     return RedirectToAction("Index");
                 }
             }
+
             return View();
         }
 
@@ -254,6 +262,7 @@ namespace ITHelpDeskSystem.Controllers
                 OfficeNumber = staff.OfficeNumber,
                 StaffLevel = staff.StaffLevel,
                 ManagerialPosition = staff.ManagerialPosition,
+                Roles = string.Join(" ", UserManager.GetRoles(id).ToArray()),
             };
 
             return View(model);

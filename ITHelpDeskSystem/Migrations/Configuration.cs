@@ -59,19 +59,5 @@ namespace ITHelpDeskSystem.Migrations
                 userManager.AddToRole(admin.Id, roles[0]);
             }
         }
-
-
-        //private void AddCategories(ApplicationDbContext context)
-        //{
-        //    context.Categories.AddOrUpdate(
-        //          p => p.CategoryName, 
-        //          new Category { CategoryName = "Hardware"},
-        //          new Category { CategoryName = "Software"},
-        //          new Category { CategoryName = "Network"},
-        //          new Category { CategoryName = "SAP system"},
-        //          new Category { CategoryName = "General" }
-
-        //          );
-        //}
     }
 }

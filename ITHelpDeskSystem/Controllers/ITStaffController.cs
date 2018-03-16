@@ -133,13 +133,14 @@ namespace ITHelpDeskSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                ITStaff ITstaff = new ITStaff
+                // Find department
+                var ITstaff = new ITStaff
                 {
                     UserName = model.UserName,
                     Email = model.Email,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
-                    Department = model.Department,
+                    Department = "IT Department",
                     JobTitle = model.JobTitle,
                     Mobile = model.Mobile,
                     ExtensionNumber = model.ExtensionNumber,
@@ -153,6 +154,7 @@ namespace ITHelpDeskSystem.Controllers
 
                 if (result.Succeeded)
                 {
+                    //TODO Add user to faculty role (check if Faculty role exists)
                     var roleResult = UserManager.AddToRoles(ITstaff.Id, "ITStaff");
 
                     if (roleResult.Succeeded)
@@ -173,7 +175,9 @@ namespace ITHelpDeskSystem.Controllers
             }
 
             return View();
+
         }
+
 
         // GET: ITStaff/Edit/5
         public ActionResult Edit(int id)
@@ -187,27 +191,28 @@ namespace ITHelpDeskSystem.Controllers
 
             ITStaffViewModel model = new ITStaffViewModel
             {
-                UserName = ITstaff.UserName,
+                Id = ITstaff.Id,
                 Email = ITstaff.Email,
+                UserName = ITstaff.UserName,
                 FirstName = ITstaff.FirstName,
                 LastName = ITstaff.LastName,
-                Department = ITstaff.Department,
-                JobTitle = ITstaff.JobTitle,
                 Mobile = ITstaff.Mobile,
-                ExtensionNumber = ITstaff.ExtensionNumber,
                 OfficeNumber = ITstaff.OfficeNumber,
+                Department = ITstaff.Department,
+                ExtensionNumber = ITstaff.ExtensionNumber,
+                JobTitle = ITstaff.JobTitle,
                 Speciality = ITstaff.Speciality,
                 StartingDate = ITstaff.StartingDate,
                 Position = ITstaff.Position,
-                Roles = string.Join(" ", UserManager.GetRoles(id).ToArray())
+                Roles = string.Join(" ", UserManager.GetRoles(id).ToArray()),
             };
-        return View(model);
+            return View(model);
         }
 
         // POST: ITStaff/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, ITStaffViewModel model)
+        public ActionResult Edit(int id, ITStaffViewModel model, params string[] roles)
         {
             ModelState.Remove("Password");
             ModelState.Remove("ConfirmPassword");
@@ -226,7 +231,7 @@ namespace ITHelpDeskSystem.Controllers
                 ITstaff.LastName = model.LastName;
                 ITstaff.Mobile = model.Mobile;
                 ITstaff.OfficeNumber = model.OfficeNumber;
-                ITstaff.Department = model.Department;
+                //ITstaff.Department = model.Department;
                 ITstaff.ExtensionNumber = model.ExtensionNumber;
                 ITstaff.JobTitle = model.JobTitle;
                 ITstaff.Speciality = model.Speciality;
@@ -240,7 +245,6 @@ namespace ITHelpDeskSystem.Controllers
                     return RedirectToAction("Index");
                 }
             }
-
             return View();
         }
 
@@ -248,24 +252,23 @@ namespace ITHelpDeskSystem.Controllers
         public ActionResult Delete(int id)
         {
             var ITstaff = (ITStaff)UserManager.FindById(id);
-
             if (ITstaff == null)
             {
-                    return HttpNotFound();
+                return HttpNotFound();
             }
 
             ITStaffViewModel model = new ITStaffViewModel
             {
                 Id = ITstaff.Id,
-                UserName = ITstaff.UserName,
                 Email = ITstaff.Email,
+                UserName = ITstaff.UserName,
                 FirstName = ITstaff.FirstName,
                 LastName = ITstaff.LastName,
-                Department = ITstaff.Department,
-                JobTitle = ITstaff.JobTitle,
                 Mobile = ITstaff.Mobile,
-                ExtensionNumber = ITstaff.ExtensionNumber,
                 OfficeNumber = ITstaff.OfficeNumber,
+                Department = ITstaff.Department,
+                ExtensionNumber = ITstaff.ExtensionNumber,
+                JobTitle = ITstaff.JobTitle,
                 Speciality = ITstaff.Speciality,
                 StartingDate = ITstaff.StartingDate,
                 Position = ITstaff.Position,
@@ -280,14 +283,15 @@ namespace ITHelpDeskSystem.Controllers
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int? id)
         {
             ModelState.Remove("Password");
             ModelState.Remove("ConfirmPassword");
 
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && id != null)
             {
-                var user = UserManager.FindById(id);
+                var userId = id ?? default(int);
+                var user = UserManager.FindById(userId);
                 if (user == null)
                 {
                     return HttpNotFound();
