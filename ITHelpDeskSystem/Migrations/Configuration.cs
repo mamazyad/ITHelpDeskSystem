@@ -61,17 +61,17 @@ namespace ITHelpDeskSystem.Migrations
         }
 
 
-        private void AddCategories(ApplicationDbContext context)
-        {
-            context.Categories.AddOrUpdate(
-                  p => p.CategoryName, 
-                  new Category { CategoryName = "Hardware"},
-                  new Category { CategoryName = "Software"},
-                  new Category { CategoryName = "Network"},
-                  new Category { CategoryName = "SAP system"},
-                  new Category { CategoryName = "General" }
+        //private void AddCategories(ApplicationDbContext context)
+        //{
+        //    context.Categories.AddOrUpdate(
+        //          p => p.CategoryName, 
+        //          new Category { CategoryName = "Hardware"},
+        //          new Category { CategoryName = "Software"},
+        //          new Category { CategoryName = "Network"},
+        //          new Category { CategoryName = "SAP system"},
+        //          new Category { CategoryName = "General" }
 
-                  );
-        }
+        //          );
+        //}
     }
 }

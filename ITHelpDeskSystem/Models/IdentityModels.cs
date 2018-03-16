@@ -76,7 +76,7 @@ namespace ITHelpDeskSystem.Models
 
             modelBuilder.Entity<ITStaff>()
                 .HasMany(e => e.Categories)
-                .WithOptional(e => e.ITStaff)
+                .WithRequired(e => e.ITStaff)
                 .WillCascadeOnDelete(false);
 
             //modelBuilder.Entity<ITStaff>()
@@ -114,8 +114,6 @@ namespace ITHelpDeskSystem.Models
                 .WithRequired(e => e.Ticket)
                 .WillCascadeOnDelete(false);
         }
-
-       
     }
 
     public class CustomUserRole : IdentityUserRole<int> { }

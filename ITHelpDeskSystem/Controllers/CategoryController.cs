@@ -61,7 +61,7 @@ namespace ITHelpDeskSystem.Controllers
         // GET: Category/Create
         public ActionResult Create()
         {
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name");
+            ViewBag.ITStaffId = new SelectList(db.ITStaffs, "Id", "UserName");
             return View();
         }
 
@@ -84,7 +84,7 @@ namespace ITHelpDeskSystem.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name");
+            ViewBag.ITStaffId = new SelectList(db.ITStaffs, "Id", "UserName");
             return View(model);
         }
 
@@ -108,24 +108,30 @@ namespace ITHelpDeskSystem.Controllers
                 CategoryDescription = category.CategoryDescription,
                 ITStaffId = category.ITStaffId,
             };
-
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name");
+            ViewBag.ITStaffId = new SelectList(db.ITStaffs, "Id", "UserName");
             return View(model);
         }
 
         // POST: Category/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(CategoryViewModel model)
+        public ActionResult Edit(int id, CategoryViewModel model)
         {
             if (ModelState.IsValid)
             {
-                Category category = Mapper.Map<CategoryViewModel, Category>(model);
+                Category category = db.Categories.Find(id);
+                if (category == null)
+                {
+                    return HttpNotFound();
+                }
+                category.CategoryName = model.CategoryName;
+                category.CategoryDescription = model.CategoryDescription;
+                category.ITStaffId = model.ITStaffId;
                 db.Entry(category).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name");
+            ViewBag.ITStaffId = new SelectList(db.ITStaffs, "Id", "UserName");
             return View(model);
         }
 
@@ -141,7 +147,13 @@ namespace ITHelpDeskSystem.Controllers
             {
                 return HttpNotFound();
             }
-            CategoryViewModel model = Mapper.Map<CategoryViewModel>(category);
+            var model = new CategoryViewModel
+            {
+                Id = category.CategoryId,
+                CategoryName = category.CategoryName,
+                CategoryDescription = category.CategoryDescription,
+                ITStaff = category.ITStaff.UserName,
+            };
 
             return View(model);
         }

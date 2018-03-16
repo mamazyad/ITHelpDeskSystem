@@ -32,7 +32,7 @@ namespace ITHelpDeskSystem.Models
         [StringLength(512)]
         public string CategoryDescription { get; set; }
 
-        public int? ITStaffId { get; set; }
+        public int ITStaffId { get; set; }
 
         public virtual ITStaff ITStaff { get; set; }
 

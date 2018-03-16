@@ -18,6 +18,9 @@ namespace ITHelpDeskSystem.Models
     [Table("ITHelpDeskAdmin")]
     public partial class ITHelpDeskAdmin : ITStaff
     {
+        [StringLength(128)]
+        public string Degree { get; set; }
+
         //public int ITHelpDeskAdminId { get; set; }
 
         //public virtual ITStaff ITStaff { get; set; }

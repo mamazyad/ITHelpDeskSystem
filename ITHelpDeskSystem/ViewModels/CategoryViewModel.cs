@@ -11,19 +11,15 @@ namespace ITHelpDeskSystem.ViewModels
     {
         public int Id { get; set; }
 
-        [Required]
-        [Display(Name = "Category ID")]
-        public string CategoryId { get; set; }
-
-        [Required]
         [Display(Name = "Category Name")]
         public string CategoryName { get; set; }
 
         [Display(Name = "Category Description")]
         public string CategoryDescription { get; set; }
 
-        public int? ITStaffId { get; set; }
+        public int ITStaffId { get; set; }
 
+        [Display(Name = "IT Staff")]
         public string ITStaff { get; set; }
     }
 }

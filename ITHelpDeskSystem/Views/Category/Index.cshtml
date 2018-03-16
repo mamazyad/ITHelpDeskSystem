@@ -12,17 +12,14 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CategoryId)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.CategoryName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CategoryDescription)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.ITStaffId)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.ITStaff)
         </th>
@@ -32,17 +29,14 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.CategoryId)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.CategoryName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CategoryDescription)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.ITStaffId)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.ITStaff)
         </td>

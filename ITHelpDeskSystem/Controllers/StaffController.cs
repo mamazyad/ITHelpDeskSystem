@@ -56,6 +56,8 @@ namespace ITHelpDeskSystem.Controllers
             }
         }
 
+        public object UserManeger { get; private set; }
+
         // GET: Staff
         public ActionResult Index()
         {
@@ -131,6 +133,7 @@ namespace ITHelpDeskSystem.Controllers
             {
                 Staff staff = new Staff
                 {
+                    ManagerialPosition = model.ManagerialPosition,
                     UserName = model.UserName,
                     Email = model.Email,
                     FirstName = model.FirstName,
@@ -141,7 +144,6 @@ namespace ITHelpDeskSystem.Controllers
                     ExtensionNumber = model.ExtensionNumber,
                     OfficeNumber = model.OfficeNumber,
                     StaffLevel = model.StaffLevel,
-                    ManagerialPosition = model.ManagerialPosition,
                 };
 
                 var result = UserManager.Create(staff, model.Password);
@@ -152,6 +154,7 @@ namespace ITHelpDeskSystem.Controllers
                 }
                 else
                 {
+
                     return View();
                 }
             }

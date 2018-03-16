@@ -41,9 +41,6 @@ namespace ITHelpDeskSystem.ViewModels
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        [Display(Name = "Name")]
-        public string FullName { get { return $"{FirstName} {LastName}"; } }
-
         public string Department { get; set; }
 
         [Display(Name = "Job Title")]

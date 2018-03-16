@@ -46,9 +46,6 @@ namespace ITHelpDeskSystem.ViewModels
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        [Display(Name = "Name")]
-        public string FullName { get { return $"{FirstName} {LastName}"; } }
-
         public string Department { get; set; }
 
         [Display(Name = "Job Title")]
@@ -67,6 +64,8 @@ namespace ITHelpDeskSystem.ViewModels
         public DateTime? StartingDate { get; set; }
 
         public string Position { get; set; }
+
+        public string CategoryName { get; set; }
 
         public string Roles { get; set; }
 
