@@ -28,8 +28,10 @@ namespace ITHelpDeskSystem.Controllers
                     Id = item.TicketId,
                     Subject = item.Subject,
                     IncidentDescription = item.IncidentDescription,
-                    Priority = item.Priority,
-                    Status = item.Status,
+                    //Priority = item.Priority,
+                    //Status = item.Status,
+                    //CreationDate = item.CreationDate,
+                    Category = item.Category.CategoryName,
                 });
             }
             return View(model);
@@ -46,23 +48,32 @@ namespace ITHelpDeskSystem.Controllers
         // GET: Ticket/Create
         public ActionResult Create()
         {
+            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName");
+            //ViewBag.ITStaffId = new SelectList(db.ITStaffs, "Id", "UserName");
+            //ViewBag.StaffId = new SelectList(db.Staffs, "Id", "UserName");
             return View();
         }
 
         // POST: Ticket/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(TicketViewModel model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                var ticket = new Ticket
+                {
+                    TicketId = model.Id,
+                    Subject = model.Subject,
+                    IncidentDescription = model.IncidentDescription,
+                    CategoryId = model.CategoryId,
+                };
 
+                db.Tickets.Add(ticket);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName");
+            return View(model);
         }
 
         // GET: Ticket/Edit/5

@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - IT Help Desk</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("styles", required: false)
 
 </head>
 <body>
@@ -22,12 +23,10 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Users", "Index", "Employee")</li>
                     <li>@Html.ActionLink("Categories", "Index", "Category")</li>
                     <li>@Html.ActionLink("Staff", "Index", "Staff")</li>
                     <li>@Html.ActionLink("ITStaff", "Index", "ITStaff")</li>
-
-
+                    <li>@Html.ActionLink("Tickets", "Index", "Ticket")</li>
 
                 </ul>
                 @Html.Partial("_LoginPartial")

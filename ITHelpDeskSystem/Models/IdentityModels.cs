@@ -45,6 +45,7 @@ namespace ITHelpDeskSystem.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Category>()
                 .HasMany(e => e.Tickets)
                 .WithRequired(e => e.Category)
@@ -65,7 +66,7 @@ namespace ITHelpDeskSystem.Models
 
             modelBuilder.Entity<Employee>()
                 .HasMany(e => e.Tickets)
-                .WithRequired(e => e.Employee)
+                .WithOptional(e => e.Employee)
                 .HasForeignKey(e => e.CreatedBy)
                 .WillCascadeOnDelete(false);
 
@@ -100,7 +101,7 @@ namespace ITHelpDeskSystem.Models
 
             modelBuilder.Entity<Staff>()
                 .HasMany(e => e.TicketsCreated)
-                .WithRequired(e => e.StaffOwner)
+                .WithOptional(e => e.StaffOwner)
                 .HasForeignKey(e => e.TicketOwner)
                 .WillCascadeOnDelete(false);
 

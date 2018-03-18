@@ -72,7 +72,6 @@ namespace ITHelpDeskSystem.Controllers
                     UserName = user.UserName,
                     FirstName = user.FirstName,
                     LastName = user.LastName,
-                    Department = user.Department,
                     JobTitle = user.JobTitle,
                     Mobile = user.Mobile,
                     ExtensionNumber = user.ExtensionNumber,
@@ -133,7 +132,6 @@ namespace ITHelpDeskSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Find department
                 var ITstaff = new ITStaff
                 {
                     UserName = model.UserName,
@@ -231,7 +229,6 @@ namespace ITHelpDeskSystem.Controllers
                 ITstaff.LastName = model.LastName;
                 ITstaff.Mobile = model.Mobile;
                 ITstaff.OfficeNumber = model.OfficeNumber;
-                //ITstaff.Department = model.Department;
                 ITstaff.ExtensionNumber = model.ExtensionNumber;
                 ITstaff.JobTitle = model.JobTitle;
                 ITstaff.Speciality = model.Speciality;

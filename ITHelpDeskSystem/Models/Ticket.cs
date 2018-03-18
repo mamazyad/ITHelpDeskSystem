@@ -27,14 +27,16 @@ namespace ITHelpDeskSystem.Models
 
         public int TicketId { get; set; }
 
+        [Required]
         [StringLength(128)]
         public string Subject { get; set; }
 
+        [Required]
         public string IncidentDescription { get; set; }
 
-        public TicketPriority Priority { get; set; }
+        public TicketPriority? Priority { get; set; }
 
-        public TicketStatus Status { get; set; }
+        public TicketStatus? Status { get; set; }
 
         public DateTime? DueDate { get; set; }
 
@@ -44,11 +46,12 @@ namespace ITHelpDeskSystem.Models
 
         public string IncidentSolution { get; set; }
 
+
         public int CategoryId { get; set; }
 
-        public int CreatedBy { get; set; }
+        public int? CreatedBy { get; set; }
 
-        public int TicketOwner { get; set; }
+        public int? TicketOwner { get; set; }
 
         public int? AccelaratedBy { get; set; }
 
@@ -56,29 +59,29 @@ namespace ITHelpDeskSystem.Models
 
         public string AccelerationComment { get; set; }
 
-        public virtual ICollection<Assignment> Assignments { get; set; }
 
         public virtual Category Category { get; set; }
-        //public int? CategoryId { get; set; }
-        //public virtual Category Category { get; set; }
 
+        public virtual ICollection<Assignment> Assignments { get; set; }
 
         public virtual Employee Employee { get; set; }
+
+        public virtual Staff StaffOwner { get; set; }
 
         public virtual ICollection<Feedback> Feedbacks { get; set; }
 
         public virtual Staff Accelerator { get; set; }
-
-        public virtual Staff StaffOwner { get; set; }
     }
 
     public enum TicketPriority
     {
-        Hight,
+        High,
 
         Medium,
 
         Low,
+
+        Critical,
     }
 
     public enum TicketStatus

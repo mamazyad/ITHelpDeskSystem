@@ -18,31 +18,13 @@
             @Html.DisplayNameFor(model => model.IncidentDescription)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DueDate)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.CreationDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ResultionDate)
+            @Html.DisplayNameFor(model => model.CategoryId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IncidentSolution)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TicketOwner)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AccelaratedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AccelerationDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AccelerationComment)
+            @Html.DisplayNameFor(model => model.Category)
         </th>
         <th></th>
     </tr>
@@ -56,31 +38,13 @@
             @Html.DisplayFor(modelItem => item.IncidentDescription)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DueDate)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.CreationDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ResultionDate)
+            @Html.DisplayFor(modelItem => item.CategoryId)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IncidentSolution)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TicketOwner)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AccelaratedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AccelerationDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AccelerationComment)
+            @Html.DisplayFor(modelItem => item.Category)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
