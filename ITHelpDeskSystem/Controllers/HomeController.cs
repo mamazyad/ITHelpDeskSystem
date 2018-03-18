@@ -26,5 +26,11 @@ namespace ITHelpDeskSystem.Controllers
 
             return View();
         }
+
+        public ActionResult AllUsers()
+        {
+            ViewBag.Message = "Manage system users";
+            return View();
+        }
     }
 }

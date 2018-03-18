@@ -26,16 +26,11 @@ namespace ITHelpDeskSystem.Models
             TicketsCreated = new HashSet<Ticket>();
         }
 
-        //public int StaffId { get; set; }
-
         [StringLength(128)]
         public string StaffLevel { get; set; }
 
         public ManagerialPosition? ManagerialPosition { get; set; }
 
-        //public virtual Employee Employee { get; set; }
-
-        
         public virtual ICollection<Feedback> Feedbacks { get; set; }
 
         public virtual ICollection<Ticket> TicketsAccelarated { get; set; }

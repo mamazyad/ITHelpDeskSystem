@@ -115,6 +115,10 @@ namespace ITHelpDeskSystem.Models
                 .WithRequired(e => e.Ticket)
                 .WillCascadeOnDelete(false);
         }
+
+        public System.Data.Entity.DbSet<ITHelpDeskSystem.ViewModels.ITHelpDeskAdminViewModel> ITHelpDeskAdminViewModels { get; set; }
+
+        public System.Data.Entity.DbSet<ITHelpDeskSystem.ViewModels.ITStaffViewModel> ITStaffViewModels { get; set; }
     }
 
     public class CustomUserRole : IdentityUserRole<int> { }

@@ -176,6 +176,64 @@ namespace ITHelpDeskSystem.Controllers
 
         }
 
+        // GET: ITManager/CreateManager
+        public ActionResult CreateManager()
+        {
+            return View();
+        }
+
+
+        // POST: ITManager/CreateManager
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateManager(ITStaffViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var ITstaff = new ITStaff
+                {
+                    UserName = model.UserName,
+                    Email = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Department = "IT Department",
+                    JobTitle = model.JobTitle,
+                    Mobile = model.Mobile,
+                    ExtensionNumber = model.ExtensionNumber,
+                    OfficeNumber = model.OfficeNumber,
+                    Speciality = model.Speciality,
+                    StartingDate = model.StartingDate,
+                    Position = model.Position,
+                };
+
+                var result = UserManager.Create(ITstaff, model.Password);
+
+                if (result.Succeeded)
+                {
+                    //TODO Add user to faculty role (check if Faculty role exists)
+                    var roleResult = UserManager.AddToRoles(ITstaff.Id, "ITManager");
+
+                    if (roleResult.Succeeded)
+                    {
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, roleResult.Errors.First());
+                        return View();
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, result.Errors.First());
+                    return View();
+                }
+            }
+
+            return View();
+
+        }
+
 
         // GET: ITStaff/Edit/5
         public ActionResult Edit(int id)

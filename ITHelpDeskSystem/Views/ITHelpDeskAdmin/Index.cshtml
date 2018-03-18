@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ITHelpDeskSystem.ViewModels.ITStaffViewModel>
+﻿@model IEnumerable<ITHelpDeskSystem.ViewModels.ITHelpDeskAdminViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -7,9 +7,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Add IT Staff", "Create")
-    <div>@Html.ActionLink("Add IT Manager", "CreateManager")</div>
-
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
@@ -19,12 +17,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Email)
         </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConfirmPassword)
-        </th>*@
+       
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
@@ -56,6 +49,9 @@
             @Html.DisplayNameFor(model => model.Position)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Degree)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Roles)
         </th>*@
         <th></th>
@@ -69,12 +65,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Email)
         </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConfirmPassword)
-        </td>*@
+        
         <td>
             @Html.DisplayFor(modelItem => item.FirstName)
         </td>
@@ -104,6 +95,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Position)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Degree)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Roles)

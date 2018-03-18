@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = "All Users";
+}
+<h2>@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+
+<div>@Html.ActionLink("Staff", "Index", "Staff")</div>
+<div>@Html.ActionLink("IT Staff", "Index", "ITStaff")</div>
+<div>@Html.ActionLink("Admin", "Index", "ITHelpDeskAdmin")</div>
+    @*@Html.ActionLink("IT Manager", "CreateManager", "ITStaff")*@

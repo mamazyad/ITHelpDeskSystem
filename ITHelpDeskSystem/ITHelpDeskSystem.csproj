@@ -177,6 +177,7 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ITHelpDeskAdminController.cs" />
     <Compile Include="Controllers\ITStaffController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
@@ -202,6 +203,7 @@
     <Compile Include="Models\Ticket.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ITHelpDeskAdminViewModel.cs" />
     <Compile Include="ViewModels\ITStaffViewModel.cs" />
     <Compile Include="ViewModels\StaffViewModel.cs" />
     <Compile Include="ViewModels\TicketViewModel.cs" />
@@ -519,6 +521,13 @@
     <Content Include="Views\Staff\Delete.cshtml" />
     <Content Include="Views\Ticket\Index.cshtml" />
     <Content Include="Views\Ticket\Create.cshtml" />
+    <Content Include="Views\ITHelpDeskAdmin\Index.cshtml" />
+    <Content Include="Views\ITHelpDeskAdmin\Details.cshtml" />
+    <Content Include="Views\ITHelpDeskAdmin\Create.cshtml" />
+    <Content Include="Views\ITHelpDeskAdmin\Edit.cshtml" />
+    <Content Include="Views\ITHelpDeskAdmin\Delete.cshtml" />
+    <Content Include="Views\Home\AllUsers.cshtml" />
+    <Content Include="Views\ITStaff\CreateManager.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
