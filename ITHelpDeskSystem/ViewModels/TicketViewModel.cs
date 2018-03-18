@@ -12,7 +12,7 @@ namespace ITHelpDeskSystem.ViewModels
     public class TicketViewModel
     {
         //public TicketViewModel()
-        //{
+        ///{
         //    CreationDate = DateTime.Now;
         //}
 
