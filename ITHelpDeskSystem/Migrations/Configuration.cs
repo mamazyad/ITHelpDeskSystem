@@ -18,8 +18,8 @@ namespace ITHelpDeskSystem.Migrations
             string[] roles = { "Admin", "ITStaff", "Staff", "ITManager" };
 
             string adminEmail = "admin@mail.edu";
-            string adminUserName = "admin@mail.edu";
-            string adminPassword = "Admin1!";
+            string adminUserName = "admin";
+            string adminPassword = "admin123";
 
             // Create roles
             var roleStore = new CustomRoleStore(context);

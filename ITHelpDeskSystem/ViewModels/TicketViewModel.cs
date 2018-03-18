@@ -44,8 +44,9 @@ namespace ITHelpDeskSystem.ViewModels
         //[Display(Name = "Creation Date")]
         //public DateTime? CreationDate { get; set; }
 
-        private DateTime? creationDate = DateTime.Now;
-        public DateTime? CreationDate { get { return creationDate; } set { creationDate = value; } }
+        //private DateTime? creationDate = DateTime.Now;
+        //public DateTime? CreationDate { get { return creationDate; } set { creationDate = value; } }
+        public DateTime? CreationDate { get; set; }
 
         //[DataType(DataType.Date)]
         //[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
@@ -57,8 +58,8 @@ namespace ITHelpDeskSystem.ViewModels
         //public string IncidentSolution { get; set; }
 
         //[Required]
-        //[Display(Name = "Created By")]
-        //public int CreatedBy { get; set; }
+        [Display(Name = "Created By")]
+        public int? CreatedBy { get; set; }
 
         //[Required]
         //[Display(Name = "Owner")]
