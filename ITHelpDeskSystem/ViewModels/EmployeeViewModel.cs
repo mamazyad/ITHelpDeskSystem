@@ -1,4 +1,9 @@
-﻿using ITHelpDeskSystem.Models;
+﻿/*
+* Description: This file is the employee ViewModel (based on the employees model), created to to pass information between employees views and its controller.
+* Author: mamazyad
+*/
+
+using ITHelpDeskSystem.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

@@ -1,4 +1,9 @@
-﻿using ITHelpDeskSystem.Models;
+﻿/*
+* Description: This file is the ticket ViewModel (based on the ticket model), created to to pass information between ticket views and its controller.
+* Author: mamazyad
+*/
+
+using ITHelpDeskSystem.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,11 +16,7 @@ namespace ITHelpDeskSystem.ViewModels
 {
     public class TicketViewModel
     {
-        //public TicketViewModel()
-        ///{
-        //    CreationDate = DateTime.Now;
-        //}
-
+        
         public int Id { get; set; }
 
         [Required]
@@ -39,13 +40,6 @@ namespace ITHelpDeskSystem.ViewModels
         //[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         //public DateTime? DueDate { get; set; }
 
-        //[DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        //[DataType(DataType.DateTime)]
-        //[Display(Name = "Creation Date")]
-        //public DateTime? CreationDate { get; set; }
-
-        //private DateTime? creationDate = DateTime.Now;
-        //public DateTime? CreationDate { get { return creationDate; } set { creationDate = value; } }
         public DateTime? CreationDate { get; set; }
 
         //[DataType(DataType.Date)]
@@ -57,13 +51,16 @@ namespace ITHelpDeskSystem.ViewModels
         //[DataType(DataType.MultilineText)]
         //public string IncidentSolution { get; set; }
 
-        //[Required]
         [Display(Name = "Created By")]
         public int? CreatedBy { get; set; }
 
-        //[Required]
-        //[Display(Name = "Owner")]
-        //public int TicketOwner { get; set; }
+        public string CreatedByName { get; set; }
+
+        public string TicketOwnerName { get; set; }
+
+        [Required]
+        [Display(Name = "Owner")]
+        public int TicketOwner { get; set; }
 
         //[Display(Name = "Accelarated By")]
         //public int? AccelaratedBy { get; set; }
@@ -82,8 +79,9 @@ namespace ITHelpDeskSystem.ViewModels
 
         public string Category { get; set; }
 
-        //public int? StaffId { get; set; }
+        public int? StaffId { get; set; }
 
-        //public string Staff { get; set; }
+       public string Staff { get; set; }
+
     }
 }

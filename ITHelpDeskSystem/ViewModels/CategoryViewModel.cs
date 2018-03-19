@@ -1,7 +1,13 @@
-﻿using ITHelpDeskSystem.Models;
+﻿/*
+* Description: This file is the categories ViewModel (based on the categories model), created to to pass information between category views and its controller.
+* Author: mamazyad
+*/
+
+using ITHelpDeskSystem.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -14,6 +20,7 @@ namespace ITHelpDeskSystem.ViewModels
             Tickets = new List<Ticket>();
         }
         public int Id { get; set; }
+
 
         [Display(Name = "Category Name")]
         public string CategoryName { get; set; }

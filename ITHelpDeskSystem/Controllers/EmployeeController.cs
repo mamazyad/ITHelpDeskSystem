@@ -1,4 +1,9 @@
-﻿using AutoMapper;
+﻿/*
+* Description: This file is the employees controller, containing the employee creation, edition, deletion, listing and details methods (actions).
+* Author: mamazyad
+*/
+
+using AutoMapper;
 using ITHelpDeskSystem.Models;
 using ITHelpDeskSystem.ViewModels;
 using Microsoft.AspNet.Identity;

@@ -1,7 +1,6 @@
 /*
-* Description: This application is a web-based incident tracking system for IT Help Desks. 
+* Description: This file is the domain of the staffs, created to obtain staffs information, it contains an enum to define the managerial position of a staff.
 * Author: mamazyad
-* Due date: 27/02/2018
 */
 
 using System;

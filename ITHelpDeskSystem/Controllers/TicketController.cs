@@ -1,4 +1,9 @@
-﻿using AutoMapper;
+﻿/*
+* Description: This file is the ticket controller, enabling the ticket creation (for staff and for IT help desk admin on behalf of staff), edition, listing and details methods (actions).
+* Author: mamazyad
+*/
+
+using AutoMapper;
 using ITHelpDeskSystem.Models;
 using ITHelpDeskSystem.ViewModels;
 using Microsoft.AspNet.Identity;
@@ -28,15 +33,15 @@ namespace ITHelpDeskSystem.Controllers
                     Id = item.TicketId,
                     Subject = item.Subject,
                     IncidentDescription = item.IncidentDescription,
-                    //Priority = item.Priority,
-                    //Status = item.Status,
                     //HACK Display the creation date
                     CreationDate = item.CreationDate,
                     Category = item.Category.CategoryName,
-                    CreatedBy = item.CreatedBy, //HACK May be get the name of the creator instead of her Id
+                    //CreatedBy = item.CreatedBy, //HACK May be get the name of the creator instead of her Id
+                    CreatedByName = item.Employee.FullName,
+                    //TicketOwnerName = item.Staff.FullName,
+
                 });
             }
-
             return View(model);
         }
 
@@ -48,12 +53,11 @@ namespace ITHelpDeskSystem.Controllers
             return View();
         }
 
+
         // GET: Ticket/Create
         public ActionResult Create()
         {
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName");
-            //ViewBag.ITStaffId = new SelectList(db.ITStaffs, "Id", "UserName");
-            //ViewBag.StaffId = new SelectList(db.Staffs, "Id", "UserName");
             return View();
         }
 
@@ -85,6 +89,45 @@ namespace ITHelpDeskSystem.Controllers
             return View(model);
         }
 
+        // GET: Ticket/CreateONBehalf
+        public ActionResult CreateONBehalf()
+        {
+            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName");
+            ViewBag.StaffId = new SelectList(db.Staffs, "Id", "FullName");
+            return View();
+        }
+
+        // POST: Ticket/CreateONBehalf
+        [HttpPost]
+        public ActionResult CreateONBehalf(TicketViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var ticket = new Ticket
+                {
+                    TicketId = model.Id,
+                    Subject = model.Subject,
+                    IncidentDescription = model.IncidentDescription,
+                    CategoryId = model.CategoryId,
+                    //HACK Add the current date
+                    CreationDate = DateTime.Now,
+                    //StaffId = model.StaffId,
+                    //HACK You need to be logged in as employee/staff to assign the creator id automatically
+                    //CreatedBy = User.Identity.GetUserId<int>(),
+                    // For now you can use the below
+                    CreatedBy = User.Identity.IsAuthenticated ? User.Identity.GetUserId<int>() : db.Users.First().Id,
+                };
+
+                db.Tickets.Add(ticket);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName");
+            ViewBag.StaffId = new SelectList(db.Staffs, "Id", "FullName");
+
+            return View(model);
+        }
+
         // GET: Ticket/Edit/5
         public ActionResult Edit(int id)
         {
@@ -98,28 +141,6 @@ namespace ITHelpDeskSystem.Controllers
             try
             {
                 // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Ticket/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Ticket/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
 
                 return RedirectToAction("Index");
             }

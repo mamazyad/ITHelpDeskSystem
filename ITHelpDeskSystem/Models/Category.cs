@@ -1,5 +1,5 @@
 /*
-* Description: This application is a web-based incident tracking system for IT Help Desks. 
+* Description: This file is the domain of the categories, created to identify the various IT categories IT staff are responsible for.
 * Author: mamazyad
 */
 
@@ -26,7 +26,9 @@ namespace ITHelpDeskSystem.Models
 
         public int CategoryId { get; set; }
 
+        [Required]
         [StringLength(128)]
+        [Index(IsUnique = true)]
         public string CategoryName { get; set; }
 
         [StringLength(512)]

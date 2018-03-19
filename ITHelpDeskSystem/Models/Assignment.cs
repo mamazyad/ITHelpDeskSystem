@@ -1,5 +1,5 @@
 /*
-* Description: This file holds the 
+* Description: This file is the domain for the assignment, created to keep track of IT Staff assigned to a ticket.
 * Author: mamazyad
 */
 

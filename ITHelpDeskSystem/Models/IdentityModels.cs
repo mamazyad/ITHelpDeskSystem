@@ -116,11 +116,7 @@ namespace ITHelpDeskSystem.Models
                 .WillCascadeOnDelete(false);
         }
 
-        public System.Data.Entity.DbSet<ITHelpDeskSystem.ViewModels.ITHelpDeskAdminViewModel> ITHelpDeskAdminViewModels { get; set; }
-
-        public System.Data.Entity.DbSet<ITHelpDeskSystem.ViewModels.ITStaffViewModel> ITStaffViewModels { get; set; }
-
-        public System.Data.Entity.DbSet<ITHelpDeskSystem.ViewModels.CategoryViewModel> CategoryViewModels { get; set; }
+        public System.Data.Entity.DbSet<ITHelpDeskSystem.ViewModels.TicketViewModel> TicketViewModels { get; set; }
     }
 
     public class CustomUserRole : IdentityUserRole<int> { }

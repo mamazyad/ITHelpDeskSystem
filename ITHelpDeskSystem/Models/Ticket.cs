@@ -1,7 +1,6 @@
 /*
-* Description: This application is a web-based incident tracking system for IT Help Desks. 
+* Description: Rhis file is the domain of the tickets, the central and most vital model in the IT help desk system. It is created to obtain ticket information, containing enums to define the ticket status and priority.
 * Author: mamazyad
-* Due date: 27/02/2018
 */
 
 namespace ITHelpDeskSystem.Models
@@ -51,7 +50,11 @@ namespace ITHelpDeskSystem.Models
 
         public int? CreatedBy { get; set; }
 
+        public string CreatedByName { get; set; }
+
         public int? TicketOwner { get; set; }
+
+        public string TicketOwnerName { get; set; }
 
         public int? AccelaratedBy { get; set; }
 

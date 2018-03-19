@@ -1,7 +1,6 @@
 /*
-* Description: This application is a web-based incident tracking system for IT Help Desks. 
+* Description: This file is the domain of the criteria, created to facilitate Staff's feedback.
 * Author: mamazyad
-* Due date: 27/02/2018
 */
 
 namespace ITHelpDeskSystem.Models

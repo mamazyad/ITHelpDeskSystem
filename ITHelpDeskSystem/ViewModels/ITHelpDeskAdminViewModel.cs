@@ -1,4 +1,8 @@
-﻿using ITHelpDeskSystem.Models;
+﻿/*
+* Description: This file is the IT help desk admin ViewModel (based on the IT help desk admin  model), created to to pass information between IT help desk admin views and its controller.
+* Author: mamazyad
+*/
+using ITHelpDeskSystem.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

@@ -1,4 +1,9 @@
-﻿using ITHelpDeskSystem.Models;
+﻿/*
+* Description: This file is the staff ViewModel (based on the staff model), created to to pass information between staff views and its controller.
+* Author: mamazyad
+*/
+
+using ITHelpDeskSystem.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

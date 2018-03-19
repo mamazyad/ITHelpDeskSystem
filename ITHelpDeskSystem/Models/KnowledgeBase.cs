@@ -1,7 +1,6 @@
 /*
-* Description: This application is a web-based incident tracking system for IT Help Desks. 
+* Description:This file is the domain of the Knowledge Base, created to act as the syste'ms central solutions deposotory.
 * Author: mamazyad
-* Due date: 27/02/2018
 */
 
 namespace ITHelpDeskSystem.Models

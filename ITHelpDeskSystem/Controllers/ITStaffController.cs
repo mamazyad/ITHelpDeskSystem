@@ -1,4 +1,9 @@
-﻿using AutoMapper;
+﻿/*
+* Description: This file is the IT staff controller, containing the IT staff creation, edition, deletion, listing and details methods (actions). In adition, it contains an action to create IT manager.
+* Author: mamazyad
+*/
+
+using AutoMapper;
 using ITHelpDeskSystem.Models;
 using ITHelpDeskSystem.ViewModels;
 using Microsoft.AspNet.Identity;
@@ -152,7 +157,6 @@ namespace ITHelpDeskSystem.Controllers
 
                 if (result.Succeeded)
                 {
-                    //TODO Add user to faculty role (check if Faculty role exists)
                     var roleResult = UserManager.AddToRoles(ITstaff.Id, "ITStaff");
 
                     if (roleResult.Succeeded)
@@ -210,7 +214,6 @@ namespace ITHelpDeskSystem.Controllers
 
                 if (result.Succeeded)
                 {
-                    //TODO Add user to faculty role (check if Faculty role exists)
                     var roleResult = UserManager.AddToRoles(ITstaff.Id, "ITManager");
 
                     if (roleResult.Succeeded)

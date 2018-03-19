@@ -1,5 +1,5 @@
 /*
-* Description: This application is a web-based incident tracking system for IT Help Desks. 
+* Description: This file is the domain of the IT Staffs, created to obtain the IT staff information.
 * Author: mamazyad
 */
 

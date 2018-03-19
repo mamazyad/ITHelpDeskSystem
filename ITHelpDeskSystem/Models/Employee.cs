@@ -1,5 +1,5 @@
 /*
-* Description: This application is a web-based incident tracking system for IT Help Desks. 
+* Description: This file is the domain of the employees, created as the superclass of the system users.
 * Author: mamazyad
 */
 
@@ -63,5 +63,10 @@ namespace ITHelpDeskSystem.Models
         //public virtual Staff Staff { get; set; }
 
         public virtual ICollection<Ticket> Tickets { get; set; }
+
+        public string FullName
+        {
+            get { return string.Format("{0} {1}", FirstName, LastName); }
+        }
     }
 }

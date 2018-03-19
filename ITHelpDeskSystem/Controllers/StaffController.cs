@@ -1,4 +1,9 @@
-﻿using AutoMapper;
+﻿/*
+* Description: This file is the staff controller, containing the staff creation, edition, deletion, listing and details methods (actions).
+* Author: mamazyad
+*/
+
+using AutoMapper;
 using ITHelpDeskSystem.Models;
 using ITHelpDeskSystem.ViewModels;
 using Microsoft.AspNet.Identity;
@@ -149,7 +154,6 @@ namespace ITHelpDeskSystem.Controllers
 
                 if (result.Succeeded)
                 {
-                    //TODO Add user to faculty role (check if Faculty role exists)
                     var roleResult = UserManager.AddToRoles(staff.Id, "Staff");
 
                     if (roleResult.Succeeded)

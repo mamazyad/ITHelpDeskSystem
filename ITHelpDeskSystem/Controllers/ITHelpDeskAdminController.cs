@@ -1,4 +1,9 @@
-﻿using AutoMapper;
+﻿/*
+* Description: This file is the IT help desk admin controller, containing the admin creation, edition, deletion, listing and details methods (actions).
+* Author: mamazyad
+*/
+
+using AutoMapper;
 using ITHelpDeskSystem.Models;
 using ITHelpDeskSystem.ViewModels;
 using Microsoft.AspNet.Identity;
