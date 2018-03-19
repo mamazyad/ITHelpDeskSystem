@@ -119,6 +119,8 @@ namespace ITHelpDeskSystem.Models
         public System.Data.Entity.DbSet<ITHelpDeskSystem.ViewModels.ITHelpDeskAdminViewModel> ITHelpDeskAdminViewModels { get; set; }
 
         public System.Data.Entity.DbSet<ITHelpDeskSystem.ViewModels.ITStaffViewModel> ITStaffViewModels { get; set; }
+
+        public System.Data.Entity.DbSet<ITHelpDeskSystem.ViewModels.CategoryViewModel> CategoryViewModels { get; set; }
     }
 
     public class CustomUserRole : IdentityUserRole<int> { }

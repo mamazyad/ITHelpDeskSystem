@@ -2,6 +2,7 @@
 using ITHelpDeskSystem.Models;
 using ITHelpDeskSystem.ViewModels;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
@@ -61,7 +62,9 @@ namespace ITHelpDeskSystem.Controllers
         // GET: Category/Create
         public ActionResult Create()
         {
+
             ViewBag.ITStaffId = new SelectList(db.ITStaffs, "Id", "UserName");
+
             return View();
         }
 
@@ -85,6 +88,7 @@ namespace ITHelpDeskSystem.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.ITStaffId = new SelectList(db.ITStaffs, "Id", "UserName");
+            
             return View(model);
         }
 
