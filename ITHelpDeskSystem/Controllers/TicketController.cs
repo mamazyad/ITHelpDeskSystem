@@ -30,14 +30,17 @@ namespace ITHelpDeskSystem.Controllers
                     IncidentDescription = item.IncidentDescription,
                     //Priority = item.Priority,
                     //Status = item.Status,
-                    //CreationDate = item.CreationDate,
+                    //HACK Display the creation date
+                    CreationDate = item.CreationDate,
                     Category = item.Category.CategoryName,
+                    CreatedBy = item.CreatedBy, //HACK May be get the name of the creator instead of her Id
                 });
             }
+
             return View(model);
         }
 
-    
+
 
         // GET: Ticket/Details/5
         public ActionResult Details(int id)
@@ -66,6 +69,12 @@ namespace ITHelpDeskSystem.Controllers
                     Subject = model.Subject,
                     IncidentDescription = model.IncidentDescription,
                     CategoryId = model.CategoryId,
+                    //HACK Add the current date
+                    CreationDate = DateTime.Now,
+                    //HACK You need to be logged in as employee/staff to assign the creator id automatically
+                    //CreatedBy = User.Identity.GetUserId<int>(),
+                    // For now you can use the below
+                    CreatedBy = User.Identity.IsAuthenticated ? User.Identity.GetUserId<int>() : db.Users.First().Id,
                 };
 
                 db.Tickets.Add(ticket);

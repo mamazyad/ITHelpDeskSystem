@@ -2,7 +2,6 @@
 using ITHelpDeskSystem.Models;
 using ITHelpDeskSystem.ViewModels;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
@@ -30,7 +29,9 @@ namespace ITHelpDeskSystem.Controllers
                     Id = item.CategoryId,
                     CategoryName = item.CategoryName,
                     CategoryDescription = item.CategoryDescription,
-                    ITStaff = item.ITStaff.UserName,
+                    //ITStaff = item.ITStaff.UserName,
+                    //HACK May be add GetFullName( return FirstName + " " + LastName) method in ITStaff class
+                    ITStaff = item.ITStaff.FirstName + " " + item.ITStaff.LastName,
                 });
             }
             return View(model);
@@ -62,9 +63,10 @@ namespace ITHelpDeskSystem.Controllers
         // GET: Category/Create
         public ActionResult Create()
         {
-
-            ViewBag.ITStaffId = new SelectList(db.ITStaffs, "Id", "UserName");
-
+            //HACK
+            var list = db.ITStaffs.Select(p => new { p.Id, FullName = p.FirstName + " " + p.LastName });
+            //ViewBag.ITStaffId = new SelectList(db.ITStaffs, "Id", "UserName");
+            ViewBag.ITStaffId = new SelectList(list, "Id", "FullName");
             return View();
         }
 
@@ -87,8 +89,11 @@ namespace ITHelpDeskSystem.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ITStaffId = new SelectList(db.ITStaffs, "Id", "UserName");
-            
+            //HACK
+            var list = db.ITStaffs.Select(p => new { p.Id, FullName = p.FirstName + " " + p.LastName });
+            ViewBag.ITStaffId = new SelectList(list, "Id", "FullName");
+
+            //ViewBag.ITStaffId = new SelectList(db.ITStaffs, "Id", "UserName");
             return View(model);
         }
 
