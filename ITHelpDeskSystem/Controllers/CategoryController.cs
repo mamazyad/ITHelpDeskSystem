@@ -1,6 +1,7 @@
 ﻿/*
-* Description: This file is the category controller, it contains the category creation, edition, deletion, listing and details methods (actions).
+* Description: This file contains the category controller with the category creation, edition, deletion, listing and details methods (actions).
 * Author: mamazyad
+* Date: 20/03/2018
 */
 
 using AutoMapper;
@@ -22,7 +23,11 @@ namespace ITHelpDeskSystem.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Category. This action lists all the categories created with the IT staff responsible for them. Category index view is based on it with links leading to Details, Delete and Edit actions. 
+        /// <summary>
+        /// This action lists all the categories created with the IT staff responsible for them. Category index view is based on it.
+        /// </summary>
+        /// <returns> Category, Index view</returns>
+        // GET: Category 
         public ActionResult Index()
         {
             var categories = db.Categories.ToList();
@@ -34,15 +39,17 @@ namespace ITHelpDeskSystem.Controllers
                     Id = item.CategoryId,
                     CategoryName = item.CategoryName,
                     CategoryDescription = item.CategoryDescription,
-                    //ITStaff = item.ITStaff.UserName,
-                    //HACK May be add GetFullName( return FirstName + " " + LastName) method in ITStaff class
                     ITStaff = item.ITStaff.FirstName + " " + item.ITStaff.LastName,
                 });
             }
             return View(model);
         }
-
-        // GET: Category/Details/5. This action provides the details of a specific category, Category Details view is based on it with links to Delete and Edit actions.
+        /// <summary>
+        ///  This action provides the details of a specific category, Category Details view is based on it with links to Delete and Edit actions.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Category, Details view</returns>
+        // GET: Category/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -68,12 +75,18 @@ namespace ITHelpDeskSystem.Controllers
         // GET: Category/Create. 
         public ActionResult Create()
         {
-            var list = db.ITStaffs.Select(p => new { p.Id, FullName = p.FirstName + " " + p.LastName });
+            var list = db.ITStaffs.Where(m => m.IsManager == false).Select(p => new { p.Id, FullName = p.FirstName + " " + p.LastName });
             ViewBag.ITStaffId = new SelectList(list, "Id", "FullName");
             return View();
         }
 
-        // POST: Category/Create.This action enables the creation of a category (with a unique name) and assigning it to a specific IT staff.
+
+        /// <summary>
+        /// This action enables the creation of a category (with a unique name) and assigning it to a specific IT staff.
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns> Category, Create view</returns>
+        // (POST: Category/Create) 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(CategoryViewModel model)
@@ -93,7 +106,7 @@ namespace ITHelpDeskSystem.Controllers
                 return RedirectToAction("Index");
             }
             //HACK
-            var list = db.ITStaffs.Select(p => new { p.Id, FullName = p.FirstName + " " + p.LastName });
+            var list = db.ITStaffs.Where(m=>m.IsManager==false).Select(p => new { p.Id, FullName = p.FirstName + " " + p.LastName });
             ViewBag.ITStaffId = new SelectList(list, "Id", "FullName");
 
             return View(model);
@@ -122,8 +135,13 @@ namespace ITHelpDeskSystem.Controllers
             ViewBag.ITStaffId = new SelectList(db.ITStaffs, "Id", "UserName");
             return View(model);
         }
-
-        // POST: Category/Edit/5
+        /// <summary>
+        /// This action enables the editing of a category.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="model"></param>
+        /// <returns> Category, Edit view</returns>
+        // (POST: Category/Edit/5) 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, CategoryViewModel model)
@@ -146,7 +164,7 @@ namespace ITHelpDeskSystem.Controllers
             return View(model);
         }
 
-        // GET: Category/Delete/5
+        // GET: Category/Delete/5. 
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -169,7 +187,12 @@ namespace ITHelpDeskSystem.Controllers
             return View(model);
         }
 
-        // POST: Category/Delete/5
+        /// <summary>
+        /// This action enables the deletion of a category.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> Category, Delete view</returns>
+        // (POST: Category/Delete/5) 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

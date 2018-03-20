@@ -62,12 +62,13 @@ namespace ITHelpDeskSystem.Migrations
                 userManager.AddToRole(admin.Id, roles[0]);
             }
 
-            //Adding IT Staff example
+            //Adding IT Staff 
             var ITstaffs = new List<ITStaff>
             {
-                new ITStaff { UserName = "ITstaff", Email ="ITstaff@gmail.com", FirstName ="FirstIT", LastName ="LastIT", JobTitle =" ", Mobile = " ", ExtensionNumber = " ", OfficeNumber = " ",Speciality = " ", StartingDate = null, Position =" "
+                new ITStaff { UserName = "ITstaff1", Email ="ITstaff1@gmail.com", FirstName ="Jack", LastName ="White", JobTitle ="User support ", Department="IT Department", ExtensionNumber = " ", Mobile = " ", OfficeNumber = " ", Speciality = " ", StartingDate = null, Position =" ", IsManager = false,
                     },
-                 new ITStaff { UserName = "ITstaff1", Email ="ITstaff1@gmail.com", FirstName ="FirstIT1", LastName ="LastIT1", JobTitle =" ", Mobile = " ", ExtensionNumber = " ", OfficeNumber = " ",Speciality = " ", StartingDate = null, Position =" "
+
+                 new ITStaff { UserName = "ITstaff2", Email ="ITstaff2@gmail.com", FirstName ="Jane", LastName ="Black", JobTitle ="Network admin", Department="IT Department", ExtensionNumber = " ", Mobile = " ", OfficeNumber = " ", Speciality = " ", StartingDate = null, Position =" ", IsManager = false,
                     },
             };
 
@@ -84,18 +85,6 @@ namespace ITHelpDeskSystem.Migrations
                     userManager.AddToRole(usertemp.Id, roles[1]);
                 }
             }
-
-
-            var categories = new List<Category>
-            {
-                  //new Category { CategoryName = "General", CategoryDescription = " " },
-                  //new Category { CategoryName = "Hardware", CategoryDescription = " " },
-                  new Category { CategoryName = "Software", CategoryDescription = " " ,ITStaffId = ITstaffs.Single(d=>d.UserName=="ITstaff").Id },
-                  new Category { CategoryName = "SAP System", CategoryDescription = " ", ITStaffId = ITstaffs.Single(d=>d.UserName=="ITstaff").Id }
-            };
-
-            categories.ForEach(s => context.Categories.AddOrUpdate(p => p.CategoryName, s));
-            context.SaveChanges();
         }
     }
 }

@@ -1,6 +1,7 @@
 /*
-* Description: This file is the domain of the IT Help desk system admin, created to obtain the admin information.
+* Description: This file contains the domain of the IT Help desk system admin, created to store the admin information.
 * Author: mamazyad
+* Date: 20/03/2018
 */
 
 namespace ITHelpDeskSystem.Models
@@ -20,9 +21,5 @@ namespace ITHelpDeskSystem.Models
     {
         [StringLength(128)]
         public string Degree { get; set; }
-
-        //public int ITHelpDeskAdminId { get; set; }
-
-        //public virtual ITStaff ITStaff { get; set; }
     }
 }

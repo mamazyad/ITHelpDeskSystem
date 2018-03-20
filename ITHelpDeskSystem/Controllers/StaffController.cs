@@ -1,6 +1,7 @@
 ﻿/*
-* Description: This file is the staff controller, containing the staff creation, edition, deletion, listing and details methods (actions).
+* Description: This file contains the staff controller, with the staff creation, edition, deletion, listing and details methods (actions).
 * Author: mamazyad
+* Date: 20/03/2018
 */
 
 using AutoMapper;
@@ -61,7 +62,12 @@ namespace ITHelpDeskSystem.Controllers
 
         public object UserManeger { get; private set; }
 
-        // GET: Staff
+
+        /// <summary>
+        /// This action lists all the Staff. Staff index view is based on it.
+        /// </summary>
+        /// <returns>Staff, Index view</returns>
+        // (GET: Staff) 
         public ActionResult Index()
         {
             var users = db.Staffs.ToList();
@@ -87,7 +93,12 @@ namespace ITHelpDeskSystem.Controllers
             return View(model);
         }
 
-        // GET: Staff/Details/5
+        /// <summary>
+        /// This action provides the details of a specific Staff, Details view is based on it.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Staff, Details vew</returns>
+        // (GET: Staff/Details/5)
         public ActionResult Details(int id)
         {
             var user = UserManager.FindById(id);
@@ -127,7 +138,12 @@ namespace ITHelpDeskSystem.Controllers
             return View();
         }
 
-        // POST: Staff/Create
+        /// <summary>
+        /// This action enables the creation of a staff with role set to Staff.
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>Staff, Create view</returns>
+        // (POST: Staff/Create) 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(StaffViewModel model)
@@ -177,7 +193,7 @@ namespace ITHelpDeskSystem.Controllers
             return View();
         }
 
-        // GET: Staff/Edit/5
+        // (GET: Staff/Edit/5) 
         public ActionResult Edit(int id)
         {
             var staff = (Staff)UserManager.FindById(id);
@@ -205,6 +221,12 @@ namespace ITHelpDeskSystem.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// This action enables editing of a Staff.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="model"></param>
+        /// <returns>Staff, Edit view</returns>
         // POST: Staff/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -273,7 +295,13 @@ namespace ITHelpDeskSystem.Controllers
 
         }
 
-        // POST: Staff/Delete/5
+
+        /// <summary>
+        /// This action enables the deletion of a staff.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Staff, Delete view</returns>
+        // (POST: Staff/Delete/5)  
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]

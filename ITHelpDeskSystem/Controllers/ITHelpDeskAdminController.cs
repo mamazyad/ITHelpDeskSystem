@@ -1,6 +1,7 @@
 ﻿/*
-* Description: This file is the IT help desk admin controller, containing the admin creation, edition, deletion, listing and details methods (actions).
+* Description: This file contains the IT help desk admin controller, with the admin creation, edition, deletion, listing and details methods (actions).
 * Author: mamazyad
+* Date: 20/03/2018
 */
 
 using AutoMapper;
@@ -19,7 +20,7 @@ using System.Web.Mvc;
 namespace ITHelpDeskSystem.Controllers
 {
     /// <summary>
-    /// ITHelpDesk controller manage the admin using IT Help Desk Admin and ITHelpDeskAdminViewModel classes
+    /// ITHelpDesk controller manages the admin using IT Help Desk Admin and ITHelpDeskAdminViewModel classes.
     /// </summary>
 
     public class ITHelpDeskAdminController : Controller
@@ -63,7 +64,11 @@ namespace ITHelpDeskSystem.Controllers
             }
         }
 
-        // GET: ITHelpDeskAdmin
+        /// <summary>
+        /// This action lists all the IT help desk admin. IT help desk admin index view is based on it.
+        /// </summary>
+        /// <returns>ITHelpDeskAdmin, index view </returns>
+        // (GET: ITHelpDeskAdmin) 
         public ActionResult Index()
         {
             var users = db.ITHelpDeskAdmins.ToList();
@@ -90,7 +95,12 @@ namespace ITHelpDeskSystem.Controllers
             return View(model);
         }
 
-        // GET: ITHelpDeskAdmin/Details/5
+        /// <summary>
+        /// This action provides the details of a specific Admin, Details view is based on it.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>ITHelpDeskAdmin, Details view</returns>
+        // (GET: ITHelpDeskAdmin/Details/5) 
         public ActionResult Details(int id)
         {
             var user = UserManager.FindById(id);
@@ -132,7 +142,12 @@ namespace ITHelpDeskSystem.Controllers
             return View();
         }
 
-        // POST: ITHelpDeskAdmin/Create
+        /// <summary>
+        /// This action enables the creation of an IT help desk admin with role set to ITHelpDeskAdmin.
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>ITHelpDeskAdmin, create view</returns>
+        // (POST: ITHelpDeskAdmin/Create) 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(ITHelpDeskAdminViewModel model)
@@ -215,7 +230,14 @@ namespace ITHelpDeskSystem.Controllers
             return View(model);
         }
 
-        // POST: ITHelpDeskAdmin/Edit/5
+        /// <summary>
+        /// This action enables editing of an IT help desk admin.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="model"></param>
+        /// <param name="roles"></param>
+        /// <returns>ITHelpDeskAdmin, Edit view</returns>
+        // (POST: ITHelpDeskAdmin/Edit/5) 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, ITHelpDeskAdminViewModel model, params string[] roles)
@@ -230,7 +252,6 @@ namespace ITHelpDeskSystem.Controllers
                 {
                     return HttpNotFound();
                 }
-
                 IThelpDeskAdmin.Email = model.Email;
                 IThelpDeskAdmin.UserName = model.UserName;
                 IThelpDeskAdmin.FirstName = model.FirstName;
@@ -286,7 +307,12 @@ namespace ITHelpDeskSystem.Controllers
 
         }
 
-        // POST: ITHelpDeskAdmin/Delete/5
+        /// <summary>
+        /// This action enables the deletion of an IT help desk admin.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>ITHelpDeskAdmin, delete view</returns>
+        // (POST: ITHelpDeskAdmin/Delete/5)  
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]

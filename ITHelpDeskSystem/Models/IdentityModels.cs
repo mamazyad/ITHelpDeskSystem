@@ -1,4 +1,10 @@
-﻿using System.Data.Entity;
+﻿/*
+* Description: This file contains the identity model with the DbContext of the system.
+* Author: mamazyad
+* Date: 20/03/2018
+*/
+
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -115,8 +121,6 @@ namespace ITHelpDeskSystem.Models
                 .WithRequired(e => e.Ticket)
                 .WillCascadeOnDelete(false);
         }
-
-        public System.Data.Entity.DbSet<ITHelpDeskSystem.ViewModels.TicketViewModel> TicketViewModels { get; set; }
     }
 
     public class CustomUserRole : IdentityUserRole<int> { }

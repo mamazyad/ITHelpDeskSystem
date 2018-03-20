@@ -1,6 +1,7 @@
 /*
-* Description: Rhis file is the domain of the tickets, the central and most vital model in the IT help desk system. It is created to obtain ticket information, containing enums to define the ticket status and priority.
+* Description: This file contains the domain of the tickets, the central and most vital model in the IT help desk system. It is created to obtain ticket information, containing TicketPriority enum to define the ticket priority and TicketStatus that describes the ticket condition. 
 * Author: mamazyad
+* Date: 20/03/2018
 */
 
 namespace ITHelpDeskSystem.Models
@@ -76,17 +77,23 @@ namespace ITHelpDeskSystem.Models
         public virtual Staff Accelerator { get; set; }
     }
 
+    /// <summary>
+    /// The ticket priority defines the importance of the ticket, critical being the most important and low is the least important.
+    /// </summary>
     public enum TicketPriority
     {
+        Critical,
+
         High,
 
         Medium,
 
         Low,
-
-        Critical,
     }
 
+    /// <summary>
+    /// The ticket status defines the progress of the ticket, open: ticket is assigned to IT staff, in-progress: ticket is in the process of being investigated and resolved, in-progress (vendor): vendor has been contacted for further help, resolved: a solution has been put in place but has not yet been validated by Staff, closed: staff has agreed that the incident has been solved and gave feedback on the service received.
+    /// </summary>
     public enum TicketStatus
     {
         Open,

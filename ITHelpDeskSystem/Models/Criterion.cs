@@ -1,6 +1,7 @@
 /*
-* Description: This file is the domain of the criteria, created to facilitate Staff's feedback.
+* Description: This file contains the domain of the criteria, created to hold the targeted grades Staff are evaluated on.
 * Author: mamazyad
+* Date: 20/03/2018
 */
 
 namespace ITHelpDeskSystem.Models

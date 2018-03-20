@@ -8,6 +8,8 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")
+    <div>@Html.ActionLink("Create On behalf", "CreateOnBehalf")</div>
+
 </p>
 <table class="table">
     <tr>
@@ -20,74 +22,41 @@
         <th>
             @Html.DisplayNameFor(model => model.CreationDate)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </th>
+
         <th>
             @Html.DisplayNameFor(model => model.CreatedByName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TicketOwnerName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TicketOwner)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryId)
-        </th>
+
         <th>
             @Html.DisplayNameFor(model => model.Category)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StaffId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Staff)
-        </th>
+
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Subject)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IncidentDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreationDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedByName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TicketOwnerName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TicketOwner)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CategoryId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StaffId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Staff)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IncidentDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedByName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>

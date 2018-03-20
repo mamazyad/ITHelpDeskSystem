@@ -1,6 +1,6 @@
-﻿/*
-* Description: This file is the IT staff controller, containing the IT staff creation, edition, deletion, listing and details methods (actions). In adition, it contains an action to create IT manager.
+﻿/*Description: This file cntains the IT staff controller, with the IT staff edition, deletion, listing and details methods (actions). In adition, the creation method enables the creation of an IT staff with the role IT Manager.
 * Author: mamazyad
+* Date: 20/03/2018
 */
 
 using AutoMapper;
@@ -19,7 +19,7 @@ using System.Web.Mvc;
 namespace ITHelpDeskSystem.Controllers
 {
     /// <summary>
-    /// ITStaff controller manage the IT staff using IT Staff and ITStaffViewModel classes
+    /// ITStaff controller manages the IT staff using IT Staff and ITStaffViewModel classes
     /// </summary>
 
     public class ITStaffController : Controller
@@ -63,7 +63,11 @@ namespace ITHelpDeskSystem.Controllers
             }
         }
 
-        // GET: ITStaff
+        /// <summary>
+        /// This action lists all the IT staff. IT staff index view is based on it.
+        /// </summary>
+        /// <returns>IT staff, Index view</returns>
+        // (GET: ITStaff) 
         public ActionResult Index()
         {
             var users = db.ITStaffs.ToList();
@@ -89,7 +93,12 @@ namespace ITHelpDeskSystem.Controllers
             return View(model);
         }
 
-        // GET: ITStaff/Details/5
+        /// <summary>
+        /// This action provides the details of a specific IT staff, Details view is based on it.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>ITStaff, Details view</returns>
+        // (GET: ITStaff/Details/5)
         public ActionResult Details(int id)
         {
             var user = UserManager.FindById(id);
@@ -130,7 +139,12 @@ namespace ITHelpDeskSystem.Controllers
             return View();
         }
 
-        // POST: ITStaff/Create
+        /// <summary>
+        /// This action enables the creation of an IT staff with role set to ITStaff and IT manager with role IT manager.
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>ITStaff, create view</returns>
+        // (POST: ITStaff/Create) 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(ITStaffViewModel model)
@@ -151,11 +165,26 @@ namespace ITHelpDeskSystem.Controllers
                     Speciality = model.Speciality,
                     StartingDate = model.StartingDate,
                     Position = model.Position,
+                    IsManager = model.IsManager,
                 };
 
                 var result = UserManager.Create(ITstaff, model.Password);
 
-                if (result.Succeeded)
+                if (result.Succeeded && model.IsManager==true)
+                {
+                    var roleResult = UserManager.AddToRoles(ITstaff.Id, "ITManager");
+
+                    if (roleResult.Succeeded)
+                    {
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, roleResult.Errors.First());
+                        return View();
+                    }
+                }
+                if (result.Succeeded && model.IsManager == false)
                 {
                     var roleResult = UserManager.AddToRoles(ITstaff.Id, "ITStaff");
 
@@ -179,64 +208,6 @@ namespace ITHelpDeskSystem.Controllers
             return View();
 
         }
-
-        // GET: ITManager/CreateManager
-        public ActionResult CreateManager()
-        {
-            return View();
-        }
-
-
-        // POST: ITManager/CreateManager
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult CreateManager(ITStaffViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var ITstaff = new ITStaff
-                {
-                    UserName = model.UserName,
-                    Email = model.Email,
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    Department = "IT Department",
-                    JobTitle = model.JobTitle,
-                    Mobile = model.Mobile,
-                    ExtensionNumber = model.ExtensionNumber,
-                    OfficeNumber = model.OfficeNumber,
-                    Speciality = model.Speciality,
-                    StartingDate = model.StartingDate,
-                    Position = model.Position,
-                };
-
-                var result = UserManager.Create(ITstaff, model.Password);
-
-                if (result.Succeeded)
-                {
-                    var roleResult = UserManager.AddToRoles(ITstaff.Id, "ITManager");
-
-                    if (roleResult.Succeeded)
-                    {
-                        return RedirectToAction("Index");
-                    }
-                    else
-                    {
-                        ModelState.AddModelError(string.Empty, roleResult.Errors.First());
-                        return View();
-                    }
-                }
-                else
-                {
-                    ModelState.AddModelError(string.Empty, result.Errors.First());
-                    return View();
-                }
-            }
-
-            return View();
-
-        }
-
 
         // GET: ITStaff/Edit/5
         public ActionResult Edit(int id)
@@ -263,12 +234,20 @@ namespace ITHelpDeskSystem.Controllers
                 Speciality = ITstaff.Speciality,
                 StartingDate = ITstaff.StartingDate,
                 Position = ITstaff.Position,
+                IsManager = ITstaff.IsManager,
                 Roles = string.Join(" ", UserManager.GetRoles(id).ToArray()),
             };
             return View(model);
         }
 
-        // POST: ITStaff/Edit/5
+        /// <summary>
+        /// This action enables editing of an IT Staff.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="model"></param>
+        /// <param name="roles"></param>
+        /// <returns>ITStaff, Edit view</returns>
+        // (POST: ITStaff/Edit/5) 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, ITStaffViewModel model, params string[] roles)
@@ -295,6 +274,7 @@ namespace ITHelpDeskSystem.Controllers
                 ITstaff.Speciality = model.Speciality;
                 ITstaff.StartingDate = model.StartingDate;
                 ITstaff.Position = model.Position;
+                ITstaff.IsManager = model.IsManager;
 
                 var userResult = UserManager.Update(ITstaff);
 
@@ -302,6 +282,7 @@ namespace ITHelpDeskSystem.Controllers
                 {
                     return RedirectToAction("Index");
                 }
+
             }
             return View();
         }
@@ -337,7 +318,12 @@ namespace ITHelpDeskSystem.Controllers
 
         }
 
-        // POST: ITStaff/Delete/5
+        /// <summary>
+        ///  This action enables the deletion of an IT staff.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>ITStaff, Delete view</returns>
+        // (POST: ITStaff/Delete/5)
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]

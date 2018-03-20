@@ -1,6 +1,7 @@
 ﻿/*
 * Description: This file is the ticket ViewModel (based on the ticket model), created to to pass information between ticket views and its controller.
 * Author: mamazyad
+* Date: 20/03/2018
 */
 
 using ITHelpDeskSystem.Models;
@@ -14,6 +15,9 @@ using System.Web;
 
 namespace ITHelpDeskSystem.ViewModels
 {
+    /// <summary>
+    /// Ticket view model from the ticket model and used by ticket controller.
+    /// </summary>
     public class TicketViewModel
     {
         
@@ -54,6 +58,7 @@ namespace ITHelpDeskSystem.ViewModels
         [Display(Name = "Created By")]
         public int? CreatedBy { get; set; }
 
+        [Display(Name = "Created by")]
         public string CreatedByName { get; set; }
 
         public string TicketOwnerName { get; set; }

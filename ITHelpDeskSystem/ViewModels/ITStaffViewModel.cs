@@ -1,6 +1,7 @@
 ﻿/*
 * Description: This file is the IT staff ViewModel (based on the IT staff model), created to to pass information between IT staff views and its controller.
 * Author: mamazyad
+* Date: 20/03/2018
 */
 
 using ITHelpDeskSystem.Models;
@@ -57,6 +58,9 @@ namespace ITHelpDeskSystem.ViewModels
         public string JobTitle { get; set; }
 
         public string Mobile { get; set; }
+
+        [Display(Name = "Assign IT manager role")]
+        public bool IsManager { get; set; }
 
         [Display(Name = "Extension Number")]
         public string ExtensionNumber { get; set; }

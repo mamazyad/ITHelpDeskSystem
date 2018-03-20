@@ -1,6 +1,7 @@
 /*
-* Description: This file is the domain of the IT Staffs, created to obtain the IT staff information.
+* Description: This file contains the domain of the IT Staffs, created to store the IT staff information.
 * Author: mamazyad
+* Date: 20/03/2018
 */
 
 namespace ITHelpDeskSystem.Models
@@ -32,6 +33,8 @@ namespace ITHelpDeskSystem.Models
 
         [StringLength(128)]
         public string Position { get; set; }
+
+        public bool IsManager { get; set; }
 
 
         public virtual ICollection<Assignment> Assignments { get; set; }

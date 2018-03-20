@@ -1,6 +1,7 @@
 /*
-* Description: This file is the domain of the feedbacks, created to obtain Staff's feedback on the IT staff performance.
+* Description: This file contains the domain of the feedbacks, created to store Staff's feedback on the IT staff performance.
 * Author: mamazyad
+* Date: 20/03/2018
 */
 
 namespace ITHelpDeskSystem.Models

@@ -1,6 +1,7 @@
 ﻿/*
-* Description: This file is the employees controller, containing the employee creation, edition, deletion, listing and details methods (actions).
+* Description: This file contains the employees controller, with the employee creation, edition, deletion, listing and details methods (actions).
 * Author: mamazyad
+* Date: 20/03/2018
 */
 
 using AutoMapper;
@@ -56,9 +57,13 @@ namespace ITHelpDeskSystem.Controllers
                     _userManager = value;
                 }
             }
-    
-            // GET: Employee
-            public ActionResult Index()
+
+        /// <summary>
+        /// This action lists all the employees. Employee index view is based on it.
+        /// </summary>
+        /// <returns>Employee, Index view</returns>
+        // (GET: Employee)  
+        public ActionResult Index()
         {
             var users = db.Employees.ToList();
             var model = new List<EmployeeViewModel>();
@@ -83,7 +88,12 @@ namespace ITHelpDeskSystem.Controllers
             return View(model);
         }
 
-        // GET: Employee/Details/5
+        /// <summary>
+        /// This action provides the details of a specific employee.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Employee, Details view</returns>
+        // (GET: Employee/Details/5) 
         public ActionResult Details(int? id)
         {
             if (id != null)
@@ -104,7 +114,6 @@ namespace ITHelpDeskSystem.Controllers
                 }
                 else
                 {
-                    // Customize the error view: /Views/Shared/Error.cshtml
                     return View("Error");
                 }
             }
@@ -114,13 +123,18 @@ namespace ITHelpDeskSystem.Controllers
             }
         }
 
-        // GET: Employee/Create
+        // GET: Employee/Create. 
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Employee/Create
+        /// <summary>
+        /// This action enables the creation of an employee.
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>Employee, create model</returns>
+        // (POST: Employee/Create) 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(EmployeeViewModel model)
@@ -184,9 +198,15 @@ namespace ITHelpDeskSystem.Controllers
             return View(model);
         }
 
-            
 
-        // POST: Employee/Edit/5
+        /// <summary>
+        /// This action enables editing of an employee.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="model"></param>
+        /// <param name="roles"></param>
+        /// <returns>Employee, edit view</returns>
+        // (POST: Employee/Edit/5) 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int? id, EmployeeViewModel model, params string[] roles)
@@ -206,8 +226,6 @@ namespace ITHelpDeskSystem.Controllers
                 {
                     return HttpNotFound();
                 }
-
-                // Update the properties of the employee
                 employee.Email = model.Email;
                 employee.UserName = model.UserName;
                 employee.FirstName = model.FirstName;
@@ -265,8 +283,14 @@ namespace ITHelpDeskSystem.Controllers
 
             return HttpNotFound();
         }
+        
 
-        // POST: Employee/Delete/5
+        /// <summary>
+        /// This action enables the deletion of an employee.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Employee, Delete view</returns>
+        // (POST: Employee/Delete/5) 
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]

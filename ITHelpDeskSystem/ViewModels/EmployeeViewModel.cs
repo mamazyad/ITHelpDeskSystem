@@ -1,6 +1,7 @@
 ﻿/*
 * Description: This file is the employee ViewModel (based on the employees model), created to to pass information between employees views and its controller.
 * Author: mamazyad
+* Date: 20/03/2018
 */
 
 using ITHelpDeskSystem.Models;

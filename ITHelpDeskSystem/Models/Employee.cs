@@ -1,6 +1,7 @@
 /*
-* Description: This file is the domain of the employees, created as the superclass of the system users.
+* Description: This file contains the domain of the employees, created as the super-class of the system users and storing thier common attributes.
 * Author: mamazyad
+* Date: 20/03/2018
 */
 
 namespace ITHelpDeskSystem.Models
@@ -23,21 +24,11 @@ namespace ITHelpDeskSystem.Models
             Tickets = new HashSet<Ticket>();
         }
 
-        //public int EmployeeId { get; set; }
-
-        //[Required]
-        //[StringLength(128)]
-        //public string Username { get; set; }
-
         [StringLength(128)]
         public string FirstName { get; set; }
 
         [StringLength(128)]
         public string LastName { get; set; }
-
-        //[Required]
-        //[StringLength(128)]
-        //public string Password { get; set; }
 
         [StringLength(128)]
         public string JobTitle { get; set; }
@@ -51,16 +42,8 @@ namespace ITHelpDeskSystem.Models
         [StringLength(128)]
         public string Mobile { get; set; }
 
-        //[Required]
-        //[StringLength(128)]
-        //public string Email { get; set; }
-
         [StringLength(128)]
         public string OfficeNumber { get; set; }
-
-        //public virtual ITStaff ITStaff { get; set; }
-
-        //public virtual Staff Staff { get; set; }
 
         public virtual ICollection<Ticket> Tickets { get; set; }
 
