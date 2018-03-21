@@ -20,7 +20,7 @@ namespace ITHelpDeskSystem.Migrations
             string[] roles = { "Admin", "ITStaff", "Staff", "ITManager" };
 
             string adminEmail = "admin@gmail.com";
-            string adminUserName = "admin";
+            string adminUserName = "admin66";
             string adminPassword = "123456";
 
             // Create roles
