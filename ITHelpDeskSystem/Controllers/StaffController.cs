@@ -18,7 +18,7 @@ using System.Web.Mvc;
 namespace ITHelpDeskSystem.Controllers
 {
     /// <summary>
-    /// Staff controller manage the staff using Staff and StaffViewModel classes
+    /// Staff controller manages the staff using Staff and StaffViewModel classes.
     /// </summary>
     public class StaffController : Controller
     {

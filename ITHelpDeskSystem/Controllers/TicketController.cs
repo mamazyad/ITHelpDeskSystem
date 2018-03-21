@@ -1,7 +1,7 @@
 ﻿/*
 * Description: This file contains the ticket controller, enabling the ticket creation (for staff and for IT help desk admin on behalf of staff), edition, listing and details methods (actions).
 * Author: mamazyad
-*  Due date: 20/03/2018
+* Date: 20/03/2018
 */
 
 using AutoMapper;
@@ -17,6 +17,10 @@ using System.Web.Mvc;
 
 namespace ITHelpDeskSystem.Controllers
 {
+    /// <summary>
+    /// Ticket controller manages the Tickets using Ticket and TicketViewModel classes.
+    /// </summary>
+
     public class TicketController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -73,7 +77,7 @@ namespace ITHelpDeskSystem.Controllers
         }
         
         /// <summary>
-        /// This action enables Staff member to creat of a ticket.
+        /// This action enables Staff user to creat of a ticket.
         /// </summary>
         /// <param name="model"></param>
         /// <returns>Ticket, Create view</returns>
@@ -156,7 +160,7 @@ namespace ITHelpDeskSystem.Controllers
         }
 
         /// <summary>
-        /// This action allows IT staff 9including Admin) to edit/update ticket.
+        /// This action allows IT staff (including Admin) to edit/update ticket.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="collection"></param>

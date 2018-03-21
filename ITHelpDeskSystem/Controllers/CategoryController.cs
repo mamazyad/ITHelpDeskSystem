@@ -19,6 +19,10 @@ using System.Web.Mvc;
 
 namespace ITHelpDeskSystem.Controllers
 {
+
+    /// <summary>
+    /// Category controller manages the employees using Category and CategoryViewModel classes.
+    /// </summary>
     public class CategoryController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -45,7 +49,7 @@ namespace ITHelpDeskSystem.Controllers
             return View(model);
         }
         /// <summary>
-        ///  This action provides the details of a specific category, Category Details view is based on it with links to Delete and Edit actions.
+        ///  This action provides the details of a specific category. Category details view is based on it.
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Category, Details view</returns>

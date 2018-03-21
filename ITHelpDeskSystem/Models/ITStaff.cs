@@ -13,7 +13,7 @@ namespace ITHelpDeskSystem.Models
     using System.Data.Entity.Spatial;
 
     /// <summary>
-    /// IT Staff is the class that relates to the IT employees in the company who provide end user support through the IT Help Desk system.
+    /// IT Staff is the class that relates to the IT employees in the company who provide support through the IT Help Desk system.
     /// </summary>
 
     [Table("ITStaff")]

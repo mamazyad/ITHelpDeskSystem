@@ -13,7 +13,7 @@ namespace ITHelpDeskSystem.Models
     using System.Data.Entity.Spatial;
 
     /// <summary>
-    /// Assignment class will keep track of the IT Staff assigned to a ticket.
+    /// Assignment class will keep track of the date an IT Staff is assigned to a ticket and any associated comments.
     /// </summary>
 
     [Table("Assignment")]

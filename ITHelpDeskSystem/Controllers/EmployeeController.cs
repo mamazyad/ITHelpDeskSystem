@@ -17,6 +17,10 @@ using System.Web.Mvc;
 
 namespace ITHelpDeskSystem.Controllers
 {
+
+    /// <summary>
+    /// Employee controller manages the employees using Employee and EmployeeViewModel classes.
+    /// </summary>
     public class EmployeeController : Controller
     {
         
@@ -89,7 +93,7 @@ namespace ITHelpDeskSystem.Controllers
         }
 
         /// <summary>
-        /// This action provides the details of a specific employee.
+        /// This action provides the details of a specific employee. Employee details view is based on it.
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Employee, Details view</returns>
@@ -130,7 +134,7 @@ namespace ITHelpDeskSystem.Controllers
         }
 
         /// <summary>
-        /// This action enables the creation of an employee.
+        /// This action enables the creation of an employee. Employee create view is based on it.
         /// </summary>
         /// <param name="model"></param>
         /// <returns>Employee, create model</returns>
@@ -200,7 +204,7 @@ namespace ITHelpDeskSystem.Controllers
 
 
         /// <summary>
-        /// This action enables editing of an employee.
+        /// This action enables editing of an employee. Employee edit view is based on it.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="model"></param>
@@ -283,10 +287,10 @@ namespace ITHelpDeskSystem.Controllers
 
             return HttpNotFound();
         }
-        
+
 
         /// <summary>
-        /// This action enables the deletion of an employee.
+        /// This action enables the deletion of an employee. Employee delete view is based on it.
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Employee, Delete view</returns>

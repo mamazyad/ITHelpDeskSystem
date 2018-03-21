@@ -143,7 +143,7 @@ namespace ITHelpDeskSystem.Controllers
         }
 
         /// <summary>
-        /// This action enables the creation of an IT help desk admin with role set to ITHelpDeskAdmin.
+        /// This action enables the creation of an IT help desk admin with the role set to Admin and department set to IT Department.
         /// </summary>
         /// <param name="model"></param>
         /// <returns>ITHelpDeskAdmin, create view</returns>

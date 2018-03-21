@@ -19,7 +19,7 @@ using System.Web.Mvc;
 namespace ITHelpDeskSystem.Controllers
 {
     /// <summary>
-    /// ITStaff controller manages the IT staff using IT Staff and ITStaffViewModel classes
+    /// ITStaff controller manages the IT staff using IT Staff and ITStaffViewModel classes.
     /// </summary>
 
     public class ITStaffController : Controller
