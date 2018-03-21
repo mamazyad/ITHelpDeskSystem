@@ -71,7 +71,7 @@ namespace ITHelpDeskSystem.ViewModels
         public string Speciality { get; set; }
 
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Starting Date")]
         public DateTime? StartingDate { get; set; }
 

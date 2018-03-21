@@ -49,6 +49,7 @@ namespace ITHelpDeskSystem.Controllers
                     Category = item.Category.CategoryName,
                     //CreatedBy = item.CreatedBy, //HACK May be get the name of the creator instead of her Id
                     CreatedByName = item.Employee.FullName,
+                    Status = item.Status,
                     //TicketOwnerName = item.StaffOwner.FullName,
 
                 });
@@ -95,6 +96,7 @@ namespace ITHelpDeskSystem.Controllers
                     CategoryId = model.CategoryId,
                     //HACK Add the current date
                     CreationDate = DateTime.Now,
+                    Status = TicketStatus.Open,
                     //HACK You need to be logged in as employee/staff to assign the creator id automatically
                     //CreatedBy = User.Identity.GetUserId<int>(),
                     // For now you can use the below
@@ -136,6 +138,7 @@ namespace ITHelpDeskSystem.Controllers
                     CategoryId = model.CategoryId,
                     //HACK Add the current date
                     CreationDate = DateTime.Now,
+                    Status = TicketStatus.Open,
                     //StaffId = model.StaffId,
                     //HACK You need to be logged in as employee/staff to assign the creator id automatically
                     //CreatedBy = User.Identity.GetUserId<int>(),

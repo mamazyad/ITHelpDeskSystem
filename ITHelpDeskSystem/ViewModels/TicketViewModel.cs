@@ -36,8 +36,8 @@ namespace ITHelpDeskSystem.ViewModels
         //[DefaultValue(TicketPriority.Medium)]
         //public TicketPriority Priority { get; set; }
 
-        //[Display(Name = "Ticket Status")]
-        //public TicketStatus? Status { get; set; }
+        [Display(Name = "Ticket Status")]
+        public TicketStatus? Status { get; set; }
 
         //[Display(Name = "Due Date")]
         //[DataType(DataType.Date)]

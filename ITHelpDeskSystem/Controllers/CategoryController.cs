@@ -136,7 +136,7 @@ namespace ITHelpDeskSystem.Controllers
                 CategoryDescription = category.CategoryDescription,
                 ITStaffId = category.ITStaffId,
             };
-            ViewBag.ITStaffId = new SelectList(db.ITStaffs, "Id", "UserName");
+            ViewBag.ITStaffId = new SelectList(db.ITStaffs, "Id", "FullName");
             return View(model);
         }
         /// <summary>
@@ -164,7 +164,7 @@ namespace ITHelpDeskSystem.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ITStaffId = new SelectList(db.ITStaffs, "Id", "UserName");
+            ViewBag.ITStaffId = new SelectList(db.ITStaffs, "Id", "FullName");
             return View(model);
         }
 
