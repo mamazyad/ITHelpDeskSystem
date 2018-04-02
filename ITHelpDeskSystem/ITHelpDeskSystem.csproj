@@ -206,6 +206,7 @@
     <Compile Include="ViewModels\ITHelpDeskAdminViewModel.cs" />
     <Compile Include="ViewModels\ITStaffViewModel.cs" />
     <Compile Include="ViewModels\StaffViewModel.cs" />
+    <Compile Include="ViewModels\EditTicketViewModel.cs" />
     <Compile Include="ViewModels\TicketViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -457,6 +458,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -506,7 +509,6 @@
     <Content Include="Views\Category\Delete.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Employee\Details.cshtml" />
-    <Content Include="Views\Employee\Create.cshtml" />
     <Content Include="Views\Employee\Delete.cshtml" />
     <Content Include="Views\Employee\Edit.cshtml" />
     <Content Include="Views\ITStaff\Index.cshtml" />
@@ -520,17 +522,21 @@
     <Content Include="Views\Staff\Edit.cshtml" />
     <Content Include="Views\Staff\Delete.cshtml" />
     <Content Include="Views\Ticket\Index.cshtml" />
-    <Content Include="Views\Ticket\Create.cshtml" />
     <Content Include="Views\ITHelpDeskAdmin\Index.cshtml" />
     <Content Include="Views\ITHelpDeskAdmin\Details.cshtml" />
     <Content Include="Views\ITHelpDeskAdmin\Create.cshtml" />
     <Content Include="Views\ITHelpDeskAdmin\Edit.cshtml" />
     <Content Include="Views\ITHelpDeskAdmin\Delete.cshtml" />
     <Content Include="Views\Home\AllUsers.cshtml" />
-    <Content Include="Views\Ticket\CreateONBehalf.cshtml" />
+    <Content Include="Views\Ticket\CreateOnBehalf.cshtml" />
+    <Content Include="Views\Ticket\Create.cshtml" />
+    <Content Include="Views\Employee\Create.cshtml" />
+    <Content Include="Views\Ticket\Edit.cshtml" />
+    <Content Include="Views\Ticket\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

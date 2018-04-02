@@ -11,6 +11,7 @@ namespace ITHelpDeskSystem.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Web;
 
     /// <summary>
     /// Ticket is the class that provide information regarding the Staff request for help.
@@ -40,12 +41,13 @@ namespace ITHelpDeskSystem.Models
 
         public DateTime? DueDate { get; set; }
 
-        public DateTime? CreationDate { get; set; }
+        public DateTime CreationDate { get; set; }
 
         public DateTime? ResultionDate { get; set; }
 
         public string IncidentSolution { get; set; }
 
+        public string AttachmentFilePath { get; set; }
 
         public int CategoryId { get; set; }
 
@@ -82,6 +84,9 @@ namespace ITHelpDeskSystem.Models
     /// </summary>
     public enum TicketPriority
     {
+        //[Display(Name = "Not set")]
+        //NotSet,
+
         Critical,
 
         High,
@@ -100,9 +105,6 @@ namespace ITHelpDeskSystem.Models
 
         [Display(Name = "In progress")]
         InProgress,
-
-        [Display(Name = "In progress (vendor)")]
-        InProgressVendor,
 
         Resolved,
 

@@ -4,6 +4,16 @@
     ViewBag.Title = "Index";
 }
 
+<style>
+    div.scrollable {
+        width: 20vw;
+        padding: 15px;
+        max-height: 10vw;
+        overflow-wrap :normal;
+        overflow-y: auto;
+    }
+</style>
+
 <h2>Index</h2>
 
 <p>
@@ -14,49 +24,60 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Subject)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IncidentDescription)
+            @Html.DisplayNameFor(model => model.TicketOwnerName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CreationDate)
         </th>
-
         <th>
-            @Html.DisplayNameFor(model => model.CreatedByName)
-
-        <th>
-            @Html.DisplayNameFor(model => model.Category)
+            @Html.DisplayNameFor(model => model.Status)
         </th>
-
+        <th>
+            @Html.DisplayNameFor(model => model.Subject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Priority)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DueDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IncidentDescription)
+        </th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Subject)
-            </td>
-            <td>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TicketOwnerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Subject)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Priority)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DueDate)
+        </td>
+        <td>
+            <div class="scrollable">
                 @Html.DisplayFor(modelItem => item.IncidentDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreationDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedByName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
-        </tr>
+            </div>
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id })
+        </td>
+    </tr>
     }
 
 </table>

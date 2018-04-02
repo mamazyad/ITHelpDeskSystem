@@ -23,8 +23,10 @@ namespace ITHelpDeskSystem.ViewModels
         
         public int Id { get; set; }
 
+        //Creation//
+
         [Required]
-        [StringLength(128, ErrorMessage = "Subject can contain 128 characters only.")]
+        [StringLength(128, ErrorMessage = "The subject length exceeds the limit allowed.")]
         public string Subject { get; set; }
 
         [Required]
@@ -32,40 +34,56 @@ namespace ITHelpDeskSystem.ViewModels
         [DataType(DataType.MultilineText)]
         public string IncidentDescription { get; set; }
 
-        //[Display(Name = "Ticket Priority")]
-        //[DefaultValue(TicketPriority.Medium)]
-        //public TicketPriority Priority { get; set; }
+        public HttpPostedFileBase Attachment { get; set; }
 
-        //[Display(Name = "Ticket Status")]
-        //public TicketStatus? Status { get; set; }
+        public string AttachmentFilePath { get; set; }
 
-        //[Display(Name = "Due Date")]
-        //[DataType(DataType.Date)]
-        //[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        //public DateTime? DueDate { get; set; }
+        [Display (Name = "Creation date")]
+        [DisplayFormat(DataFormatString = "{0:dddd, dd MMMM yyyy hh:mm tt}", ApplyFormatInEditMode = true)]
+        public DateTime CreationDate { get; set; }
 
-        public DateTime? CreationDate { get; set; }
-
-        //[DataType(DataType.Date)]
-        //[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        //[Display(Name = "Resultion Date")]
-        //public DateTime? ResultionDate { get; set; }
-
-        //[Display(Name = "Incident Solution")]
-        //[DataType(DataType.MultilineText)]
-        //public string IncidentSolution { get; set; }
-
-        [Display(Name = "Created By")]
         public int? CreatedBy { get; set; }
 
         [Display(Name = "Created by")]
         public string CreatedByName { get; set; }
 
+        public int CategoryId { get; set; }
+
+        public string Category { get; set; }
+
+        public int? TicketOwner { get; set; }
+
+        public string Staff { get; set; }
+
+        [Display(Name = "Owner")]
         public string TicketOwnerName { get; set; }
 
-        [Required]
-        [Display(Name = "Owner")]
-        public int TicketOwner { get; set; }
+
+
+        //Editing//
+
+        [Display(Name = "Ticket Priority")]
+        [DefaultValue(TicketPriority.Medium)]
+        public TicketPriority? Priority { get; set; }
+
+        public TicketStatus? Status { get; set; }
+
+        [Display(Name = "Due Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dddd, dd MMMM yyyy hh:mm tt}", ApplyFormatInEditMode = true)]
+        public DateTime? DueDate { get; set; }
+
+        //[DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dddd, dd MMMM yyyy hh:mm tt}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Resultion Date")]
+        public DateTime? ResultionDate { get; set; }
+
+        [Display(Name = "Incident Solution")]
+        [DataType(DataType.MultilineText)]
+        public string IncidentSolution { get; set; }
+
+
+        //Acceleration//
 
         //[Display(Name = "Accelarated By")]
         //public int? AccelaratedBy { get; set; }
@@ -78,15 +96,5 @@ namespace ITHelpDeskSystem.ViewModels
         //[Display(Name = "Acceleration Comment")]
         //[DataType(DataType.MultilineText)]
         //public string AccelerationComment { get; set; }
-
-
-        public int CategoryId { get; set; }
-
-        public string Category { get; set; }
-
-        public int? StaffId { get; set; }
-
-       public string Staff { get; set; }
-
     }
 }

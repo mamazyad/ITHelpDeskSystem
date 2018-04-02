@@ -52,23 +52,10 @@ namespace ITHelpDeskSystem.Models
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Category>()
-                .HasMany(e => e.Tickets)
-                .WithRequired(e => e.Category)
-                .WillCascadeOnDelete(false);
-
             modelBuilder.Entity<Criterion>()
                 .HasMany(e => e.Feedbacks)
                 .WithRequired(e => e.Criterion)
                 .WillCascadeOnDelete(false);
-
-            //modelBuilder.Entity<Employee>()
-            //    .HasOptional(e => e.ITStaff)
-            //    .WithRequired(e => e.Employee);
-
-            //modelBuilder.Entity<Employee>()
-            //    .HasOptional(e => e.Staff)
-            //    .WithRequired(e => e.Employee);
 
             modelBuilder.Entity<Employee>()
                 .HasMany(e => e.Tickets)
@@ -86,10 +73,6 @@ namespace ITHelpDeskSystem.Models
                 .WithRequired(e => e.ITStaff)
                 .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<ITStaff>()
-            //    .HasOptional(e => e.ITHelpDeskAdmin)
-            //    .WithRequired(e => e.ITStaff);
-
             modelBuilder.Entity<ITStaff>()
                 .HasMany(e => e.KnowledgeBases)
                 .WithRequired(e => e.ITStaff)
@@ -104,6 +87,11 @@ namespace ITHelpDeskSystem.Models
                 .HasMany(e => e.TicketsAccelarated)
                 .WithOptional(e => e.Accelerator)
                 .HasForeignKey(e => e.AccelaratedBy);
+
+            modelBuilder.Entity<Category>()
+                .HasMany(e => e.Tickets)
+                .WithRequired(e => e.Category)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Staff>()
                 .HasMany(e => e.TicketsCreated)

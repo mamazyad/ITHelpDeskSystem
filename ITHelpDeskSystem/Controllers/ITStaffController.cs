@@ -74,21 +74,25 @@ namespace ITHelpDeskSystem.Controllers
             var model = new List<ITStaffViewModel>();
             foreach (var user in users)
             {
-                model.Add(new ITStaffViewModel
+                if (!(user is ITHelpDeskAdmin))
                 {
-                    Id = user.Id,
-                    Email = user.Email,
-                    UserName = user.UserName,
-                    FirstName = user.FirstName,
-                    LastName = user.LastName,
-                    JobTitle = user.JobTitle,
-                    Mobile = user.Mobile,
-                    ExtensionNumber = user.ExtensionNumber,
-                    OfficeNumber = user.OfficeNumber,
-                    Speciality = user.Speciality,
-                    StartingDate = user.StartingDate,
-                    Position = user.Position,
-                });
+                    model.Add(new ITStaffViewModel
+                    {
+                        Id = user.Id,
+                        Email = user.Email,
+                        UserName = user.UserName,
+                        FirstName = user.FirstName,
+                        LastName = user.LastName,
+                        JobTitle = user.JobTitle,
+                        Mobile = user.Mobile,
+                        ExtensionNumber = user.ExtensionNumber,
+                        OfficeNumber = user.OfficeNumber,
+                        Speciality = user.Speciality,
+                        StartingDate = user.StartingDate,
+                        Position = user.Position,
+                    });
+                }
+                
             }
             return View(model);
         }
@@ -278,9 +282,36 @@ namespace ITHelpDeskSystem.Controllers
 
                 var userResult = UserManager.Update(ITstaff);
 
-                if (userResult.Succeeded)
+                if (userResult.Succeeded && model.IsManager == true)
                 {
-                    return RedirectToAction("Index");
+                    var roleResultOld = UserManager.RemoveFromRole(ITstaff.Id, "ITStaff");
+                    
+                    var roleResult = UserManager.AddToRoles(ITstaff.Id, "ITManager");
+
+                        if (roleResult.Succeeded)
+                        {
+                            return RedirectToAction("Index");
+                        }
+                        else
+                        {
+                            ModelState.AddModelError(string.Empty, roleResult.Errors.First());
+                            return View();
+                        }
+                }
+                if (userResult.Succeeded && model.IsManager == false)
+                {
+                    var roleResultOld = UserManager.RemoveFromRole(ITstaff.Id, "ITManager");
+                    var roleResult = UserManager.AddToRoles(ITstaff.Id, "ITStaff");
+
+                    if (roleResult.Succeeded)
+                    {
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, roleResult.Errors.First());
+                        return View();
+                    }
                 }
 
             }
