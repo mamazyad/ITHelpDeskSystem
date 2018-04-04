@@ -1,0 +1,70 @@
+﻿@model ITHelpDeskSystem.ViewModels.TicketViewModel
+
+<div>
+    <h4>Ticket details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedByName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedByName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.importance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.importance)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TicketOwnerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TicketOwnerName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreationDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Subject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Subject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IncidentDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IncidentDescription)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Attachment)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Attachment)
+            @if (!String.IsNullOrEmpty(Model.AttachmentFilePath))
+        {
+            <a href="@Url.Content(Model.AttachmentFilePath)">View attachment</a>
+    }
+        </dd>
+
+    </dl>
+</div>

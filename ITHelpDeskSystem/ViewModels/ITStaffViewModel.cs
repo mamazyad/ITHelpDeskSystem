@@ -22,6 +22,7 @@ namespace ITHelpDeskSystem.ViewModels
         public ITStaffViewModel()
         {
             Categories = new List<Category>();
+            Assignments = new List<Assignment>();
         }
 
         public int Id { get; set; }
@@ -80,5 +81,7 @@ namespace ITHelpDeskSystem.ViewModels
         public string Roles { get; set; }
 
         public List<Category> Categories { get; set; }
+
+        public List<Assignment> Assignments { get; set; }
     }
 }

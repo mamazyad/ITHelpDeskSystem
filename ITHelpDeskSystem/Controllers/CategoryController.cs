@@ -1,7 +1,6 @@
 ﻿/*
 * Description: This file contains the category controller with the category creation, edition, deletion, listing and details methods (actions).
 * Author: mamazyad
-* Date: 20/03/2018
 */
 
 using AutoMapper;
@@ -66,7 +65,7 @@ namespace ITHelpDeskSystem.Controllers
                 Id = category.CategoryId,
                 CategoryName = category.CategoryName,
                 CategoryDescription = category.CategoryDescription,
-                ITStaff = category.ITStaff.UserName,
+                ITStaff = category.ITStaff.FullName,
             };
 
             return View(model);
@@ -105,7 +104,6 @@ namespace ITHelpDeskSystem.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            //HACK
             var list = db.ITStaffs.Where(m=>m.IsManager==false).Select(p => new { p.Id, FullName = p.FirstName + " " + p.LastName });
             ViewBag.ITStaffId = new SelectList(list, "Id", "FullName");
 
@@ -132,7 +130,8 @@ namespace ITHelpDeskSystem.Controllers
                 CategoryDescription = category.CategoryDescription,
                 ITStaffId = category.ITStaffId,
             };
-            ViewBag.ITStaffId = new SelectList(db.ITStaffs, "Id", "UserName");
+            var list = db.ITStaffs.Where(m => m.IsManager == false).Select(p => new { p.Id, FullName = p.FirstName + " " + p.LastName });
+            ViewBag.ITStaffId = new SelectList(list, "Id", "FullName");
             return View(model);
         }
         /// <summary>
@@ -160,7 +159,8 @@ namespace ITHelpDeskSystem.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ITStaffId = new SelectList(db.ITStaffs, "Id", "UserName");
+            var list = db.ITStaffs.Where(m => m.IsManager == false).Select(p => new { p.Id, FullName = p.FirstName + " " + p.LastName });
+            ViewBag.ITStaffId = new SelectList(list, "Id", "FullName");
             return View(model);
         }
 

@@ -1,7 +1,6 @@
 ﻿/*
 * Description: This file contains the ticket controller, enabling the ticket creation (for staff and for IT help desk admin on behalf of staff), edition, listing and details methods (actions).
 * Author: mamazyad
-* Date: 20/03/2018
 */
 
 using AutoMapper;
@@ -30,15 +29,16 @@ namespace ITHelpDeskSystem.Controllers
 
 
         /// <summary>
-        /// This action lists all the tickets assigned to an IT staff, based on the category the IT staff is responsible for.
+        /// This action lists all the tickets pertaining to the user logged in. In case of IT staff, based on the category the IT staff is responsible for, Staff will see the tickets they have created while Admin can see all the tickets created.
         /// </summary>
         /// <returns>Ticket, Index view</returns>
         // GET: Ticket
         public ActionResult Index()
         {
-            var tickets = db.Tickets.ToList();
+            var isAdmin = User.IsInRole("Admin");
+            var user = User.Identity.IsAuthenticated ? User.Identity.GetUserId<int>() : db.Users.First().Id;
+            var tickets = db.Tickets.Where(m => m.Category.ITStaffId == user || user == m.TicketOwner || isAdmin == true).ToList();
             var model = new List<TicketViewModel>();
-
             foreach (var item in tickets)
             {
                 model.Add(new TicketViewModel
@@ -54,24 +54,89 @@ namespace ITHelpDeskSystem.Controllers
                     Priority = item.Priority,
                     DueDate = item.DueDate,
                 });
+
             }
             return View(model);
         }
 
 
         /// <summary>
-        /// This action displays the details of a spicific ticket.
+        /// This action displays the details of a spicific ticket as seen by the IT staff and the admin.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Details takes the ticket ID as a parameter</param>
         /// <returns>Ticket, Details view</returns>
         // GET: Ticket/Details/5
-        public ActionResult Details(int id)
+        [Authorize(Roles = "ITStaff, Admin")]
+        public ActionResult ITDetails(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Ticket ticket = db.Tickets.Find(id);
+            if (ticket == null)
+            {
+                return HttpNotFound();
+            }
+            TicketViewModel model = new TicketViewModel
+            {
+                Id = ticket.TicketId,
+                Subject = ticket.Subject,
+                IncidentDescription = ticket.IncidentDescription,
+                CreationDate = ticket.CreationDate,
+                Category = ticket.Category.CategoryName,
+                CreatedByName = ticket.Employee.FullName,
+                Status = ticket.Status,
+                TicketOwnerName = ticket.StaffOwner.FullName,
+                Priority = ticket.Priority,
+                DueDate = ticket.DueDate,
+                IncidentSolution = ticket.IncidentSolution,
+                AttachmentFilePath = ticket.AttachmentFilePath,
+                ResultionDate = ticket.ResultionDate,
+            };
+            return View(model);
+        }
+
+
+        /// <summary>
+        /// This action displays the details of a spicific ticket as seen by Staff.
+        /// </summary>
+        /// <param name="id">Details takes the ticket ID as a parameter</param>
+        /// <returns>Ticket, Details view</returns>
+        // GET: Ticket/Details/5
+        [Authorize(Roles = "Staff")]
+        public ActionResult StaffDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Ticket ticket = db.Tickets.Find(id);
+            if (ticket == null)
+            {
+                return HttpNotFound();
+            }
+            TicketViewModel model = new TicketViewModel
+            {
+                Id = ticket.TicketId,
+                Subject = ticket.Subject,
+                IncidentDescription = ticket.IncidentDescription,
+                CreationDate = ticket.CreationDate,
+                Category = ticket.Category.CategoryName,
+                Status = ticket.Status,
+                Priority = ticket.Priority,
+                DueDate = ticket.DueDate,
+                IncidentSolution = ticket.IncidentSolution,
+                AttachmentFilePath = ticket.AttachmentFilePath,
+                ResultionDate = ticket.ResultionDate,
+                ITStaffResponsibleName = ticket.Category.ITStaff.FullName,
+            };
+            return View(model);
         }
 
 
         // GET: Ticket/Create
+        [Authorize(Roles = "Staff")]
         public ActionResult Create()
         {
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName");
@@ -81,10 +146,11 @@ namespace ITHelpDeskSystem.Controllers
         /// <summary>
         /// This action enables Staff user to creat of a ticket.
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="model">Create takes the ticket view model as a parameter.</param>
         /// <returns>Ticket, Create view</returns>
         // (POST: Ticket/Create)
         [HttpPost]
+        [Authorize(Roles = "Staff")]
         public ActionResult Create(TicketViewModel model)
         {
             if (ModelState.IsValid)
@@ -102,8 +168,6 @@ namespace ITHelpDeskSystem.Controllers
                     TicketOwner = User.Identity.IsAuthenticated ? User.Identity.GetUserId<int>() : db.Users.First().Id,
                 };
 
-                db.Tickets.Add(ticket);
-                db.SaveChanges();
                 ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName");
 
                 // check if the uplaoded file is empty (do not upload empty files)
@@ -144,6 +208,8 @@ namespace ITHelpDeskSystem.Controllers
 
                 }
                 ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName");
+                db.Tickets.Add(ticket);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             else
@@ -154,6 +220,7 @@ namespace ITHelpDeskSystem.Controllers
 
 
         // (GET: Ticket/CreateOnBehalf) 
+        [Authorize(Roles = "Admin")]
         public ActionResult CreateOnBehalf()
         {
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName");
@@ -164,10 +231,11 @@ namespace ITHelpDeskSystem.Controllers
         /// <summary>
         /// This action allows the Admin to create a ticket on behalf of Staff.
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="model">Ticket view model</param>
         /// <returns>Ticket, CreateOnBehalf view</returns>
         // (POST: Ticket/CreateOnBehalf) This action enables ITHelpDeskAdmin to creat of a ticket on behalf of a staff.
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult CreateOnBehalf(TicketViewModel model)
         {
             if (ModelState.IsValid)
@@ -185,8 +253,6 @@ namespace ITHelpDeskSystem.Controllers
                     TicketOwner = model.TicketOwner,
                 };
 
-                db.Tickets.Add(ticket);
-                db.SaveChanges();
                 ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName");
                 ViewBag.TicketOwner = new SelectList(db.Staffs, "Id", "FullName");
 
@@ -229,6 +295,8 @@ namespace ITHelpDeskSystem.Controllers
                 }
                 ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName");
                 ViewBag.TicketOwner = new SelectList(db.Staffs, "Id", "FullName");
+                db.Tickets.Add(ticket);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             else
@@ -237,12 +305,8 @@ namespace ITHelpDeskSystem.Controllers
             }
         }
 
-        /// <summary>
-        /// This action allows the Admin and IT staff to edit a ticket's details.
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
         // GET: Ticket/Edit/5
+        [Authorize(Roles = "Admin, ITStaff")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -258,11 +322,9 @@ namespace ITHelpDeskSystem.Controllers
 
             if (ticket.Status == TicketStatus.Closed)
             {
-                return RedirectToActionPermanent("NotFound", new { id = ticket.TicketId });
+                return RedirectToActionPermanent("Closed", new { id = ticket.TicketId });
             }
-
-            EditTicketViewModel model = new
-                EditTicketViewModel
+            EditTicketViewModel model = new EditTicketViewModel
             {
                 Id = ticket.TicketId,
                 Priority = ticket.Priority,
@@ -270,27 +332,20 @@ namespace ITHelpDeskSystem.Controllers
                 IncidentSolution = ticket.IncidentSolution,
                 DueDate = ticket.DueDate,
                 ResultionDate = ticket.ResultionDate,
-                //Subject = ticket.Subject,
-                //IncidentDescription = ticket.IncidentDescription,
-                //CreationDate = ticket.CreationDate,
-                //TicketOwner = ticket.TicketOwner,
-                //CategoryId = ticket.CategoryId,
-                //Category = ticket.Category.CategoryName,
-                //TicketOwnerName = ticket.StaffOwner.FullName,
-                //CreatedByName = ticket.Employee.FullName,
             };
             return View(model);
         }
 
+
         /// <summary>
-        /// This action allows IT staff (including Admin) to edit/update ticket.
+        /// This action allows the Admin and IT staff to edit a ticket's details.
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="collection"></param>
-        /// <returns>Ticket, Edit view</returns>
-        // POST: Ticket/Edit/5
+        /// <param name="id">Edit takes the ticket ID as a parameter</param>
+        /// <returns>index,view</returns>
         [HttpPost]
-        public ActionResult Edit(int id, TicketViewModel model1, EditTicketViewModel model)
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, ITStaff")]
+        public ActionResult Edit(int id, EditTicketViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -299,33 +354,31 @@ namespace ITHelpDeskSystem.Controllers
                 {
                     return HttpNotFound();
                 }
-
                 ticket.Priority = model.Priority;
                 ticket.IncidentSolution = model.IncidentSolution;
+                ticket.Status = model.Status;
+                ticket.ResultionDate = model.ResultionDate;
 
-
-                if (!(model.Priority == null))
+                if (model.Priority == TicketPriority.Critical)
+                {
+                    ticket.DueDate = AddBusinessDays(ticket.CreationDate, 1);
+                }
+                if (model.Priority == TicketPriority.High)
+                {
+                    ticket.DueDate = AddBusinessDays(ticket.CreationDate, 3);
+                }
+                if (model.Priority == TicketPriority.Medium)
+                {
+                    ticket.DueDate = AddBusinessDays(ticket.CreationDate, 5);
+                }
+                if (model.Priority == TicketPriority.Low)
+                {
+                    ticket.DueDate = AddBusinessDays(ticket.CreationDate, 7);
+                }
+                if (!(model.Priority == TicketPriority.NotSet))
                 {
                     ticket.Status = TicketStatus.InProgress;
                 }
-                if (model.Priority == TicketPriority.Critical)
-                {
-                    ticket.DueDate = model1.CreationDate.AddDays(1);
-                }
-                else if (model.Priority == TicketPriority.High)
-                {
-                    ticket.DueDate = model1.CreationDate.AddDays(3);
-                }
-                else if (model.Priority == TicketPriority.Medium)
-                {
-                    ticket.DueDate = model1.CreationDate.AddDays(5);
-                }
-                else if (model.Priority == TicketPriority.Low)
-                {
-                    ticket.DueDate = model1.CreationDate.AddDays(7);
-                }
-
-
                 if (!(model.IncidentSolution == null))
                 {
                     ticket.Status = TicketStatus.Closed;
@@ -339,13 +392,34 @@ namespace ITHelpDeskSystem.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// This static method is used to add a specified number of working days to a given day.
+        /// </summary>
+        /// <param name="current">The specified date</param>
+        /// <param name="days">The number of days to be added</param>
+        /// <returns></returns>
+        public static DateTime AddBusinessDays(DateTime current, int days)
+        {
+            var sign = Math.Sign(days);
+            var unsignedDays = Math.Abs(days);
+            for (var i = 0; i < unsignedDays; i++)
+            {
+                do
+                {
+                    current = current.AddDays(sign);
+                }
+                while (current.DayOfWeek == DayOfWeek.Friday ||
+                    current.DayOfWeek == DayOfWeek.Saturday);
+            }
+            return current;
+        }
 
         /// <summary>
         /// This action informs IT staff that ticket in closed and cannot be edited.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Ticket Id as a parameter</param>
         /// <returns></returns>
-        public ActionResult NotFound(int? id)
+        public ActionResult Closed(int? id)
         {
             if (id == null)
             {
@@ -356,7 +430,7 @@ namespace ITHelpDeskSystem.Controllers
             {
                 return HttpNotFound();
             }
-            var model = new TicketViewModel
+            var model = new EditTicketViewModel
             {
                 Id = ticket.TicketId,
                 ResultionDate = ticket.ResultionDate,
@@ -368,31 +442,25 @@ namespace ITHelpDeskSystem.Controllers
         /// <summary>
         /// This action will displpay the ticket information
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public PartialViewResult TicketInfoPartial(int id)
+        /// <param name="id">Ticket Id as a parameter.</param>
+        /// <returns>Ticket info partial view</returns>
+        public PartialViewResult TicketInfoPartial(int? id)
         {
-            var items = db.Tickets.Where(d => d.TicketId == id).ToList();
-            var model = new List<TicketViewModel>();
-            foreach (var item in items)
+            Ticket ticket = db.Tickets.Find(id);
+            TicketViewModel model = new TicketViewModel
             {
-                model.Add(new TicketViewModel
-                {
-                    Id = item.TicketId,
-                    Subject = item.Subject,
-                    IncidentDescription = item.IncidentDescription,
-                    CreationDate = item.CreationDate,
-                    Category = item.Category.CategoryName,
-                    CreatedByName = item.Employee.FullName,
-                    Status = item.Status,
-                    TicketOwnerName = item.StaffOwner.FullName,
-                    DueDate = item.DueDate,
-                    //DueDate = item.DueDate,
-
-                });
-            }
-
+                Id = ticket.TicketId,
+                Subject = ticket.Subject,
+                IncidentDescription = ticket.IncidentDescription,
+                CreationDate = ticket.CreationDate,
+                Category = ticket.Category.CategoryName,
+                CreatedByName = ticket.Employee.FullName,
+                TicketOwnerName = ticket.StaffOwner.FullName,
+                DueDate = ticket.DueDate,
+                importance = ticket.StaffOwner.ManagerialPosition.ToString(),
+            };
             return PartialView(model);
         }
+
     }
 }

@@ -1,7 +1,6 @@
 /*
 * Description: This file contains the domain of the tickets, the central and most vital model in the IT help desk system. It is created to obtain ticket information, containing TicketPriority enum to define the ticket priority and TicketStatus that describes the ticket condition. 
 * Author: mamazyad
-* Date: 20/03/2018
 */
 
 namespace ITHelpDeskSystem.Models
@@ -37,7 +36,7 @@ namespace ITHelpDeskSystem.Models
 
         public TicketPriority? Priority { get; set; }
 
-        public TicketStatus? Status { get; set; }
+        public TicketStatus Status { get; set; }
 
         public DateTime? DueDate { get; set; }
 
@@ -59,12 +58,23 @@ namespace ITHelpDeskSystem.Models
 
         public string TicketOwnerName { get; set; }
 
+        public int? ITStaffResponsible { get; set; }
+
+        public string ITStaffResponsibleName { get; set; }
+
         public int? AccelaratedBy { get; set; }
 
         public DateTime? AccelerationDate { get; set; }
 
         public string AccelerationComment { get; set; }
 
+        public string importance { get; set; }
+
+        public string ITstaffEmail { get; set; }
+
+        public string ITstaffMobile { get; set; }
+
+        public string ITstaffExt { get; set; }
 
         public virtual Category Category { get; set; }
 
@@ -73,6 +83,8 @@ namespace ITHelpDeskSystem.Models
         public virtual Employee Employee { get; set; }
 
         public virtual Staff StaffOwner { get; set; }
+
+        public virtual ITStaff ITStaff { get; set; }
 
         public virtual ICollection<Feedback> Feedbacks { get; set; }
 
@@ -84,8 +96,8 @@ namespace ITHelpDeskSystem.Models
     /// </summary>
     public enum TicketPriority
     {
-        //[Display(Name = "Not set")]
-        //NotSet,
+        [Display(Name = "Not set")]
+        NotSet,
 
         Critical,
 
@@ -97,7 +109,7 @@ namespace ITHelpDeskSystem.Models
     }
 
     /// <summary>
-    /// The ticket status defines the progress of the ticket, open: ticket is assigned to IT staff, in-progress: ticket is in the process of being investigated and resolved, in-progress (vendor): vendor has been contacted for further help, resolved: a solution has been put in place but has not yet been validated by Staff, closed: staff has agreed that the incident has been solved and gave feedback on the service received.
+    /// The ticket status defines the progress of the ticket, open: ticket is assigned to IT staff, in-progress: ticket is in the process of being investigated and resolved, resolved: a solution has been put in place but has not yet been validated by Staff, closed: staff has agreed that the incident has been solved and gave feedback on the service received.
     /// </summary>
     public enum TicketStatus
     {

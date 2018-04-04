@@ -1,0 +1,99 @@
+﻿@model ITHelpDeskSystem.ViewModels.TicketViewModel
+
+@{
+    ViewBag.Title = "Ticket Details";
+}
+
+<h2>Ticket Details</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ITStaffResponsibleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ITStaffResponsibleName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Subject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Subject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IncidentDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IncidentDescription)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedByName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedByName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DueDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DueDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResultionDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResultionDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IncidentSolution)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IncidentSolution)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Attachment)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Attachment)
+            @if (!String.IsNullOrEmpty(Model.AttachmentFilePath))
+            {
+                <a href="@Url.Content(Model.AttachmentFilePath)">View attachment</a>
+            }
+        </dd>
+    </dl>
+</div>
+
+
+@Html.ActionLink("Back to List", "Index") 
+

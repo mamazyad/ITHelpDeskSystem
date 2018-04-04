@@ -23,8 +23,15 @@ namespace ITHelpDeskSystem.Models
 
         public DateTime? AssignmentDate { get; set; }
 
-        [StringLength(1024)]
+        public int? AssignedBy { get; set; }
+
+        public string AssignedByName { get; set; }
+
         public string AssignmentComment { get; set; }
+
+        public int CategoryId { get; set; }
+
+        public virtual Category Category { get; set; }
 
         public int TicketId { get; set; }
 

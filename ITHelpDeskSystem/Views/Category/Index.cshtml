@@ -3,6 +3,14 @@
 @{
     ViewBag.Title = "Index";
 }
+<style>
+    table.dataTable thead .sorting,
+    table.dataTable thead .sorting_asc,
+    table.dataTable thead .sorting_desc {
+        background: none;
+    }
+</style>
+
 
 <h2>Index</h2>
 
@@ -18,9 +26,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.CategoryDescription)
             </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.ITStaffId)
-            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.ITStaff)
             </th>
@@ -37,9 +42,6 @@
             <td>
                 @Html.DisplayFor(modelItem => item.CategoryDescription)
             </td>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.ITStaffId)
-                </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.ITStaff)
             </td>
@@ -59,10 +61,14 @@
     <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/dataTables.bootstrap.min.js")"></script>
 
     <script type="text/javascript">
-      $(document).ready( function () {
-          $('#categoriesTable').DataTable();
-      } );
+        $(document).ready(function () {
+            $('#categoriesTable').DataTable(
+                "columnDefs": [
+                    { "orderable": false, "targets": 3 }
+                ]
+        });
     </script>
+
 }
 
 @section styles

@@ -1,7 +1,6 @@
 ﻿/*
 * Description: This file is the ticket ViewModel (based on the ticket model), created to to pass information between ticket views and its controller.
 * Author: mamazyad
-* Date: 20/03/2018
 */
 
 using ITHelpDeskSystem.Models;
@@ -20,10 +19,13 @@ namespace ITHelpDeskSystem.ViewModels
     /// </summary>
     public class TicketViewModel
     {
-        
+        public TicketViewModel()
+        {
+            Assignments = new List<Assignment>();
+        }
         public int Id { get; set; }
 
-        //Creation//
+        //Attributes of Creation//
 
         [Required]
         [StringLength(128, ErrorMessage = "The subject length exceeds the limit allowed.")]
@@ -39,7 +41,7 @@ namespace ITHelpDeskSystem.ViewModels
         public string AttachmentFilePath { get; set; }
 
         [Display (Name = "Creation date")]
-        [DisplayFormat(DataFormatString = "{0:dddd, dd MMMM yyyy hh:mm tt}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dddd, dd MMMM yyyy hh:mm tt}")]
         public DateTime CreationDate { get; set; }
 
         public int? CreatedBy { get; set; }
@@ -58,23 +60,40 @@ namespace ITHelpDeskSystem.ViewModels
         [Display(Name = "Owner")]
         public string TicketOwnerName { get; set; }
 
+        public int? ITStaffResponsible { get; set; }
+
+        [Display(Name = "IT Staff Responsible")]
+        public string ITStaffResponsibleName { get; set; }
 
 
-        //Editing//
+        [Display(Name = "Staff managerial level")]
+        public string importance { get; set; }
+
+        [Display(Name = "Email")]
+        public string ITstaffEmail { get; set; }
+
+        [Display(Name = "Mobile")]
+        public string ITstaffMobile { get; set; }
+
+        [Display(Name = "Ext.")]
+        public string ITstaffExt { get; set; }
+
+        //Attributes of Editing//
 
         [Display(Name = "Ticket Priority")]
         [DefaultValue(TicketPriority.Medium)]
         public TicketPriority? Priority { get; set; }
 
-        public TicketStatus? Status { get; set; }
+        [Required]
+        public TicketStatus Status { get; set; }
 
         [Display(Name = "Due Date")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dddd, dd MMMM yyyy hh:mm tt}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:dddd, dd MMMM yyyy hh:mm tt}")]
         public DateTime? DueDate { get; set; }
 
         //[DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dddd, dd MMMM yyyy hh:mm tt}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dddd, dd MMMM yyyy hh:mm tt}")]
         [Display(Name = "Resultion Date")]
         public DateTime? ResultionDate { get; set; }
 
@@ -83,7 +102,7 @@ namespace ITHelpDeskSystem.ViewModels
         public string IncidentSolution { get; set; }
 
 
-        //Acceleration//
+        //Attributes of Acceleration//
 
         //[Display(Name = "Accelarated By")]
         //public int? AccelaratedBy { get; set; }
@@ -96,5 +115,7 @@ namespace ITHelpDeskSystem.ViewModels
         //[Display(Name = "Acceleration Comment")]
         //[DataType(DataType.MultilineText)]
         //public string AccelerationComment { get; set; }
+
+        public List<Assignment> Assignments { get; set; }
     }
 }

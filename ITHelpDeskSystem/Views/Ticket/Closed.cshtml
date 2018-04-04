@@ -1,0 +1,18 @@
+﻿@model ITHelpDeskSystem.ViewModels.EditTicketViewModel
+
+@{
+    ViewBag.Title = "Closed Ticket";
+}
+
+<h2>Closed Ticket</h2>
+
+@using (Html.BeginForm())
+{
+    <h5>
+        This ticket was closed on  @Html.DisplayFor(model => model.ResultionDate)  and cannot be edited.
+    </h5>
+
+}
+<td>
+    @Html.ActionLink("Back to tickets list", "Index")
+</td>

@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ITHelpDeskSystem.ViewModels.TicketViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "All Tickets";
 }
 
 <style>
@@ -9,20 +9,36 @@
         width: 20vw;
         padding: 15px;
         max-height: 10vw;
-        overflow-wrap :normal;
+        overflow-wrap: normal;
         overflow-y: auto;
+    }
+
+    #grey {
+        color: darkgray;
+        display: inline;
     }
 </style>
 
-<h2>Index</h2>
+<h2>All Tickets</h2>
 
-<p>
+@if (Model.Count() == 0)
+{
+    <h5 id="grey"> There are no ticckets to be displayed. Please make sure to login to view tickets</h5>
+}
+
+@if (ViewContext.HttpContext.User.IsInRole("Staff"))
+{
     @Html.ActionLink("Create New", "Create")
+}
+@if (ViewContext.HttpContext.User.IsInRole("Admin"))
+{
     <div>@Html.ActionLink("Create On behalf", "CreateOnBehalf")</div>
+}
 
-</p>
 <table class="table">
     <tr>
+        @if (!(Model.Count() == 0))
+    {
         <th>
             @Html.DisplayNameFor(model => model.TicketOwnerName)
         </th>
@@ -44,7 +60,7 @@
         <th>
             @Html.DisplayNameFor(model => model.IncidentDescription)
         </th>
-        <th></th>
+        <th></th>}
     </tr>
 
     @foreach (var item in Model)
@@ -53,6 +69,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.TicketOwnerName)
         </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.CreationDate)
         </td>
@@ -74,8 +91,24 @@
             </div>
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Id })
+
+            @if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) <p style="display:inline;">|</p>
+    }
+
+    @*@if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Assign", "Assign", "Assignment", new { id = item.Id }, null)
+    }*@
+            @if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Details", "ITDetails", new { id = item.Id })
+    }
+            @if (ViewContext.HttpContext.User.IsInRole("Staff"))
+        {
+            @Html.ActionLink("Details", "StaffDetails", new { id = item.Id })
+    }
         </td>
     </tr>
     }
