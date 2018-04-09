@@ -24,6 +24,7 @@ namespace ITHelpDeskSystem.Models
             Feedbacks = new HashSet<Feedback>();
             TicketsAccelarated = new HashSet<Ticket>();
             TicketsCreated = new HashSet<Ticket>();
+            Comments = new HashSet<Comment>();
         }
 
         [StringLength(128)]
@@ -36,6 +37,9 @@ namespace ITHelpDeskSystem.Models
         public virtual ICollection<Ticket> TicketsAccelarated { get; set; }
 
         public virtual ICollection<Ticket> TicketsCreated { get; set; }
+
+        public virtual ICollection<Comment> Comments { get; set; }
+
     }
 
     /// <summary>

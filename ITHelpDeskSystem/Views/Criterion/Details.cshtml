@@ -1,0 +1,66 @@
+﻿@model ITHelpDeskSystem.ViewModels.CriterionViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CriterionViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CriterionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CriterionName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CriterionDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CriterionDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TargetGrade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TargetGrade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EditionDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EditionDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActiveCriterion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActiveCriterion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

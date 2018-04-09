@@ -31,14 +31,10 @@ namespace ITHelpDeskSystem.Models
 
         public int CategoryId { get; set; }
 
-        public virtual Category Category { get; set; }
-
         public int TicketId { get; set; }
 
-        public int ITStaffId { get; set; }
-
-        public virtual ITStaff ITStaff { get; set; }
-
         public virtual Ticket Ticket { get; set; }
+
+        public virtual Category Category { get; set; }
     }
 }

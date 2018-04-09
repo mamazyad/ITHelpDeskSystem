@@ -47,6 +47,8 @@ namespace ITHelpDeskSystem.Models
         public virtual DbSet<KnowledgeBase> KnowledgeBases { get; set; }
         public virtual DbSet<Staff> Staffs { get; set; }
         public virtual DbSet<Ticket> Tickets { get; set; }
+        public virtual DbSet<Comment> Comments { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -63,9 +65,9 @@ namespace ITHelpDeskSystem.Models
                 .HasForeignKey(e => e.CreatedBy)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<ITStaff>()
+            modelBuilder.Entity<Category>()
                 .HasMany(e => e.Assignments)
-                .WithRequired(e => e.ITStaff)
+                .WithRequired(e => e.Category)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<ITStaff>()
@@ -107,6 +109,21 @@ namespace ITHelpDeskSystem.Models
             modelBuilder.Entity<Ticket>()
                 .HasMany(e => e.Feedbacks)
                 .WithRequired(e => e.Ticket)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Ticket>()
+                .HasMany(e => e.Comments)
+                .WithRequired(e => e.Ticket)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Staff>()
+                .HasMany(e => e.Comments)
+                .WithOptional(e => e.Staff)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<ITStaff>()
+                .HasMany(e => e.Comments)
+                .WithOptional(e => e.ITStaff)
                 .WillCascadeOnDelete(false);
         }
     }

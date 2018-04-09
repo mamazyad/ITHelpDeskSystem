@@ -1,7 +1,6 @@
 ﻿/*
 * Description: This file is the categories ViewModel (based on the categories model), created to to pass information between category views and its controller.
 * Author: mamazyad
-* Date: 20/03/2018
 */
 
 using ITHelpDeskSystem.Models;

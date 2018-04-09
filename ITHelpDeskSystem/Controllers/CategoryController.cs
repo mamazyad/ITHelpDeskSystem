@@ -43,6 +43,7 @@ namespace ITHelpDeskSystem.Controllers
             }
             return View(model);
         }
+
         /// <summary>
         ///  This action provides the details of a specific category, Category Details view is based on it with links to Delete and Edit actions.
         /// </summary>
@@ -79,7 +80,6 @@ namespace ITHelpDeskSystem.Controllers
             return View();
         }
 
-
         /// <summary>
         /// This action enables the creation of a category (with a unique name) and assigning it to a specific IT staff.
         /// </summary>
@@ -111,6 +111,7 @@ namespace ITHelpDeskSystem.Controllers
         }
 
         // GET: Category/Edit/5
+        [Authorize(Roles = "Admin, ITStaff")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -134,6 +135,7 @@ namespace ITHelpDeskSystem.Controllers
             ViewBag.ITStaffId = new SelectList(list, "Id", "FullName");
             return View(model);
         }
+
         /// <summary>
         /// This action enables the editing of a category.
         /// </summary>
@@ -142,6 +144,7 @@ namespace ITHelpDeskSystem.Controllers
         /// <returns> Category, Edit view</returns>
         // (POST: Category/Edit/5) 
         [HttpPost]
+        [Authorize(Roles = "Admin, ITStaff")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, CategoryViewModel model)
         {

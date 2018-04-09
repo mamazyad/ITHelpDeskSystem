@@ -17,6 +17,7 @@ namespace ITHelpDeskSystem.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Assignment/Create
+        [Authorize(Roles = "ITStaff, Admin")]
         public ActionResult Assign(int? id)
         {
             if (id == null)
@@ -29,48 +30,55 @@ namespace ITHelpDeskSystem.Controllers
             {
                 return HttpNotFound();
             }
-           AssignmentViewModel model = new AssignmentViewModel
+            if (ticket.Status == TicketStatus.Closed)
+            {
+                return RedirectToActionPermanent("Closed", "Ticket", new { id = ticket.TicketId });
+            }
+            TicketViewModel model = new TicketViewModel
            {
                 Id = ticket.TicketId,
+                CategoryId = ticket.CategoryId,
             };
-
-            //var list = db.ITStaffs.Where(m => m.IsManager == false).Select(p => new { p.Id, FullName = p.FirstName + " " + p.LastName });
-            //ViewBag.ITStaffId = new SelectList(list, "Id", "FullName");
-
-            var list1 = db.Categories.Select(p => new { p.CategoryId, p.CategoryName, FullName = p.ITStaff.FirstName + " " + p.ITStaff.LastName });
-
-            ViewBag.CategoryId = new SelectList(list1, "CategoryName", "Id", "FullName");
-            return View(model);
+            var list = db.Categories.Where(m => m.CategoryId != ticket.CategoryId);
+            ViewBag.CategoryId = new SelectList(list, "CategoryId", "CategoryName");
+            return View();
         }
 
         // POST: Assignment/Create
         [HttpPost]
-        public ActionResult Assign(AssignmentViewModel model)
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, ITStaff")]
+        public ActionResult Assign(int id, AssignmentViewModel model)
         {
             if (ModelState.IsValid)
             {
+                Ticket ticket = db.Tickets.Find(id);
+                if (ticket == null)
+                {
+                    return HttpNotFound();
+                }
+                //var temp = ticket.CategoryId;
+                ticket.CategoryId = model.CategoryId;
                 var assignment = new Assignment
                 {
                     AssignmentId = model.Id,
-                    AssignmentComment =model.AssignmentComment,
                     AssignmentDate = DateTime.Now,
-                    AssignedBy = User.Identity.IsAuthenticated ? User.Identity.GetUserId<int>() : db.Users.First().Id,
+                    AssignedBy = User.Identity.GetUserId<int>(),
+                    AssignedByName = User.Identity.Name,
+                    AssignmentComment = model.AssignmentComment,
                     CategoryId = model.CategoryId,
-                    TicketId = model.TicketId,
-                    ITStaffId = model.ITStaffId,
+                    TicketId = ticket.TicketId,
                 };
-
+                var list = db.Categories.Where(m => m.CategoryId != ticket.CategoryId);
+                ViewBag.CategoryId = new SelectList(list, "CategoryId", "CategoryName");
                 db.Assignments.Add(assignment);
+                db.Entry(ticket).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Ticket");
             }
-            //var list = db.ITStaffs.Where(m => m.IsManager == false).Select(p => new { p.Id, FullName = p.FirstName + " " + p.LastName });
-
-            var list1 = db.Categories.Select(p => new { p.CategoryId, p.CategoryName, FullName = p.ITStaff.FirstName + " " + p.ITStaff.LastName });
-
-            ViewBag.CategoryId = new SelectList(list1, "CategoryName", "Id", "FullName");
-
             return View(model);
         }
+
+
     }
 }

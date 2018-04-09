@@ -19,6 +19,7 @@ namespace ITHelpDeskSystem.App_Start
                 cfg.CreateMap<Staff, StaffViewModel>().ReverseMap();
                 cfg.CreateMap<Ticket, TicketViewModel>().ReverseMap();
                 cfg.CreateMap<ITStaff, ITStaffViewModel>().ReverseMap();
+                cfg.CreateMap<Comment, CommentViewModel>().ReverseMap();
                 cfg.CreateMap<ITHelpDeskAdmin, ITHelpDeskAdminViewModel>().ReverseMap();
 
             });

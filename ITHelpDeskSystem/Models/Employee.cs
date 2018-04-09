@@ -12,6 +12,7 @@ namespace ITHelpDeskSystem.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+
     /// <summary>
     /// Employee class pertains to all the employees in a company using the IT Help Desk system.
     /// </summary>

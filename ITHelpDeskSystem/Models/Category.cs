@@ -23,6 +23,7 @@ namespace ITHelpDeskSystem.Models
         public Category()
         {
             Tickets = new HashSet<Ticket>();
+            Assignments = new HashSet<Assignment>();
         }
 
         public int CategoryId { get; set; }
@@ -40,5 +41,6 @@ namespace ITHelpDeskSystem.Models
         public virtual ITStaff ITStaff { get; set; }
 
         public virtual ICollection<Ticket> Tickets { get; set; }
+        public virtual ICollection<Assignment> Assignments { get; set; }
     }
 }

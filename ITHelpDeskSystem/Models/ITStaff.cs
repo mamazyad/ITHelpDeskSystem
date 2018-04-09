@@ -24,6 +24,7 @@ namespace ITHelpDeskSystem.Models
             Assignments = new HashSet<Assignment>();
             KnowledgeBases = new HashSet<KnowledgeBase>();
             Categories = new HashSet<Category>();
+            Comments = new HashSet<Comment>();
         }
 
         [StringLength(128)]
@@ -36,11 +37,13 @@ namespace ITHelpDeskSystem.Models
 
         public bool IsManager { get; set; }
 
-
         public virtual ICollection<Assignment> Assignments { get; set; }
 
         public virtual ICollection<KnowledgeBase> KnowledgeBases { get; set; }
 
         public virtual ICollection<Category> Categories { get; set; }
+
+        public virtual ICollection<Comment> Comments { get; set; }
+
     }
 }

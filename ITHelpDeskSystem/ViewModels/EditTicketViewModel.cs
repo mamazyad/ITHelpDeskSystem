@@ -15,7 +15,7 @@ using System.Web;
 namespace ITHelpDeskSystem.ViewModels
 {
     /// <summary>
-    /// Ticket view model from the ticket model and used by ticket controller.
+    /// Edit ticket view model from the ticket model and used by the edit ticket controller.
     /// </summary>
     public class EditTicketViewModel 
     {

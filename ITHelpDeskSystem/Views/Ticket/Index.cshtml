@@ -6,7 +6,7 @@
 
 <style>
     div.scrollable {
-        width: 20vw;
+        width: 10vw;
         padding: 15px;
         max-height: 10vw;
         overflow-wrap: normal;
@@ -38,79 +38,92 @@
 <table class="table">
     <tr>
         @if (!(Model.Count() == 0))
-    {
-        <th>
-            @Html.DisplayNameFor(model => model.TicketOwnerName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreationDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Subject)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Priority)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DueDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IncidentDescription)
-        </th>
-        <th></th>}
+        {
+            <th>
+                @Html.DisplayNameFor(model => model.TicketOwnerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Priority)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DueDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IncidentDescription)
+            </th>
+            <th></th>}
     </tr>
 
     @foreach (var item in Model)
     {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TicketOwnerName)
-        </td>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketOwnerName)
+            </td>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.CreationDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Subject)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Priority)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DueDate)
-        </td>
-        <td>
-            <div class="scrollable">
-                @Html.DisplayFor(modelItem => item.IncidentDescription)
-            </div>
-        </td>
-        <td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Priority)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DueDate)
+            </td>
+            <td>
+                <div class="scrollable">
+                    @Html.DisplayFor(modelItem => item.IncidentDescription)
+                </div>
+            </td>
+            <td>
+                @Html.ActionLink("Comment", "Comment", "Comment", new { id = item.Id }, null)
 
-            @if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin"))
-        {
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) <p style="display:inline;">|</p>
-    }
+                @if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) <p style="display:inline;">|</p>
+                }
 
-    @*@if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin"))
-    {
-        @Html.ActionLink("Assign", "Assign", "Assignment", new { id = item.Id }, null)
-    }*@
-            @if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin"))
-        {
-            @Html.ActionLink("Details", "ITDetails", new { id = item.Id })
-    }
-            @if (ViewContext.HttpContext.User.IsInRole("Staff"))
-        {
-            @Html.ActionLink("Details", "StaffDetails", new { id = item.Id })
-    }
-        </td>
-    </tr>
+                @if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink("Assign", "Assign", "Assignment", new { id = item.Id }, null) <p style="display:inline;">|</p>
+                }
+                @if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink("Details", "ITDetails", new { id = item.Id })
+                }
+                <div id="Ticket"></div>
+                @if (ViewContext.HttpContext.User.IsInRole("Staff"))
+                {
+                    @Html.ActionLink("Details", "StaffDetails", new { id = item.Id })
+
+                    if (!(item.Status == ITHelpDeskSystem.Models.TicketStatus.Closed))
+                    {
+                        <p style="display:inline; ">|</p> @Html.ActionLink("Accelerate", "Accelerate", new { id = item.Id })
+                    }
+                }
+            </td>
+        </tr>
     }
 
 </table>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

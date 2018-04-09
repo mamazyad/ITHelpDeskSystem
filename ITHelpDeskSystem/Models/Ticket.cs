@@ -23,6 +23,7 @@ namespace ITHelpDeskSystem.Models
         {
             Assignments = new HashSet<Assignment>();
             Feedbacks = new HashSet<Feedback>();
+            Comments = new HashSet<Comment>();
         }
 
         public int TicketId { get; set; }
@@ -62,11 +63,11 @@ namespace ITHelpDeskSystem.Models
 
         public string ITStaffResponsibleName { get; set; }
 
-        public int? AccelaratedBy { get; set; }
-
         public DateTime? AccelerationDate { get; set; }
 
         public string AccelerationComment { get; set; }
+
+        public int? AccelaratedBy { get; set; }
 
         public string importance { get; set; }
 
@@ -75,6 +76,8 @@ namespace ITHelpDeskSystem.Models
         public string ITstaffMobile { get; set; }
 
         public string ITstaffExt { get; set; }
+
+        public bool Accelerated { get; set; }
 
         public virtual Category Category { get; set; }
 
@@ -88,7 +91,10 @@ namespace ITHelpDeskSystem.Models
 
         public virtual ICollection<Feedback> Feedbacks { get; set; }
 
+        public virtual ICollection<Comment> Comments { get; set; }
+
         public virtual Staff Accelerator { get; set; }
+
     }
 
     /// <summary>

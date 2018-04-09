@@ -65,7 +65,6 @@ namespace ITHelpDeskSystem.ViewModels
         [Display(Name = "IT Staff Responsible")]
         public string ITStaffResponsibleName { get; set; }
 
-
         [Display(Name = "Staff managerial level")]
         public string importance { get; set; }
 
@@ -89,7 +88,7 @@ namespace ITHelpDeskSystem.ViewModels
 
         [Display(Name = "Due Date")]
         [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0:dddd, dd MMMM yyyy hh:mm tt}")]
+        [DisplayFormat(DataFormatString = "{0:dddd, dd MMMM yy hh:mm tt}")]
         public DateTime? DueDate { get; set; }
 
         //[DataType(DataType.Date)]
@@ -117,5 +116,7 @@ namespace ITHelpDeskSystem.ViewModels
         //public string AccelerationComment { get; set; }
 
         public List<Assignment> Assignments { get; set; }
+
+        public Employee Employee { get; set; }
     }
 }

@@ -95,6 +95,11 @@
 </div>
 
 
+@if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin"))
+{
+    @Html.ActionLink("Reassign", "Assign", "Assignment", new { id = Model.Id }, null) <p style="display:inline;">|</p>
+}
+
 @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) <p style="display:inline"> | </p>
 
 @Html.ActionLink("Back to List", "Index")

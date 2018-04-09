@@ -137,24 +137,24 @@ namespace ITHelpDeskSystem.Migrations
                 }
             }
 
-            var categories = new List<Category>
-            {
-                new Category { CategoryName = "Hardware", CategoryDescription = "No description", ITStaffId = ITstaffs.Single(d=>d.UserName=="ITstaff").Id,},
+            //var categories = new List<Category>
+            //{
+            //    new Category { CategoryName = "Hardware", CategoryDescription = "No description", ITStaffId = ITstaffs.Single(d=>d.UserName=="ITstaff").Id,},
 
-                 new Category { CategoryName = "Software", CategoryDescription = " " ,ITStaffId = ITstaffs.Single(d=>d.UserName=="ITstaff1").Id },
+            //     new Category { CategoryName = "Software", CategoryDescription = " " ,ITStaffId = ITstaffs.Single(d=>d.UserName=="ITstaff1").Id },
 
-                 new Category { CategoryName = "SAP", CategoryDescription = "No description", ITStaffId = ITstaffs.Single(d=>d.UserName=="ITstaff2").Id}
-            };
-            categories.ForEach(s => context.Categories.AddOrUpdate(p => p.CategoryName, s));
-            context.SaveChanges();
+            //     new Category { CategoryName = "SAP", CategoryDescription = "No description", ITStaffId = ITstaffs.Single(d=>d.UserName=="ITstaff2").Id}
+            //};
+            //categories.ForEach(s => context.Categories.AddOrUpdate(p => p.CategoryName, s));
+            //context.SaveChanges();
 
-            var tickets = new List<Ticket>
-            {
-                new Ticket { Subject = "Issue", IncidentDescription = "Cannot log in to email", CategoryId = categories.Single(d=>d.CategoryName=="Software").CategoryId, Status=TicketStatus.Closed, CreationDate =DateTime.Now, TicketOwner = Staffs.Single(m=>m.UserName=="Staff").Id, CreatedBy= Staffs.Single(m=>m.UserName=="Staff").Id, IncidentSolution="Follow the steps of resetting password", Priority=TicketPriority.Critical, ResultionDate = DateTime.Now, DueDate= DateTime.Now.AddDays(1), CreatedByName = Staffs.Single(m=>m.UserName=="Staff").FullName,},
+            //var tickets = new List<Ticket>
+            //{
+            //    new Ticket { Subject = "Issue", IncidentDescription = "Cannot log in to email", CategoryId = categories.Single(d=>d.CategoryName=="Software").CategoryId, Status=TicketStatus.Closed, CreationDate =DateTime.Now, TicketOwner = Staffs.Single(m=>m.UserName=="Staff").Id, CreatedBy= Staffs.Single(m=>m.UserName=="Staff").Id, IncidentSolution="Follow the steps of resetting password", Priority=TicketPriority.Critical, ResultionDate = DateTime.Now, DueDate= DateTime.Now.AddDays(1), CreatedByName = Staffs.Single(m=>m.UserName=="Staff").FullName,},
 
-            };
-            tickets.ForEach(s => context.Tickets.AddOrUpdate(p => p.Subject, s));
-            context.SaveChanges();
+            //};
+            //tickets.ForEach(s => context.Tickets.AddOrUpdate(p => p.Subject, s));
+            //context.SaveChanges();
         }
     }
 }

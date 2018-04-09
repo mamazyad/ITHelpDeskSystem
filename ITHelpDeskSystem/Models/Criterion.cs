@@ -1,7 +1,6 @@
 /*
 * Description: This file contains the domain of the criteria, created to hold the targeted grades Staff are evaluated on.
 * Author: mamazyad
-* Date: 20/03/2018
 */
 
 namespace ITHelpDeskSystem.Models
@@ -26,14 +25,17 @@ namespace ITHelpDeskSystem.Models
 
         public int CriterionId { get; set; }
 
-        [StringLength(128)]
         public string CriterionName { get; set; }
 
-        [StringLength(256)]
         public string CriterionDescription { get; set; }
 
-        [StringLength(64)]
         public string TargetGrade { get; set; }
+
+        public DateTime CreationDate { get; set; }
+
+        public DateTime? EditionDate { get; set; }
+
+        public bool ActiveCriterion { get; set; }
 
         public virtual ICollection<Feedback> Feedbacks { get; set; }
     }

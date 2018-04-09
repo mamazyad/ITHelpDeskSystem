@@ -43,6 +43,7 @@ namespace ITHelpDeskSystem.Controllers
             {
                 model.Add(new TicketViewModel
                 {
+
                     Id = item.TicketId,
                     Subject = item.Subject,
                     IncidentDescription = item.IncidentDescription,
@@ -122,6 +123,7 @@ namespace ITHelpDeskSystem.Controllers
                 Subject = ticket.Subject,
                 IncidentDescription = ticket.IncidentDescription,
                 CreationDate = ticket.CreationDate,
+                CreatedByName = ticket.Employee.FullName,
                 Category = ticket.Category.CategoryName,
                 Status = ticket.Status,
                 Priority = ticket.Priority,
@@ -163,9 +165,8 @@ namespace ITHelpDeskSystem.Controllers
                     CategoryId = model.CategoryId,
                     CreationDate = DateTime.Now,
                     Status = TicketStatus.Open,
-                    //CreatedBy = User.Identity.GetUserId<int>(),
-                    CreatedBy = User.Identity.IsAuthenticated ? User.Identity.GetUserId<int>() : db.Users.First().Id,
-                    TicketOwner = User.Identity.IsAuthenticated ? User.Identity.GetUserId<int>() : db.Users.First().Id,
+                    CreatedBy = User.Identity.GetUserId<int>(),
+                    TicketOwner = User.Identity.GetUserId<int>(),
                 };
 
                 ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName");
@@ -248,8 +249,8 @@ namespace ITHelpDeskSystem.Controllers
                     CategoryId = model.CategoryId,
                     CreationDate = DateTime.Now,
                     Status = TicketStatus.Open,
-                    //CreatedBy = User.Identity.GetUserId<int>(),
-                    CreatedBy = User.Identity.IsAuthenticated ? User.Identity.GetUserId<int>() : db.Users.First().Id,
+                    CreatedBy = User.Identity.GetUserId<int>(),
+                    CreatedByName = model.Employee.FullName,
                     TicketOwner = model.TicketOwner,
                 };
 
@@ -299,10 +300,8 @@ namespace ITHelpDeskSystem.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            else
-            {
+            
                 return View();
-            }
         }
 
         // GET: Ticket/Edit/5
@@ -439,8 +438,33 @@ namespace ITHelpDeskSystem.Controllers
             return View(model);
         }
 
+
         /// <summary>
-        /// This action will displpay the ticket information
+        /// This action informs staff that ticket has been accelerated and connot be accelerated again.
+        /// </summary>
+        /// <param name="id">Ticket Id as a parameter</param>
+        /// <returns></returns>
+        public ActionResult Accelerated(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Ticket ticket = db.Tickets.Find(id);
+            if (ticket == null)
+            {
+                return HttpNotFound();
+            }
+            var model = new AccelerateTicketViewModel
+            {
+                Id = ticket.TicketId,
+                AccelerationDate = ticket.AccelerationDate,
+            };
+            return View(model);
+        }
+
+        /// <summary>
+        /// This action will displpay the ticket information.
         /// </summary>
         /// <param name="id">Ticket Id as a parameter.</param>
         /// <returns>Ticket info partial view</returns>
@@ -462,5 +486,80 @@ namespace ITHelpDeskSystem.Controllers
             return PartialView(model);
         }
 
+        /// <summary>
+        /// This action will displpay the IT staff responsible information.
+        /// </summary>
+        /// <param name="id">Ticket Id as a parameter.</param>
+        /// <returns>Ticket info partial view</returns>
+        public PartialViewResult ITStaffInfoPartial(int? id)
+        {
+            Ticket ticket = db.Tickets.Find(id);
+            TicketViewModel model = new TicketViewModel
+            {
+                Id = ticket.TicketId,
+                Subject = ticket.Subject,
+                ITStaffResponsibleName = ticket.Category.ITStaff.FullName,
+                ITstaffEmail = ticket.Category.ITStaff.Email,
+                ITstaffMobile = ticket.Category.ITStaff.Mobile,
+                ITstaffExt = ticket.Category.ITStaff.ExtensionNumber,
+            };
+            return PartialView(model);
+        }
+
+        /// <summary>
+        /// This action allows staff to accelerate tickets.
+        /// </summary>
+        /// <param name="id">Ticket Id as a parameter.</param>
+        /// <returns>Ticket info partial view</returns>
+        [Authorize(Roles = "Staff")]
+        public ActionResult Accelerate(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Ticket ticket = db.Tickets.Find(id);
+            if (ticket == null)
+            {
+                return HttpNotFound();
+            }
+
+            if (ticket.Accelerated == true)
+            {
+                return RedirectToActionPermanent("Accelerated", new { id = ticket.TicketId });
+            }
+
+            AccelerateTicketViewModel model = new AccelerateTicketViewModel
+            {
+                Id = ticket.TicketId,
+                Accelerated = ticket.Accelerated,
+                AccelerationComment = ticket.AccelerationComment,
+                AccelerationDate = DateTime.Now,
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Staff")]
+        public ActionResult Accelerate(int id, AccelerateTicketViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Ticket ticket = db.Tickets.Find(id);
+                if (ticket == null)
+                {
+                    return HttpNotFound();
+                }
+                ticket.AccelerationComment = model.AccelerationComment;
+                ticket.Accelerated = true;
+                ticket.AccelerationDate = DateTime.Now;
+                db.Entry(ticket).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
     }
 }

@@ -1,0 +1,18 @@
+﻿@model ITHelpDeskSystem.ViewModels.AccelerateTicketViewModel
+
+@{
+    ViewBag.Title = "Accelerated Ticket";
+}
+
+<h2>Closed Ticket</h2>
+
+@using (Html.BeginForm())
+{
+    <h5>
+        This ticket was accelerated on  @Html.DisplayFor(model => model.AccelerationDate)  and cannot be accelerated again.
+    </h5>
+
+}
+<td>
+    @Html.ActionLink("Back to tickets list", "Index")
+</td>

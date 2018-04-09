@@ -89,11 +89,19 @@
             @if (!String.IsNullOrEmpty(Model.AttachmentFilePath))
             {
                 <a href="@Url.Content(Model.AttachmentFilePath)">View attachment</a>
+
             }
         </dd>
     </dl>
 </div>
+<div id="Ticket"></div>
 
+<div>
+    @Html.ActionLink("Back to List", "Index") |
+    @Ajax.ActionLink("Display ticket details", "ITStaffInfoPartial", new { id = Model.Id }, new AjaxOptions { UpdateTargetId = "Ticket", HttpMethod = "GET", InsertionMode = InsertionMode.Replace })
 
-@Html.ActionLink("Back to List", "Index") 
+</div>
 
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
