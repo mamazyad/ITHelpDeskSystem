@@ -32,7 +32,7 @@
                 @foreach (var answer in Model.Criteria[i].PossibleAnswers)
                 {
                     <td>
-                        @Html.RadioButtonFor(m => m.Criteria[i].SelectedAnswer, answer.Id, new { id = answer.Id })
+                        @Html.RadioButtonFor(m => m.Criteria[i].SelectedAnswer, answer.Id, new { id=answer.Id })
                         @*<label for="@answer.Id">@answer.Text</label>*@
                     </td>
                 }

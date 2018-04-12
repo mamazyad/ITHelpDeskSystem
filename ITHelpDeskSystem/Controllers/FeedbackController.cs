@@ -35,7 +35,8 @@ namespace ITHelpDeskSystem.Controllers
                     Id = ticket.TicketId,
                 };
 
-            var possibleAnswer = new List<AnswerViewModel>
+            //HACK changed to plural
+            var possibleAnswers = new List<AnswerViewModel>
             {
                 new AnswerViewModel {Id = 1, Text = "Very Unsatisfied"},
                 new AnswerViewModel {Id = 2, Text = "Unsatisfied"},
@@ -44,9 +45,11 @@ namespace ITHelpDeskSystem.Controllers
                 new AnswerViewModel {Id = 5, Text = "Very Satisfied"},
             };
 
+            //HACK Text is the question/Criterion name
             var criteria = new List<CriterionViewModel>
             {
-                new CriterionViewModel  {Id = 5, Text = "Very Satisfied", PossibeAnswers = possibleAnswer},
+                new CriterionViewModel  {Id = 1, Text = "Criaterion Name 1", PossibleAnswers = possibleAnswers},
+                new CriterionViewModel  {Id = 2, Text = "Criaterion Name 2", PossibleAnswers = possibleAnswers},
             };
 
             var model1 = new FeedbackViewModel();
@@ -56,7 +59,8 @@ namespace ITHelpDeskSystem.Controllers
                 model1.Criteria.Add(item);
             }
 
-            return View();
+            //HACK Add model1
+            return View(model1);
         }
 
         [HttpPost]
