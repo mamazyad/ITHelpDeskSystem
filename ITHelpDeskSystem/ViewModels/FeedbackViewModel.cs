@@ -16,25 +16,18 @@ namespace ITHelpDeskSystem.ViewModels
 {
     public class FeedbackViewModel
     {
+        public FeedbackViewModel()
+        {
+            Criteria = new List<CriterionViewModel>();
+        }
         public int Id { get; set; }
 
         public DateTime? FeedbackDate { get; set; }
 
         public string FeedbackComment { get; set; }
 
-        [StringLength(64)]
-        public string GradeGiven { get; set; }
-
         public int TicketId { get; set; }
 
-        public int StaffId { get; set; }
-
-        public int CriterionId { get; set; }
-
-        public virtual Criterion Criterion { get; set; }
-
-        public virtual Staff Staff { get; set; }
-
-        public virtual Ticket Ticket { get; set; }
+        public List<CriterionViewModel> Criteria { get; set; }
     }
 }

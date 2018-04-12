@@ -36,7 +36,7 @@ namespace ITHelpDeskSystem.Controllers
                     ActiveCriterion = item.ActiveCriterion,
                     CriterionDescription = item.CriterionDescription,
                     CriterionName = item.CriterionName,
-                    TargetGrade = item.TargetGrade,
+                    //TargetGrade = item.TargetGrade,
                     EditionDate = item.EditionDate,
                 });
             }
@@ -58,7 +58,7 @@ namespace ITHelpDeskSystem.Controllers
             var model = new CriterionViewModel
             {
                 Id = criterion.CriterionId,
-                TargetGrade = criterion.TargetGrade,
+                //TargetGrade = criterion.TargetGrade,
                 CreationDate = criterion.CreationDate,
                 CriterionDescription = criterion.CriterionDescription,
                 CriterionName = criterion.CriterionName,
@@ -88,7 +88,7 @@ namespace ITHelpDeskSystem.Controllers
                     CriterionName = model.CriterionName,
                     CriterionDescription = model.CriterionDescription,
                     CreationDate = DateTime.Now,
-                    TargetGrade = model.TargetGrade,
+                   // TargetGrade = model.TargetGrade,
                     ActiveCriterion = true,
                 };
 
@@ -115,7 +115,7 @@ namespace ITHelpDeskSystem.Controllers
             var model = new CriterionViewModel
             {
                 Id = criterion.CriterionId,
-                TargetGrade = criterion.TargetGrade,
+                //TargetGrade = criterion.TargetGrade,
                 CreationDate = criterion.CreationDate,
                 CriterionDescription = criterion.CriterionDescription,
                 CriterionName = criterion.CriterionName,
@@ -141,7 +141,7 @@ namespace ITHelpDeskSystem.Controllers
                 criterion.CriterionName = model.CriterionName;
                 criterion.CriterionDescription = model.CriterionDescription;
                 criterion.CreationDate = model.CreationDate;
-                criterion.TargetGrade = model.TargetGrade;
+                //criterion.TargetGrade = model.TargetGrade;
                 criterion.ActiveCriterion = model.ActiveCriterion;
                 criterion.EditionDate = DateTime.Now;
             db.Entry(criterion).State = EntityState.Modified;

@@ -29,7 +29,7 @@ namespace ITHelpDeskSystem.Models
 
         public string CriterionDescription { get; set; }
 
-        public string TargetGrade { get; set; }
+        //public string TargetGrade { get; set; }
 
         public DateTime CreationDate { get; set; }
 

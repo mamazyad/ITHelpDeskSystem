@@ -33,8 +33,10 @@ namespace ITHelpDeskSystem.ViewModels
         [DataType(DataType.MultilineText)]
         public string CriterionDescription { get; set; }
 
-        [Display(Name = "Target Grade")]
-        public string TargetGrade { get; set; }
+        //[Display(Name = "Target Grade")]
+        public string PossibleAnswers { get; set; }
+
+        public string Text { get; set; }
 
         [Display(Name = "Creation Date")]
         public DateTime CreationDate { get; set; }
@@ -42,9 +44,13 @@ namespace ITHelpDeskSystem.ViewModels
         [Display(Name = "Updated on")]
         public DateTime? EditionDate { get; set; }
 
+        public int? SelectedAnswer { get; set; }
+
         [Display(Name = "Active Criterion")]
         public bool ActiveCriterion { get; set; }
 
         public virtual ICollection<Feedback> Feedbacks { get; set; }
+
+        public List<AnswerViewModel> PossibeAnswers { get; set; }
     }
 }

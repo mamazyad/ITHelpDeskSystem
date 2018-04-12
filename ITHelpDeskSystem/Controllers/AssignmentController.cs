@@ -39,6 +39,7 @@ namespace ITHelpDeskSystem.Controllers
                 Id = ticket.TicketId,
                 CategoryId = ticket.CategoryId,
             };
+
             var list = db.Categories.Where(m => m.CategoryId != ticket.CategoryId);
             ViewBag.CategoryId = new SelectList(list, "CategoryId", "CategoryName");
             return View();
@@ -69,8 +70,10 @@ namespace ITHelpDeskSystem.Controllers
                     CategoryId = model.CategoryId,
                     TicketId = ticket.TicketId,
                 };
+
                 var list = db.Categories.Where(m => m.CategoryId != ticket.CategoryId);
                 ViewBag.CategoryId = new SelectList(list, "CategoryId", "CategoryName");
+
                 db.Assignments.Add(assignment);
                 db.Entry(ticket).State = EntityState.Modified;
                 db.SaveChanges();

@@ -31,7 +31,7 @@ namespace ITHelpDeskSystem.ViewModels
         [Display(Name = "Category Description")]
         public string CategoryDescription { get; set; }
 
-        public int ITStaffId { get; set; }
+        public int? ITStaffId { get; set; }
 
         [Display(Name = "IT Staff")]
         public string ITStaff { get; set; }

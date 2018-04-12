@@ -202,6 +202,7 @@
     <Compile Include="Models\ITHelpDeskAdmin.cs" />
     <Compile Include="Models\ITStaff.cs" />
     <Compile Include="Models\KnowledgeBase.cs" />
+    <Compile Include="ViewModels\AnswerViewModel.cs" />
     <Compile Include="ViewModels\AssignmentViewModel.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\CommentViewModel.cs" />
@@ -564,11 +565,11 @@
     <Content Include="Views\Comment\Comment.cshtml" />
     <Content Include="Views\Comment\Edit.cshtml" />
     <Content Include="Views\Comment\Delete.cshtml" />
+    <Content Include="Views\Feedback\Feedback.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Uploads\" />
-    <Folder Include="Views\Feedback\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

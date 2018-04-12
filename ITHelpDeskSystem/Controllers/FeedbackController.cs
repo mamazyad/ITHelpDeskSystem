@@ -29,19 +29,38 @@ namespace ITHelpDeskSystem.Controllers
             {
                 return HttpNotFound();
             }
-            if (ticket.Status == TicketStatus.Closed)
-            {
+            
                 TicketViewModel model = new TicketViewModel
                 {
                     Id = ticket.TicketId,
-                    CategoryId = ticket.CategoryId,
                 };
+
+            var possibleAnswer = new List<AnswerViewModel>
+            {
+                new AnswerViewModel {Id = 1, Text = "Very Unsatisfied"},
+                new AnswerViewModel {Id = 2, Text = "Unsatisfied"},
+                new AnswerViewModel {Id = 3, Text = "Neural"},
+                new AnswerViewModel {Id = 4, Text = "Satisfied"},
+                new AnswerViewModel {Id = 5, Text = "Very Satisfied"},
+            };
+
+            var criteria = new List<CriterionViewModel>
+            {
+                new CriterionViewModel  {Id = 5, Text = "Very Satisfied", PossibeAnswers = possibleAnswer},
+            };
+
+            var model1 = new FeedbackViewModel();
+
+            foreach (var item in criteria)
+            {
+                model1.Criteria.Add(item);
             }
 
             return View();
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Feedback(FeedbackViewModel model)
         {
             if (ModelState.IsValid)
@@ -51,13 +70,17 @@ namespace ITHelpDeskSystem.Controllers
                     FeedbackId = model.Id,
                     FeedbackComment = model.FeedbackComment,
                     FeedbackDate = DateTime.Now,
-                    GradeGiven = model.GradeGiven,
                     StaffId = User.Identity.GetUserId<int>(),
                 };
 
+                foreach (var criterion in model.Criteria)
+                {
+
+                }
+
                 db.Feedbacks.Add(feedback);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Ticket");
             }
 
             return View(model);

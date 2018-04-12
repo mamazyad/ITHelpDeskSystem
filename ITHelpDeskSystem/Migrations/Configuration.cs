@@ -139,11 +139,14 @@ namespace ITHelpDeskSystem.Migrations
 
             //var categories = new List<Category>
             //{
-            //    new Category { CategoryName = "Hardware", CategoryDescription = "No description", ITStaffId = ITstaffs.Single(d=>d.UserName=="ITstaff").Id,},
+            //    //new Category { CategoryName = "Hardware", CategoryDescription = "No description", ITStaffId = ITstaffs.Single(d=>d.UserName=="ITstaff").Id,},
 
-            //     new Category { CategoryName = "Software", CategoryDescription = " " ,ITStaffId = ITstaffs.Single(d=>d.UserName=="ITstaff1").Id },
+            //    // new Category { CategoryName = "Software", CategoryDescription = " " ,ITStaffId = ITstaffs.Single(d=>d.UserName=="ITstaff1").Id },
 
-            //     new Category { CategoryName = "SAP", CategoryDescription = "No description", ITStaffId = ITstaffs.Single(d=>d.UserName=="ITstaff2").Id}
+            //    // new Category { CategoryName = "SAP", CategoryDescription = "No description", ITStaffId = ITstaffs.Single(d=>d.UserName=="ITstaff2").Id}
+
+            //     new Category { CategoryName = "WiFi", CategoryDescription = "No description", ITStaffId = ITstaffs.Single(d=>d.UserName=="ITstaff2").Id}
+
             //};
             //categories.ForEach(s => context.Categories.AddOrUpdate(p => p.CategoryName, s));
             //context.SaveChanges();

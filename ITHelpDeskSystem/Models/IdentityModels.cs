@@ -72,7 +72,7 @@ namespace ITHelpDeskSystem.Models
 
             modelBuilder.Entity<ITStaff>()
                 .HasMany(e => e.Categories)
-                .WithRequired(e => e.ITStaff)
+                .WithOptional(e => e.ITStaff)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<ITStaff>()
