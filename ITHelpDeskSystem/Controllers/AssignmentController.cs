@@ -1,4 +1,9 @@
-﻿using AutoMapper;
+﻿/*
+* Description: This file contains the assignment controller with the assignment method (action).
+* Author: mamazyad
+*/
+
+using AutoMapper;
 using ITHelpDeskSystem.Models;
 using ITHelpDeskSystem.ViewModels;
 using Microsoft.AspNet.Identity;
@@ -16,6 +21,11 @@ namespace ITHelpDeskSystem.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        /// <summary>
+        /// This action allows for ticket reassignment by changing the ticket category.
+        /// </summary>
+        /// <param name="id">Ticket Id</param>
+        /// <returns>Ticket index</returns>
         // GET: Assignment/Create
         [Authorize(Roles = "ITStaff, Admin")]
         public ActionResult Assign(int? id)
@@ -45,6 +55,11 @@ namespace ITHelpDeskSystem.Controllers
             return View();
         }
 
+        /// <summary>
+        /// This action allows for ticket reassignment by changing the ticket category.
+        /// </summary>
+        /// <param name="id">Ticket Id</param>
+        /// <returns>Ticket index</returns>
         // POST: Assignment/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -58,7 +73,6 @@ namespace ITHelpDeskSystem.Controllers
                 {
                     return HttpNotFound();
                 }
-                //var temp = ticket.CategoryId;
                 ticket.CategoryId = model.CategoryId;
                 var assignment = new Assignment
                 {

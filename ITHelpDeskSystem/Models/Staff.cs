@@ -1,7 +1,6 @@
 /*
 * Description: This file contains the domain of the staff, created to store staffs' information along side a ManagerialPosition enum to define the managerial position of a staff.
 * Author: mamazyad
-* Date: 20/03/2018
 */
 
 using System;

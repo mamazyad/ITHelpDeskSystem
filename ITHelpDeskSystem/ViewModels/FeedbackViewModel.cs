@@ -14,6 +14,9 @@ using System.Web;
 
 namespace ITHelpDeskSystem.ViewModels
 {
+    /// <summary>
+    /// Feedback view model based on feedback model and used by feedback controller.
+    /// </summary>
     public class FeedbackViewModel
     {
         public FeedbackViewModel()

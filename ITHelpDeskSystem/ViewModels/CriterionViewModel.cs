@@ -26,16 +26,9 @@ namespace ITHelpDeskSystem.ViewModels
 
         public int Id { get; set; }
 
-        [Display(Name = "Criterion Name")]
-        public string CriterionName { get; set; }
-
-        [Display(Name = "Criterion Description")]
+        [Display(Name = "Criterion")]
         [DataType(DataType.MultilineText)]
         public string CriterionDescription { get; set; }
-
-        //HACK Commented: it is a list not a string
-        //[Display(Name = "Target Grade")]
-        //public string PossibleAnswers { get; set; }
 
         public string Text { get; set; }
 
@@ -52,7 +45,6 @@ namespace ITHelpDeskSystem.ViewModels
 
         public virtual ICollection<Feedback> Feedbacks { get; set; }
 
-        //HACK PossibeAnswers to PossibleAnswers!
         public List<AnswerViewModel> PossibleAnswers { get; set; }
     }
 }

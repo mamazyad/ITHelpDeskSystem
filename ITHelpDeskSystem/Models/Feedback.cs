@@ -1,7 +1,6 @@
 /*
 * Description: This file contains the domain of the feedbacks, created to store Staff's feedback on the IT staff performance.
 * Author: mamazyad
-* Date: 20/03/2018
 */
 
 namespace ITHelpDeskSystem.Models
@@ -32,7 +31,7 @@ namespace ITHelpDeskSystem.Models
 
         public int StaffId { get; set; }
 
-        public int CriterionId { get; set; }
+        public int? CriterionId { get; set; }
 
         public virtual Criterion Criterion { get; set; }
 

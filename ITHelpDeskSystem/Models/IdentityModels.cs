@@ -1,7 +1,6 @@
 ﻿/*
 * Description: This file contains the identity model with the DbContext of the system.
 * Author: mamazyad
-* Date: 20/03/2018
 */
 
 using System.Data.Entity;
@@ -56,7 +55,7 @@ namespace ITHelpDeskSystem.Models
 
             modelBuilder.Entity<Criterion>()
                 .HasMany(e => e.Feedbacks)
-                .WithRequired(e => e.Criterion)
+                .WithOptional(e => e.Criterion)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Employee>()

@@ -12,6 +12,9 @@ using System.Linq;
 using System.Web;
 namespace ITHelpDeskSystem.ViewModels
 {
+    /// <summary>
+    /// Knowdledge Base view Model based on knowedge base model and used by knowedge base controller.
+    /// </summary>
     public class KnowledgeBaseViewModel
     {
         public int Id { get; set; }
@@ -37,12 +40,13 @@ namespace ITHelpDeskSystem.ViewModels
         public DateTime? CreationDate { get; set; }
 
         [Display(Name = "Updated on")]
-        [DisplayFormat(DataFormatString = "{0:dddd, dd MMMM yy hh:mm tt}")]
+        [DisplayFormat(DataFormatString = "{0:dddd, dd MMMM yy hh:mm tt}", NullDisplayText = "Not updated")]
         public DateTime? EditionDate { get; set; }
 
-        public int EditedBy { get; set; }
+        public int? EditedBy { get; set; }
 
-        [Display(Name = "Edited By")]
+        [Display(Name = "Updated By")]
+        [DisplayFormat(NullDisplayText = "Not updated")]
         public string EditedByName { get; set; }
 
         public int CreatedBy { get; set; }

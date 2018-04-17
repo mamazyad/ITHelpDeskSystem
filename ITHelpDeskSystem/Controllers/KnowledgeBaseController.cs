@@ -23,6 +23,10 @@ namespace ITHelpDeskSystem.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        /// <summary>
+        /// This action list all the solutions in the Knowldge Base.
+        /// </summary>
+        /// <returns>Knowledge Base Index.</returns>
         // GET: KnowledgeBase
         public ActionResult Index()
         {
@@ -44,6 +48,11 @@ namespace ITHelpDeskSystem.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// This action lists the details of a specific Knowldge Base.
+        /// </summary>
+        /// <param name="id">Knowledge Base ID</param>
+        /// <returns>Knowldge Base Details</returns>
         // GET: KnowledgeBase/Details/5
         public ActionResult Details(int? id)
         {
@@ -52,15 +61,30 @@ namespace ITHelpDeskSystem.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             KnowledgeBase knowledgeBase = db.KnowledgeBases.Find(id);
+
             if (knowledgeBase == null)
             {
                 return HttpNotFound();
             }
+
+            string temp = null;
+
+            if (!(knowledgeBase.EditedBy == null))
+            {
+                temp = db.ITStaffs.Find(knowledgeBase.EditedBy).FullName;
+            }
+
+            if (knowledgeBase.EditedBy == null)
+            {
+                temp = "";
+            }
+
             var model = new KnowledgeBaseViewModel
             {
                 Id = knowledgeBase.KnowledgeBaseId,
                 CreatedByName = knowledgeBase.ITStaff.FullName,
-                EditedByName = db.ITStaffs.Find(knowledgeBase.EditedBy).FullName,
+                EditedBy = User.Identity.GetUserId<int>(),
+                EditedByName = temp,
                 Topic = knowledgeBase.Topic,
                 IncidentTitle = knowledgeBase.IncidentTitle,
                 IncidentDescription = knowledgeBase.IncidentDescription,
@@ -69,18 +93,28 @@ namespace ITHelpDeskSystem.Controllers
                 EditionDate = knowledgeBase.EditionDate,
                 KBAttachmentFilePath = knowledgeBase.KBAttachmentFilePath,
             };
-
             return View(model);
         }
 
+        /// <summary>
+        /// This action allows the creation of a knoldge base solution.
+        /// </summary>
+        /// <returns>Knowldge base create</returns>
         // GET: KnowledgeBase/Create
+        [Authorize(Roles = "ITStaff, Admin")]
         public ActionResult Create()
         {
             return View();
         }
 
+        /// <summary>
+        /// This action allows the creation of a knoldge base solution.
+        /// </summary>
+        /// <param name="model">KnowledgeBaseViewModel model</param>
+        /// <returns>Knowledge Base Index.</returns>
         // POST: KnowledgeBase/Create
         [HttpPost]
+        [Authorize(Roles = "ITStaff, Admin")]
         public ActionResult Create(KnowledgeBaseViewModel model)
         {
             if (ModelState.IsValid)
@@ -96,40 +130,29 @@ namespace ITHelpDeskSystem.Controllers
                     CreatedBy = User.Identity.GetUserId<int>(),
                     ITStaffId = User.Identity.GetUserId<int>(),
                 };
-                // check if the uplaoded file is empty (do not upload empty files)
+
                 if (model.KBAttachment != null && model.KBAttachment.ContentLength > 0)
                 {
-                    // Allowed extensions to be uploaded
                     var extensions = new[] { "pdf", "docx", "doc", "jpeg", "png", "jpg" };
 
-                    // using System.IO for Path class
-                    // Get the file name without the path
                     string filename = Path.GetFileName(model.KBAttachment.FileName);
 
-                    // Get the extension of the file
                     string ext = Path.GetExtension(filename).Substring(1);
 
-                    // Check if the extension of the file is in the list of allowed extensions
                     if (!extensions.Contains(ext, StringComparer.OrdinalIgnoreCase))
                     {
                         ModelState.AddModelError(string.Empty, "Accepted file are pdf, docx, doc, jpeg, jpg and png documents");
                         return View();
                     }
 
-                    // Set the application folder where to save the uploaded file
                     string appFolder = "~/Content/Uploads/";
 
-                    // Generate a random string to add to the file name
-                    // This is to avoid the files with the same names
                     var rand = Guid.NewGuid().ToString();
 
-                    // Combine the application folder location with the file name
                     string path = Path.Combine(Server.MapPath(appFolder), rand + "-" + filename);
 
-                    // Save the file in ~/Content/Uploads/filename.xyz
                     model.KBAttachment.SaveAs(path);
 
-                    // Add the path to the course object
                     knowledgeBase.KBAttachmentFilePath = appFolder + rand + "-" + filename;
 
                 }
@@ -137,10 +160,19 @@ namespace ITHelpDeskSystem.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(model);
+            else
+            {
+                return View();
+            }
         }
 
+        /// <summary>
+        /// This action allows for knowldge base edition.
+        /// </summary>
+        /// <param name="id">Knowldge Base ID</param>
+        /// <returns>Knowldge Base edit view</returns>
         // GET: KnowledgeBase/Edit/5
+        [Authorize(Roles = "ITStaff, Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -162,13 +194,20 @@ namespace ITHelpDeskSystem.Controllers
                 SolutionDescription = knowledgeBase.SolutionDescription,
                 EditedBy = knowledgeBase.EditedBy,
                 EditionDate = knowledgeBase.EditionDate,
-                //KBAttachmentFilePath = knowledgeBase.KBAttachmentFilePath,
+                KBAttachmentFilePath = knowledgeBase.KBAttachmentFilePath,
             };
             return View(model);
         }
 
+        /// <summary>
+        /// This action allows for knowldge base edition.
+        /// </summary>
+        /// <param name="id">Knowldge Base ID</param>
+        /// <param name="model">KnowledgeBaseViewModel model</param>
+        /// <returns>Knowldge Base Index</returns>
         // POST: KnowledgeBase/Edit/5
         [HttpPost]
+        [Authorize(Roles = "ITStaff, Admin")]
         public ActionResult Edit(int id, KnowledgeBaseViewModel model)
         {
             if (ModelState.IsValid)
@@ -185,14 +224,46 @@ namespace ITHelpDeskSystem.Controllers
                 knowledgeBase.EditionDate = DateTime.Now;
                 knowledgeBase.EditedBy = User.Identity.GetUserId<int>();
 
+                if (model.KBAttachment != null && model.KBAttachment.ContentLength > 0)
+                {
+                    var extensions = new[] { "pdf", "docx", "doc", "jpeg", "png", "jpg" };
+
+                    string filename = Path.GetFileName(model.KBAttachment.FileName);
+
+                    string ext = Path.GetExtension(filename).Substring(1);
+
+                    if (!extensions.Contains(ext, StringComparer.OrdinalIgnoreCase))
+                    {
+                        ModelState.AddModelError(string.Empty, "Accepted file are pdf, docx, doc, jpeg, jpg and png documents");
+                        return View();
+                    }
+
+                    string appFolder = "~/Content/Uploads/";
+
+                    var rand = Guid.NewGuid().ToString();
+
+                    string path = Path.Combine(Server.MapPath(appFolder), rand + "-" + filename);
+
+                    model.KBAttachment.SaveAs(path);
+
+                    knowledgeBase.KBAttachmentFilePath = appFolder + rand + "-" + filename;
+                }
+
                 db.Entry(knowledgeBase).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             return View(model);
         }
 
+        /// <summary>
+        /// This action allows for Knowldge Base deletion.
+        /// </summary>
+        /// <param name="id">Knowldge Base ID</param>
+        /// <returns>Knowldge Base delete</returns>
         // GET: KnowledgeBase/Delete/5
+        [Authorize(Roles = "ITStaff, Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -205,24 +276,42 @@ namespace ITHelpDeskSystem.Controllers
             {
                 return HttpNotFound();
             }
+            string temp = null;
+
+            if (!(knowledgeBase.EditedBy == null))
+            {
+                temp = db.ITStaffs.Find(knowledgeBase.EditedBy).FullName;
+            }
+
+            if (knowledgeBase.EditedBy == null)
+            {
+                temp = "";
+            }
             KnowledgeBaseViewModel model = new KnowledgeBaseViewModel
             {
                 Id = knowledgeBase.KnowledgeBaseId,
                 CreatedByName = knowledgeBase.ITStaff.FullName,
-                EditedByName = knowledgeBase.ITStaff.FullName,
+                EditedBy = User.Identity.GetUserId<int>(),
+                EditedByName = temp,
                 Topic = knowledgeBase.Topic,
                 IncidentTitle = knowledgeBase.IncidentTitle,
                 IncidentDescription = knowledgeBase.IncidentDescription,
                 SolutionDescription = knowledgeBase.SolutionDescription,
                 CreationDate = knowledgeBase.CreationDate,
                 EditionDate = knowledgeBase.EditionDate,
-                //KBAttachmentFilePath = knowledgeBase.KBAttachmentFilePath,
+                KBAttachmentFilePath = knowledgeBase.KBAttachmentFilePath,
             };
             return View(model);
         }
 
+        /// <summary>
+        /// This action allows for Knowldge Base deletion.
+        /// </summary>
+        /// <param name="id">Knowldge Base ID</param>
+        /// <returns>Knowldge Base Index</returns>
         // POST: KnowledgeBase/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "ITStaff, Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

@@ -1,7 +1,6 @@
 ﻿/*
 * Description: This file contains the employees controller, with the employee creation, edition, deletion, listing and details methods (actions).
 * Author: mamazyad
-* Date: 20/03/2018
 */
 
 using AutoMapper;
@@ -19,44 +18,44 @@ namespace ITHelpDeskSystem.Controllers
 {
     public class EmployeeController : Controller
     {
-        
-            private ApplicationSignInManager _signInManager;
-            private ApplicationUserManager _userManager;
-            private ApplicationDbContext db = new ApplicationDbContext();
 
-            public EmployeeController()
-            {
-            }
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
+        private ApplicationDbContext db = new ApplicationDbContext();
 
-            public EmployeeController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
-            {
-                UserManager = userManager;
-                SignInManager = signInManager;
-            }
+        public EmployeeController()
+        {
+        }
 
-            public ApplicationSignInManager SignInManager
-            {
-                get
-                {
-                    return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
-                }
-                private set
-                {
-                    _signInManager = value;
-                }
-            }
+        public EmployeeController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        {
+            UserManager = userManager;
+            SignInManager = signInManager;
+        }
 
-            public ApplicationUserManager UserManager
+        public ApplicationSignInManager SignInManager
+        {
+            get
             {
-                get
-                {
-                    return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-                }
-                private set
-                {
-                    _userManager = value;
-                }
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
+            private set
+            {
+                _signInManager = value;
+            }
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
 
         /// <summary>
         /// This action lists all the employees. Employee index view is based on it.
@@ -70,19 +69,19 @@ namespace ITHelpDeskSystem.Controllers
 
             foreach (var item in users)
             {
-                    model.Add(new EmployeeViewModel
-                    {
-                        Id = item.Id,
-                        Email = item.Email,
-                        UserName = item.UserName,
-                        FirstName = item.FirstName,
-                        LastName = item.LastName,
-                        Department = item.Department,
-                        JobTitle = item.JobTitle,
-                        Mobile = item.Mobile,
-                        ExtensionNumber = item.ExtensionNumber,
-                        OfficeNumber = item.OfficeNumber,
-                    });
+                model.Add(new EmployeeViewModel
+                {
+                    Id = item.Id,
+                    Email = item.Email,
+                    UserName = item.UserName,
+                    FirstName = item.FirstName,
+                    LastName = item.LastName,
+                    Department = item.Department,
+                    JobTitle = item.JobTitle,
+                    Mobile = item.Mobile,
+                    ExtensionNumber = item.ExtensionNumber,
+                    OfficeNumber = item.OfficeNumber,
+                });
             }
 
             return View(model);
@@ -91,7 +90,7 @@ namespace ITHelpDeskSystem.Controllers
         /// <summary>
         /// This action provides the details of a specific employee.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Employee ID</param>
         /// <returns>Employee, Details view</returns>
         // (GET: Employee/Details/5) 
         public ActionResult Details(int? id)
@@ -108,7 +107,7 @@ namespace ITHelpDeskSystem.Controllers
 
                     EmployeeViewModel model = Mapper.Map<EmployeeViewModel>(employee);
 
-                   model.Roles = string.Join(" ", UserManager.GetRoles(userId).ToArray());
+                    model.Roles = string.Join(" ", UserManager.GetRoles(userId).ToArray());
 
                     return View(model);
                 }
@@ -123,6 +122,10 @@ namespace ITHelpDeskSystem.Controllers
             }
         }
 
+        /// <summary>
+        /// This action enables the creation of an employee.
+        /// </summary>
+        /// <returns>Employee Create</returns>
         // GET: Employee/Create. 
         public ActionResult Create()
         {
@@ -132,8 +135,8 @@ namespace ITHelpDeskSystem.Controllers
         /// <summary>
         /// This action enables the creation of an employee.
         /// </summary>
-        /// <param name="model"></param>
-        /// <returns>Employee, create model</returns>
+        /// <param name="model">Employee model</param>
+        /// <returns>Employee, Index</returns>
         // (POST: Employee/Create) 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -172,14 +175,17 @@ namespace ITHelpDeskSystem.Controllers
         }
 
 
+        /// <summary>
+        /// This action enables editing of an employee.
+        /// </summary>
+        /// <param name="id">Employee ID</param>
+        /// <returns>Employee EditS</returns>
         // GET: Employee/Edit/5
         public ActionResult Edit(int id)
         {
-
             var employee = (Employee)UserManager.FindById(id);
             if (employee == null)
             {
-                //return HttpNotFound();
                 return View("Error");
             }
 
@@ -205,7 +211,7 @@ namespace ITHelpDeskSystem.Controllers
         /// <param name="id"></param>
         /// <param name="model"></param>
         /// <param name="roles"></param>
-        /// <returns>Employee, edit view</returns>
+        /// <returns>Employee, Index</returns>
         // (POST: Employee/Edit/5) 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -235,7 +241,7 @@ namespace ITHelpDeskSystem.Controllers
                 employee.Department = model.Department;
                 employee.ExtensionNumber = model.ExtensionNumber;
                 employee.JobTitle = model.JobTitle;
-                
+
                 var userResult = UserManager.Update(employee);
 
                 if (userResult.Succeeded)
@@ -264,6 +270,11 @@ namespace ITHelpDeskSystem.Controllers
             return View();
         }
 
+        /// <summary>
+        /// This action allows for employee deletion.
+        /// </summary>
+        /// <param name="id">Employee ID</param>
+        /// <returns>Employee Delete</returns>
         // GET: Employee/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -283,12 +294,12 @@ namespace ITHelpDeskSystem.Controllers
 
             return HttpNotFound();
         }
-        
+
 
         /// <summary>
         /// This action enables the deletion of an employee.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Emplyee ID</param>
         /// <returns>Employee, Delete view</returns>
         // (POST: Employee/Delete/5) 
         [HttpPost]

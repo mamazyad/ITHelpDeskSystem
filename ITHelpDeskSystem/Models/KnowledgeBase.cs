@@ -1,7 +1,6 @@
 /*
 * Description:This file is the domain of the Knowledge Base, created to act as the syste'ms central solutions deposotory.
 * Author: mamazyad
-* Date: 20/03/2018
 */
 
 namespace ITHelpDeskSystem.Models
@@ -35,7 +34,7 @@ namespace ITHelpDeskSystem.Models
 
         public DateTime? EditionDate { get; set; }
 
-        public int EditedBy { get; set; }
+        public int? EditedBy { get; set; }
 
         public string EditedByName { get; set; }
 

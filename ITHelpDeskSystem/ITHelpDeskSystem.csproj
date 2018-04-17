@@ -181,6 +181,7 @@
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HomePageController.cs" />
     <Compile Include="Controllers\ITHelpDeskAdminController.cs" />
     <Compile Include="Controllers\ITStaffController.cs" />
     <Compile Include="Controllers\KnowledgeBaseController.cs" />
@@ -480,6 +481,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\trumbowyg\trumbowyg.min.css" />
+    <Content Include="Scripts\trumbowyg\trumbowyg.min.js" />
+    <Content Include="Scripts\trumbowyg\ui\icons.svg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -570,6 +574,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Uploads\" />
+    <Folder Include="Views\HomePage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

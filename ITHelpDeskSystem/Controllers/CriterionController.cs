@@ -22,6 +22,10 @@ namespace ITHelpDeskSystem.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        /// <summary>
+        /// This action lists all the criteria.
+        /// </summary>
+        /// <returns>Criterion Index.</returns>
         // GET: Criterion
         public ActionResult Index()
         {
@@ -35,14 +39,17 @@ namespace ITHelpDeskSystem.Controllers
                     CreationDate = item.CreationDate,
                     ActiveCriterion = item.ActiveCriterion,
                     CriterionDescription = item.CriterionDescription,
-                    CriterionName = item.CriterionName,
-                    //TargetGrade = item.TargetGrade,
                     EditionDate = item.EditionDate,
                 });
             }
             return View(model);
         }
 
+        /// <summary>
+        /// This action shows a criterion details.
+        /// </summary>
+        /// <param name="id">Criterion ID.</param>
+        /// <returns>Criterion, Details.</returns>
         // GET: Criterion/Details/5
         public ActionResult Details(int? id)
         {
@@ -58,10 +65,8 @@ namespace ITHelpDeskSystem.Controllers
             var model = new CriterionViewModel
             {
                 Id = criterion.CriterionId,
-                //TargetGrade = criterion.TargetGrade,
                 CreationDate = criterion.CreationDate,
                 CriterionDescription = criterion.CriterionDescription,
-                CriterionName = criterion.CriterionName,
                 EditionDate = criterion.EditionDate,
                 ActiveCriterion = criterion.ActiveCriterion,
             };
@@ -69,12 +74,21 @@ namespace ITHelpDeskSystem.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// This action allows for the creataion of a criterion.
+        /// </summary>
+        /// <returns>Criterion, create</returns>
         // GET: Criterion/Create
         public ActionResult Create()
         {
             return View();
         }
 
+        /// <summary>
+        /// This action allows for the creataion of a criterion.
+        /// </summary>
+        /// <param name="model">Criterion model</param>
+        /// <returns>Criterion Index</returns>
         // POST: Criterion/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -85,10 +99,8 @@ namespace ITHelpDeskSystem.Controllers
                 var criterion = new Criterion
                 {
                     CriterionId = model.Id,
-                    CriterionName = model.CriterionName,
                     CriterionDescription = model.CriterionDescription,
                     CreationDate = DateTime.Now,
-                   // TargetGrade = model.TargetGrade,
                     ActiveCriterion = true,
                 };
 
@@ -99,6 +111,11 @@ namespace ITHelpDeskSystem.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// This action allows for criterion edition.
+        /// </summary>
+        /// <param name="id">Criterion ID</param>
+        /// <returns>Criterion Edit</returns>
         // GET: Criterion/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -115,16 +132,20 @@ namespace ITHelpDeskSystem.Controllers
             var model = new CriterionViewModel
             {
                 Id = criterion.CriterionId,
-                //TargetGrade = criterion.TargetGrade,
                 CreationDate = criterion.CreationDate,
                 CriterionDescription = criterion.CriterionDescription,
-                CriterionName = criterion.CriterionName,
                 EditionDate = criterion.EditionDate,
                 ActiveCriterion = criterion.ActiveCriterion,
             };
             return View(model);
     }
 
+        /// <summary>
+        /// This action allows for criterion edition.
+        /// </summary>
+        /// <param name="id">Criterion ID</param>
+        /// <param name="model">Criterion model</param>
+        /// <returns>Criterion index.</returns>
         // POST: Criterion/Edit/5
         [HttpPost]
         //[Authorize(Roles = "Admin")]
@@ -138,10 +159,8 @@ namespace ITHelpDeskSystem.Controllers
             {
                 return HttpNotFound();
             }
-                criterion.CriterionName = model.CriterionName;
                 criterion.CriterionDescription = model.CriterionDescription;
                 criterion.CreationDate = model.CreationDate;
-                //criterion.TargetGrade = model.TargetGrade;
                 criterion.ActiveCriterion = model.ActiveCriterion;
                 criterion.EditionDate = DateTime.Now;
             db.Entry(criterion).State = EntityState.Modified;

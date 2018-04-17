@@ -1,7 +1,6 @@
 /*
 * Description: This file contains the domain of the categories, created to identify the various IT categories IT staff are responsible for.
 * Author: mamazyad
-* Date: 20/03/2018
 */
 
 using System;

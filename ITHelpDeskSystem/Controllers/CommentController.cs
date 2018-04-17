@@ -1,5 +1,5 @@
 ﻿/*
-* Description: This file contains the comment controller with the comment creation, edition, deletion, listing and details methods (actions).
+* Description: This file contains the comment controller with the comment creation and edition methods (actions).
 * Author: mamazyad
 */
 
@@ -22,7 +22,7 @@ namespace ITHelpDeskSystem.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Comment/Create
+        // GET: Comment/comment
         public ActionResult Comment(int? id)
         {
             if (id == null)
@@ -54,7 +54,6 @@ namespace ITHelpDeskSystem.Controllers
                     var comment = new Comment
                     {
                         CommentId = model.Id,
-                        //CommentDate = DateTime.Now,
                         CommentText = model.CommentText,
                         ITStaffId = User.Identity.GetUserId<int>(),
                         Title = model.Title,

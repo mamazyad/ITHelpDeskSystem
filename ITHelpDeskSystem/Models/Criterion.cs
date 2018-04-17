@@ -25,11 +25,7 @@ namespace ITHelpDeskSystem.Models
 
         public int CriterionId { get; set; }
 
-        public string CriterionName { get; set; }
-
         public string CriterionDescription { get; set; }
-
-        //public string TargetGrade { get; set; }
 
         public DateTime CreationDate { get; set; }
 

@@ -1,4 +1,9 @@
-﻿using AutoMapper;
+﻿/*
+* Description: This file contains the Feedback controller, with the feedback method (action).
+* Author: mamazyad
+*/
+
+using AutoMapper;
 using ITHelpDeskSystem.Models;
 using ITHelpDeskSystem.ViewModels;
 using Microsoft.AspNet.Identity;
@@ -17,6 +22,12 @@ namespace ITHelpDeskSystem.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        /// <summary>
+        /// This action allows Staff to give feedback to service provided.
+        /// </summary>
+        /// <param name="id">Ticket ID</param>
+        /// <returns>Feedback model</returns>
+        [Authorize(Roles = "Staff")]
         public ActionResult Feedback(int? id)
         {
             if (id == null)
@@ -30,12 +41,11 @@ namespace ITHelpDeskSystem.Controllers
                 return HttpNotFound();
             }
             
-                TicketViewModel model = new TicketViewModel
-                {
-                    Id = ticket.TicketId,
-                };
+            TicketViewModel model = new TicketViewModel
+            {
+                Id = ticket.TicketId,
+            };
 
-            //HACK changed to plural
             var possibleAnswers = new List<AnswerViewModel>
             {
                 new AnswerViewModel {Id = 1, Text = "Very Unsatisfied"},
@@ -45,50 +55,71 @@ namespace ITHelpDeskSystem.Controllers
                 new AnswerViewModel {Id = 5, Text = "Very Satisfied"},
             };
 
-            //HACK Text is the question/Criterion name
-            var criteria = new List<CriterionViewModel>
-            {
-                new CriterionViewModel  {Id = 1, Text = "Criaterion Name 1", PossibleAnswers = possibleAnswers},
-                new CriterionViewModel  {Id = 2, Text = "Criaterion Name 2", PossibleAnswers = possibleAnswers},
-            };
+            ////HACK Text is the question/Criterion name
+            //var criteria = new List<CriterionViewModel>
+            //{
+            //    new CriterionViewModel  {Id = 1, Text = "Criaterion Name 1", PossibleAnswers = possibleAnswers},
+            //    new CriterionViewModel  {Id = 2, Text = "Criaterion Name 2", PossibleAnswers = possibleAnswers},
+            //};
 
-            var model1 = new FeedbackViewModel();
+            //var model1 = new FeedbackViewModel();
 
-            foreach (var item in criteria)
+            //foreach (var item in criteria)
+            //{
+            //    model1.Criteria.Add(item);
+            //}
+
+            var criterion = db.Criteria.ToList();
+            var modell = new FeedbackViewModel();
+            var modelX = new List<CriterionViewModel>();
+            foreach (var item in criterion)
             {
-                model1.Criteria.Add(item);
+              //  modell.Criteria.Add(item);
+                // modelX.Add(new FeedbackViewModel
+               // {
+                  //  Id = item.CriterionId,
+                   
+                    //CriterionDescription=item.CriterionDescription,
+                    //PossibleAnswers = possibleAnswers,
+               // });
             }
 
-            //HACK Add model1
-            return View(model1);
+
+            return View(modelX);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Feedback(FeedbackViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var feedback = new Feedback
-                {
-                    FeedbackId = model.Id,
-                    FeedbackComment = model.FeedbackComment,
-                    FeedbackDate = DateTime.Now,
-                    StaffId = User.Identity.GetUserId<int>(),
-                };
+        /// <summary>
+        /// This action allows Staff to give feedback to service provided.
+        /// </summary>
+        /// <param name="model">FeedbackViewModel model</param>
+        /// <returns>Ticket Index</returns>
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //[Authorize(Roles = "Staff")]
+        //public ActionResult Feedback(FeedbackViewModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var feedback = new Feedback
+        //        {
+        //            FeedbackId = model.Id,
+        //            FeedbackComment = model.FeedbackComment,
+        //            FeedbackDate = DateTime.Now,
+        //            StaffId = User.Identity.GetUserId<int>(),
+        //        };
 
-                foreach (var criterion in model.Criteria)
-                {
+        //        foreach (var criterion in model.Criteria)
+        //        {
 
-                }
+        //        }
 
-                db.Feedbacks.Add(feedback);
-                db.SaveChanges();
-                return RedirectToAction("Index", "Ticket");
-            }
+        //        db.Feedbacks.Add(feedback);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index", "Ticket");
+        //    }
 
-            return View(model);
-        }
+        //    return View(model);
+        //}
 
     }
 }

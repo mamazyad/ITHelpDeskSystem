@@ -1,7 +1,6 @@
 /*
 * Description: This file contains the domain of the IT Help desk system admin, created to store the admin information.
 * Author: mamazyad
-* Date: 20/03/2018
 */
 
 namespace ITHelpDeskSystem.Models

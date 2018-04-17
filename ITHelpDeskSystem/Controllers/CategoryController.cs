@@ -72,6 +72,11 @@ namespace ITHelpDeskSystem.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// This action enables the creation of a category (with a unique name) and assigning it to a specific IT staff.
+        /// </summary>
+        /// <param name="model">Ticket model</param>
+        /// <returns> Category, Create view</returns>
         // GET: Category/Create. 
         public ActionResult Create()
         {
@@ -83,7 +88,7 @@ namespace ITHelpDeskSystem.Controllers
         /// <summary>
         /// This action enables the creation of a category (with a unique name) and assigning it to a specific IT staff.
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="model">Ticket model</param>
         /// <returns> Category, Create view</returns>
         // (POST: Category/Create) 
         [HttpPost]
@@ -110,6 +115,12 @@ namespace ITHelpDeskSystem.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// This action enables the editing of a category.
+        /// </summary>
+        /// <param name="id">Ticket Id</param>
+        /// <param name="model">Ticket model</param>
+        /// <returns> Category, Edit view</returns>
         // GET: Category/Edit/5
         [Authorize(Roles = "Admin, ITStaff")]
         public ActionResult Edit(int? id)
@@ -139,8 +150,8 @@ namespace ITHelpDeskSystem.Controllers
         /// <summary>
         /// This action enables the editing of a category.
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="model"></param>
+        /// <param name="id">Ticket Id</param>
+        /// <param name="model">Ticket model</param>
         /// <returns> Category, Edit view</returns>
         // (POST: Category/Edit/5) 
         [HttpPost]
@@ -167,6 +178,11 @@ namespace ITHelpDeskSystem.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// This action enables the deletion of a category.
+        /// </summary>
+        /// <param name="id">Ticket ID</param>
+        /// <returns> Category, Delete view</returns>
         // GET: Category/Delete/5. 
         public ActionResult Delete(int? id)
         {
@@ -193,7 +209,7 @@ namespace ITHelpDeskSystem.Controllers
         /// <summary>
         /// This action enables the deletion of a category.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Ticket ID</param>
         /// <returns> Category, Delete view</returns>
         // (POST: Category/Delete/5) 
         [HttpPost, ActionName("Delete")]

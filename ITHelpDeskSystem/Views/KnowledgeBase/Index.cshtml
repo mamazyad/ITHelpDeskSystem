@@ -1,52 +1,94 @@
 ﻿@model IEnumerable<ITHelpDeskSystem.ViewModels.KnowledgeBaseViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "All solutions";
 }
 
-<h2>Index</h2>
+<style>
+    table.dataTable thead .sorting,
+    table.dataTable thead .sorting_asc,
+    table.dataTable thead .sorting_desc {
+        background: none;
+    }
+</style>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Topic)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IncidentTitle)
-        </th>
-        
-        <th>
-            @Html.DisplayNameFor(model => model.SolutionDescription)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EditionDate)
-        </th>
-        <th></th>
-    </tr>
+<h2> All solutions</h2>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Topic)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IncidentTitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SolutionDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EditionDate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+@if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin"))
+{
+    <a> @Html.ActionLink("Add new solution", "Create", null, new { @class = "btn btn-success btn-xs pull-left" }) </a>
+
 }
+
+<table class="table" id="employeesTable" class="display" width="100%" cellspacing="0">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Topic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IncidentTitle)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.SolutionDescription)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Topic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IncidentTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SolutionDescription)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.Id })
+                @if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin"))
+                {
+                    <p style="display:inline;">|</p> @Html.ActionLink("Edit", "Edit", new { id = item.Id }) <p style="display:inline;">|</p>
+                }
+
+                @if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
+            </td>
+        </tr>
+    }
 
 </table>
+
+@section scripts
+{
+    <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/jquery.dataTables.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/dataTables.scroller.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/dataTables.bootstrap.min.js")"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#employeesTable').DataTable();
+        });
+        $('#employeesTable').dataTable({
+            "columnDefs": [
+                { "orderable": false, "targets": -1 }
+            ]
+        });
+
+        $('.dataTables_filter input').attr("placeholder", "Seach knowldge base")
+    </script>
+}
+
+@section styles
+{
+    <link href="@Url.Content("/Content/DataTables/css/jquery.dataTables.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("/Content/DataTables/css/dataTables.scroller.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("/Content/DataTables/css/dataTables.bootstrap.min.css")" rel="stylesheet" />
+}
+

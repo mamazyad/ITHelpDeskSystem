@@ -1,7 +1,6 @@
 /*
 * Description: This file contains the domain of the employees, created as the super-class of the system users and storing thier common attributes.
 * Author: mamazyad
-* Date: 20/03/2018
 */
 
 namespace ITHelpDeskSystem.Models

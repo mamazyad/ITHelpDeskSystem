@@ -27,12 +27,12 @@ namespace ITHelpDeskSystem.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-
         /// <summary>
         /// This action lists all the tickets pertaining to the user logged in. In case of IT staff, based on the category the IT staff is responsible for, Staff will see the tickets they have created while Admin can see all the tickets created.
         /// </summary>
         /// <returns>Ticket, Index view</returns>
         // GET: Ticket
+        [Authorize(Roles = "Staff, ITStaff, Admin")]
         public ActionResult Index()
         {
             var isAdmin = User.IsInRole("Admin");
@@ -136,7 +136,10 @@ namespace ITHelpDeskSystem.Controllers
             return View(model);
         }
 
-
+        /// <summary>
+        /// This action allows ticket creation.
+        /// </summary>
+        /// <returns>Ticket Create</returns>
         // GET: Ticket/Create
         [Authorize(Roles = "Staff")]
         public ActionResult Create()
@@ -207,6 +210,7 @@ namespace ITHelpDeskSystem.Controllers
                     // Add the path to the course object
                     ticket.AttachmentFilePath = appFolder + rand + "-" + filename;
 
+
                 }
                 ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName");
                 db.Tickets.Add(ticket);
@@ -250,7 +254,6 @@ namespace ITHelpDeskSystem.Controllers
                     CreationDate = DateTime.Now,
                     Status = TicketStatus.Open,
                     CreatedBy = User.Identity.GetUserId<int>(),
-                    CreatedByName = model.Employee.FullName,
                     TicketOwner = model.TicketOwner,
                 };
 
@@ -300,10 +303,15 @@ namespace ITHelpDeskSystem.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            
-                return View();
+
+            return View();
         }
 
+        /// <summary>
+        /// This action allows the Admin and IT staff to edit a ticket's details.
+        /// </summary>
+        /// <param name="id">Ticket ID</param>
+        /// <returns>Ticket edit view</returns>
         // GET: Ticket/Edit/5
         [Authorize(Roles = "Admin, ITStaff")]
         public ActionResult Edit(int? id)
@@ -540,6 +548,13 @@ namespace ITHelpDeskSystem.Controllers
             return View(model);
         }
 
+
+        /// <summary>
+        /// This action allows Staff to accelerate tickets.
+        /// </summary>
+        /// <param name="id">Ticket ID</param>
+        /// <param name="model">AccelerateTicketViewModel.</param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Staff")]

@@ -1,7 +1,6 @@
 /*
 * Description: This file contains the domain for the assignment, created to keep track of the date in which IT Staff is assigned/reassigned to a ticket with its comments.
 * Author: mamazyad
-* Date: 20/03/2018
 */
 
 namespace ITHelpDeskSystem.Models

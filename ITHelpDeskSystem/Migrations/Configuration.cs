@@ -145,7 +145,7 @@ namespace ITHelpDeskSystem.Migrations
 
             //    // new Category { CategoryName = "SAP", CategoryDescription = "No description", ITStaffId = ITstaffs.Single(d=>d.UserName=="ITstaff2").Id}
 
-            //     new Category { CategoryName = "WiFi", CategoryDescription = "No description", ITStaffId = ITstaffs.Single(d=>d.UserName=="ITstaff2").Id}
+            //     new Category { CategoryName = "WiFi", CategoryDescription = "No description", ITStaffId = 2}
 
             //};
             //categories.ForEach(s => context.Categories.AddOrUpdate(p => p.CategoryName, s));

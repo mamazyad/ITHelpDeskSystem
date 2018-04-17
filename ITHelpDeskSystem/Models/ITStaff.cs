@@ -1,7 +1,6 @@
 /*
 * Description: This file contains the domain of the IT Staffs, created to store the IT staff information.
 * Author: mamazyad
-* Date: 20/03/2018
 */
 
 namespace ITHelpDeskSystem.Models

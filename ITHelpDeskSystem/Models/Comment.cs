@@ -1,7 +1,6 @@
 ﻿/*
 * Description: This file contains the domain of the comments, created to store Staff's and ITstaff's comments on the Iticket.
 * Author: mamazyad
-* Date: 20/03/2018
 */
 
 namespace ITHelpDeskSystem.Models

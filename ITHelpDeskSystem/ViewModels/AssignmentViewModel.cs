@@ -1,4 +1,9 @@
-﻿using ITHelpDeskSystem.Models;
+﻿/*
+* Description: This file is the assignment ViewModel (based on the assignment model), created to to pass information between assignment views and its controller.
+* Author: mamazyad
+*/
+
+using ITHelpDeskSystem.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

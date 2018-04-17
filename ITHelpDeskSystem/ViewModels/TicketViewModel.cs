@@ -40,7 +40,7 @@ namespace ITHelpDeskSystem.ViewModels
 
         public string AttachmentFilePath { get; set; }
 
-        [Display (Name = "Creation date")]
+        [Display(Name = "Creation date")]
         [DisplayFormat(DataFormatString = "{0:dddd, dd MMMM yyyy hh:mm tt}")]
         public DateTime CreationDate { get; set; }
 

@@ -54,12 +54,8 @@ namespace ITHelpDeskSystem.ViewModels
 
         public string Mobile { get; set; }
 
-        //public string Speciality { get; set; }
-
         [Display(Name = "Extension Number")]
         public string ExtensionNumber { get; set; }
-
-        //public string Position { get; set; }
 
         [Display(Name = "Office Number")]
         public string OfficeNumber { get; set; }
