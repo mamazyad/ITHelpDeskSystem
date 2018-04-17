@@ -12,7 +12,7 @@ The aim of the application is to provide users with an automated point of contac
  ## Users
  * IT staff (technicians)  
  * IT manager
- * It Help Desk System admin
+ * IT Help Desk System admin
  * Staff
 
 ## Features
