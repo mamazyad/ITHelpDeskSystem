@@ -85,11 +85,16 @@
                 <p>No attachments</p>
             }
         </dd>
-        @if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin"))
-        {
-            @Html.ActionLink("Edit solution", "Edit", new { id = Model.Id }, new { @class = "btn btn-default relative pull-right" })
-        }
-        @Html.ActionLink("Back to all sulotions", "Index", null, new { @class = "btn btn-default pull-left" })
 
     </dl>
+</div>
+<div class="form-actions no-color">
+    <div style="display:inline; margin-right:40px">@Html.ActionLink("Back to all sulotions", "Index", null, new { @class = "btn btn-primary" })</div>
+    @if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin"))
+    { 
+        <a style="display:inline; background-color: #6bc8c0; color:#ffffff; border-color:#6bc8c0;" , href="@Url.Action("Edit", "KnowledgeBase", new { id = Model.Id })" class="btn btn-primary">
+            <span class="glyphicon glyphicon-wrench "></span>
+            Edit solution
+        </a>
+    }
 </div>

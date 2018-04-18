@@ -35,9 +35,27 @@ legend.legend-border {
     width: inherit;
     padding: 5px 10px;
     border-bottom: none;
+    color: aliceblue
 }
 
 
 .navbar-inverse {
-    background-color: #133d56;
+    background-color: #082135;
 }
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family:Lato,"Helvetica Neue", Arial, sans-serif;
+}
+

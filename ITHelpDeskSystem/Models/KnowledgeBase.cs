@@ -38,12 +38,14 @@ namespace ITHelpDeskSystem.Models
 
         public string EditedByName { get; set; }
 
+        //
         public int CreatedBy { get; set; }
 
         public string CreatedByName { get; set; }
 
         public string KBAttachmentFilePath { get; set; }
 
+        //
         public int ITStaffId { get; set; }
 
         public virtual ITStaff ITStaff { get; set; }

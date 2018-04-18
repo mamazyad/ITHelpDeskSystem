@@ -78,19 +78,23 @@
         <dd>
             @Html.DisplayFor(model => model.KBAttachment)
             @if (!String.IsNullOrEmpty(Model.KBAttachmentFilePath))
-        {
-            <a href="@Url.Content(Model.KBAttachmentFilePath)">Course Outline</a>
-    }
+            {
+                <a href="@Url.Content(Model.KBAttachmentFilePath)">Course Outline</a>
+            }
+            @if (String.IsNullOrEmpty(Model.KBAttachmentFilePath))
+            {
+                <p>No attachments</p>
+            }
         </dd>
-
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
     <div class="form-actions no-color">
-        <button class="btn btn-danger pull-right"> <span class="glyphicon glyphicon-trash" type="submit"></span> Delete</button> 
-        @Html.ActionLink("Back to all sulotions", "Index", null, new { @class = "btn btn-default"})
+        <div style="display:inline; margin-right:40px">@Html.ActionLink("Back to all sulotions", "Index", null, new { @class = "btn btn-primary" })</div>
+        <button class="btn btn-danger "> <span class="glyphicon glyphicon-trash" type="submit"></span> Delete</button>
     </div>
     }
 </div>

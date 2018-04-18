@@ -1,10 +1,11 @@
 ﻿@model ITHelpDeskSystem.ViewModels.KnowledgeBaseViewModel
 
 @{
-    ViewBag.Title = "Update solution";
+    ViewBag.Title = "Edit solution";
 }
-<h2>Update solution</h2>
+<h2>Edit solution</h2>
 
+<h3>Edit/update this solution</h3>
 
 @using (Html.BeginForm("Edit", "KnowledgeBase", FormMethod.Post, new { enctype = "multipart/form-data" }))
 
@@ -51,22 +52,20 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.KBAttachment, htmlAttributes: new { @class = "control-label col-md-2" })
-            @if (!String.IsNullOrEmpty(Model.KBAttachmentFilePath))
+             @if (!String.IsNullOrEmpty(Model.KBAttachmentFilePath))
             {
-                <a href="@Url.Content(Model.KBAttachmentFilePath)">View attachments</a>
+                <a style="display:inline-block; margin-right:10px" href="@Url.Content(Model.KBAttachmentFilePath)">View attachments </a>
             }
-            <div class="col-md-10">
-                @Html.TextBox("KBAttachment", "", new { type = "file" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-success pull-right" />
-                @Html.ActionLink("Back to all sulotions", "Index", null, new { @class = "btn btn-default" })
-            </div>
+                <p style="display:inline-block;">  @Html.TextBox("KBAttachment", "", new { type = "file" })</p>
+                
         </div>
     </div>
+
+    <div style=" margin-top:30px;" class="form-actions no-color">
+        <div style="display:inline; margin-right:40px;">@Html.ActionLink("Back to all sulotions", "Index", null, new { @class = "btn btn-primary" })</div>
+        <button class="btn btn-success "> <span class="glyphicon glyphicon-floppy-saved" type="submit"></span> Save</button>
+    </div>
+
 }
 
 @section Scripts {

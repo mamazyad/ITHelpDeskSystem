@@ -25,9 +25,11 @@ namespace ITHelpDeskSystem.ViewModels
         public string IncidentTitle { get; set; }
 
         [Display(Name = "Incident Description")]
+        [DataType(DataType.MultilineText)]
         public string IncidentDescription { get; set; }
 
         [Display(Name = "Solution Description")]
+        [DataType(DataType.MultilineText)]
         public string SolutionDescription { get; set; }
 
         public string KBAttachmentFilePath { get; set; }

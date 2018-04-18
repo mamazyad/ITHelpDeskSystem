@@ -10,14 +10,17 @@
     table.dataTable thead .sorting_desc {
         background: none;
     }
+
 </style>
 
-<h2> All solutions</h2>
+<h2>All solutions</h2>
 
 @if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin"))
 {
-    <a> @Html.ActionLink("Add new solution", "Create", null, new { @class = "btn btn-success btn-xs pull-left" }) </a>
-
+    <a style="margin-bottom:15px;" , href="@Url.Action("Create", "KnowledgeBase")" class="btn btn-success btn-sm pull-right">
+        <span  class="glyphicon glyphicon-plus "></span>
+        Add new solution
+    </a>
 }
 
 <table class="table" id="employeesTable" class="display" width="100%" cellspacing="0">
@@ -38,29 +41,29 @@
     </thead>
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Topic)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IncidentTitle)
-            </td>
-            <td>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Topic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IncidentTitle)
+        </td>
+        <td>
                 @Html.DisplayFor(modelItem => item.SolutionDescription)
-            </td>
-            <td>
-                @Html.ActionLink("Details", "Details", new { id = item.Id })
-                @if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin"))
-                {
-                    <p style="display:inline;">|</p> @Html.ActionLink("Edit", "Edit", new { id = item.Id }) <p style="display:inline;">|</p>
-                }
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.Id })
+            @if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin"))
+        {
+            <p style="display:inline;">|</p> @Html.ActionLink("Edit", "Edit", new { id = item.Id }) <p style="display:inline;">|</p>
+    }
 
-                @if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin"))
-                {
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                }
-            </td>
-        </tr>
+            @if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+    }
+        </td>
+    </tr>
     }
 
 </table>

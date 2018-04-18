@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - IT Help Desk</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("styles", required: false)
@@ -26,7 +27,10 @@
                     <li>@Html.ActionLink("Users", "AllUsers", "Home")</li>
                     <li>@Html.ActionLink("Categories", "Index", "Category")</li>
                     <li>@Html.ActionLink("Tickets", "Index", "Ticket")</li>
+                   @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+                   {
                     <li>@Html.ActionLink("Criterion", "Index", "Criterion")</li>
+                   }
                     <li>@Html.ActionLink("Knowledge Base", "Index", "KnowledgeBase")</li>
 
                 </ul>
