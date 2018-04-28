@@ -28,6 +28,7 @@ The aim of the application is to provide users with an automated point of contac
 - In case a ticket has exceeded the time allowed for it to be resolved, the IT staff responsible and the **IT Help Desk system admin are  notified**.
 
 ## Built with
--	Visual Studio (Version 15.5)
--	MVC (Version 5.2.3.0)
--	Microsoft SQL Server Management Studio (version 14.0)  
+-	Visual Studio (version 15.5)
+-	MVC (version 5.2.3.0)
+-	Entity Framework (version 6.1.3)
+- Microsoft Asp.Net Identity (version 2.2.1)
