@@ -25,7 +25,7 @@ namespace ITHelpDeskSystem.Controllers
         /// This action allows for ticket reassignment by changing the ticket category.
         /// </summary>
         /// <param name="id">Ticket Id</param>
-        /// <returns>Ticket index</returns>
+        /// <returns>Ticket Index on success</returns>
         // GET: Assignment/Create
         [Authorize(Roles = "ITStaff, Admin")]
         public ActionResult Assign(int? id)

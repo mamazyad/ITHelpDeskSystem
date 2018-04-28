@@ -27,6 +27,8 @@ namespace ITHelpDeskSystem.ViewModels
 
         public DateTime? FeedbackDate { get; set; }
 
+        public int? SelectedAnswer { get; set; }
+
         public string FeedbackComment { get; set; }
 
         public int TicketId { get; set; }

@@ -4,11 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - IT Help Desk</title>
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="icon" href="@Url.Content("~/favicon.ico")" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("styles", required: false)
-
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -19,20 +19,47 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+               
+                <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+                    <img src="~/Content/Image/Logo2 - Copy.png" />
+                </a>
+                @*<a href="@Url.Action("Index", "Home")" class="navbar-brand">
+            <img src="~/Content/Image/Logo2 - Copy.png" title="IT Help Desk" alt="IT Help Desk" />
+        </a>*@
+
                 @Html.ActionLink("IT Help Desk", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Users", "AllUsers", "Home")</li>
-                    <li>@Html.ActionLink("Categories", "Index", "Category")</li>
-                    <li>@Html.ActionLink("Tickets", "Index", "Ticket")</li>
-                   @if (ViewContext.HttpContext.User.IsInRole("Admin"))
-                   {
-                    <li>@Html.ActionLink("Criterion", "Index", "Criterion")</li>
-                   }
                     <li>@Html.ActionLink("Knowledge Base", "Index", "KnowledgeBase")</li>
-
+                    @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Users", "AllUsers", "Home")</li>
+                        <li>@Html.ActionLink("Categories", "Index", "Category")</li>
+                    }
+                    @if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin") || ViewContext.HttpContext.User.IsInRole("Staff"))
+                    {
+                        <li>@Html.ActionLink("Tickets", "Index", "Ticket")</li>
+                    }
+                    @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Criteria", "Index", "Criterion")</li>
+                    }
+                     @if (ViewContext.HttpContext.User.IsInRole("Staff"))
+                    {
+                        <li>@Html.ActionLink("Report issues", "Create", "Ticket")</li>
+                    }
+                       @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Report issues", "CreateOnBehalf", "Ticket")</li>
+                    }
+                         @if (ViewContext.HttpContext.User.IsInRole("ITManager"))
+                    {
+                        <li>@Html.ActionLink("Reports", "Index", "ITManager")</li>
+                    }
+                    
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -42,7 +69,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year IT Help Desk system</p>
+            <p>&copy; @DateTime.Now.Year  IT Help Desk System</p>
         </footer>
     </div>
 

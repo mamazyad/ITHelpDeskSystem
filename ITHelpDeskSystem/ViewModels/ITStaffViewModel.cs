@@ -71,6 +71,11 @@ namespace ITHelpDeskSystem.ViewModels
 
         public string Speciality { get; set; }
 
+        [Display(Name = "Ticket Load")]
+        public int? TicketLoad { get; set; }
+
+        public double? Lag { get; set; }
+
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Starting Date")]

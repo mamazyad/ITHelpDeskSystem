@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ITHelpDeskSystem.ViewModels.ITStaffViewModel>
+
+@{
+    ViewBag.Title = "Summary";
+}
+
+<h2>Summary</h2>
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TicketLoad)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Lag)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketLoad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lag)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>

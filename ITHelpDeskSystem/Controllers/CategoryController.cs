@@ -27,6 +27,7 @@ namespace ITHelpDeskSystem.Controllers
         /// </summary>
         /// <returns> Category, Index view</returns>
         // GET: Category 
+        [Authorize(Roles = "ITStaff, Admin")]
         public ActionResult Index()
         {
             var categories = db.Categories.ToList();
@@ -38,7 +39,7 @@ namespace ITHelpDeskSystem.Controllers
                     Id = item.CategoryId,
                     CategoryName = item.CategoryName,
                     CategoryDescription = item.CategoryDescription,
-                    ITStaff = item.ITStaff.FirstName + " " + item.ITStaff.LastName,
+                    ITStaff = item.ITStaff.FullName,
                 });
             }
             return View(model);
@@ -47,9 +48,10 @@ namespace ITHelpDeskSystem.Controllers
         /// <summary>
         ///  This action provides the details of a specific category, Category Details view is based on it with links to Delete and Edit actions.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Category ID</param>
         /// <returns>Category, Details view</returns>
         // GET: Category/Details/5
+        [Authorize(Roles = "ITStaff, Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -78,6 +80,7 @@ namespace ITHelpDeskSystem.Controllers
         /// <param name="model">Ticket model</param>
         /// <returns> Category, Create view</returns>
         // GET: Category/Create. 
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             var list = db.ITStaffs.Where(m => m.IsManager == false).Select(p => new { p.Id, FullName = p.FirstName + " " + p.LastName });
@@ -122,7 +125,7 @@ namespace ITHelpDeskSystem.Controllers
         /// <param name="model">Ticket model</param>
         /// <returns> Category, Edit view</returns>
         // GET: Category/Edit/5
-        [Authorize(Roles = "Admin, ITStaff")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -155,7 +158,7 @@ namespace ITHelpDeskSystem.Controllers
         /// <returns> Category, Edit view</returns>
         // (POST: Category/Edit/5) 
         [HttpPost]
-        [Authorize(Roles = "Admin, ITStaff")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, CategoryViewModel model)
         {
@@ -183,7 +186,8 @@ namespace ITHelpDeskSystem.Controllers
         /// </summary>
         /// <param name="id">Ticket ID</param>
         /// <returns> Category, Delete view</returns>
-        // GET: Category/Delete/5. 
+        // GET: Category/Delete/5.
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -212,6 +216,7 @@ namespace ITHelpDeskSystem.Controllers
         /// <param name="id">Ticket ID</param>
         /// <returns> Category, Delete view</returns>
         // (POST: Category/Delete/5) 
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

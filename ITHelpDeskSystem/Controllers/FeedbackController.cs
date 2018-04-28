@@ -34,7 +34,6 @@ namespace ITHelpDeskSystem.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
             Ticket ticket = db.Tickets.Find(id);
             if (ticket == null)
             {
@@ -54,72 +53,58 @@ namespace ITHelpDeskSystem.Controllers
                 new AnswerViewModel {Id = 4, Text = "Satisfied"},
                 new AnswerViewModel {Id = 5, Text = "Very Satisfied"},
             };
-
-            ////HACK Text is the question/Criterion name
-            //var criteria = new List<CriterionViewModel>
-            //{
-            //    new CriterionViewModel  {Id = 1, Text = "Criaterion Name 1", PossibleAnswers = possibleAnswers},
-            //    new CriterionViewModel  {Id = 2, Text = "Criaterion Name 2", PossibleAnswers = possibleAnswers},
-            //};
-
-            //var model1 = new FeedbackViewModel();
-
-            //foreach (var item in criteria)
-            //{
-            //    model1.Criteria.Add(item);
-            //}
-
-            var criterion = db.Criteria.ToList();
-            var modell = new FeedbackViewModel();
-            var modelX = new List<CriterionViewModel>();
-            foreach (var item in criterion)
+            var criteria = db.Criteria.ToList();
+            var modell = new List<CriterionViewModel>();
+            foreach (var item in criteria)
             {
-              //  modell.Criteria.Add(item);
-                // modelX.Add(new FeedbackViewModel
-               // {
-                  //  Id = item.CriterionId,
-                   
-                    //CriterionDescription=item.CriterionDescription,
-                    //PossibleAnswers = possibleAnswers,
-               // });
+                modell.Add(new CriterionViewModel
+                {
+                    Id = item.CriterionId,
+                    CriterionDescription = item.CriterionDescription,
+                    PossibleAnswers = possibleAnswers,
+                });
             }
-
-
-            return View(modelX);
+            var modelx = new FeedbackViewModel();
+            modelx.Criteria = modell;
+            return View(modelx);
         }
+
 
         /// <summary>
         /// This action allows Staff to give feedback to service provided.
         /// </summary>
-        /// <param name="model">FeedbackViewModel model</param>
+        /// <param name="model">Feedback View Model model</param>
         /// <returns>Ticket Index</returns>
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //[Authorize(Roles = "Staff")]
-        //public ActionResult Feedback(FeedbackViewModel model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var feedback = new Feedback
-        //        {
-        //            FeedbackId = model.Id,
-        //            FeedbackComment = model.FeedbackComment,
-        //            FeedbackDate = DateTime.Now,
-        //            StaffId = User.Identity.GetUserId<int>(),
-        //        };
-
-        //        foreach (var criterion in model.Criteria)
-        //        {
-
-        //        }
-
-        //        db.Feedbacks.Add(feedback);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index", "Ticket");
-        //    }
-
-        //    return View(model);
-        //}
-
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Staff")]
+        public ActionResult Feedback(int Id, FeedbackViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Ticket ticket = db.Tickets.Find(Id);
+                if (ticket == null)
+                {
+                    return HttpNotFound();
+                }
+                var feedback = new Feedback
+                {
+                    FeedbackId = model.Id,
+                    FeedbackComment = model.FeedbackComment,
+                    FeedbackDate = DateTime.Now,
+                    StaffId = User.Identity.GetUserId<int>(),
+                    TicketId = Id,
+                };
+                foreach (var criterion in model.Criteria)
+                {
+                    model.Id= criterion.Id;
+                    model.SelectedAnswer = criterion.SelectedAnswer;
+                }
+                db.Feedbacks.Add(feedback);
+                db.SaveChanges();
+                return RedirectToAction("Index", "Ticket");
+            }
+            return View(model);
+        }
     }
 }

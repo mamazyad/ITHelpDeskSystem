@@ -150,7 +150,6 @@ namespace ITHelpDeskSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Find department
                 var staff = new Staff
                 {
                     ManagerialPosition = model.ManagerialPosition,
@@ -178,14 +177,12 @@ namespace ITHelpDeskSystem.Controllers
                     }
                     else
                     {
-                        // Display error messages in the view @Html.ValidationSummary()
                         ModelState.AddModelError(string.Empty, roleResult.Errors.First());
                         return View();
                     }
                 }
                 else
                 {
-                    // Display error messages in the view @Html.ValidationSummary()
                     ModelState.AddModelError(string.Empty, result.Errors.First());
                     return View();
                 }
@@ -199,7 +196,6 @@ namespace ITHelpDeskSystem.Controllers
             var staff = (Staff)UserManager.FindById(id);
             if (staff == null)
             {
-                //return HttpNotFound();
                 return View("Error");
             }
 

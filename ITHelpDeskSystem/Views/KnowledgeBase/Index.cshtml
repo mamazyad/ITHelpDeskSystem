@@ -10,7 +10,6 @@
     table.dataTable thead .sorting_desc {
         background: none;
     }
-
 </style>
 
 <h2>All solutions</h2>
@@ -18,12 +17,12 @@
 @if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin"))
 {
     <a style="margin-bottom:15px;" , href="@Url.Action("Create", "KnowledgeBase")" class="btn btn-success btn-sm pull-right">
-        <span  class="glyphicon glyphicon-plus "></span>
+        <span class="glyphicon glyphicon-plus "></span>
         Add new solution
     </a>
 }
 
-<table class="table" id="employeesTable" class="display" width="100%" cellspacing="0">
+<table class="table" id="knowledgeBaseTable" class="display" width="100%" cellspacing="0">
     <thead>
         <tr>
             <th>
@@ -41,29 +40,29 @@
     </thead>
     @foreach (var item in Model)
     {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Topic)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IncidentTitle)
-        </td>
-        <td>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Topic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IncidentTitle)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.SolutionDescription)
-        </td>
-        <td>
-            @Html.ActionLink("Details", "Details", new { id = item.Id })
-            @if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin"))
-        {
-            <p style="display:inline;">|</p> @Html.ActionLink("Edit", "Edit", new { id = item.Id }) <p style="display:inline;">|</p>
-    }
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.Id })
+                @if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin"))
+                {
+                    <p style="display:inline;">|</p> @Html.ActionLink("Edit", "Edit", new { id = item.Id }) <p style="display:inline;">|</p>
+                }
 
-            @if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin"))
-        {
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-    }
-        </td>
-    </tr>
+                @if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
+            </td>
+        </tr>
     }
 
 </table>
@@ -76,9 +75,9 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#employeesTable').DataTable();
+            $('#knowledgeBaseTable').DataTable();
         });
-        $('#employeesTable').dataTable({
+        $('#knowledgeBaseTable').dataTable({
             "columnDefs": [
                 { "orderable": false, "targets": -1 }
             ]

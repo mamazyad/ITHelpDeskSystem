@@ -24,8 +24,10 @@ namespace ITHelpDeskSystem.Models
 
         public string FeedbackComment { get; set; }
 
-        [StringLength(64)]
-        public string GradeGiven { get; set; }
+        //[StringLength(64)]
+        //public string GradeGiven { get; set; }
+
+        //public int? SelectedAnswer { get; set; }
 
         public int TicketId { get; set; }
 

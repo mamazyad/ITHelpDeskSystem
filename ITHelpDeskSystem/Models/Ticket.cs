@@ -11,6 +11,8 @@ namespace ITHelpDeskSystem.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
     using System.Web;
+    using System.Net.Mail;
+    using System.Net;
 
     /// <summary>
     /// Ticket is the class that provide information regarding the Staff request for help.
@@ -70,7 +72,7 @@ namespace ITHelpDeskSystem.Models
         public int? AccelaratedBy { get; set; }
 
         public string importance { get; set; }
-
+              
         public string ITstaffEmail { get; set; }
 
         public string ITstaffMobile { get; set; }
@@ -95,6 +97,11 @@ namespace ITHelpDeskSystem.Models
 
         public virtual Staff Accelerator { get; set; }
 
+        //public int? LagTime
+        //{
+        //    get { return Convert.ToInt32(ResultionDate - DueDate); }
+        //}
+        //public TimeSpan? LagTime { get; set; }
     }
 
     /// <summary>
@@ -128,4 +135,5 @@ namespace ITHelpDeskSystem.Models
 
         Closed,
     }
+  
 }

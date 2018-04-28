@@ -35,11 +35,23 @@ namespace ITHelpDeskSystem.Controllers
             {
                 return HttpNotFound();
             }
-            TicketViewModel model = new TicketViewModel
+            CommentViewModel model = new CommentViewModel
             {
                 Id = ticket.TicketId,
             };
-            return View();
+
+            var comments = db.Comments.Where(p => p.TicketId == model.Id).ToList();
+            var model1 = new List<CommentViewModel>();
+            foreach (var item in comments)
+            {
+                model1.Add(new CommentViewModel
+                {
+                    Id = item.CommentId,
+                    CommentDate = item.CommentDate,
+                    CommentText = item.CommentText,
+                });
+            }
+            return View(model);
         }
 
         // POST: Comment/Create

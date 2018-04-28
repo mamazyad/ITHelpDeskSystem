@@ -15,7 +15,11 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Net.Mail;
 using System.Web.Mvc;
+using System.Configuration;
+using System.Threading.Tasks;
+
 
 namespace ITHelpDeskSystem.Controllers
 {
@@ -215,6 +219,8 @@ namespace ITHelpDeskSystem.Controllers
                 ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName");
                 db.Tickets.Add(ticket);
                 db.SaveChanges();
+                var owner = db.Employees.Find(ticket.TicketOwner).Email;
+                //await MessageServices.SendEmail(owner, "f", "d");
                 return RedirectToAction("Index");
             }
             else
@@ -363,7 +369,7 @@ namespace ITHelpDeskSystem.Controllers
                 }
                 ticket.Priority = model.Priority;
                 ticket.IncidentSolution = model.IncidentSolution;
-                ticket.Status = model.Status;
+                ticket.Status = TicketStatus.InProgress;
                 ticket.ResultionDate = model.ResultionDate;
 
                 if (model.Priority == TicketPriority.Critical)
@@ -575,6 +581,41 @@ namespace ITHelpDeskSystem.Controllers
                 return RedirectToAction("Index");
             }
             return View(model);
+        }
+
+
+
+        public async static Task SendEmail(string recipientmail, string subject, string message1)
+        {
+            try
+            {
+
+                var _email = "ihelpdesk23@gmail.com";
+                var _password = ConfigurationManager.AppSettings["EmailPassword"];
+                var _displayName = "IT Help Desk Ticket";
+                MailMessage sysMessage = new MailMessage();
+                sysMessage.To.Add(_email);
+                sysMessage.From = new MailAddress(_email, _displayName);
+                sysMessage.Subject = subject;
+                sysMessage.Body = message1;
+                sysMessage.IsBodyHtml = true;
+
+                using (SmtpClient smtp = new SmtpClient())
+                {
+                    smtp.EnableSsl = true;
+                    smtp.Host = "smtp-mail.outlook.com";
+                    smtp.Port = 587;
+                    smtp.UseDefaultCredentials = false;
+                    smtp.Credentials = new NetworkCredential(_email, _password);
+                    smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    smtp.SendCompleted += (s, e) => { smtp.Dispose(); };
+                    await smtp.SendMailAsync(sysMessage);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

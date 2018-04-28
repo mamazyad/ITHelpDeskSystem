@@ -22,6 +22,7 @@ namespace ITHelpDeskSystem.ViewModels
         public TicketViewModel()
         {
             Assignments = new List<Assignment>();
+            Comments = new List<Comment>();
         }
         public int Id { get; set; }
 
@@ -118,5 +119,7 @@ namespace ITHelpDeskSystem.ViewModels
         public List<Assignment> Assignments { get; set; }
 
         public Employee Employee { get; set; }
+
+        public List<Comment> Comments { get; set; }
     }
 }

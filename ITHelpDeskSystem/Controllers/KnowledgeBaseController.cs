@@ -329,5 +329,17 @@ namespace ITHelpDeskSystem.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult Search(string searchString)
+        {
+            var solutions = db.KnowledgeBases.ToList();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                var result = solutions.Where(s => s.IncidentDescription.Contains(searchString));
+            }
+
+            return View("Index");
+        }
     }
 }
