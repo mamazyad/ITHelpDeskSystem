@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-<head>
+@*<head>
     <!-- include libraries(jQuery, bootstrap) -->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
@@ -13,7 +13,7 @@
     <!-- include summernote css/js -->
     <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
-</head>
+</head>*@
 
 <h2>Create a request</h2>
 @using (Html.BeginForm("Create", "Ticket", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -34,7 +34,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.IncidentDescription, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.IncidentDescription, new { htmlAttributes = new { @class = "form-control", @placeholder = "Put your description", rows = 5 } })
+                @*@Html.EditorFor(model => model.IncidentDescription, new { htmlAttributes = new { @class = "form-control", @placeholder = "Put your description", rows = 5 } })*@
+                @Html.TextAreaFor(model => model.IncidentDescription, new { htmlAttributes = new { @class = "form-control", @placeholder = "Put your description", rows = 5 } })
                 @Html.ValidationMessageFor(model => model.IncidentDescription, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -69,9 +70,6 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#summernote').summernote();
-    });
-    </script>
+    <script src="~/Scripts/tinymce/tinymce.js"></script>
+    <script src="~/Scripts/Main.js"></script>
 }

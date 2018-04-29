@@ -13,6 +13,8 @@ namespace ITHelpDeskSystem.Models
     using System.Web;
     using System.Net.Mail;
     using System.Net;
+    using System.Web.Mvc;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Ticket is the class that provide information regarding the Staff request for help.
@@ -34,6 +36,7 @@ namespace ITHelpDeskSystem.Models
         [StringLength(128)]
         public string Subject { get; set; }
 
+        [AllowHtml]
         [Required]
         public string IncidentDescription { get; set; }
 
