@@ -31,8 +31,8 @@
                 @*@Html.ActionLink("IT Help Desk", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
 
             </div>
-            <div class="navbar-collapse collapse" style="display:inline-block">
-                <ul class="nav navbar-nav" style="margin-top:1em; display:inline">
+            <div class="navbar-collapse collapse" >
+                <ul class="nav navbar-nav" style="margin-top:1em; ">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Knowledge Base", "Index", "KnowledgeBase")</li>
                     @if (ViewContext.HttpContext.User.IsInRole("Admin"))
@@ -63,7 +63,7 @@
                     }
                 </ul>
 
-                <div style="display:inline-grid; margin-left: 55em">@Html.Partial("_LoginPartial")</div>
+                <div class="pull-right" style="display:inline-block; margin-top:13px">@Html.Partial("_LoginPartial")</div>
 
             </div>
         </div>

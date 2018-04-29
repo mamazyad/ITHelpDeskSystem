@@ -391,12 +391,10 @@
     <Content Include="Content\Image\blue_backgrounds_solid_light_65833_1920x1080.jpg" />
     <Content Include="Content\Image\crop.png" />
     <Content Include="Content\Image\favicon.ico" />
-    <Content Include="Content\Image\layoutLogo.png" />
-    <Content Include="Content\Image\layoutLogo2.png" />
-    <Content Include="Content\Image\layoutLogo3.png" />
     <Content Include="Content\Image\LogoBig.png" />
     <Content Include="Content\Image\Picture1.png" />
     <Content Include="Content\Image\white.png" />
+    <Content Include="Content\StyleSheet1.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
