@@ -10,9 +10,12 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("styles", required: false)
+
+
 </head>
+
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="height:69px">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -21,15 +24,15 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                @*<a class="navbar-brand" href="@Url.Action("Index", "Home")">
-                        <img style="wwidth:100%" src="~/Content/Image/layoutLogo.png" />
-                    </a>*@
+                    <a  class="navbar-brand" style="margin-top:-4px" href="@Url.Action("Index", "Home")">
+                        <image src="~/Content/Image/crop.png"/>
+                    </a>
 
-                @Html.ActionLink("IT Help Desk", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @*@Html.ActionLink("IT Help Desk", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
 
             </div>
-            <div class="navbar-collapse collapse" >
-                <ul class="nav navbar-nav">
+            <div class="navbar-collapse collapse" style="display:inline-block">
+                <ul class="nav navbar-nav" style="margin-top:1em; display:inline">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Knowledge Base", "Index", "KnowledgeBase")</li>
                     @if (ViewContext.HttpContext.User.IsInRole("Admin"))
@@ -58,9 +61,10 @@
                         <li>@Html.ActionLink("Reports", "Index", "ITManager")</li>
                         <li>@Html.ActionLink("All tickets", "AllTickets", "ITManager")</li>
                     }
-
                 </ul>
-                @Html.Partial("_LoginPartial")
+
+                <div style="display:inline-grid; margin-left: 55em">@Html.Partial("_LoginPartial")</div>
+
             </div>
         </div>
     </div>
