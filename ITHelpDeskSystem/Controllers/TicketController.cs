@@ -71,7 +71,7 @@ namespace ITHelpDeskSystem.Controllers
         /// <param name="id">Details takes the ticket ID as a parameter</param>
         /// <returns>Ticket, Details view</returns>
         // GET: Ticket/Details/5
-        [Authorize(Roles = "ITStaff, Admin")]
+        [Authorize(Roles = "ITStaff, Admin, ITManager")]
         public ActionResult ITDetails(int? id)
         {
             if (id == null)

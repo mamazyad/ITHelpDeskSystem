@@ -116,6 +116,34 @@ namespace ITHelpDeskSystem.ViewModels
         //[DataType(DataType.MultilineText)]
         //public string AccelerationComment { get; set; }
 
+
+
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        [Display(Name = "Name")]
+        public string Name { get; set; }
+
+        public string Department { get; set; }
+
+        [Display(Name = "Job Title")]
+        public string JobTitle { get; set; }
+
+        public string Mobile { get; set; }
+
+        [Display(Name = "Extension Number")]
+        public string ExtensionNumber { get; set; }
+
+        [Display(Name = "Office Number")]
+        public string OfficeNumber { get; set; }
+
+        [Display(Name = "Managerial Position")]
+        public ManagerialPosition? ManagerialPosition { get; set; }
+
+
+
+
+
         public List<Assignment> Assignments { get; set; }
 
         public Employee Employee { get; set; }

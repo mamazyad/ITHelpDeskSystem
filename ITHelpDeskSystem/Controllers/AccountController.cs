@@ -79,6 +79,10 @@ namespace ITHelpDeskSystem.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    if (User.IsInRole("ITManager"))
+                    {
+                        return View("Index","ITManager");
+                    }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");

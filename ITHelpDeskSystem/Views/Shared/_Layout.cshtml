@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - IT Help Desk</title>
     <link rel="icon" href="@Url.Content("~/favicon.ico")" />
     <link href="~/Content/Site.css" rel="stylesheet" />
+    @Styles.Render("~/bundles/cssdatatables")
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("styles", required: false)
@@ -19,18 +20,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-               
+
                 <a class="navbar-brand" href="@Url.Action("Index", "Home")">
-                    <img src="~/Content/Image/Logo2 - Copy.png" />
-                </a>
-                @*<a href="@Url.Action("Index", "Home")" class="navbar-brand">
-            <img src="~/Content/Image/Logo2 - Copy.png" title="IT Help Desk" alt="IT Help Desk" />
-        </a>*@
+                        <img style="" src="~/Content/Image/layoutLogo.png" />
+                    </a>
 
                 @Html.ActionLink("IT Help Desk", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
 
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse" >
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Knowledge Base", "Index", "KnowledgeBase")</li>
@@ -47,19 +45,20 @@
                     {
                         <li>@Html.ActionLink("Criteria", "Index", "Criterion")</li>
                     }
-                     @if (ViewContext.HttpContext.User.IsInRole("Staff"))
+                    @if (ViewContext.HttpContext.User.IsInRole("Staff"))
                     {
                         <li>@Html.ActionLink("Report issues", "Create", "Ticket")</li>
                     }
-                       @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+                    @if (ViewContext.HttpContext.User.IsInRole("Admin"))
                     {
                         <li>@Html.ActionLink("Report issues", "CreateOnBehalf", "Ticket")</li>
                     }
-                         @if (ViewContext.HttpContext.User.IsInRole("ITManager"))
+                    @if (ViewContext.HttpContext.User.IsInRole("ITManager"))
                     {
                         <li>@Html.ActionLink("Reports", "Index", "ITManager")</li>
+                        <li>@Html.ActionLink("All tickets", "AllTickets", "ITManager")</li>
                     }
-                    
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -72,9 +71,9 @@
             <p>&copy; @DateTime.Now.Year  IT Help Desk System</p>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jsdatatables")
     @RenderSection("scripts", required: false)
 </body>
 </html>

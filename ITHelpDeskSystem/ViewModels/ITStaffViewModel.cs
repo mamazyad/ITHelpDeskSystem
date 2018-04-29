@@ -76,6 +76,9 @@ namespace ITHelpDeskSystem.ViewModels
 
         public double? Lag { get; set; }
 
+        [Display(Name = "Category Load")]
+        public int CategoryLoad { get; set; }
+
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Starting Date")]

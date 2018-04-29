@@ -23,26 +23,23 @@ namespace ITHelpDeskSystem.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        // GET: ITManager
         [Authorize(Roles = "ITManager")]
-        public ActionResult ITManagerHome()
+        public ActionResult Index()
         {
-            var tickets = db.Tickets.ToList();
-            var model = new List<TicketViewModel>();
-            foreach (var item in tickets)
+            var ITstaffs = db.ITStaffs.Where(m => m.IsManager == false).ToList();
+            var Admins = db.ITHelpDeskAdmins.ToList();
+            var AllIT = Admins.Concat(ITstaffs);
+            var model = new List<ITStaffViewModel>();
+            foreach (var item in ITstaffs)
             {
-                model.Add(new TicketViewModel
-                {
-                    Id = item.TicketId,
-                    Subject = item.Subject,
-                    IncidentDescription = item.IncidentDescription,
-                    CreationDate = item.CreationDate,
-                    Category = item.Category.CategoryName,
-                    CreatedByName = item.Employee.FullName,
-                    Status = item.Status,
-                    TicketOwnerName = item.StaffOwner.FullName,
-                    Priority = item.Priority,
-                    DueDate = item.DueDate,
-                });
+                    model.Add(new ITStaffViewModel
+                    {
+                        Id = item.Id,
+                        FirstName = item.FullName,
+                        CategoryLoad = db.Categories.Count(m => m.ITStaffId == item.Id),
+                        TicketLoad = db.Tickets.Count(m => m.Category.ITStaffId == item.Id),
+                    });
             }
             return View(model);
         }
@@ -50,26 +47,80 @@ namespace ITHelpDeskSystem.Controllers
 
         // GET: ITManager
         [Authorize(Roles = "ITManager")]
-        public ActionResult Index()
+        public ActionResult TechnicianTickets(int? id)
         {
-            var ITstaffs = db.ITStaffs.ToList();
-            var Tickets = db.Tickets.ToList();
-            var model = new List<ITStaffViewModel>();
-            foreach (var item in ITstaffs)
+            if (id == null)
             {
-                var cat = db.Categories.Where(m => m.ITStaffId == item.Id).ToList();
-                foreach (var itemx in cat)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var Tickets = db.Tickets.Where(m => m.Category.ITStaffId == id).ToList();
+            var model = new List<TicketViewModel>();
+            foreach (var item in Tickets)
+            {
+                model.Add(new TicketViewModel
                 {
-                    model.Add(new ITStaffViewModel
-                    {
-                        Id = item.Id,
-                        FirstName = item.FullName,
-                        TicketLoad = db.Tickets.Count(m => m.CategoryId == itemx.CategoryId),
+                    Id = item.TicketId,
+                    Subject = item.Subject,
+                    TicketOwnerName = item.StaffOwner.FullName,
+                    IncidentDescription = item.IncidentDescription,
+                    CreationDate = item.CreationDate,
+                    Category = item.Category.CategoryName,
+                    Status = item.Status,
+                    DueDate = item.DueDate,
+                    ResultionDate = item.ResultionDate,
                 });
-                }
             }
             return View(model);
         }
+
+        // GET: ITManager
+        [Authorize(Roles = "ITManager")]
+        public ActionResult AllTickets()
+        {
+            var Tickets = db.Tickets.ToList();
+            var model = new List<TicketViewModel>();
+            foreach (var item in Tickets)
+            {
+                model.Add(new TicketViewModel
+                {
+                    Id = item.TicketId,
+                    Subject = item.Subject,
+                    TicketOwnerName = item.StaffOwner.FullName,
+                    IncidentDescription = item.IncidentDescription,
+                    CreationDate = item.CreationDate,
+                    Category = item.Category.CategoryName,
+                    Status = item.Status,
+                    DueDate = item.DueDate,
+                    ResultionDate = item.ResultionDate,
+                });
+            }
+            return View(model);
+        }
+
+
+        [Authorize(Roles = "ITManager")]
+        public ActionResult TicketDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Ticket ticket = db.Tickets.Find(id);
+            if (ticket == null)
+            {
+                return HttpNotFound();
+            }
+
+            var model = new TicketViewModel
+            {
+                Id = ticket.TicketId,
+                Email = ticket.StaffOwner.Email,
+            };
+
+            return View(model);
+        }
+
 
         //public static TimeSpan? Difference(DateTime resulotion, DateTime DueDate)
         //{
@@ -88,76 +139,6 @@ namespace ITHelpDeskSystem.Controllers
         //    return averageTimeSpan;
         //}
 
-        // GET: ITManager/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
 
-        // GET: ITManager/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: ITManager/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: ITManager/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: ITManager/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: ITManager/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: ITManager/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

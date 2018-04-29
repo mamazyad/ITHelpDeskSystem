@@ -1,177 +1,18 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<link href="~/Content/Site.css" rel="stylesheet" />
 
 
 <style class="cp-pen-styles">
     body {
         background-image: url('../../Content/Image/blue_backgrounds_solid_light_65833_1920x1080.jpg');
     }
-
-    *,
-    *::before,
-    *::after {
-        box-sizing: border-box;
-    }
-
-    .search-form {
-        position: relative;
-        top: 50%;
-        left: 50%;
-        width: 350px;
-        height: 40px;
-        border-radius: 40px;
-        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-        -webkit-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-        background: #fff;
-        -webkit-transition: all 0.3s ease;
-        transition: all 0.3s ease;
-    }
-
-        .search-form.focus {
-            box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
-        }
-
-    .search-input {
-        position: absolute;
-        top: 10px;
-        left: 38px;
-        font-size: 14px;
-        background: none;
-        color: #5a6674;
-        width: 195px;
-        height: 20px;
-        border: none;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        outline: none;
-    }
-
-        .search-input::-webkit-search-cancel-button {
-            -webkit-appearance: none;
-            appearance: none;
-        }
-
-    .search-button {
-        position: absolute;
-        top: 10px;
-        left: 15px;
-        height: 20px;
-        width: 20px;
-        padding: 0;
-        margin: 0;
-        border: none;
-        background: none;
-        outline: none !important;
-        cursor: pointer;
-    }
-
-        .search-button svg {
-            width: 20px;
-            height: 20px;
-            fill: #5a6674;
-        }
-
-    .search-option {
-        position: absolute;
-        text-align: right;
-        top: 10px;
-        right: 15px;
-    }
-
-        .search-option div {
-            position: relative;
-            display: inline-block;
-            margin: 0 1px;
-            cursor: pointer;
-        }
-
-            .search-option div input {
-                position: absolute;
-                top: 0;
-                left: 0;
-                opacity: 0.01;
-                cursor: pointer;
-            }
-
-            .search-option div span {
-                position: absolute;
-                display: block;
-                text-align: center;
-                left: 50%;
-                -webkit-transform: translateX(-50%);
-                transform: translateX(-50%);
-                opacity: 0;
-                background: #929AA3;
-                color: #fff;
-                font-size: 9px;
-                letter-spacing: 1px;
-                line-height: 1;
-                text-transform: uppercase;
-                padding: 4px 7px;
-                border-radius: 12px;
-                top: -18px;
-                -webkit-transition: all .2s ease-in-out;
-                transition: all .2s ease-in-out;
-            }
-
-                .search-option div span::after {
-                    content: '';
-                    position: absolute;
-                    bottom: -3px;
-                    left: 50%;
-                    -webkit-transform: translateX(-50%);
-                    transform: translateX(-50%);
-                    border-top: 4px solid #929AA3;
-                    border-left: 4px solid transparent;
-                    border-right: 4px solid transparent;
-                    -webkit-transition: all .2s ease-in-out;
-                    transition: all .2s ease-in-out;
-                }
-
-            .search-option div:hover span {
-                opacity: 1;
-                top: -21px;
-            }
-
-            .search-option div label {
-                display: block;
-                cursor: pointer;
-            }
-
-            .search-option div svg {
-                height: 20px;
-                width: 20px;
-                fill: #5a6674;
-                opacity: 0.6;
-                -webkit-transition: all .2s ease-in-out;
-                transition: all .2s ease-in-out;
-                pointer-events: none;
-            }
-
-            .search-option div:hover svg {
-                opacity: 1;
-            }
-
-            .search-option div input:checked + label svg {
-                fill: #e24040;
-                opacity: .9;
-            }
-
-            .search-option div input:checked + label span {
-                background: #e24040;
-            }
-
-                .search-option div input:checked + label span::after {
-                    border-top-color: #e24040;
-                }
 </style>
 
 <body>
 
-    <div  style="margin:auto;  width: 35%;">
+    <div style="margin:auto;  width: 35%;">
         <img src="~/Content/Image/LogoBig.png" />
     </div>
     <form class="search-form" style="margin-top:30px;">
@@ -199,7 +40,7 @@
             <path d="M 4 4 L 4 5 L 4 27 L 4 28 L 5 28 L 27 28 L 28 28 L 28 27 L 28 5 L 28 4 L 27 4 L 5 4 L 4 4 z M 6 6 L 26 6 L 26 26 L 6 26 L 6 6 z M 16 8.40625 L 13.6875 13.59375 L 8 14.1875 L 12.3125 18 L 11.09375 23.59375 L 16 20.6875 L 20.90625 23.59375 L 19.6875 18 L 24 14.1875 L 18.3125 13.59375 L 16 8.40625 z M 16 13.3125 L 16.5 14.40625 L 17 15.5 L 18.1875 15.59375 L 19.40625 15.6875 L 18.5 16.5 L 17.59375 17.3125 L 17.8125 18.40625 L 18.09375 19.59375 L 17 19 L 16 18.40625 L 15 19 L 14 19.59375 L 14.3125 18.40625 L 14.5 17.3125 L 13.59375 16.5 L 12.6875 15.6875 L 13.90625 15.59375 L 15.09375 15.5 L 15.59375 14.40625 L 16 13.3125 z" />
         </symbol>
 
-        <div  style="margin:auto;  width: 35%;">
+        <div style="margin:auto;  width: 35%;">
             <a href="@Url.Action("Index", "KnowledgeBase")">
                 @*<img src="~/Content/Image/Logo2 - Copy.png" />*@
                 <span class="btn-group-lg"></span>

@@ -90,6 +90,10 @@
             {
                 <a href="@Url.Content(Model.AttachmentFilePath)">View attachment</a>
             }
+             @if (String.IsNullOrEmpty(Model.AttachmentFilePath))
+            {
+                <p style="color:lightgray">No attachments</p>
+            }
         </dd>
     </dl>
 </div>
@@ -98,9 +102,14 @@
 @if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin"))
 {
     @Html.ActionLink("Reassign", "Assign", "Assignment", new { id = Model.Id }, null) <p style="display:inline;">|</p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) <p style="display:inline"> | </p>
+    @Html.ActionLink("Back to List", "Index")
 }
 
-@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) <p style="display:inline"> | </p>
+@if (ViewContext.HttpContext.User.IsInRole("ITManager") || ViewContext.HttpContext.User.IsInRole("Admin"))
+{
+    @Html.ActionLink("Back to Summery", "Index", "ITManager")
+}
 
-@Html.ActionLink("Back to List", "Index")
+
 

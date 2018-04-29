@@ -1,0 +1,26 @@
+﻿@model ITHelpDeskSystem.ViewModels.TicketViewModel
+
+@{
+    ViewBag.Title = "TicketDetails";
+}
+
+<h2>TicketDetails</h2>
+
+<div>
+    <h4>TicketViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="javascript:void(0);" onclick="history.go(-1);">Back</a>
+</p>

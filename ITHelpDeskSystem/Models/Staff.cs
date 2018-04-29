@@ -46,8 +46,8 @@ namespace ITHelpDeskSystem.Models
     /// </summary>
     public enum ManagerialPosition
     {
-        High,
-        
-        Regular,
+       Regular,
+
+       High,
     }
 }
