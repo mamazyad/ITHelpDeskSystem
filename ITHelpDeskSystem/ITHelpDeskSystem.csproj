@@ -230,6 +230,9 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Image\2.jpg" />
+    <Content Include="Content\Image\39f45e96ba6b184ce9772f19a61e8550.jpg" />
+    <Content Include="Content\Image\admin.png" />
     <Content Include="Content\Image\businessperson - Copy.png" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.min.css" />
@@ -392,9 +395,11 @@
     <Content Include="Content\Image\crop.png" />
     <Content Include="Content\Image\favicon.ico" />
     <Content Include="Content\Image\LogoBig.png" />
+    <Content Include="Content\Image\new logo with opacity.png" />
     <Content Include="Content\Image\Picture1.png" />
     <Content Include="Content\Image\white.png" />
     <Content Include="Content\StyleSheet1.css" />
+    <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -751,6 +756,9 @@
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-mobile.woff" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
+    <Content Include="Views\Ticket\CommentPartial.cshtml" />
+    <Content Include="Views\Feedback\Open.cshtml" />
+    <Content Include="Views\Feedback\FeedbackGiven.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ITHelpDeskSystem.ViewModels.StaffViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "All Staff";
 }
 
 <style>
@@ -10,6 +10,7 @@
     table.dataTable thead .sorting_desc {
         background: none;
     }
+
     .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
         background: none;
         color: gray;
@@ -23,14 +24,23 @@
     }
 </style>
 
-<h2>Index</h2>
+<link href="~/Content/Site.css" rel="stylesheet" />
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2 style="margin-top:1em">All staff</h2>
+
+@if (ViewContext.HttpContext.User.IsInRole("Admin"))
+{
+    <a style="margin-bottom:15px;" , href="@Url.Action("Create", "Staff")" class="btn btn-success btn-sm pull-right">
+        <span class="glyphicon glyphicon-plus "></span>
+        Add a new staff
+    </a>
+}
 <table class="table table-hover table-stripe" id="staffTable">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Email)
             </th>
@@ -54,6 +64,9 @@
         @foreach (var item in Model)
         {
             <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Email)
                 </td>
@@ -95,9 +108,9 @@
             ]
         });
         $('.dataTables_filter input').attr("placeholder", "Seach staff")
-  
+
     </script>
-  
+
 }
 
 @section styles

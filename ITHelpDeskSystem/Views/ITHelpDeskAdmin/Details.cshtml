@@ -1,14 +1,14 @@
 ﻿@model ITHelpDeskSystem.ViewModels.ITHelpDeskAdminViewModel
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "IT staff details";
 }
 
-<h2>Details</h2>
+<link href="~/Content/Site.css" rel="stylesheet" />
+<h2 style="margin-top:1.5em">@Html.DisplayFor(model => model.FirstName)'s information</h2>
 
-<div>
-    <h4>ITHelpDeskAdminViewModel</h4>
-    <hr />
+<fieldset class="fieldset-border">
+    <legend class="legend-border">login Information</legend>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.UserName)
@@ -18,6 +18,7 @@
             @Html.DisplayFor(model => model.UserName)
         </dd>
 
+
         <dt>
             @Html.DisplayNameFor(model => model.Email)
         </dt>
@@ -26,6 +27,12 @@
             @Html.DisplayFor(model => model.Email)
         </dd>
 
+    </dl>
+</fieldset>
+
+<fieldset class="fieldset-border">
+    <legend class="legend-border">Personal Information</legend>
+    <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.FirstName)
         </dt>
@@ -43,6 +50,29 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.Mobile)
+        </dt>
+
+        <dd>
+            @if (!String.IsNullOrEmpty(Model.Mobile))
+            {
+                @Html.DisplayFor(model => model.Mobile)
+            }
+            @if (String.IsNullOrEmpty(Model.Mobile))
+            {
+                <p style="color:lightgray">Not set</p>
+            }
+
+        </dd>
+
+    </dl>
+</fieldset>
+
+
+<fieldset class="fieldset-border">
+    <legend class="legend-border">Professional Information</legend>
+    <dl class="dl-horizontal">
+        <dt>
             @Html.DisplayNameFor(model => model.Department)
         </dt>
 
@@ -59,21 +89,12 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Mobile)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Mobile)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.ExtensionNumber)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.ExtensionNumber)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.OfficeNumber)
         </dt>
@@ -81,7 +102,6 @@
         <dd>
             @Html.DisplayFor(model => model.OfficeNumber)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Speciality)
         </dt>
@@ -89,7 +109,6 @@
         <dd>
             @Html.DisplayFor(model => model.Speciality)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.StartingDate)
         </dt>
@@ -97,23 +116,6 @@
         <dd>
             @Html.DisplayFor(model => model.StartingDate)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Position)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Position)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Degree)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Degree)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Roles)
         </dt>
@@ -121,10 +123,12 @@
         <dd>
             @Html.DisplayFor(model => model.Roles)
         </dd>
-
     </dl>
+</fieldset>
+<div class="form-actions no-color">
+    <div style="display:inline; margin-right:40px">@Html.ActionLink("Back to admin's list", "Index", null, new { @class = "btn btn-info" })</div>
+    <a style="display:inline; background-color: mediumaquamarine; color:#ffffff; border-color:#6bc8c0;" , href="@Url.Action("Edit", "ITHelpDeskAdmin", new { id = Model.Id })" class="btn btn-primary pull-right">
+        <span class="glyphicon glyphicon-wrench "></span>
+        Edit admin
+    </a>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

@@ -36,8 +36,8 @@ namespace ITHelpDeskSystem.Models
         [StringLength(128)]
         public string Subject { get; set; }
 
-        [AllowHtml]
         [Required]
+        [AllowHtml]
         public string IncidentDescription { get; set; }
 
         public TicketPriority? Priority { get; set; }
@@ -99,6 +99,9 @@ namespace ITHelpDeskSystem.Models
         public virtual ICollection<Comment> Comments { get; set; }
 
         public virtual Staff Accelerator { get; set; }
+
+        public bool? FeedbackGiven { get; set; }
+
 
         //public int? LagTime
         //{

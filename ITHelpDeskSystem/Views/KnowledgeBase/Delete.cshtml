@@ -4,97 +4,110 @@
     ViewBag.Title = "Delete solution";
 }
 
-<h2>Delete solution</h2>
+<link href="~/Content/Site.css" rel="stylesheet" />
+<h2 style="margin-top:1em;">Are you sure you want to delete <b>@Html.DisplayFor(model => model.Topic) </b> solution permanently?</h2>
 
-<h3>Are you sure you want to delete this solution?</h3>
 <div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Topic)
-        </dt>
+    <fieldset class="fieldset-border">
+        <legend class="legend-border">Summary</legend>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Topic)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Topic)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Topic)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IncidentTitle)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.CreationDate)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.IncidentTitle)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.CreationDate)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IncidentDescription)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.EditionDate)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.IncidentDescription)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.EditionDate)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SolutionDescription)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.EditedByName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.SolutionDescription)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CreationDate)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.EditedByName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreationDate)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedByName)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EditionDate)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CreatedByName)
+            </dd>
+        </dl>
+    </fieldset>
+    <fieldset class="fieldset-border">
+        <legend class="legend-border">Incident details</legend>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.IncidentTitle)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.EditionDate)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.IncidentTitle)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.IncidentDescription)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EditedByName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.IncidentDescription)
+            </dd>
+        </dl>
+    </fieldset>
 
-        <dd>
-            @Html.DisplayFor(model => model.EditedByName)
-        </dd>
+    <fieldset class="fieldset-border">
+        <legend class="legend-border">Solution details</legend>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.SolutionDescription)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedByName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.SolutionDescription)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.KBAttachment)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.KBAttachment)
+                @if (!String.IsNullOrEmpty(Model.KBAttachmentFilePath))
+                {
+                    <a href="@Url.Content(Model.KBAttachmentFilePath)">View attachments</a>
+                }
+                @if (String.IsNullOrEmpty(Model.KBAttachmentFilePath))
+                {
+                    <p style="color:lightgray">No attachments</p>
+                }
+            </dd>
+        </dl>
+    </fieldset>
+</div>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreatedByName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.KBAttachment)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.KBAttachment)
-            @if (!String.IsNullOrEmpty(Model.KBAttachmentFilePath))
-            {
-                <a href="@Url.Content(Model.KBAttachmentFilePath)">Course Outline</a>
-            }
-            @if (String.IsNullOrEmpty(Model.KBAttachmentFilePath))
-            {
-                <p>No attachments</p>
-            }
-        </dd>
-    </dl>
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
 
     <div class="form-actions no-color">
-        <div style="display:inline; margin-right:40px">@Html.ActionLink("Back to all sulotions", "Index", null, new { @class = "btn btn-primary" })</div>
-        <button class="btn btn-danger "> <span class="glyphicon glyphicon-trash" type="submit"></span> Delete</button>
+        <div style="display:inline; margin-right:40px">@Html.ActionLink("Back to all sulotions", "Index", null, new { @class = "btn btn-info" })</div>
+        <button class="btn btn-danger pull-right "> <span class="glyphicon glyphicon-trash" type="submit"></span> Delete</button>
     </div>
-    }
+}
 </div>

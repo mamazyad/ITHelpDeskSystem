@@ -42,7 +42,7 @@ namespace ITHelpDeskSystem.ViewModels
         public string AttachmentFilePath { get; set; }
 
         [Display(Name = "Creation date")]
-        [DisplayFormat(DataFormatString = "{0:dddd, dd MMMM yyyy hh:mm tt}")]
+        [DisplayFormat(DataFormatString = "{0:dd / MM - hh:mm}")]
         public DateTime CreationDate { get; set; }
 
         public int? CreatedBy { get; set; }
@@ -84,16 +84,18 @@ namespace ITHelpDeskSystem.ViewModels
         [DefaultValue(TicketPriority.Medium)]
         public TicketPriority? Priority { get; set; }
 
+        public bool? FeedbackGiven { get; set; }
+
         [Required]
         public TicketStatus Status { get; set; }
 
         [Display(Name = "Due Date")]
         [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0:dddd, dd MMMM yy hh:mm tt}")]
+        [DisplayFormat(DataFormatString = "{0:dd / MM - hh:mm}", NullDisplayText = "Not set")]
         public DateTime? DueDate { get; set; }
 
         //[DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dddd, dd MMMM yyyy hh:mm tt}")]
+        [DisplayFormat(DataFormatString = "{0:dd / MM - hh:mm}", NullDisplayText = "Not set")]
         [Display(Name = "Resultion Date")]
         public DateTime? ResultionDate { get; set; }
 
@@ -107,14 +109,14 @@ namespace ITHelpDeskSystem.ViewModels
         //[Display(Name = "Accelarated By")]
         //public int? AccelaratedBy { get; set; }
 
-        //[DataType(DataType.Date)]
-        //[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        //[Display(Name = "Acceleration Date")]
-        //public DateTime? AccelerationDate { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd / MM - hh:mm}", NullDisplayText = "Not set")]
+        [Display(Name = "Acceleration Date")]
+        public DateTime? AccelerationDate { get; set; }
 
-        //[Display(Name = "Acceleration Comment")]
-        //[DataType(DataType.MultilineText)]
-        //public string AccelerationComment { get; set; }
+        [Display(Name = "Acceleration Comment")]
+        [DataType(DataType.MultilineText)]
+        public string AccelerationComment { get; set; }
 
 
 
@@ -139,9 +141,6 @@ namespace ITHelpDeskSystem.ViewModels
 
         [Display(Name = "Managerial Position")]
         public ManagerialPosition? ManagerialPosition { get; set; }
-
-
-
 
 
         public List<Assignment> Assignments { get; set; }

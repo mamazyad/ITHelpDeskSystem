@@ -33,9 +33,11 @@ namespace ITHelpDeskSystem.ViewModels
         public string Text { get; set; }
 
         [Display(Name = "Creation Date")]
+        [DisplayFormat(DataFormatString = "{0:dd / MM - hh:mm}", NullDisplayText = "Not set")]
         public DateTime CreationDate { get; set; }
 
         [Display(Name = "Updated on")]
+        [DisplayFormat(DataFormatString = "{0:dd / MM - hh:mm}", NullDisplayText = "Not set")]
         public DateTime? EditionDate { get; set; }
 
         public int? SelectedAnswer { get; set; }

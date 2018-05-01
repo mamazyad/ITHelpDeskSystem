@@ -3,48 +3,89 @@
 @{
     ViewBag.Title = "Index";
 }
+<style>
+    table.dataTable thead .sorting,
+    table.dataTable thead .sorting_asc,
+    table.dataTable thead .sorting_desc {
+        background: none;
+    }
+</style>
 
-<h2>Index</h2>
+<link href="~/Content/Site.css" rel="stylesheet" />
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CriterionDescription)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreationDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EditionDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ActiveCriterion)
-        </th>
-        <th></th>
-    </tr>
+<h2>All criteria</h2>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CriterionDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreationDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EditionDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ActiveCriterion)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) 
-        </td>
-    </tr>
+<a style="margin-bottom:15px;" , href="@Url.Action("Create", "Criterion")" class="btn btn-success btn-sm pull-right">
+    <span class="glyphicon glyphicon-plus "></span>
+    Add a new criterion
+</a>
+
+<table class="table table-hover table-stripe" id="staffTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CriterionDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EditionDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActiveCriterion)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CriterionDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreationDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EditionDate)
+                </td>
+                 <td>
+                    @Html.DisplayFor(modelItem => item.ActiveCriterion)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) 
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section scripts
+{
+    <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/jquery.dataTables.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/dataTables.scroller.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/dataTables.bootstrap.min.js")"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#staffTable').DataTable();
+        });
+        $('#staffTable').dataTable({
+            "columnDefs": [
+                { "orderable": false, "targets": -1 }
+            ]
+        });
+        $('.dataTables_filter input').attr("placeholder", "Seach criterion")
+
+    </script>
+
 }
 
-</table>
+@section styles
+{
+    <link href="@Url.Content("/Content/DataTables/css/jquery.dataTables.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("/Content/DataTables/css/dataTables.scroller.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("/Content/DataTables/css/dataTables.bootstrap.min.css")" rel="stylesheet" />
+}

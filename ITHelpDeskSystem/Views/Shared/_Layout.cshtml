@@ -10,8 +10,6 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("styles", required: false)
-
-
 </head>
 
 <body>
@@ -24,7 +22,7 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                    <a  class="navbar-brand" style="margin-top:-4px" href="@Url.Action("Index", "Home")">
+                    <a  class="navbar-brand" style="margin-top:-5.5px" href="@Url.Action("Index", "Home")">
                         <image src="~/Content/Image/crop.png"/>
                     </a>
 
@@ -70,12 +68,12 @@
     </div>
     <div class="container body-content" >
         @RenderBody()
-        <div style="position: fixed; bottom:2em; display:inline-block;   width: 80%;">
+        <div style="position: fixed static ; bottom:2em; display:inline-block;   width: 100%;">
             <hr />
-            <footer>
-                <p style="display:inline-block">&copy; @DateTime.Now.Year  IT Help Desk System</p>
-                <div style="display:inline-block" class="pull-right"><a href="#">Help</a> </div>
-            </footer>
+                <footer >
+                    <p style="display:inline-block">&copy; @DateTime.Now.Year  IT Help Desk System</p>
+                    <div style="display:inline-block" class="pull-right"><a href="#">Help</a> </div>
+                </footer>
         </div>
     </div>
     @Scripts.Render("~/bundles/jquery")

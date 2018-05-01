@@ -1,8 +1,17 @@
-﻿body {
-    background: url('http://farm3.staticflickr.com/2832/12303719364_c25cecdc28_b.jpg') fixed;
+﻿
+
+body {
+    background: url('../../Content/Image/2.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
-    padding: 0;
-    margin: 0;
+}
+
+.navbar-inverse {
+    /*background-color: #00090e;*/
+    background-color: rgba(0, 0, 0, 0.00);
+    /*opacity:0.5;*/
 }
 
 .wrap {
@@ -16,7 +25,7 @@
 }
 
 p.form-title {
-    font-family: 'Open Sans', sans-serif;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 20px;
     font-weight: 600;
     text-align: center;
@@ -161,4 +170,19 @@ form {
     background-color: rgba(0, 0, 0, 0.66);
     padding: 10px;
     left: 45%;
+}
+div.shadow {
+    position: absolute;
+    max-width: 45%;
+    max-height: 45%;
+    top: 50%;
+    left: 50%;
+    overflow: visible;
+}
+img.logo {
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+    margin-top: -50%;
+    margin-left: -50%;
 }

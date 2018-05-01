@@ -5,8 +5,8 @@
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        <h4>AccelerateTicketViewModel</h4>
+    <div style="margin-top:3em" class="form-horizontal">
+        <h4>Accelerate Ticket</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
@@ -19,17 +19,13 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+       <div class="form-actions no-color">
+            <input type="submit" value="Done" class="btn btn-success pull-right" />
+            <div style="display:inline; margin-right:40px">@Html.ActionLink("Back to all tickets", "Index", null, new { @class = "btn btn-info" })</div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

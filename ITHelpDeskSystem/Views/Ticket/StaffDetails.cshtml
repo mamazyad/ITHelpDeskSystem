@@ -3,104 +3,145 @@
 @{
     ViewBag.Title = "Ticket Details";
 }
-
+<link href="~/Content/Site.css" rel="stylesheet" />
 <h2>Ticket Details</h2>
-
 <div>
+    <fieldset class="fieldset-border">
+        <legend class="legend-border">Summary</legend>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedByName)
+            </dt>
 
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ITStaffResponsibleName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ITStaffResponsibleName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Subject)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Subject)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IncidentDescription)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IncidentDescription)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.CreatedByName)
+            </dd>
 
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreationDate)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.CreationDate)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreationDate)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.CreationDate)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedByName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.DueDate)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreatedByName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.DueDate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+        </dl>
+    </fieldset>
+    <fieldset class="fieldset-border">
+        <legend class="legend-border">Incident details</legend>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Subject)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Category)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Subject)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Category)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DueDate)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Category)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.IncidentDescription)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DueDate)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.IncidentDescription)
+            </dd>
+        </dl>
+    </fieldset>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ResultionDate)
-        </dt>
+    <fieldset class="fieldset-border">
+        <legend class="legend-border">Solution details</legend>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.IncidentSolution)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ResultionDate)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.IncidentSolution)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ResultionDate)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IncidentSolution)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ResultionDate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Attachment)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Attachment)
+                @if (!String.IsNullOrEmpty(Model.AttachmentFilePath))
+                {
+                    <a href="@Url.Content(Model.AttachmentFilePath)">View attachments</a>
+                }
+                @if (String.IsNullOrEmpty(Model.AttachmentFilePath))
+                {
+                    <p style="color:lightgray">No attachments</p>
+                }
+            </dd>
+        </dl>
+    </fieldset>
+    <fieldset class="fieldset-border">
+        <legend class="legend-border">Acceleration details</legend>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.AccelerationDate)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.IncidentSolution)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Attachment)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Attachment)
-            @if (!String.IsNullOrEmpty(Model.AttachmentFilePath))
-            {
-                <a href="@Url.Content(Model.AttachmentFilePath)">View attachment</a>
+            <dd>
+                @Html.DisplayFor(model => model.AccelerationDate)
+            </dd>
 
-            }
-        </dd>
-    </dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.AccelerationComment)
+            </dt>
+
+            <dd>
+                @if (!String.IsNullOrEmpty(Model.AccelerationComment))
+                {
+                     @Html.DisplayFor(model => model.AccelerationComment)
+                }
+                @if (String.IsNullOrEmpty(Model.AccelerationComment))
+                {
+                    <p style="color:lightgray">No comment</p>
+                }
+            </dd>
+        </dl>
+    </fieldset>
 </div>
 <div id="Ticket"></div>
 
-<div>
-    @Html.ActionLink("Back to List", "Index") |
-    @Ajax.ActionLink("Display ticket details", "ITStaffInfoPartial", new { id = Model.Id }, new AjaxOptions { UpdateTargetId = "Ticket", HttpMethod = "GET", InsertionMode = InsertionMode.Replace })
+<div class="form-actions no-color">
+    @if (!(Model.Status == ITHelpDeskSystem.Models.TicketStatus.Closed))
+    {
+        <div class="btn pull-right" style="display:inline; margin-right:40px;background-color:mediumaquamarine; color:white;">@Html.ActionLink("Comment", "Comment", "Comment", new { id = Model.Id }, null)</div>
 
+    }
+    <div class="pull-left" style="display:inline; margin-right:40px">@Html.ActionLink("Back to all tickets", "Index", null, new { @class = "btn btn-info" })</div>
+    <div style="background-color:lightblue" class="btn  pull-left">@Ajax.ActionLink("IT staff info", "ITStaffInfoPartial", new { id = Model.Id }, new AjaxOptions { UpdateTargetId = "Ticket", HttpMethod = "GET", InsertionMode = InsertionMode.Replace })</div>
 </div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

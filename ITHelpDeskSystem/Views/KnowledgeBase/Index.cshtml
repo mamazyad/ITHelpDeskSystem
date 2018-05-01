@@ -4,25 +4,7 @@
     ViewBag.Title = "All solutions";
 }
 
-<style>
-    table.dataTable thead .sorting,
-    table.dataTable thead .sorting_asc,
-    table.dataTable thead .sorting_desc {
-        background: none;
-    }
-    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-        background: none;
-        color: gray;
-        border-radius: 4px;
-        border: 1px solid #828282;
-    }
-
-    .dataTables_wrapper .dataTables_paginate .paginate_button:active {
-        background: none;
-        color: gray !important;
-    }
-</style>
-
+<link href="~/Content/Site.css" rel="stylesheet" />
 <h2>All solutions</h2>
 
 @if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin"))

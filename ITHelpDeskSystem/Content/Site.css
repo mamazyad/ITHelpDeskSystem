@@ -38,7 +38,7 @@ legend.legend-border {
 
 
 .navbar-inverse {
-    background-color: #133d56;
+    background-color: #064041;
 }
 
 body,
@@ -238,3 +238,37 @@ table.dataTable thead .sorting_asc,
 table.dataTable thead .sorting_desc {
     background: none;
 }
+
+
+div.scrollable {
+    width: 10vw;
+    padding: 15px;
+    max-height: 10vw;
+    overflow-wrap: normal;
+    overflow-y: auto;
+}
+
+#grey {
+    color: darkgray;
+    display: inline;
+}
+
+
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_desc {
+    background: none;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: none;
+    color: gray;
+    border-radius: 4px;
+    border: 1px solid #828282;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:active {
+    background: none;
+    color: gray !important;
+}
+

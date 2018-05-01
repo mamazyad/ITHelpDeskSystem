@@ -39,7 +39,17 @@ namespace ITHelpDeskSystem.Controllers
             {
                 return HttpNotFound();
             }
-            
+
+            if (ticket.FeedbackGiven == true || ticket.Status == TicketStatus.Resolved)
+            {
+                return RedirectToActionPermanent("FeedbackGiven", new { id = ticket.TicketId });
+            }
+
+            if (ticket.Status==TicketStatus.Open|| ticket.Status == TicketStatus.InProgress)
+            {
+                return RedirectToActionPermanent("FeedbackGiven", new { id = ticket.TicketId });
+            }
+           
             TicketViewModel model = new TicketViewModel
             {
                 Id = ticket.TicketId,
@@ -92,18 +102,75 @@ namespace ITHelpDeskSystem.Controllers
                     FeedbackId = model.Id,
                     FeedbackComment = model.FeedbackComment,
                     FeedbackDate = DateTime.Now,
+                    FeedbackGiven =true,
                     StaffId = User.Identity.GetUserId<int>(),
                     TicketId = Id,
+                    
                 };
                 foreach (var criterion in model.Criteria)
                 {
                     model.Id= criterion.Id;
                     model.SelectedAnswer = criterion.SelectedAnswer;
+                    model.FeedbackComment = criterion.Text;
                 }
-                db.Feedbacks.Add(feedback);
+
+                ticket.Status = TicketStatus.Resolved;
+                ticket.FeedbackGiven = true;
+
+                db.Feedbacks.Add(feedback);  db.Entry(ticket).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index", "Ticket");
             }
+            return View(model);
+        }
+
+        /// <summary>
+        /// This action informs  staff that ticket is open and feedback connot be given.
+        /// </summary>
+        /// <param name="id">Ticket Id as a parameter</param>
+        /// <returns></returns>
+        public ActionResult Open(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Ticket ticket = db.Tickets.Find(id);
+            if (ticket == null)
+            {
+                return HttpNotFound();
+            }
+            var model = new TicketViewModel
+            {
+                Id = ticket.TicketId,
+                ResultionDate = ticket.ResultionDate,
+                DueDate = ticket.DueDate,
+            };
+            return View(model);
+        }
+
+
+        /// <summary>
+        /// This action informs staff that feedback has been given.
+        /// </summary>
+        /// <param name="id">Ticket Id as a parameter</param>
+        /// <returns></returns>
+        public ActionResult FeedbackGiven(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Feedback feedback = db.Feedbacks.Find(id);
+            if (feedback == null)
+            {
+                return HttpNotFound();
+            }
+            var model = new FeedbackViewModel
+            {
+                Id = feedback.FeedbackId,
+                FeedbackDate = feedback.FeedbackDate,
+            };
             return View(model);
         }
     }

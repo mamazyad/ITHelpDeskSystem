@@ -24,6 +24,8 @@ namespace ITHelpDeskSystem.Models
 
         public string FeedbackComment { get; set; }
 
+        public bool? FeedbackGiven { get; set; }
+
         //[StringLength(64)]
         //public string GradeGiven { get; set; }
 

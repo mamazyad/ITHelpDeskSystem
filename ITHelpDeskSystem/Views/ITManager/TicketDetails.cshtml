@@ -4,22 +4,159 @@
     ViewBag.Title = "TicketDetails";
 }
 
-<h2>TicketDetails</h2>
+<h2>Ticket Details</h2>
 
 <div>
-    <h4>TicketViewModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
+    <fieldset class="fieldset-border">
+        <legend class="legend-border">Summary</legend>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedByName)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CreatedByName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.TicketOwnerName)
+            </dt>
 
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => model.TicketOwnerName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.importance)
+            </dt>
+
+            <dd >
+                @if (!String.IsNullOrEmpty(Model.importance))
+                {
+                      @Html.DisplayFor(model => model.importance)
+                }
+                @if (String.IsNullOrEmpty(Model.importance))
+                {
+                    <p style="color:lightgray">Not set</p>
+                }
+            </dd>
+
+            <dt >
+                @Html.DisplayNameFor(model => model.CreationDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CreationDate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ITStaffResponsibleName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ITStaffResponsibleName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.DueDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DueDate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+        </dl>
+    </fieldset>
+    <fieldset class="fieldset-border">
+        <legend class="legend-border">Incident details</legend>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Subject)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Subject)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Category)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Category)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.IncidentDescription)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IncidentDescription)
+            </dd>
+        </dl>
+    </fieldset>
+
+    <fieldset class="fieldset-border">
+        <legend class="legend-border">Solution details</legend>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.IncidentSolution)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IncidentSolution)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ResultionDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ResultionDate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Attachment)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Attachment)
+                @if (!String.IsNullOrEmpty(Model.AttachmentFilePath))
+                {
+                    <a href="@Url.Content(Model.AttachmentFilePath)">View attachments</a>
+                }
+                @if (String.IsNullOrEmpty(Model.AttachmentFilePath))
+                {
+                    <p style="color:lightgray">No attachments</p>
+                }
+            </dd>
+        </dl>
+    </fieldset>
+
+    <fieldset class="fieldset-border">
+        <legend class="legend-border">Acceleration details</legend>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.AccelerationDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AccelerationDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AccelerationComment)
+            </dt>
+            <dd>
+                @if (!String.IsNullOrEmpty(Model.AccelerationComment))
+                {
+                     @Html.DisplayFor(model => model.AccelerationComment)
+                }
+                @if (String.IsNullOrEmpty(Model.AccelerationComment))
+                {
+                    <p style="color:lightgray">No comment</p>
+                }
+            </dd>
+        </dl>
+    </fieldset>
 </div>
 <p>
     <a class="btn btn-info pull-left" href="javascript:void(0);" onclick="history.go(-1);">Back</a>

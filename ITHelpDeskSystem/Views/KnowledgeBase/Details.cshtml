@@ -4,95 +4,107 @@
     ViewBag.Title = "Solution details";
 }
 
-<h2>Solution details</h2>
+<link href="~/Content/Site.css" rel="stylesheet" />
+<h2>Knowledge Base - Solution details</h2>
 
 <div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Topic)
-        </dt>
+    <fieldset class="fieldset-border">
+        <legend class="legend-border">Summary</legend>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Topic)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Topic)
-        </dd>
+            <dd >
+                @Html.DisplayFor(model => model.Topic)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IncidentTitle)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.CreationDate)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.IncidentTitle)
-        </dd>
+            <dd >
+                @Html.DisplayFor(model => model.CreationDate)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IncidentDescription)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.EditionDate)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.IncidentDescription)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.EditionDate)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SolutionDescription)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.EditedByName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.SolutionDescription)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CreationDate)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.EditedByName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreationDate)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedByName)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EditionDate)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CreatedByName)
+            </dd>
+        </dl>
+    </fieldset>
+    <fieldset class="fieldset-border">
+        <legend class="legend-border">Incident details</legend>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.IncidentTitle)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.EditionDate)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.IncidentTitle)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.IncidentDescription)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EditedByName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.IncidentDescription)
+            </dd>
+        </dl>
+    </fieldset>
 
-        <dd>
-            @Html.DisplayFor(model => model.EditedByName)
-        </dd>
+    <fieldset class="fieldset-border">
+        <legend class="legend-border">Solution details</legend>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.SolutionDescription)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedByName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreatedByName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.KBAttachment)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.KBAttachment)
-            @if (!String.IsNullOrEmpty(Model.KBAttachmentFilePath))
-            {
-                <a href="@Url.Content(Model.KBAttachmentFilePath)">View attachments</a>
-            }
-            @if (String.IsNullOrEmpty(Model.KBAttachmentFilePath))
-            {
-                <p style="color:lightgray">No attachments</p>
-            }
-        </dd>
-
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => model.SolutionDescription)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.KBAttachment)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.KBAttachment)
+                @if (!String.IsNullOrEmpty(Model.KBAttachmentFilePath))
+                {
+                    <a href="@Url.Content(Model.KBAttachmentFilePath)">View attachments</a>
+                }
+                @if (String.IsNullOrEmpty(Model.KBAttachmentFilePath))
+                {
+                    <p style="color:lightgray">No attachments</p>
+                }
+            </dd>
+        </dl>
+    </fieldset>
 </div>
+
 <div class="form-actions no-color">
-    <div style="display:inline; margin-right:40px">@Html.ActionLink("Back to all sulotions", "Index", null, new { @class = "btn btn-primary" })</div>
+    <div style="display:inline; margin-right:40px">@Html.ActionLink("Back to all sulotions", "Index", null, new { @class = "btn btn-info" })</div>
     @if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin"))
-    { 
-        <a style="display:inline; background-color: #6bc8c0; color:#ffffff; border-color:#6bc8c0;" , href="@Url.Action("Edit", "KnowledgeBase", new { id = Model.Id })" class="btn btn-primary">
+    {
+        <a style="display:inline; background-color: mediumaquamarine; color:#ffffff; border-color:#6bc8c0;" , href="@Url.Action("Edit", "KnowledgeBase", new { id = Model.Id })" class="btn btn-primary pull-right">
             <span class="glyphicon glyphicon-wrench "></span>
             Edit solution
         </a>

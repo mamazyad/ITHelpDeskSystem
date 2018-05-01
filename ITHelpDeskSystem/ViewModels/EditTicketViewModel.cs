@@ -30,10 +30,10 @@ namespace ITHelpDeskSystem.ViewModels
 
         [Display(Name = "Due Date")]
         [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0:dddd, dd MMMM yyyy hh:mm tt}")]
+        [DisplayFormat(DataFormatString = "{0:dd / MM - hh:mm}")]
         public DateTime? DueDate { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:dddd, dd MMMM yyyy hh:mm tt}")]
+        [DisplayFormat(DataFormatString = "{0:dd / MM - hh:mm}")]
         [Display(Name = "Resultion Date")]
         public DateTime? ResultionDate { get; set; }
 

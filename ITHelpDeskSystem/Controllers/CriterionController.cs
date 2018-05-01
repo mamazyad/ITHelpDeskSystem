@@ -29,7 +29,7 @@ namespace ITHelpDeskSystem.Controllers
         // GET: Criterion
         public ActionResult Index()
         {
-            var criteria = db.Criteria.ToList();
+            var criteria = db.Criteria.Where(m => m.ActiveCriterion == true).ToList();
             var model = new List<CriterionViewModel>();
             foreach (var item in criteria)
             {
@@ -160,9 +160,7 @@ namespace ITHelpDeskSystem.Controllers
                 return HttpNotFound();
             }
                 criterion.CriterionDescription = model.CriterionDescription;
-                criterion.CreationDate = model.CreationDate;
                 criterion.ActiveCriterion = model.ActiveCriterion;
-                criterion.EditionDate = DateTime.Now;
             db.Entry(criterion).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");

@@ -20,7 +20,7 @@ namespace ITHelpDeskSystem.ViewModels
     {
         public int Id { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:dddd, dd MMMM yyyy hh:mm tt}")]
+        [DisplayFormat(DataFormatString = "{0:dd / MM - hh:mm}", NullDisplayText = "Not set")]
         public DateTime? AssignmentDate { get; set; }
 
         public int? AssignedBy { get; set; }

@@ -4,10 +4,9 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2 style="margin-top:1.5em">@Html.DisplayFor(model => model.CategoryName) category details</h2>
 
 <div>
-    <h4>CategoryViewModel</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -44,7 +43,10 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div class="form-actions no-color">
+    <div style="display:inline; margin-right:40px">@Html.ActionLink("Back category list", "Index", null, new { @class = "btn btn-info" })</div>
+    <a style="display:inline; background-color: mediumaquamarine; color:#ffffff; border-color:#6bc8c0;" , href="@Url.Action("Edit", "Category", new { id = Model.Id })" class="btn btn-primary pull-right">
+        <span class="glyphicon glyphicon-wrench "></span>
+        Edit category
+    </a>
+</div>

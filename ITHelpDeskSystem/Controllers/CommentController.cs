@@ -35,6 +35,10 @@ namespace ITHelpDeskSystem.Controllers
             {
                 return HttpNotFound();
             }
+            if (ticket.Status == TicketStatus.Closed)
+            {
+                return RedirectToActionPermanent("Closed", new { id = ticket.TicketId });
+            }
             CommentViewModel model = new CommentViewModel
             {
                 Id = ticket.TicketId,

@@ -80,7 +80,7 @@ namespace ITHelpDeskSystem.ViewModels
         public int CategoryLoad { get; set; }
 
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{dd/MM/yyyy}", ApplyFormatInEditMode = true, NullDisplayText = "Not set")]
         [Display(Name = "Starting Date")]
         public DateTime? StartingDate { get; set; }
 

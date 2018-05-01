@@ -25,7 +25,6 @@ namespace ITHelpDeskSystem.ViewModels
         public string IncidentTitle { get; set; }
 
         [Display(Name = "Incident Description")]
-        [DataType(DataType.MultilineText)]
         public string IncidentDescription { get; set; }
 
         [Display(Name = "Solution Description")]
@@ -38,11 +37,11 @@ namespace ITHelpDeskSystem.ViewModels
         public HttpPostedFileBase KBAttachment { get; set; }
 
         [Display(Name = "Creation Date")]
-        [DisplayFormat(DataFormatString = "{0:dddd, dd MMMM yy hh:mm tt}")]
+        [DisplayFormat(DataFormatString = "{0:dd / MM - hh:mm}")]
         public DateTime? CreationDate { get; set; }
 
         [Display(Name = "Updated on")]
-        [DisplayFormat(DataFormatString = "{0:dddd, dd MMMM yy hh:mm tt}", NullDisplayText = "Not updated")]
+        [DisplayFormat(DataFormatString = "{0:dd / MM - hh:mm}", NullDisplayText = "Not updated")]
         public DateTime? EditionDate { get; set; }
 
         public int? EditedBy { get; set; }

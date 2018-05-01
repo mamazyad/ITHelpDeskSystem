@@ -1,10 +1,10 @@
 ﻿@model ITHelpDeskSystem.ViewModels.TicketViewModel
 
 <div>
-    <h4>TicketViewModel</h4>
+    <h4 style="margin-bottom:-1em">IT staff details</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
+        <dt style="text-align:left">
             @Html.DisplayNameFor(model => model.ITStaffResponsibleName)
         </dt>
 
@@ -12,7 +12,7 @@
             @Html.DisplayFor(model => model.ITStaffResponsibleName)
         </dd>
 
-        <dt>
+        <dt style="text-align:left">
             @Html.DisplayNameFor(model => model.ITstaffEmail)
         </dt>
 
@@ -20,20 +20,12 @@
             @Html.DisplayFor(model => model.ITstaffEmail)
         </dd>
 
-        <dt>
+        <dt style="text-align:left">
             @Html.DisplayNameFor(model => model.ITstaffMobile)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.ITstaffMobile)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ITstaffExt)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ITstaffExt)
         </dd>
     </dl>
 </div>

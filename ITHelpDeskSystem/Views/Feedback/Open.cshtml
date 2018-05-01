@@ -1,0 +1,15 @@
+﻿@model ITHelpDeskSystem.ViewModels.TicketViewModel
+
+@{
+    ViewBag.Title = "Open Ticket";
+}
+
+<h2>Ticket in-progress</h2>
+
+@using (Html.BeginForm())
+{
+<h5>
+    This ticket is still in progress (@Html.DisplayNameFor(model => model.DueDate) @Html.DisplayFor(model => model.DueDate)). If you like, you can  @Html.ActionLink("accelerate it.", "Accelerate", "Ticket", new { id = Model.Id },null)
+</h5>
+
+}

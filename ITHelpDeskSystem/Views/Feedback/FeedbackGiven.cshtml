@@ -1,0 +1,15 @@
+﻿@model ITHelpDeskSystem.ViewModels.FeedbackViewModel
+
+@{
+    ViewBag.Title = "Feedback given";
+}
+
+<h2>Thank you for your support!</h2>
+
+@using (Html.BeginForm())
+{
+    <h5>
+        Feedback has been given on @Html.DisplayFor(model => Model.FeedbackDate).
+    </h5>
+
+}

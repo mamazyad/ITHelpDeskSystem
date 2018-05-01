@@ -1,7 +1,6 @@
 ﻿/*
 * Description: This file is the IT help desk admin ViewModel (based on the IT help desk admin  model), created to to pass information between IT help desk admin views and its controller.
 * Author: mamazyad
-* Date: 20/03/2018
 */
 using ITHelpDeskSystem.Models;
 using System;
@@ -67,7 +66,7 @@ namespace ITHelpDeskSystem.ViewModels
         public string Speciality { get; set; }
 
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{dd/MM/yyyy}", ApplyFormatInEditMode = true, NullDisplayText = "Not set")]
         [Display(Name = "Starting Date")]
         public DateTime? StartingDate { get; set; }
 

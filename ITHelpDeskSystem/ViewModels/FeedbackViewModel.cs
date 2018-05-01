@@ -25,13 +25,17 @@ namespace ITHelpDeskSystem.ViewModels
         }
         public int Id { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:dd / MM - hh:mm}", NullDisplayText = "Not set")]
         public DateTime? FeedbackDate { get; set; }
 
         public int? SelectedAnswer { get; set; }
 
+        [DataType(DataType.MultilineText)]
         public string FeedbackComment { get; set; }
 
         public int TicketId { get; set; }
+
+        public bool? FeedbackGiven { get; set; }
 
         public List<CriterionViewModel> Criteria { get; set; }
     }

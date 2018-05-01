@@ -4,22 +4,8 @@
     ViewBag.Title = "All Tickets";
 }
 
-<style>
-    div.scrollable {
-        width: 10vw;
-        padding: 15px;
-        max-height: 10vw;
-        overflow-wrap: normal;
-        overflow-y: auto;
-    }
-
-    #grey {
-        color: darkgray;
-        display: inline;
-    }
-</style>
-
-<h2>All Tickets</h2>
+<link href="~/Content/Site.css" rel="stylesheet" />
+<h2 style="margin-top:1em;">All Tickets</h2>
 
 @if (Model.Count() == 0)
 {
@@ -28,42 +14,45 @@
 
 @if (ViewContext.HttpContext.User.IsInRole("Staff"))
 {
-    @Html.ActionLink("Create New", "Create")
+    <a style="margin-bottom:15px;" , href="@Url.Action("Create", "Ticket")" class="btn btn-success btn-sm pull-right">
+        <span class="glyphicon glyphicon-plus "></span>
+        Create a ticket
+    </a>
 }
 @if (ViewContext.HttpContext.User.IsInRole("Admin"))
 {
-    <div>@Html.ActionLink("Create On behalf", "CreateOnBehalf")</div>
+    <a style="margin-bottom:15px;" , href="@Url.Action("CreateOnBehalf", "Ticket")" class="btn btn-success btn-sm pull-right">
+        <span class="glyphicon glyphicon-plus "></span>
+        Report an issue
+    </a>
 }
 
-<table class="table">
-    <tr>
-        @if (!(Model.Count() == 0))
-        {
-            <th>
-                @Html.DisplayNameFor(model => model.TicketOwnerName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreationDate)
-            </th>
-            <th>
-                <span> </span>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Subject)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Priority)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DueDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IncidentDescription)
-            </th>
-            <th></th>}
-    </tr>
-
+<table class="table table-hover table-stripe" id="ticketTable">
+    <thead>
+        <tr>
+            @if (!(Model.Count() == 0))
+            {
+                <th>
+                    @Html.DisplayNameFor(model => model.TicketOwnerName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreationDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Subject)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Priority)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DueDate)
+                </th>
+                <th></th>}
+        </tr>
+    </thead>
     @foreach (var item in Model)
     {
         <tr>
@@ -86,27 +75,36 @@
             <td>
                 @Html.DisplayFor(modelItem => item.DueDate)
             </td>
-            <td>
-                <div class="scrollable">
-                    @Html.DisplayFor(modelItem => item.IncidentDescription)
-                </div>
-            </td>
-            <td>
-                @Html.ActionLink("Comment", "Comment", "Comment", new { id = item.Id }, null)
+            <td style="text-align:center">
+                @if (ViewContext.HttpContext.User.IsInRole("Staff") && ((item.Status == ITHelpDeskSystem.Models.TicketStatus.Open) || (item.Status == ITHelpDeskSystem.Models.TicketStatus.InProgress)))
+                {
+                    @Html.ActionLink("Accelerate", "Accelerate", new { id = item.Id })<p style="display:inline; text-align:center ">|</p> 
+                }
+                 @if ((ViewContext.HttpContext.User.IsInRole("Staff") || ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin")) && ((item.Status == ITHelpDeskSystem.Models.TicketStatus.Open) || (item.Status == ITHelpDeskSystem.Models.TicketStatus.InProgress)))
+                {
+                    @Html.ActionLink("Comment", "Comment", "Comment", new { id = item.Id }, null) <p style="display:inline; text-align:center ">|</p> 
+                }
+                 @if (ViewContext.HttpContext.User.IsInRole("Staff") && item.Status == ITHelpDeskSystem.Models.TicketStatus.Closed)
+                {
+                    @Html.ActionLink("Feedback", "Feedback", "Feedback", new { id = item.Id }, null)
+              
+                }
 
                 @if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin"))
                 {
-                    if (!(item.Status == ITHelpDeskSystem.Models.TicketStatus.Closed))
+                    if (!(item.Status == ITHelpDeskSystem.Models.TicketStatus.Closed) && !(item.Status == ITHelpDeskSystem.Models.TicketStatus.Resolved))
                     {
-                     @Html.ActionLink("Edit", "Edit", new { id = item.Id }) <p style="display:inline;">|</p>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) <p style="display:inline;">|</p>
+                    <a style="text-align:center"> @Html.ActionLink("Assign", "Assign", "Assignment", new { id = item.Id }, null) <p style="display:inline; text-align:center;">|</p></a>
+
                     }
-                   
+
                 }
 
-                @if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin"))
+                @*@if ((ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin")) && (!(item.Status == ITHelpDeskSystem.Models.TicketStatus.Closed)))
                 {
-                    @Html.ActionLink("Assign", "Assign", "Assignment", new { id = item.Id }, null) <p style="display:inline;">|</p>
-                }
+                    <a style="text-align:center"> @Html.ActionLink("Assign", "Assign", "Assignment", new { id = item.Id }, null) <p style="display:inline; text-align:center;">|</p></a>
+                }*@
                 @if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin"))
                 {
                     @Html.ActionLink("Details", "ITDetails", new { id = item.Id })
@@ -116,10 +114,6 @@
                 {
                     @Html.ActionLink("Details", "StaffDetails", new { id = item.Id })
 
-                    if (!(item.Status == ITHelpDeskSystem.Models.TicketStatus.Closed))
-                    {
-                        <p style="display:inline; ">|</p> @Html.ActionLink("Accelerate", "Accelerate", new { id = item.Id })
-                    }
                 }
             </td>
         </tr>
@@ -130,5 +124,28 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-}
+    <script src="~/Scripts/tinymce/tinymce.js"></script>
+    <script src="~/Scripts/Main.js"></script>
+    <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/jquery.dataTables.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/dataTables.scroller.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/dataTables.bootstrap.min.js")"></script>
 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#ticketTable').DataTable();
+        });
+        $('#ticketTable').dataTable({
+            "columnDefs": [
+                { "orderable": false, "targets": -1 }
+            ]
+        });
+        $('.dataTables_filter input').attr("placeholder", "Seach tickets")
+
+    </script>
+}
+@section styles
+    {
+    <link href="@Url.Content("/Content/DataTables/css/jquery.dataTables.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("/Content/DataTables/css/dataTables.scroller.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("/Content/DataTables/css/dataTables.bootstrap.min.css")" rel="stylesheet" />
+}

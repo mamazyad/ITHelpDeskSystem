@@ -98,6 +98,8 @@ namespace ITHelpDeskSystem.Controllers
                 IncidentSolution = ticket.IncidentSolution,
                 AttachmentFilePath = ticket.AttachmentFilePath,
                 ResultionDate = ticket.ResultionDate,
+                AccelerationDate = ticket.AccelerationDate,
+                AccelerationComment = ticket.AccelerationComment,
             };
             return View(model);
         }
@@ -136,6 +138,8 @@ namespace ITHelpDeskSystem.Controllers
                 AttachmentFilePath = ticket.AttachmentFilePath,
                 ResultionDate = ticket.ResultionDate,
                 ITStaffResponsibleName = ticket.Category.ITStaff.FullName,
+                AccelerationDate = ticket.AccelerationDate,
+                AccelerationComment = ticket.AccelerationComment,
             };
             return View(model);
         }
@@ -160,6 +164,7 @@ namespace ITHelpDeskSystem.Controllers
         // (POST: Ticket/Create)
         [HttpPost]
         [Authorize(Roles = "Staff")]
+        [ValidateInput(false)]
         public ActionResult Create(TicketViewModel model)
         {
             if (ModelState.IsValid)
@@ -174,7 +179,9 @@ namespace ITHelpDeskSystem.Controllers
                     Status = TicketStatus.Open,
                     CreatedBy = User.Identity.GetUserId<int>(),
                     TicketOwner = User.Identity.GetUserId<int>(),
+                    Priority = TicketPriority.NotSet,
                 };
+
 
                 ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName");
 
@@ -261,6 +268,7 @@ namespace ITHelpDeskSystem.Controllers
                     Status = TicketStatus.Open,
                     CreatedBy = User.Identity.GetUserId<int>(),
                     TicketOwner = model.TicketOwner,
+                    Priority = TicketPriority.NotSet,
                 };
 
                 ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName");
@@ -616,6 +624,24 @@ namespace ITHelpDeskSystem.Controllers
             {
                 throw ex;
             }
+        }
+
+        /// <summary>
+        /// This action will displpay the IT staff responsible information.
+        /// </summary>
+        /// <param name="id">Ticket Id as a parameter.</param>
+        /// <returns>All comment partial view</returns>
+        public PartialViewResult CommentPartial(int? id)
+        {
+            Comment comment = db.Comments.Find(id);
+            CommentViewModel model = new CommentViewModel
+            {
+                Id = comment.CommentId,
+                CommentDate = comment.CommentDate,
+                Commenter = comment.Commenter,
+                CommentText = comment.CommentText,
+            };
+            return PartialView(model);
         }
     }
 }

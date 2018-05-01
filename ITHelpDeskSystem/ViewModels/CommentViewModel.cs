@@ -22,9 +22,10 @@ namespace ITHelpDeskSystem.ViewModels
         public int Id { get; set; }
 
         [Display(Name = "Comment Date")]
-        [DisplayFormat(DataFormatString = "{0:dddd, dd MMMM yyyy hh:mm tt}")]
+        [DisplayFormat(DataFormatString = "{0:dd / MM - hh:mm}", NullDisplayText = "Not set")]
         public DateTime CommentDate { get; set; }
 
+        [Display(Name = "Comment")]
         [DataType(DataType.MultilineText)]
         public string CommentText { get; set; }
 
@@ -37,7 +38,7 @@ namespace ITHelpDeskSystem.ViewModels
         public string UpdatedCommentText { get; set; }
 
         [Display(Name = "Updated on")]
-        [DisplayFormat(DataFormatString = "{0:dddd, dd MMMM yyyy hh:mm tt}")]
+        [DisplayFormat(DataFormatString = "{0:dd / MM - hh:mm}", NullDisplayText = "Not set")]
         public DateTime? EditionDate { get; set; }
 
         public int TicketId { get; set; }

@@ -33,13 +33,13 @@ namespace ITHelpDeskSystem.Controllers
             var model = new List<ITStaffViewModel>();
             foreach (var item in ITstaffs)
             {
-                    model.Add(new ITStaffViewModel
-                    {
-                        Id = item.Id,
-                        FirstName = item.FullName,
-                        CategoryLoad = db.Categories.Count(m => m.ITStaffId == item.Id),
-                        TicketLoad = db.Tickets.Count(m => m.Category.ITStaffId == item.Id),
-                    });
+                model.Add(new ITStaffViewModel
+                {
+                    Id = item.Id,
+                    FirstName = item.FullName,
+                    CategoryLoad = db.Categories.Count(m => m.ITStaffId == item.Id),
+                    TicketLoad = db.Tickets.Count(m => m.Category.ITStaffId == item.Id),
+                });
             }
             return View(model);
         }
@@ -115,8 +115,33 @@ namespace ITHelpDeskSystem.Controllers
             var model = new TicketViewModel
             {
                 Id = ticket.TicketId,
-                Email = ticket.StaffOwner.Email,
+                Subject = ticket.Subject,
+                IncidentDescription = ticket.IncidentDescription,
+                CreationDate = ticket.CreationDate,
+                Category = ticket.Category.CategoryName,
+                CreatedByName = ticket.Employee.FullName,
+                Status = ticket.Status,
+                TicketOwnerName = ticket.StaffOwner.FullName,
+                Priority = ticket.Priority,
+                DueDate = ticket.DueDate,
+                IncidentSolution = ticket.IncidentSolution,
+                AttachmentFilePath = ticket.AttachmentFilePath,
+                ResultionDate = ticket.ResultionDate,
+                AccelerationDate = ticket.AccelerationDate,
+                AccelerationComment = ticket.AccelerationComment,
+                ITStaffResponsibleName = ticket.Category.ITStaff.FullName,
             };
+
+            //var temp = db.Assignments.Where(m=>m.TicketId == id).ToList();
+            //Assignment assignment = db.Assignments.Find(
+            //var model2 = new AssignmentViewModel
+            //{
+            //    Id = assignment.AssignmentId,
+            //    AssignedByName = db.ITStaffs.Find(assignment.AssignedBy).FullName,
+            //    AssignedBy= assignment.AssignedBy,
+            //    AssignmentComment =assignment.AssignmentComment,
+            //    AssignmentDate = assignment.AssignmentDate,
+            //};
 
             return View(model);
         }
