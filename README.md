@@ -18,6 +18,7 @@ The aim of the application is to provide users with an automated point of contac
 ## Features
 - Provide staff with the ability to request IT services (**creating ticket**).
 - Staff are able to **view the progress** of the ticket.
+- Staff, IT staff and IT Help Desk admin are able to **comment and view other's comments** on the ticket.
 - Staff are able to **evaluate services** provided and give feedback.
 - IT Manager can generate and print **reports** reflecting the IT staff performance.
 - IT staff and the IT Help Desk system admin have the ability to **prioritize tickets**.
