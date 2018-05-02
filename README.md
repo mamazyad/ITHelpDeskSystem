@@ -13,7 +13,7 @@ The aim of the application is to provide users with an automated point of contac
  * IT staff (technicians)  
  * IT manager
  * IT Help Desk System admin
- * Staff
+ * Staff (end users)
 
 ## Features
 - Provide staff with the ability to request IT services (**creating ticket**).
@@ -28,7 +28,11 @@ The aim of the application is to provide users with an automated point of contac
 - In case a ticket has exceeded the time allowed for it to be resolved, the IT staff responsible and the **IT Help Desk system admin are  notified**.
 
 ## Built with
--	Visual Studio (version 15.5)
--	MVC (version 5.2.3.0)
--	Entity Framework (version 6.1.3)
-- Microsoft Asp.Net Identity (version 2.2.1)
+-	Visual Studio - version 15.5
+-	MVC - version 5.2.3.0
+-	Entity Framework - version 6.1.3
+- Microsoft Asp.Net Identity - version 2.2.1
+
+## Used with
+- Google Chrome - version 65.0 (recommended)
+- Internet Explorer - version 11.371
