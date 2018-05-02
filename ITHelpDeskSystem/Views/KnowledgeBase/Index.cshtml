@@ -41,7 +41,8 @@
                 @Html.DisplayFor(modelItem => item.IncidentTitle)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.SolutionDescription)
+                @Html.Raw(item.SolutionDescription)
+               
             </td>
             <td>
                 @Html.ActionLink("Details", "Details", new { id = item.Id })

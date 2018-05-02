@@ -29,10 +29,10 @@
                 @Html.DisplayNameFor(model => model.importance)
             </dt>
 
-            <dd >
+            <dd>
                 @if (!String.IsNullOrEmpty(Model.importance))
                 {
-                      @Html.DisplayFor(model => model.importance)
+                    @Html.DisplayFor(model => model.importance)
                 }
                 @if (String.IsNullOrEmpty(Model.importance))
                 {
@@ -40,7 +40,7 @@
                 }
             </dd>
 
-            <dt >
+            <dt>
                 @Html.DisplayNameFor(model => model.CreationDate)
             </dt>
 
@@ -92,7 +92,7 @@
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.IncidentDescription)
+                @Html.Raw(Model.IncidentDescription)
             </dd>
         </dl>
     </fieldset>
@@ -148,7 +148,7 @@
             <dd>
                 @if (!String.IsNullOrEmpty(Model.AccelerationComment))
                 {
-                     @Html.DisplayFor(model => model.AccelerationComment)
+                    @Html.DisplayFor(model => model.AccelerationComment)
                 }
                 @if (String.IsNullOrEmpty(Model.AccelerationComment))
                 {
@@ -157,7 +157,10 @@
             </dd>
         </dl>
     </fieldset>
+    <div id="Comment"></div>
 </div>
 <p>
     <a class="btn btn-info pull-left" href="javascript:void(0);" onclick="history.go(-1);">Back</a>
 </p>
+
+<div style="display:inline; margin-right:35px; margin-left:5em" class="btn btn-group-xs btn-default pull-left">@Ajax.ActionLink("Assignments", "AssignPartial", "ITManager", new { id = Model.Id }, new AjaxOptions { UpdateTargetId = "Comment", HttpMethod = "GET", InsertionMode = InsertionMode.Replace })</div>

@@ -62,6 +62,7 @@ namespace ITHelpDeskSystem.Controllers
         /// </summary>
         /// <returns>Employee, Index view</returns>
         // (GET: Employee)  
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var users = db.Employees.ToList();
@@ -92,7 +93,8 @@ namespace ITHelpDeskSystem.Controllers
         /// </summary>
         /// <param name="id">Employee ID</param>
         /// <returns>Employee, Details view</returns>
-        // (GET: Employee/Details/5) 
+        // (GET: Employee/Details/5)
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int? id)
         {
             if (id != null)
@@ -127,6 +129,7 @@ namespace ITHelpDeskSystem.Controllers
         /// </summary>
         /// <returns>Employee Create</returns>
         // GET: Employee/Create. 
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -139,6 +142,7 @@ namespace ITHelpDeskSystem.Controllers
         /// <returns>Employee, Index</returns>
         // (POST: Employee/Create) 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult Create(EmployeeViewModel model)
         {
@@ -181,6 +185,7 @@ namespace ITHelpDeskSystem.Controllers
         /// <param name="id">Employee ID</param>
         /// <returns>Employee EditS</returns>
         // GET: Employee/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             var employee = (Employee)UserManager.FindById(id);
@@ -214,6 +219,7 @@ namespace ITHelpDeskSystem.Controllers
         /// <returns>Employee, Index</returns>
         // (POST: Employee/Edit/5) 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int? id, EmployeeViewModel model, params string[] roles)
         {
@@ -276,6 +282,7 @@ namespace ITHelpDeskSystem.Controllers
         /// <param name="id">Employee ID</param>
         /// <returns>Employee Delete</returns>
         // GET: Employee/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id != null)
@@ -304,6 +311,7 @@ namespace ITHelpDeskSystem.Controllers
         // (POST: Employee/Delete/5) 
         [HttpPost]
         [ActionName("Delete")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int? id)
         {

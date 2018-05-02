@@ -27,7 +27,7 @@ namespace ITHelpDeskSystem.Controllers
         /// This action list all the solutions in the Knowldge Base.
         /// </summary>
         /// <returns>Knowledge Base Index.</returns>
-        // GET: KnowledgeBase
+        // GET: Knowledge Base
         public ActionResult Index()
         {
             var knowledgeBase = db.KnowledgeBases.ToList();
@@ -115,6 +115,7 @@ namespace ITHelpDeskSystem.Controllers
         // POST: KnowledgeBase/Create
         [HttpPost]
         [Authorize(Roles = "ITStaff, Admin")]
+        [ValidateInput(false)]
         public ActionResult Create(KnowledgeBaseViewModel model)
         {
             if (ModelState.IsValid)
@@ -208,6 +209,7 @@ namespace ITHelpDeskSystem.Controllers
         // POST: KnowledgeBase/Edit/5
         [HttpPost]
         [Authorize(Roles = "ITStaff, Admin")]
+        [ValidateInput(false)]
         public ActionResult Edit(int id, KnowledgeBaseViewModel model)
         {
             if (ModelState.IsValid)

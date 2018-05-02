@@ -1,5 +1,5 @@
 ﻿/*
-* Description: This file contains the charts controller that will allow the creation of the system charts.
+* Description: This file contains the charts controller that will allow the creation of the system's charts.
 * Author: mamazyad
 */
 

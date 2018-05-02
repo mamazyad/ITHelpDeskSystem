@@ -64,7 +64,7 @@ link href="~/Content/Site.css" rel="stylesheet" />
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.IncidentDescription)
+                @Html.Raw(Model.IncidentDescription)
             </dd>
         </dl>
     </fieldset>
@@ -75,7 +75,6 @@ link href="~/Content/Site.css" rel="stylesheet" />
             <dt>
                 @Html.DisplayNameFor(model => model.IncidentSolution)
             </dt>
-
             <dd>
                 @Html.DisplayFor(model => model.IncidentSolution)
                  @if (!String.IsNullOrEmpty(Model.IncidentSolution))
@@ -153,7 +152,7 @@ link href="~/Content/Site.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/jqueryval")
 }
 
-@if ((ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin")) && !(Model.Status == ITHelpDeskSystem.Models.TicketStatus.Closed))
+@if ((ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin")) && (!(Model.Status == ITHelpDeskSystem.Models.TicketStatus.Closed) && !(Model.Status == ITHelpDeskSystem.Models.TicketStatus.Resolved)))
 {<a style="display:inline; background-color: mediumaquamarine; color:#ffffff; border-color:#6bc8c0;" , href="@Url.Action("Edit", "Ticket", new { id = Model.Id })" class="btn btn-primary pull-right">
         <span class="glyphicon glyphicon-wrench "></span>
         Edit solution

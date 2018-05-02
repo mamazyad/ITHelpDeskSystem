@@ -1,7 +1,6 @@
 ﻿/*
 * Description: This file contains the staff controller, with the staff creation, edition, deletion, listing and details methods (actions).
 * Author: mamazyad
-* Date: 20/03/2018
 */
 
 using AutoMapper;
@@ -68,6 +67,7 @@ namespace ITHelpDeskSystem.Controllers
         /// </summary>
         /// <returns>Staff, Index view</returns>
         // (GET: Staff) 
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var users = db.Staffs.ToList();
@@ -99,6 +99,7 @@ namespace ITHelpDeskSystem.Controllers
         /// <param name="id"></param>
         /// <returns>Staff, Details vew</returns>
         // (GET: Staff/Details/5)
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int id)
         {
             var user = UserManager.FindById(id);
@@ -133,6 +134,7 @@ namespace ITHelpDeskSystem.Controllers
         }
 
         // GET: Staff/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -146,6 +148,7 @@ namespace ITHelpDeskSystem.Controllers
         // (POST: Staff/Create) 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create(StaffViewModel model)
         {
             if (ModelState.IsValid)
@@ -191,6 +194,7 @@ namespace ITHelpDeskSystem.Controllers
         }
 
         // (GET: Staff/Edit/5) 
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             var staff = (Staff)UserManager.FindById(id);
@@ -226,6 +230,7 @@ namespace ITHelpDeskSystem.Controllers
         // POST: Staff/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id, StaffViewModel model)
         {
             ModelState.Remove("Password");
@@ -261,6 +266,7 @@ namespace ITHelpDeskSystem.Controllers
         }
 
         // GET: Staff/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             var staff = (Staff)UserManager.FindById(id);
@@ -301,6 +307,7 @@ namespace ITHelpDeskSystem.Controllers
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int? id)
         {
             ModelState.Remove("Password");

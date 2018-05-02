@@ -414,6 +414,12 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\UserManaual\UserManual.pdf" />
+    <Content Include="index.md" />
+    <Content Include="docfx.json" />
+    <Content Include="articles\toc.md" />
+    <Content Include="articles\intro.md" />
+    <Content Include="api\index.md" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -759,6 +765,9 @@
     <Content Include="Views\Ticket\CommentPartial.cshtml" />
     <Content Include="Views\Feedback\Open.cshtml" />
     <Content Include="Views\Feedback\FeedbackGiven.cshtml" />
+    <Content Include="Views\Feedback\FeedbackIndex.cshtml" />
+    <Content Include="Views\ITManager\AssignPartial.cshtml" />
+    <Content Include="toc.yml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -802,7 +811,9 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\docfx.console.2.33.2\build\docfx.console.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\docfx.console.2.33.2\build\docfx.console.targets'))" />
   </Target>
+  <Import Project="..\packages\docfx.console.2.33.2\build\docfx.console.targets" Condition="Exists('..\packages\docfx.console.2.33.2\build\docfx.console.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -115,15 +115,20 @@ namespace ITHelpDeskSystem.Models
                 .WithRequired(e => e.Ticket)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Staff>()
+            modelBuilder.Entity<Employee>()
                 .HasMany(e => e.Comments)
-                .WithOptional(e => e.Staff)
+                .WithOptional(e => e.Employee)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<ITStaff>()
-                .HasMany(e => e.Comments)
-                .WithOptional(e => e.ITStaff)
-                .WillCascadeOnDelete(false);
+            //modelBuilder.Entity<Staff>()
+            //    .HasMany(e => e.Comments)
+            //    .WithOptional(e => e.Staff)
+            //    .WillCascadeOnDelete(false);
+
+            //modelBuilder.Entity<ITStaff>()
+            //    .HasMany(e => e.Comments)
+            //    .WithOptional(e => e.ITStaff)
+            //    .WillCascadeOnDelete(false);
         }
     }
 

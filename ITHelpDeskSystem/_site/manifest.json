@@ -1,0 +1,1148 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/Users/Manar/Dropbox/Capstone/Deliverable 4/ITHelpDeskSystem/ITHelpDeskSystem",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "BRomtfdQ5gEp8TwJFc1yoQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "+0Ow9O50OsvFzs6obSJUgw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "xVlQaX7Tk85omoiWv3O+Ag=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "c8dqKKUjqJ9IMbV7tixXOg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.App_Start.AutoMapperConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.App_Start.AutoMapperConfig.html",
+          "hash": "3znyOir1qGoYwL7CqD4xRw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.App_Start.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.App_Start.html",
+          "hash": "9aFGct50Ejrft7VF+jBcAg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.ApplicationSignInManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.ApplicationSignInManager.html",
+          "hash": "p/BiaWQsw5Fs0GVeKSLx+g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.ApplicationUserManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.ApplicationUserManager.html",
+          "hash": "C4VlnbKJJzSJx6OX7Tz43A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.BundleConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.BundleConfig.html",
+          "hash": "xD3VygeBmSbhFghYwWliHA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Controllers.AccountController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Controllers.AccountController.html",
+          "hash": "ZfgrwNek7uPORdtUOaDXXA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Controllers.AssignmentController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Controllers.AssignmentController.html",
+          "hash": "DqJ6WABkk2bBak+d/JjW3A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Controllers.CategoryController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Controllers.CategoryController.html",
+          "hash": "azlksEemvPLNVk6mHAAE3g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Controllers.ChartsController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Controllers.ChartsController.html",
+          "hash": "vVTfvTCQKey83xCH4cj+cQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Controllers.CommentController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Controllers.CommentController.html",
+          "hash": "U/9pLrJ4bd14+i1uV6X2jg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Controllers.CriterionController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Controllers.CriterionController.html",
+          "hash": "C42UjHJUCBrRDakjzRA7zA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Controllers.EmployeeController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Controllers.EmployeeController.html",
+          "hash": "QvgcekED+WlSrrnea1cqkQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Controllers.FeedbackController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Controllers.FeedbackController.html",
+          "hash": "GEbxsWsy1clwGLnoIcIPpA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Controllers.HomeController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Controllers.HomeController.html",
+          "hash": "kIq2PbV2AZMmqubSIg/bGQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Controllers.HomePageController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Controllers.HomePageController.html",
+          "hash": "AjrZvXX8VpOsZljXCmMFkA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Controllers.ITHelpDeskAdminController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Controllers.ITHelpDeskAdminController.html",
+          "hash": "XLsEp+Yajih8KZx/SZ9UDw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Controllers.ITManagerController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Controllers.ITManagerController.html",
+          "hash": "IosnqeY8xCX/kVEYP3v0mg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Controllers.ITStaffController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Controllers.ITStaffController.html",
+          "hash": "Ur1IXBePZ37LkyuvauvCdQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Controllers.KnowledgeBaseController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Controllers.KnowledgeBaseController.html",
+          "hash": "v/sRvyALka1GHoANwOr4Yg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Controllers.ManageController.ManageMessageId.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Controllers.ManageController.ManageMessageId.html",
+          "hash": "7CBdV1ftPOESB8Q1HuMOGg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Controllers.ManageController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Controllers.ManageController.html",
+          "hash": "yYKUWIky/vwYE0cF4vYTDQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Controllers.StaffController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Controllers.StaffController.html",
+          "hash": "5QsIjMV728iGuYqWZTGThw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Controllers.TicketController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Controllers.TicketController.html",
+          "hash": "a0EwzxCRj4Ky3g18/0lx+A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Controllers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Controllers.html",
+          "hash": "Yjgb7RIl60A89LjskxjWcg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.EmailService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.EmailService.html",
+          "hash": "e65x/T46Uhfn9+tz3rhCiw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.FilterConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.FilterConfig.html",
+          "hash": "H8G9+HFNLlc0cYcMK5SBUw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.AddPhoneNumberViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.AddPhoneNumberViewModel.html",
+          "hash": "7VLg1wPfHmQyb5rXzCtzlA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.ApplicationDbContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.ApplicationDbContext.html",
+          "hash": "N2jAdTIZIhDs+iCG8LfyOA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.ApplicationUser.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.ApplicationUser.html",
+          "hash": "7/KEJ0XDKNG7hS+SRUS/Hw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.Assignment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.Assignment.html",
+          "hash": "0sKdvQnNXzThBNCt3DAdbA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.Category.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.Category.html",
+          "hash": "Hwxitynfsksa0vUMKceBDw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.ChangePasswordViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.ChangePasswordViewModel.html",
+          "hash": "5UB1YJaCTktZi0+6w8ufFg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.Comment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.Comment.html",
+          "hash": "EAOwOFhwBdPu42MkeXMMTA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.ConfigureTwoFactorViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.ConfigureTwoFactorViewModel.html",
+          "hash": "fT5akLrf7nqtGC2NVYV3xA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.Criterion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.Criterion.html",
+          "hash": "ov3Azur5neCiVuIkQm3Gmg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.CustomRole.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.CustomRole.html",
+          "hash": "w6a2jKGn6BY0iRTY95UuPg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.CustomRoleStore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.CustomRoleStore.html",
+          "hash": "cFwwaN7Zyyz2zyuYncLM1g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.CustomUserClaim.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.CustomUserClaim.html",
+          "hash": "ccDxXZAsn6FOBflZ+0J1cg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.CustomUserLogin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.CustomUserLogin.html",
+          "hash": "RsM2/laPjqzqXNLcgODULQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.CustomUserRole.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.CustomUserRole.html",
+          "hash": "xJJ/8TqaFnkaBCAWWdw95Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.CustomUserStore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.CustomUserStore.html",
+          "hash": "akyoGkoXDlN/mTZw8e4iFQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.Employee.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.Employee.html",
+          "hash": "ZxGg/dVSmNtghlIKHACvJQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.ExternalLoginConfirmationViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.ExternalLoginConfirmationViewModel.html",
+          "hash": "KySmB0J9Umpd9YE/pVd2lQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.ExternalLoginListViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.ExternalLoginListViewModel.html",
+          "hash": "txz32XG4MfFgcVHwI55hEw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.FactorViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.FactorViewModel.html",
+          "hash": "LvtS/4PcuCLkRVyrcKhwyg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.Feedback.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.Feedback.html",
+          "hash": "h1cRQO2/nb6DHq6wS2g6Mg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.ForgotPasswordViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.ForgotPasswordViewModel.html",
+          "hash": "ejALWb7yrfQ9u4F4COFqUQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.ForgotViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.ForgotViewModel.html",
+          "hash": "8RJ2enxs1+aNuhClwXMliw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.ITHelpDeskAdmin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.ITHelpDeskAdmin.html",
+          "hash": "oc/F5ivJY3YK5icQeyQJHw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.ITStaff.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.ITStaff.html",
+          "hash": "qpjv3ZMscrwWTG2DB3bC8g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.IndexViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.IndexViewModel.html",
+          "hash": "QvFjxcX4OSw60ta0lO4uYQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.KnowledgeBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.KnowledgeBase.html",
+          "hash": "yV2qHR/IjarnbP1QQ9rKHA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.LoginViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.LoginViewModel.html",
+          "hash": "dWfL13F+N3k+ZanjbQHU9g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.ManageLoginsViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.ManageLoginsViewModel.html",
+          "hash": "oKkCzdRh9xUw/ugTpd0KHQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.ManagerialPosition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.ManagerialPosition.html",
+          "hash": "kZAou4ZC5Xj+VAkruJr1gg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.RegisterViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.RegisterViewModel.html",
+          "hash": "2zbD/FVJ2wXFEVWqmAMbXA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.ResetPasswordViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.ResetPasswordViewModel.html",
+          "hash": "cM2bS+itHtENw07tdOLPLw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.SendCodeViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.SendCodeViewModel.html",
+          "hash": "aEvNEqA6PatY0eWfu6JdMQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.SetPasswordViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.SetPasswordViewModel.html",
+          "hash": "T3v1q3QrqIuJJ7nt/rsogw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.Staff.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.Staff.html",
+          "hash": "3Y5/YJU25IFWUBop5jeGLQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.Ticket.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.Ticket.html",
+          "hash": "70AOexLUOxEGu8+vlAmvAA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.TicketPriority.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.TicketPriority.html",
+          "hash": "h14/zOznqoEF04XGqxoGcw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.TicketStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.TicketStatus.html",
+          "hash": "CXvb7Y8/YotSZ/2BQhk8aw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.VerifyCodeViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.VerifyCodeViewModel.html",
+          "hash": "Xj4uiCtF9zQG1ry0OlqWpA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.VerifyPhoneNumberViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.VerifyPhoneNumberViewModel.html",
+          "hash": "kXK9c7TKWK5xpTN1Ni7K6A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Models.html",
+          "hash": "D8Cq5m9Mwp9pvNaIm4K6Ew=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.MvcApplication.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.MvcApplication.html",
+          "hash": "qdQPtjtLCulnW6FJ4GgJMw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.RouteConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.RouteConfig.html",
+          "hash": "cYSxSLQW5pSHDybJP3+duw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.SmsService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.SmsService.html",
+          "hash": "B4uWeTd368Yc0v8EurvZKA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.Startup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.Startup.html",
+          "hash": "/syphniwH2K1aZ1ztDE26Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.ViewModels.AccelerateTicketViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.ViewModels.AccelerateTicketViewModel.html",
+          "hash": "/qMs/R6Cm0YJ/x4kBUs6Pg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.ViewModels.AnswerViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.ViewModels.AnswerViewModel.html",
+          "hash": "YnbAveSiBIK9eznEDFanKg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.ViewModels.AssignmentViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.ViewModels.AssignmentViewModel.html",
+          "hash": "+vO6lPu6ZOX7ZoxyZlzs7A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.ViewModels.CategoryViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.ViewModels.CategoryViewModel.html",
+          "hash": "R4EeJ5CTpik/1v7TI6OlOQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.ViewModels.CommentViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.ViewModels.CommentViewModel.html",
+          "hash": "gz29OCVqTbnQiXygBGUMwA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.ViewModels.CriterionViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.ViewModels.CriterionViewModel.html",
+          "hash": "i/DMcfnJ0OIu9O6H+mMirQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.ViewModels.EditTicketViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.ViewModels.EditTicketViewModel.html",
+          "hash": "Gx1JYE+oeKu1wPuQ83BOkQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.ViewModels.EmployeeViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.ViewModels.EmployeeViewModel.html",
+          "hash": "5sZbDcqEdcEDPNBc1Kg0MA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.ViewModels.FeedbackViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.ViewModels.FeedbackViewModel.html",
+          "hash": "vzExUrUf5sBvqxLWSmzpJA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.ViewModels.ITHelpDeskAdminViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.ViewModels.ITHelpDeskAdminViewModel.html",
+          "hash": "mzaYOIAvm8YB5qeg7qRpQw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.ViewModels.ITStaffViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.ViewModels.ITStaffViewModel.html",
+          "hash": "glHLzfhGTOzTS2Pw5vGtpw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.ViewModels.KnowledgeBaseViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.ViewModels.KnowledgeBaseViewModel.html",
+          "hash": "w+TXYPbUbD5eJCSax5zldQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.ViewModels.StaffViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.ViewModels.StaffViewModel.html",
+          "hash": "TeA3eMGUCguewIALT92cyw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.ViewModels.TicketViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.ViewModels.TicketViewModel.html",
+          "hash": "9Wnq1s1eGSYKP6U4ZulDtw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.ViewModels.html",
+          "hash": "XpN0z8EBzg4WaJptwCSp8A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ITHelpDeskSystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ITHelpDeskSystem.html",
+          "hash": "QeL+1yXjaZK6mcsOi8shHA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "obj/api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "nqGI44NRec8lGgi7EQX0Vg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "frPdeW5hGroGiyexwMQIhg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build"
+      },
+      "processors": {
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build"
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build"
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing"
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

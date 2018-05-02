@@ -37,6 +37,7 @@
             </td>
             <td>
                 @Html.ActionLink("Details", "TechnicianTickets", new { id = item.Id }, null)
+                @Html.ActionLink("Feedbacks", "FeedbackIndex","Feedback", new { id = item.Id }, null)
             </td>
         </tr>
     }

@@ -78,7 +78,7 @@
 }
 
 <h2 style="margin-top:1em;">Create a ticket on behalf of staff</h2>
-@using (Html.BeginForm("Create", "Ticket", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("CreateOnBehalf", "Ticket", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 

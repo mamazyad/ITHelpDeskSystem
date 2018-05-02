@@ -25,7 +25,7 @@ namespace ITHelpDeskSystem.Controllers
         /// <summary>
         /// This action lists all the categories created with the IT staff responsible for them. Category index view is based on it.
         /// </summary>
-        /// <returns> Category, Index view</returns>
+        /// <returns> Category, Index view on success</returns>
         // GET: Category 
         [Authorize(Roles = "ITStaff, Admin")]
         public ActionResult Index()
@@ -49,7 +49,7 @@ namespace ITHelpDeskSystem.Controllers
         ///  This action provides the details of a specific category, Category Details view is based on it with links to Delete and Edit actions.
         /// </summary>
         /// <param name="id">Category ID</param>
-        /// <returns>Category, Details view</returns>
+        /// <returns>Category, Details view on success</returns>
         // GET: Category/Details/5
         [Authorize(Roles = "ITStaff, Admin")]
         public ActionResult Details(int? id)
@@ -78,7 +78,7 @@ namespace ITHelpDeskSystem.Controllers
         /// This action enables the creation of a category (with a unique name) and assigning it to a specific IT staff.
         /// </summary>
         /// <param name="model">Ticket model</param>
-        /// <returns> Category, Create view</returns>
+        /// <returns> Category, Create view on success</returns>
         // GET: Category/Create. 
         [Authorize(Roles = "Admin")]
         public ActionResult Create()
@@ -92,7 +92,7 @@ namespace ITHelpDeskSystem.Controllers
         /// This action enables the creation of a category (with a unique name) and assigning it to a specific IT staff.
         /// </summary>
         /// <param name="model">Ticket model</param>
-        /// <returns> Category, Create view</returns>
+        /// <returns> Category, Create view on success</returns>
         // (POST: Category/Create) 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -123,7 +123,7 @@ namespace ITHelpDeskSystem.Controllers
         /// </summary>
         /// <param name="id">Ticket Id</param>
         /// <param name="model">Ticket model</param>
-        /// <returns> Category, Edit view</returns>
+        /// <returns> Category, Edit view on success</returns>
         // GET: Category/Edit/5
         [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
@@ -155,7 +155,7 @@ namespace ITHelpDeskSystem.Controllers
         /// </summary>
         /// <param name="id">Ticket Id</param>
         /// <param name="model">Ticket model</param>
-        /// <returns> Category, Edit view</returns>
+        /// <returns> Category, Edit view on success</returns>
         // (POST: Category/Edit/5) 
         [HttpPost]
         [Authorize(Roles = "Admin")]
@@ -185,7 +185,7 @@ namespace ITHelpDeskSystem.Controllers
         /// This action enables the deletion of a category.
         /// </summary>
         /// <param name="id">Ticket ID</param>
-        /// <returns> Category, Delete view</returns>
+        /// <returns> Category, Delete view on success</returns>
         // GET: Category/Delete/5.
         [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
@@ -214,7 +214,7 @@ namespace ITHelpDeskSystem.Controllers
         /// This action enables the deletion of a category.
         /// </summary>
         /// <param name="id">Ticket ID</param>
-        /// <returns> Category, Delete view</returns>
+        /// <returns> Category, Delete view on success</returns>
         // (POST: Category/Delete/5) 
         [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]

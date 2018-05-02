@@ -26,7 +26,7 @@ namespace ITHelpDeskSystem.Controllers
         /// This action allows Staff to give feedback to service provided.
         /// </summary>
         /// <param name="id">Ticket ID</param>
-        /// <returns>Feedback model</returns>
+        /// <returns>Feedback model on success</returns>
         [Authorize(Roles = "Staff")]
         public ActionResult Feedback(int? id)
         {
@@ -90,6 +90,8 @@ namespace ITHelpDeskSystem.Controllers
         [Authorize(Roles = "Staff")]
         public ActionResult Feedback(int Id, FeedbackViewModel model)
         {
+            decimal sum = 0;
+            int count = 0;
             if (ModelState.IsValid)
             {
                 Ticket ticket = db.Tickets.Find(Id);
@@ -97,6 +99,15 @@ namespace ITHelpDeskSystem.Controllers
                 {
                     return HttpNotFound();
                 }
+                foreach (var criterion in model.Criteria)
+                {
+                    if (criterion.SelectedAnswer.HasValue)
+                    {
+                        count++;
+                        sum = sum + criterion.SelectedAnswer.Value;
+                    }
+                }
+                var temp = User.Identity.GetUserId<int>();
                 var feedback = new Feedback
                 {
                     FeedbackId = model.Id,
@@ -105,7 +116,8 @@ namespace ITHelpDeskSystem.Controllers
                     FeedbackGiven =true,
                     StaffId = User.Identity.GetUserId<int>(),
                     TicketId = Id,
-                    
+                    StaffName = db.Employees.Find(temp).FullName,
+                    Grade = sum,
                 };
                 foreach (var criterion in model.Criteria)
                 {
@@ -171,6 +183,31 @@ namespace ITHelpDeskSystem.Controllers
                 Id = feedback.FeedbackId,
                 FeedbackDate = feedback.FeedbackDate,
             };
+            return View(model);
+        }
+
+        /// <summary>
+        /// This action provides IT manager with all the feedbacks given to am IT staff
+        /// </summary>
+        /// <param name="Id">IT staff ID</param>
+        /// <returns>Feedback index on success </returns>
+        [Authorize(Roles = "ITManager")]
+        public ActionResult FeedbackIndex(int? Id)
+        {
+            var feedback = db.Feedbacks.Where(m => m.Ticket.Category.ITStaffId == Id).ToList();
+            var model = new List<FeedbackViewModel>();
+            foreach (var item in feedback)
+            {
+                model.Add(new FeedbackViewModel
+                {
+                    Id = item.FeedbackId,
+                    FeedbackDate = item.FeedbackDate,
+                    Grade = item.Grade,
+                    FeedbackComment = item.FeedbackComment,
+                    StaffId = item.StaffId,
+                    StaffName = item.StaffName,
+                });
+            }
             return View(model);
         }
     }

@@ -80,7 +80,7 @@
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.SolutionDescription)
+                @Html.Raw(Model.IncidentDescription)
             </dd>
             <dt>
                 @Html.DisplayNameFor(model => model.KBAttachment)

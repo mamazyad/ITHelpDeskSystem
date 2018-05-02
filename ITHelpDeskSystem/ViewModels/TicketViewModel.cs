@@ -26,8 +26,6 @@ namespace ITHelpDeskSystem.ViewModels
         }
         public int Id { get; set; }
 
-        //Attributes of Creation//
-
         [Required]
         [StringLength(128, ErrorMessage = "The subject length exceeds the limit allowed.")]
         public string Subject { get; set; }
@@ -118,8 +116,6 @@ namespace ITHelpDeskSystem.ViewModels
         [DataType(DataType.MultilineText)]
         public string AccelerationComment { get; set; }
 
-
-
         [Display(Name = "Email")]
         public string Email { get; set; }
 
@@ -142,11 +138,25 @@ namespace ITHelpDeskSystem.ViewModels
         [Display(Name = "Managerial Position")]
         public ManagerialPosition? ManagerialPosition { get; set; }
 
-
         public List<Assignment> Assignments { get; set; }
 
         public Employee Employee { get; set; }
 
         public List<Comment> Comments { get; set; }
+
+
+        [DisplayFormat(DataFormatString = "{0:dd / MM - hh:mm}", NullDisplayText = "Not set")]
+        public DateTime? AssignmentDate { get; set; }
+
+        public int? AssignedBy { get; set; }
+
+        [Display(Name = "Assigned by")]
+        public string AssignedByName { get; set; }
+
+        [Display(Name = "Comment")]
+        [DataType(DataType.MultilineText)]
+        public string AssignmentComment { get; set; }
+
+
     }
 }

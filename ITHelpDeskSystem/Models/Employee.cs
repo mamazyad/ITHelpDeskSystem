@@ -22,6 +22,7 @@ namespace ITHelpDeskSystem.Models
         public Employee()
         {
             Tickets = new HashSet<Ticket>();
+            Comments = new HashSet<Comment>();
         }
 
         [StringLength(128)]
@@ -51,5 +52,6 @@ namespace ITHelpDeskSystem.Models
         {
             get { return string.Format("{0} {1}", FirstName, LastName); }
         }
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }

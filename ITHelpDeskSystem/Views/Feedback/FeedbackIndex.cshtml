@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ITHelpDeskSystem.ViewModels.FeedbackViewModel>
+
+@{
+    ViewBag.Title = "FeedbackIndex";
+}
+
+<h2>Feedbacks </h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FeedbackDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StaffName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Grade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FeedbackComment)
+        </th>
+
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FeedbackDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grade)
+            </td>
+            <td>
+                @if (!String.IsNullOrEmpty(item.FeedbackComment))
+                {
+                      @Html.DisplayFor(modelItem => item.FeedbackComment)
+                }
+                @if (String.IsNullOrEmpty(item.FeedbackComment))
+                {
+                    <p style="color:lightgray">No Comment</p>
+                }
+            </td>
+            
+        </tr>
+    }
+
+</table>

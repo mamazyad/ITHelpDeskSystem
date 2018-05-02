@@ -21,6 +21,7 @@ namespace ITHelpDeskSystem.Models
         public int AssignmentId { get; set; }
 
         public DateTime? AssignmentDate { get; set; }
+        public string AssignedTo { get; set; }
 
         public int? AssignedBy { get; set; }
 
@@ -29,6 +30,8 @@ namespace ITHelpDeskSystem.Models
         public string AssignmentComment { get; set; }
 
         public int CategoryId { get; set; }
+
+        public string CategoryName { get; set; }
 
         public int TicketId { get; set; }
 

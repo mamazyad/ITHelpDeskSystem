@@ -59,7 +59,7 @@ namespace ITHelpDeskSystem.Controllers
         /// This action allows for ticket reassignment by changing the ticket category.
         /// </summary>
         /// <param name="id">Ticket Id</param>
-        /// <returns>Ticket index</returns>
+        /// <returns>Ticket Index on success</returns>
         // POST: Assignment/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -74,12 +74,13 @@ namespace ITHelpDeskSystem.Controllers
                     return HttpNotFound();
                 }
                 ticket.CategoryId = model.CategoryId;
+                var temp = User.Identity.GetUserId<int>();
                 var assignment = new Assignment
                 {
                     AssignmentId = model.Id,
                     AssignmentDate = DateTime.Now,
                     AssignedBy = User.Identity.GetUserId<int>(),
-                    AssignedByName = User.Identity.Name,
+                    AssignedByName = db.Employees.Find(temp).FullName,
                     AssignmentComment = model.AssignmentComment,
                     CategoryId = model.CategoryId,
                     TicketId = ticket.TicketId,

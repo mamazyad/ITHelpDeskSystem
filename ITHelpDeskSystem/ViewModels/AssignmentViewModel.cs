@@ -34,6 +34,11 @@ namespace ITHelpDeskSystem.ViewModels
 
         public int CategoryId { get; set; }
 
+        public string CategoryName { get; set; }
+
+        [Display(Name = "Assigned to")]
+        public string AssignedTo { get; set; }
+
         public int TicketId { get; set; }
 
         public Category Category { get; set; }

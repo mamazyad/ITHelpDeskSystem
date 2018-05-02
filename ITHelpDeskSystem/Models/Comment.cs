@@ -33,11 +33,16 @@ namespace ITHelpDeskSystem.Models
 
         public int? ITStaffId { get; set; }
 
+        public int? CommenterId { get; set; }
+
         public virtual Staff Staff { get; set; }
 
         public virtual ITStaff ITStaff { get; set; }
 
         public virtual Ticket Ticket { get; set; }
+
+        public virtual Employee Employee { get; set; }
+
 
     }
 }

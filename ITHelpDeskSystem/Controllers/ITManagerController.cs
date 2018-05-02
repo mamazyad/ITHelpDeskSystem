@@ -1,5 +1,5 @@
 ﻿/*
-* Description: 
+* Description: This file contains the IT maanger index action, ticket details and IT staff details actions.
 * Author: mamazyad
 */
 
@@ -23,6 +23,10 @@ namespace ITHelpDeskSystem.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        /// <summary>
+        /// This action lists all the IT staff to the IT manager with thier work load.
+        /// </summary>
+        /// <returns>IT staff view model on success </returns>
         // GET: ITManager
         [Authorize(Roles = "ITManager")]
         public ActionResult Index()
@@ -45,6 +49,11 @@ namespace ITHelpDeskSystem.Controllers
         }
 
 
+        /// <summary>
+        /// This action displays the tickets an IT staff is responsible of.
+        /// </summary>
+        /// <param name="id">IT staff ID</param>
+        /// <returns>Ticket view model on success </returns>
         // GET: ITManager
         [Authorize(Roles = "ITManager")]
         public ActionResult TechnicianTickets(int? id)
@@ -74,6 +83,10 @@ namespace ITHelpDeskSystem.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// This action displays all the tickets created in the system.
+        /// </summary>
+        /// <returns>Ticket view model</returns>
         // GET: ITManager
         [Authorize(Roles = "ITManager")]
         public ActionResult AllTickets()
@@ -99,6 +112,11 @@ namespace ITHelpDeskSystem.Controllers
         }
 
 
+        /// <summary>
+        /// This action displays  the dtails of a ticket
+        /// </summary>
+        /// <param name="id">Ticket ID</param>
+        /// <returns>Ticket view model on success</returns>
         [Authorize(Roles = "ITManager")]
         public ActionResult TicketDetails(int? id)
         {
@@ -106,7 +124,7 @@ namespace ITHelpDeskSystem.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Ticket ticket = db.Tickets.Find(id);
+            var ticket = db.Tickets.Find(id);
             if (ticket == null)
             {
                 return HttpNotFound();
@@ -131,38 +149,33 @@ namespace ITHelpDeskSystem.Controllers
                 AccelerationComment = ticket.AccelerationComment,
                 ITStaffResponsibleName = ticket.Category.ITStaff.FullName,
             };
-
-            //var temp = db.Assignments.Where(m=>m.TicketId == id).ToList();
-            //Assignment assignment = db.Assignments.Find(
-            //var model2 = new AssignmentViewModel
-            //{
-            //    Id = assignment.AssignmentId,
-            //    AssignedByName = db.ITStaffs.Find(assignment.AssignedBy).FullName,
-            //    AssignedBy= assignment.AssignedBy,
-            //    AssignmentComment =assignment.AssignmentComment,
-            //    AssignmentDate = assignment.AssignmentDate,
-            //};
-
             return View(model);
         }
 
-
-        //public static TimeSpan? Difference(DateTime resulotion, DateTime DueDate)
-        //{
-        //    TimeSpan? Difference = resulotion - DueDate;
-        //    return Difference;
-        //}
-
-        //public static TimeSpan Average(this IEnumerable<TimeSpan> timeSpans)
-        //{
-        //    IEnumerable<long> ticksPerTimeSpan = timeSpans.Select(t => t.Ticks);
-        //    double averageTicks = ticksPerTimeSpan.Average();
-        //    long averageTicksLong = Convert.ToInt64(averageTicks);
-
-        //    TimeSpan averageTimeSpan = TimeSpan.FromTicks(averageTicksLong);
-
-        //    return averageTimeSpan;
-        //}
+        /// <summary>
+        /// This action will displpay the ticket information.
+        /// </summary>
+        /// <param name="id">Ticket Id as a parameter.</param>
+        /// <returns>Ticket info partial view</returns>
+        public PartialViewResult AssignPartial(int? id)
+        {
+            var assignment = db.Assignments.Where(m => m.AssignmentId == id).ToList();
+            var model = new List<AssignmentViewModel>();
+            foreach (var item in assignment)
+            {
+                model.Add(new AssignmentViewModel
+                {
+                    Id = item.AssignmentId,
+                    AssignedByName = item.AssignedByName,
+                    AssignmentDate = item.AssignmentDate,
+                    AssignmentComment = item.AssignmentComment,
+                    CategoryId = item.CategoryId,
+                    CategoryName = item.CategoryName,
+                    AssignedTo = item.AssignedTo,
+                });
+            }
+            return PartialView(model);
+        }
 
 
     }

@@ -59,6 +59,6 @@ namespace ITHelpDeskSystem.ViewModels
 
         public virtual ITStaff ITStaff { get; set; }
 
-
+        public string Search { get; set; }
     }
 }

@@ -166,11 +166,19 @@ namespace ITHelpDeskSystem.Migrations
             var knowledgeBase = new List<KnowledgeBase>
             {
                 new KnowledgeBase { CreatedBy= ITstaffs.Single(d=>d.UserName=="itstaff1").Id, ITStaffId = ITstaffs.Single(d=>d.UserName=="itstaff1").Id, Topic = "Software", CreationDate=DateTime.Now, IncidentTitle="Uninstall software", IncidentDescription ="For windows users facing any troubles while uninstalling a software", SolutionDescription="Select a program you wish to uninstall from Control Panel and click either Remove, or Change/Remove." },
-
-                new KnowledgeBase { CreatedBy= ITstaffs.Single(d=>d.UserName=="itstaff1").Id, ITStaffId = ITstaffs.Single(d=>d.UserName=="itstaff1").Id, Topic = "Software", CreationDate=DateTime.Now, IncidentTitle="Uninstall software", IncidentDescription ="For windows users facing any troubles while uninstalling a software", SolutionDescription="Select a program you wish to uninstall from Control Panel and click either Remove, or Change/Remove." },
             };
             knowledgeBase.ForEach(s => context.KnowledgeBases.AddOrUpdate(p => p.Topic, s));
             context.SaveChanges();
+
+            //var comment = new List<Comment>
+            //{
+            //    new Comment {
+            //        TicketId =1,
+            //        CommentText=""
+            //    },
+            //};
+            //comment.ForEach(s => context.Comments.AddOrUpdate(p => p.CommentText, s));
+            //context.SaveChanges();
         }
     }
 }

@@ -101,13 +101,6 @@ namespace ITHelpDeskSystem.Models
         public virtual Staff Accelerator { get; set; }
 
         public bool? FeedbackGiven { get; set; }
-
-
-        //public int? LagTime
-        //{
-        //    get { return Convert.ToInt32(ResultionDate - DueDate); }
-        //}
-        //public TimeSpan? LagTime { get; set; }
     }
 
     /// <summary>

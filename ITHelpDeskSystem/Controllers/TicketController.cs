@@ -47,7 +47,6 @@ namespace ITHelpDeskSystem.Controllers
             {
                 model.Add(new TicketViewModel
                 {
-
                     Id = item.TicketId,
                     Subject = item.Subject,
                     IncidentDescription = item.IncidentDescription,
@@ -253,6 +252,7 @@ namespace ITHelpDeskSystem.Controllers
         /// <returns>Ticket, CreateOnBehalf view</returns>
         // (POST: Ticket/CreateOnBehalf) This action enables ITHelpDeskAdmin to creat of a ticket on behalf of a staff.
         [HttpPost]
+        [ValidateInput(false)]
         [Authorize(Roles = "Admin")]
         public ActionResult CreateOnBehalf(TicketViewModel model)
         {
@@ -365,6 +365,7 @@ namespace ITHelpDeskSystem.Controllers
         /// <returns>index,view</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
+       
         [Authorize(Roles = "Admin, ITStaff")]
         public ActionResult Edit(int id, EditTicketViewModel model)
         {
@@ -633,14 +634,18 @@ namespace ITHelpDeskSystem.Controllers
         /// <returns>All comment partial view</returns>
         public PartialViewResult CommentPartial(int? id)
         {
-            Comment comment = db.Comments.Find(id);
-            CommentViewModel model = new CommentViewModel
+            var comment = db.Comments.Where(m => m.TicketId == id).ToList();
+           var model = new List<CommentViewModel>();
+            foreach (var item in comment)
             {
-                Id = comment.CommentId,
-                CommentDate = comment.CommentDate,
-                Commenter = comment.Commenter,
-                CommentText = comment.CommentText,
-            };
+                    model.Add(new CommentViewModel
+                    {
+                        Id = item.CommentId,
+                        CommentDate = item.CommentDate,
+                        CommentText = item.CommentText,
+                        Commenter = item.Commenter,
+                    });
+            }
             return PartialView(model);
         }
     }

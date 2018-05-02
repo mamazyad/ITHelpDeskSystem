@@ -1,7 +1,6 @@
 ﻿/*
 * Description: This file is the IT staff ViewModel (based on the IT staff model), created to to pass information between IT staff views and its controller.
 * Author: mamazyad
-* Date: 20/03/2018
 */
 
 using ITHelpDeskSystem.Models;

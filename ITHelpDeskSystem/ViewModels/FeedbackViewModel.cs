@@ -26,14 +26,24 @@ namespace ITHelpDeskSystem.ViewModels
         public int Id { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:dd / MM - hh:mm}", NullDisplayText = "Not set")]
+        [Display(Name = "Feedback date")]
         public DateTime? FeedbackDate { get; set; }
 
         public int? SelectedAnswer { get; set; }
 
         [DataType(DataType.MultilineText)]
+        [Display(Name = "Feedback comment")]
         public string FeedbackComment { get; set; }
 
         public int TicketId { get; set; }
+
+        public int StaffId { get; set; }
+
+        [Display(Name = "Average grade")]
+        public decimal? Grade { get; set; }
+
+        [Display(Name = "Staff name")]
+        public string StaffName { get; set; }
 
         public bool? FeedbackGiven { get; set; }
 

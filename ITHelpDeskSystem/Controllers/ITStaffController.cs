@@ -68,6 +68,7 @@ namespace ITHelpDeskSystem.Controllers
         /// </summary>
         /// <returns>IT staff, Index view</returns>
         // (GET: ITStaff) 
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var users = db.ITStaffs.ToList();
@@ -103,6 +104,7 @@ namespace ITHelpDeskSystem.Controllers
         /// <param name="id"></param>
         /// <returns>ITStaff, Details view</returns>
         // (GET: ITStaff/Details/5)
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int id)
         {
             var user = UserManager.FindById(id);
@@ -138,6 +140,7 @@ namespace ITHelpDeskSystem.Controllers
         }
 
         // GET: ITStaff/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -151,6 +154,7 @@ namespace ITHelpDeskSystem.Controllers
         // (POST: ITStaff/Create) 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create(ITStaffViewModel model)
         {
             if (ModelState.IsValid)
@@ -214,6 +218,7 @@ namespace ITHelpDeskSystem.Controllers
         }
 
         // GET: ITStaff/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             var ITstaff = (ITStaff)UserManager.FindById(id);
@@ -254,6 +259,7 @@ namespace ITHelpDeskSystem.Controllers
         // (POST: ITStaff/Edit/5) 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id, ITStaffViewModel model, params string[] roles)
         {
             ModelState.Remove("Password");
@@ -319,6 +325,7 @@ namespace ITHelpDeskSystem.Controllers
         }
 
         // GET: ITStaff/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             var ITstaff = (ITStaff)UserManager.FindById(id);
@@ -357,6 +364,7 @@ namespace ITHelpDeskSystem.Controllers
         // (POST: ITStaff/Delete/5)
         [HttpPost]
         [ActionName("Delete")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int? id)
         {

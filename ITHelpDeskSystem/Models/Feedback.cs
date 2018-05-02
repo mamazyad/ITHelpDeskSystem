@@ -35,6 +35,10 @@ namespace ITHelpDeskSystem.Models
 
         public int StaffId { get; set; }
 
+        public string StaffName { get; set; }
+
+        public decimal? Grade { get; set; }
+
         public int? CriterionId { get; set; }
 
         public virtual Criterion Criterion { get; set; }

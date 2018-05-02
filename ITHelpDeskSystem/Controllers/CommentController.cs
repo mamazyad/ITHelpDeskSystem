@@ -22,7 +22,13 @@ namespace ITHelpDeskSystem.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        /// <summary>
+        /// This action allows for commenting on a ticket.
+        /// </summary>
+        /// <param name="id">Ticket Id</param>
+        /// <returns> Comment view model on sucess</returns>
         // GET: Comment/comment
+        [Authorize(Roles = "ITStaff, Admin, Staff")]
         public ActionResult Comment(int? id)
         {
             if (id == null)
@@ -37,7 +43,7 @@ namespace ITHelpDeskSystem.Controllers
             }
             if (ticket.Status == TicketStatus.Closed)
             {
-                return RedirectToActionPermanent("Closed", new { id = ticket.TicketId });
+                return RedirectToActionPermanent("Closed","Ticket", new { id = ticket.TicketId });
             }
             CommentViewModel model = new CommentViewModel
             {
@@ -58,22 +64,47 @@ namespace ITHelpDeskSystem.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// This action allows for commenting on a ticket.
+        /// </summary>
+        /// <param name="id">Ticket Id</param>
+        /// <returns> Comment view model on sucess</returns>
         // POST: Comment/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "ITStaff, Admin, Staff")]
         public ActionResult Comment(int id, CommentViewModel model)
         {
             if (ModelState.IsValid)
             {
-                if (User.IsInRole("ITStaff, Admin"))
+                if (User.IsInRole("ITStaff"))
                 {
+                    var temp = User.Identity.GetUserId<int>();
                     var comment = new Comment
                     {
                         CommentId = model.Id,
                         CommentText = model.CommentText,
-                        ITStaffId = User.Identity.GetUserId<int>(),
+                        CommenterId = User.Identity.GetUserId<int>(),
+                        Commenter = db.Employees.Find(temp).FullName,
                         Title = model.Title,
                         TicketId = id,
+                        CommentDate =DateTime.Now,
+                    };
+                    db.Comments.Add(comment);
+                    db.SaveChanges();
+                    return RedirectToAction("Index", "Ticket");
+                }
+                if (User.IsInRole("Admin"))
+                {
+                    var temp = User.Identity.GetUserId<int>();
+                    var comment = new Comment
+                    {
+                        CommentId = model.Id,
+                        CommentText = model.CommentText,
+                        CommenterId = User.Identity.GetUserId<int>(),
+                        Commenter = db.Employees.Find(temp).FullName,
+                        Title = model.Title,
+                        TicketId = id,
+                        CommentDate = DateTime.Now,
                     };
                     db.Comments.Add(comment);
                     db.SaveChanges();
@@ -81,12 +112,14 @@ namespace ITHelpDeskSystem.Controllers
                 }
                 if (User.IsInRole("Staff"))
                 {
+                    var temp = User.Identity.GetUserId<int>();
                     var comment = new Comment
                     {
                         CommentId = model.Id,
                         CommentDate = DateTime.Now,
                         CommentText = model.CommentText,
-                        StaffId = User.Identity.GetUserId<int>(),
+                        CommenterId = User.Identity.GetUserId<int>(),
+                        Commenter = db.Employees.Find(temp).FullName,
                         Title = model.Title,
                         TicketId = id,
                     };
@@ -94,12 +127,17 @@ namespace ITHelpDeskSystem.Controllers
                     db.SaveChanges();
                     return RedirectToAction("Index", "Ticket");
                 }
-
             }
             return View(model);
         }
 
+        /// <summary>
+        /// This action allows for the edition of a comment
+        /// </summary>
+        /// <param name="id">Comment Id</param>
+        /// <returns>Comment view model on sucess</returns>
         // GET: Comment/Edit/5
+        [Authorize(Roles = "ITStaff, Admin, Staff")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -123,8 +161,14 @@ namespace ITHelpDeskSystem.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// This action allows for the edition of a comment
+        /// </summary>
+        /// <param name="id">Comment Id</param>
+        /// <returns>Comment view model on sucess</returns>
         // POST: Comment/Edit/5
         [HttpPost]
+        [Authorize(Roles = "ITStaff, Admin, Staff")]
         public ActionResult Edit(int id, CommentViewModel model)
         {
             if (ModelState.IsValid)
@@ -144,7 +188,13 @@ namespace ITHelpDeskSystem.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// This action enables the deletion of a comment.
+        /// </summary>
+        /// <param name="id">Comment ID</param>
+        /// <returns> Comment, Delete view</returns>
         // GET: Comment/Delete/5. 
+        [Authorize(Roles = "ITStaff, Admin, Staff")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -163,7 +213,7 @@ namespace ITHelpDeskSystem.Controllers
         /// <summary>
         /// This action enables the deletion of a comment.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Comment ID</param>
         /// <returns> Comment, Delete view</returns>
         // (POST: Comment/Delete/5) 
         [HttpPost, ActionName("Delete")]

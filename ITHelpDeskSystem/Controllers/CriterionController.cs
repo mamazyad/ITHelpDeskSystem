@@ -27,6 +27,7 @@ namespace ITHelpDeskSystem.Controllers
         /// </summary>
         /// <returns>Criterion Index.</returns>
         // GET: Criterion
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var criteria = db.Criteria.Where(m => m.ActiveCriterion == true).ToList();
@@ -49,8 +50,9 @@ namespace ITHelpDeskSystem.Controllers
         /// This action shows a criterion details.
         /// </summary>
         /// <param name="id">Criterion ID.</param>
-        /// <returns>Criterion, Details.</returns>
+        /// <returns>Criterion view model on sucess.</returns>
         // GET: Criterion/Details/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -79,6 +81,7 @@ namespace ITHelpDeskSystem.Controllers
         /// </summary>
         /// <returns>Criterion, create</returns>
         // GET: Criterion/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -92,6 +95,7 @@ namespace ITHelpDeskSystem.Controllers
         // POST: Criterion/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create(CriterionViewModel model)
         {
             if (ModelState.IsValid)
@@ -117,6 +121,7 @@ namespace ITHelpDeskSystem.Controllers
         /// <param name="id">Criterion ID</param>
         /// <returns>Criterion Edit</returns>
         // GET: Criterion/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -148,7 +153,7 @@ namespace ITHelpDeskSystem.Controllers
         /// <returns>Criterion index.</returns>
         // POST: Criterion/Edit/5
         [HttpPost]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, CriterionViewModel model)
         {

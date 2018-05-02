@@ -22,7 +22,7 @@ namespace ITHelpDeskSystem.ViewModels
         public int Id { get; set; }
 
         [Display(Name = "Comment Date")]
-        [DisplayFormat(DataFormatString = "{0:dd / MM - hh:mm}", NullDisplayText = "Not set")]
+        [DisplayFormat(DataFormatString = "{0:ddd, MMM dd - hh:mm tt}", NullDisplayText = "Not set")]
         public DateTime CommentDate { get; set; }
 
         [Display(Name = "Comment")]
@@ -50,6 +50,8 @@ namespace ITHelpDeskSystem.ViewModels
         public virtual Staff Staff { get; set; }
 
         public virtual ITStaff ITStaff { get; set; }
+
+        public virtual Employee Employee { get; set; }
 
         public virtual Ticket Ticket { get; set; }
     }
