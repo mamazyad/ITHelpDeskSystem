@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="300" height="250" src="https://user-images.githubusercontent.com/35934873/36735204-aae9bb96-1be6-11e8-95c7-b9458ba56df8.png">
+  <img width="300" height="250" src="https://user-images.githubusercontent.com/35934873/39565495-dbea1d96-4ec0-11e8-9d0f-b872a4dcd2dd.png">
 
 # IT Help Desk
 
@@ -33,6 +33,12 @@ The aim of the application is to provide users with an automated point of contac
 -	MVC - version 5.2.3.0
 -	Entity Framework - version 6.1.3
 - Microsoft Asp.Net Identity - version 2.2.1
+- AutoMapper - version 6.2.2
+- DataTables - version 1.10.15
+- TinyMCE - version 4.7.11
+- Microsoft Visio 2010 - version 14.0.4
+- Balsamiq Mockups 3 - version 3.5.15
+- SQL Server LocalDb - version 14.0
 
 ## Used with
 - Google Chrome - version 65.0 (recommended)
