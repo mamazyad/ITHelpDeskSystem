@@ -3,28 +3,80 @@
     ViewBag.Title = "All Users";
 }
 
+<style class="cp-pen-styles">
+     div.shadow {
+        position: absolute;
+        max-width: 45%;
+        max-height: 45%;
+        top: 50%;
+        left: 50%;
+        overflow: visible;
+    }
+
+    img.logo {
+        position: relative;
+        max-width: 100%;
+        max-height: 100%;
+        margin-top: -50%;
+        margin-left: -50%;
+    }
+    #logo {
+        position: relative;
+        max-width: 100%;
+        max-height: 100%;
+        margin-top: -50%;
+        margin-left: -50%;
+    }
+
+    /*064041    023f57*/
+</style>
+
+
 
 @if (ViewContext.HttpContext.User.IsInRole("Admin"))
 {
+
     <h3 style="margin-top:1.5em; margin-left:1em;">@ViewBag.Message</h3>
 
-    <div style="margin:auto; text-align:center; margin-top:12em; margin-bottom:10em;">
+    <div id="logo" style="margin:auto; text-align:center; margin-top:7em; margin-left:22%; margin-bottom:10em;">
 
-        <div style="position: relative; float: left; margin-left:25em;">
+        <div style="position: relative; float: left; ">
             <a href="@Url.Action("Index", "Staff")">
-                <img style="width:15em; height:15em" src="~/Content/Image/businessperson - Copy.png" />
+                <img style="width:15em; height:15em" src="~/Content/Image/Staff.png" />
             </a>
-            <div><strong>@Html.ActionLink("Staff", "Index", "Staff")</strong></div>
+
+            <a href="@Url.Action("Index", "ITStaff")">
+                <img style="width:15em; height:15em" src="~/Content/Image/ITstaff.png" />
+            </a>
+            <a href="@Url.Action("Index", "ITHelpDeskAdmin")">
+                <img style="width:15em; height:15em" src="~/Content/Image/Admin.png" />
+            </a>
         </div>
 
 
-        <div style=" margin-right:20em; margin-left:5em;">
+        @*<div style=" margin-right:10em; margin-left:5em;">
             <a href="@Url.Action("Index", "ITStaff")">
                 <img style="width:15em; height:15em" src="~/Content/Image/Picture1.png" />
             </a>
             <div style=""><strong>@Html.ActionLink("Technicians", "Index", "ITStaff")</strong></div>
         </div>
+
+
+        <div style=" margin-right:10em; margin-left:5em;">
+            <a href="@Url.Action("Index", "ITStaff")">
+                <img style="width:15em; height:15em" src="~/Content/Image/Picture1.png" />
+            </a>
+            <div style=""><strong>@Html.ActionLink("Technicians", "Index", "ITStaff")</strong></div>
+        </div>*@
+
+        @*<div  class="shadow">
+            <a href="@Url.Action("Index", "Staff")">
+                <img class="logo" style="width:15em; height:15em" src="~/Content/Image/businessperson - Copy.png" />
+            </a>
+        </div>*@
+
     </div>
+
 }
 
 @if (!ViewContext.HttpContext.User.IsInRole("Admin"))

@@ -42,7 +42,7 @@ namespace ITHelpDeskSystem.ViewModels
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
+        [Display(Name = "Confirm Password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
@@ -59,7 +59,7 @@ namespace ITHelpDeskSystem.ViewModels
 
         public string Mobile { get; set; }
 
-        [Display(Name = "Assign IT manager role")]
+        [Display(Name = "Assign IT manager Role")]
         public bool IsManager { get; set; }
 
         [Display(Name = "Extension Number")]
@@ -77,6 +77,9 @@ namespace ITHelpDeskSystem.ViewModels
 
         [Display(Name = "Category Load")]
         public int CategoryLoad { get; set; }
+
+        [Display(Name = "Name")]
+        public string FullName2 { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{dd/MM/yyyy}", ApplyFormatInEditMode = true, NullDisplayText = "Not set")]

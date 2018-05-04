@@ -6,11 +6,23 @@
 
 <style class="cp-pen-styles">
     body {
-        background: url('../../Content/Image/2.jpg') no-repeat center center fixed;
+        background: url('../../Content/Image/background2.jpg') no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
+    }
+
+    #me {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
     }
 
     div.shadow {
@@ -30,29 +42,23 @@
         margin-left: -50%;
     }
 
-    .navbar-inverse {
-        /*background-color: #00090e;*/
-        background-color: rgba(0, 0, 0, 0.00);
-        /*opacity:0.5;*/
-    }
+    /*064041    023f57*/
 </style>
 
 <body>
 
-    <div @*style="margin:auto;  width: 35%;"*@ class="shadow">
-        <img class="logo" src="~/Content/Image/LogoBig.png" />
+    <div class="shadow">
+        <img class="logo" src="~/Content/Image/HomeLogo.png">
     </div>
 
-
-    <form class="search-form" style="margin-top:43%;">
-        <input type="search" value="" placeholder="lookup solutions" class="search-input">
-        <button type="submit" class="search-button">
-            <svg class="submit-button">
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#search"></use>
-            </svg>
-        </button>
+    <form style="margin-top:43%; margin-left:35%">
+        <a href="@Url.Action("Index", "KnowledgeBase")">
+            <img src="~/Content/Image/search bar small.png" />
+        </a>
     </form>
-    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" display="none">
+
+
+    @*<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" display="none">
         <symbol id="search" viewBox="0 0 32 32">
             <path d="M 19.5 3 C 14.26514 3 10 7.2651394 10 12.5 C 10 14.749977 10.810825 16.807458 12.125 18.4375 L 3.28125 27.28125 L 4.71875 28.71875 L 13.5625 19.875 C 15.192542 21.189175 17.250023 22 19.5 22 C 24.73486 22 29 17.73486 29 12.5 C 29 7.2651394 24.73486 3 19.5 3 z M 19.5 5 C 23.65398 5 27 8.3460198 27 12.5 C 27 16.65398 23.65398 20 19.5 20 C 15.34602 20 12 16.65398 12 12.5 C 12 8.3460198 15.34602 5 19.5 5 z" />
         </symbol>
@@ -67,18 +73,18 @@
         </symbol>
         <symbol id="special" viewbox="0 0 32 32">
             <path d="M 4 4 L 4 5 L 4 27 L 4 28 L 5 28 L 27 28 L 28 28 L 28 27 L 28 5 L 28 4 L 27 4 L 5 4 L 4 4 z M 6 6 L 26 6 L 26 26 L 6 26 L 6 6 z M 16 8.40625 L 13.6875 13.59375 L 8 14.1875 L 12.3125 18 L 11.09375 23.59375 L 16 20.6875 L 20.90625 23.59375 L 19.6875 18 L 24 14.1875 L 18.3125 13.59375 L 16 8.40625 z M 16 13.3125 L 16.5 14.40625 L 17 15.5 L 18.1875 15.59375 L 19.40625 15.6875 L 18.5 16.5 L 17.59375 17.3125 L 17.8125 18.40625 L 18.09375 19.59375 L 17 19 L 16 18.40625 L 15 19 L 14 19.59375 L 14.3125 18.40625 L 14.5 17.3125 L 13.59375 16.5 L 12.6875 15.6875 L 13.90625 15.59375 L 15.09375 15.5 L 15.59375 14.40625 L 16 13.3125 z" />
-        </symbol>
+        </symbol>*@
 
-        <div style="margin:auto;  width: 35%;">
-            <a style="display:inline-block; margin-right: 10em;" href="@Url.Action("Index", "KnowledgeBase")">
-                <span class="btn-group-lg"></span>
-                <p>Go to knowledge base</p>
-            </a>
-            <a style="display:inline-block; " href="@Url.Action("Login", "Account")">
-                <span class="btn-sm bt"></span>
-                <p>Submit a request</p>
-            </a>
-        </div>
+        @*<div style="margin:auto;  width: 35%;">
+                <a style="display:inline-block; margin-right: 10em;" href="@Url.Action("Index", "KnowledgeBase")">
+                    <span class="btn-group-lg"></span>
+                    <p style="color:midnightblue; ">Go to knowledge base</p>
+                </a>
+                <a style="display:inline-block; " href="@Url.Action("Login", "Account")">
+                    <span class="btn-sm bt"></span>
+                    <p style="color:midnightblue;">Submit a request</p>
+                </a>
+            </div>*@
 
     </svg>
     <script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script>

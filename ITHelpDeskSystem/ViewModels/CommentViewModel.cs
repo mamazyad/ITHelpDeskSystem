@@ -25,6 +25,7 @@ namespace ITHelpDeskSystem.ViewModels
         [DisplayFormat(DataFormatString = "{0:ddd, MMM dd - hh:mm tt}", NullDisplayText = "Not set")]
         public DateTime CommentDate { get; set; }
 
+        [Required]
         [Display(Name = "Comment")]
         [DataType(DataType.MultilineText)]
         public string CommentText { get; set; }

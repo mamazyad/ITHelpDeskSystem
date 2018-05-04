@@ -40,7 +40,7 @@ namespace ITHelpDeskSystem.Controllers
                 model.Add(new ITStaffViewModel
                 {
                     Id = item.Id,
-                    FirstName = item.FullName,
+                    FullName2 = item.FullName,
                     CategoryLoad = db.Categories.Count(m => m.ITStaffId == item.Id),
                     TicketLoad = db.Tickets.Count(m => m.Category.ITStaffId == item.Id),
                 });

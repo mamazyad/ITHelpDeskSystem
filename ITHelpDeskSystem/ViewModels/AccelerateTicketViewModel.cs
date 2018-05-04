@@ -28,6 +28,7 @@ namespace ITHelpDeskSystem.ViewModels
         [Display(Name = "Acceleration Date")]
         public DateTime? AccelerationDate { get; set; }
 
+        [Required]
         [Display(Name = "Acceleration Comment")]
         [DataType(DataType.MultilineText)]
         public string AccelerationComment { get; set; }

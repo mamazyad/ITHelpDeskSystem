@@ -43,7 +43,7 @@
         </dl>
     </fieldset>
     <fieldset class="fieldset-border">
-        <legend class="legend-border">Incident details</legend>
+        <legend class="legend-border">Incident Details</legend>
         <dl class="dl-horizontal">
             <dt>
                 @Html.DisplayNameFor(model => model.Subject)
@@ -70,7 +70,7 @@
     </fieldset>
 
     <fieldset class="fieldset-border">
-        <legend class="legend-border">Solution details</legend>
+        <legend class="legend-border">Solution Details</legend>
         <dl class="dl-horizontal">
             <dt>
                 @Html.DisplayNameFor(model => model.IncidentSolution)
@@ -103,7 +103,7 @@
         </dl>
     </fieldset>
     <fieldset class="fieldset-border">
-        <legend class="legend-border">Acceleration details</legend>
+        <legend class="legend-border">Acceleration Details</legend>
         <dl class="dl-horizontal">
             <dt>
                 @Html.DisplayNameFor(model => model.AccelerationDate)
@@ -135,11 +135,11 @@
 <div class="form-actions no-color">
     @if (!(Model.Status == ITHelpDeskSystem.Models.TicketStatus.Closed))
     {
-        <div class="btn pull-right" style="display:inline; margin-right:40px;background-color:mediumaquamarine; color:white;">@Html.ActionLink("Comment", "Comment", "Comment", new { id = Model.Id }, null)</div>
+        <div class="btn btn-info pull-right" style="display:inline; margin-right:40px; color:white;">@Html.ActionLink("Comment", "Comment", "Comment", new { id = Model.Id }, null)</div>
 
     }
     <div class="pull-left" style="display:inline; margin-right:40px">@Html.ActionLink("Back to all tickets", "Index", null, new { @class = "btn btn-info" })</div>
-    <div style="background-color:lightblue" class="btn  pull-left">@Ajax.ActionLink("IT staff info", "ITStaffInfoPartial", new { id = Model.Id }, new AjaxOptions { UpdateTargetId = "Ticket", HttpMethod = "GET", InsertionMode = InsertionMode.Replace })</div>
+    <div  class="btn btn-default pull-left">@Ajax.ActionLink("IT Staff Information", "ITStaffInfoPartial", new { id = Model.Id }, new AjaxOptions { UpdateTargetId = "Ticket", HttpMethod = "GET", InsertionMode = InsertionMode.Replace })</div>
 </div>
 
 

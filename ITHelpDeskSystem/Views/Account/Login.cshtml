@@ -5,91 +5,122 @@
 }
 
 
-<div class="row">
-        <div class="col-md-8">
-            <section id="loginForm">
-                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                {
-                    @Html.AntiForgeryToken()
-                    <hr />
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
-                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "username" })
-                            @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
-                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "password" })
-                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <div class="checkbox">
-                                @Html.CheckBoxFor(m => m.RememberMe)
-                                @Html.LabelFor(m => m.RememberMe)
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Log in" class="btn btn-success" />
-                        </div>
-                    </div>
-
-                }
-            </section>
-        </div>
-    </div>
-
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
+<style class="cp-pen-styles">
+    body {
+        background: url('../../Content/Image/background login2.jpg') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
     }
 
-@*<head>
-        <link href="~/Content/StyleSheet1.css" rel="stylesheet" / > 
-</head>
----- Include the above in your HEAD tag --------
-<div class="container" style="margin-top:15em">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="pr-wrap">
-                <div class="pass-reset">
-                    <label>
-                        Enter company given username
-                    </label>
-                    <input type="email" placeholder="Email" />
-                    <input type="submit" value="Submit" class="pass-reset-submit btn btn-success btn-sm" />
+    div.shadow {
+        position: absolute;
+        max-width: 45%;
+        max-height: 45%;
+        top: 50%;
+        left: 50%;
+        overflow: visible;
+    }
+
+    img.logo {
+        position: relative;
+        max-width: 100%;
+        max-height: 100%;
+        margin-top: -50%;
+        margin-left: -50%;
+    }
+    /*064041    023f57*/
+</style>
+
+
+<div style="margin-left: 37.5%;  margin-top:8%" class="row">
+    <div style="margin-left:5%; margin-bottom:-5%">
+    <img class="" src="~/Content/Image/LoginLogo.png" />
+</div>
+    <div class="col-md-8">
+        <section id="loginForm">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "username" })
+                        @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
-            <div class="wrap">
-               
-                <div class="shadow" style="width:20%; "><img class="logo" src="~/Content/Image/LogoBig.png" /></div>
-                <form style="margin-top:7em" class="login">
-                    <input type="text" placeholder="Username" />
-                    <input type="password" placeholder="Password" />
-                    <input type="submit" value="Log In" class="btn btn-info btn-sm" style="color:whitesmoke" />
-                    <div class="remember-forgot">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" />
-                                        Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-md-6 forgot-pass-content">
-                                <a href="javascript:void(0)" class="forgot-pass">Forgot Password</a>
-                            </div>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "password" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom:-1em">
+                    <div class=" col-md-10">
+                        <input style="background-color:#023f57; width:100%; position:center" type="submit" value="Log in" class="btn btn-success" />
+                    </div>
+                </div>
+                <div style="display:inline; margin-top:-1em" class="form-group">
+                    <div class="col-md-10">
+                        <div style="display:inline; margin-left:.5em; margin-right:-10em" class="checkbox">
+                               @Html.CheckBoxFor(m => m.RememberMe)
+                            <div style="margin-left:-1em; display:inline-block">   @Html.LabelFor(m => m.RememberMe) </div>
                         </div>
                     </div>
-                </form>
+                </div>
+
+            }
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+@*<head>
+            <link href="~/Content/StyleSheet1.css" rel="stylesheet" / >
+    </head>
+    ---- Include the above in your HEAD tag --------
+    <div class="container" style="margin-top:15em">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="pr-wrap">
+                    <div class="pass-reset">
+                        <label>
+                            Enter company given username
+                        </label>
+                        <input type="email" placeholder="Email" />
+                        <input type="submit" value="Submit" class="pass-reset-submit btn btn-success btn-sm" />
+                    </div>
+                </div>
+                <div class="wrap">
+
+                    <div class="shadow" style="width:20%; "><img class="logo" src="~/Content/Image/LogoBig.png" /></div>
+                    <form style="margin-top:7em" class="login">
+                        <input type="text" placeholder="Username" />
+                        <input type="password" placeholder="Password" />
+                        <input type="submit" value="Log In" class="btn btn-info btn-sm" style="color:whitesmoke" />
+                        <div class="remember-forgot">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" />
+                                            Remember Me
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 forgot-pass-content">
+                                    <a href="javascript:void(0)" class="forgot-pass">Forgot Password</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</div>*@
+    </div>*@

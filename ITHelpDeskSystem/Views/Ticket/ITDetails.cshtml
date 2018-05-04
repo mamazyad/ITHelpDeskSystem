@@ -43,7 +43,7 @@ link href="~/Content/Site.css" rel="stylesheet" />
         </dl>
     </fieldset>
     <fieldset class="fieldset-border">
-        <legend class="legend-border">Incident details</legend>
+        <legend class="legend-border">Incident Details</legend>
         <dl class="dl-horizontal">
             <dt>
                 @Html.DisplayNameFor(model => model.Subject)
@@ -70,7 +70,7 @@ link href="~/Content/Site.css" rel="stylesheet" />
     </fieldset>
 
     <fieldset class="fieldset-border">
-        <legend class="legend-border">Solution details</legend>
+        <legend class="legend-border">Solution Details</legend>
         <dl class="dl-horizontal">
             <dt>
                 @Html.DisplayNameFor(model => model.IncidentSolution)
@@ -110,7 +110,7 @@ link href="~/Content/Site.css" rel="stylesheet" />
         </dl>
     </fieldset>
     <fieldset class="fieldset-border">
-        <legend class="legend-border">Acceleration details</legend>
+        <legend class="legend-border">Acceleration Details</legend>
         <dl class="dl-horizontal">
             <dt>
                 @Html.DisplayNameFor(model => model.AccelerationDate)
@@ -139,11 +139,6 @@ link href="~/Content/Site.css" rel="stylesheet" />
 </div>
 <div class="form-actions no-color">
 
-    @*@if (!(Model.Status == ITHelpDeskSystem.Models.TicketStatus.Closed))
-        {
-            <div class="btn pull-right" style="display:inline; margin-right:40px;background-color:mediumaquamarine; color:white;">@Html.ActionLink("Comment", "Comment", "Comment", new { id = Model.Id }, null)</div>
-
-        }*@
     <div class="pull-left" style="display:inline; margin-right:40px">@Html.ActionLink("Back to all tickets", "Index", null, new { @class = "btn btn-info" })</div>
 </div>
 
@@ -157,8 +152,8 @@ link href="~/Content/Site.css" rel="stylesheet" />
         <span class="glyphicon glyphicon-wrench "></span>
         Edit solution
     </a>
-    <div class="btn pull-right" style="display:inline; margin-right:40px;background-color:mediumaquamarine; color:white;">@Html.ActionLink("Comment", "Comment", "Comment", new { id = Model.Id }, null)</div>
-    <div class="btn pull-right" style="display:inline; margin-right:40px;background-color:mediumaquamarine; color:white;">@Html.ActionLink("Reassign", "Assign", "Assignment", new { id = Model.Id }, null)</div>
+    <div class="btn pull-left btn-default" style="display:inline; margin-right:40px ">@Html.ActionLink("Comment", "Comment", "Comment", new { id = Model.Id }, null)</div>
+    <div class="btn pull-left btn-default" style="display:inline; margin-right:40px ">@Html.ActionLink("Reassign", "Assign", "Assignment", new { id = Model.Id }, null)</div>
 }
 
 @if (ViewContext.HttpContext.User.IsInRole("ITManager"))

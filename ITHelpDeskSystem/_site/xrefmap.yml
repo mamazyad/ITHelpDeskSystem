@@ -571,6 +571,19 @@ references:
   isSpec: "True"
   fullName: ITHelpDeskSystem.Controllers.CategoryController.Index
   nameWithType: CategoryController.Index
+- uid: ITHelpDeskSystem.Controllers.CategoryController.ITLoadPartial
+  name: ITLoadPartial()
+  href: api/ITHelpDeskSystem.Controllers.CategoryController.html#ITHelpDeskSystem_Controllers_CategoryController_ITLoadPartial
+  commentId: M:ITHelpDeskSystem.Controllers.CategoryController.ITLoadPartial
+  fullName: ITHelpDeskSystem.Controllers.CategoryController.ITLoadPartial()
+  nameWithType: CategoryController.ITLoadPartial()
+- uid: ITHelpDeskSystem.Controllers.CategoryController.ITLoadPartial*
+  name: ITLoadPartial
+  href: api/ITHelpDeskSystem.Controllers.CategoryController.html#ITHelpDeskSystem_Controllers_CategoryController_ITLoadPartial_
+  commentId: Overload:ITHelpDeskSystem.Controllers.CategoryController.ITLoadPartial
+  isSpec: "True"
+  fullName: ITHelpDeskSystem.Controllers.CategoryController.ITLoadPartial
+  nameWithType: CategoryController.ITLoadPartial
 - uid: ITHelpDeskSystem.Controllers.ChartsController
   name: ChartsController
   href: api/ITHelpDeskSystem.Controllers.ChartsController.html
@@ -2243,6 +2256,19 @@ references:
   isSpec: "True"
   fullName: ITHelpDeskSystem.Controllers.TicketController.Edit
   nameWithType: TicketController.Edit
+- uid: ITHelpDeskSystem.Controllers.TicketController.GetCountAdminAcceleratedPartial
+  name: GetCountAdminAcceleratedPartial()
+  href: api/ITHelpDeskSystem.Controllers.TicketController.html#ITHelpDeskSystem_Controllers_TicketController_GetCountAdminAcceleratedPartial
+  commentId: M:ITHelpDeskSystem.Controllers.TicketController.GetCountAdminAcceleratedPartial
+  fullName: ITHelpDeskSystem.Controllers.TicketController.GetCountAdminAcceleratedPartial()
+  nameWithType: TicketController.GetCountAdminAcceleratedPartial()
+- uid: ITHelpDeskSystem.Controllers.TicketController.GetCountAdminAcceleratedPartial*
+  name: GetCountAdminAcceleratedPartial
+  href: api/ITHelpDeskSystem.Controllers.TicketController.html#ITHelpDeskSystem_Controllers_TicketController_GetCountAdminAcceleratedPartial_
+  commentId: Overload:ITHelpDeskSystem.Controllers.TicketController.GetCountAdminAcceleratedPartial
+  isSpec: "True"
+  fullName: ITHelpDeskSystem.Controllers.TicketController.GetCountAdminAcceleratedPartial
+  nameWithType: TicketController.GetCountAdminAcceleratedPartial
 - uid: ITHelpDeskSystem.Controllers.TicketController.Index
   name: Index()
   href: api/ITHelpDeskSystem.Controllers.TicketController.html#ITHelpDeskSystem_Controllers_TicketController_Index
@@ -6708,6 +6734,19 @@ references:
   isSpec: "True"
   fullName: ITHelpDeskSystem.ViewModels.ITStaffViewModel.FirstName
   nameWithType: ITStaffViewModel.FirstName
+- uid: ITHelpDeskSystem.ViewModels.ITStaffViewModel.FullName2
+  name: FullName2
+  href: api/ITHelpDeskSystem.ViewModels.ITStaffViewModel.html#ITHelpDeskSystem_ViewModels_ITStaffViewModel_FullName2
+  commentId: P:ITHelpDeskSystem.ViewModels.ITStaffViewModel.FullName2
+  fullName: ITHelpDeskSystem.ViewModels.ITStaffViewModel.FullName2
+  nameWithType: ITStaffViewModel.FullName2
+- uid: ITHelpDeskSystem.ViewModels.ITStaffViewModel.FullName2*
+  name: FullName2
+  href: api/ITHelpDeskSystem.ViewModels.ITStaffViewModel.html#ITHelpDeskSystem_ViewModels_ITStaffViewModel_FullName2_
+  commentId: Overload:ITHelpDeskSystem.ViewModels.ITStaffViewModel.FullName2
+  isSpec: "True"
+  fullName: ITHelpDeskSystem.ViewModels.ITStaffViewModel.FullName2
+  nameWithType: ITStaffViewModel.FullName2
 - uid: ITHelpDeskSystem.ViewModels.ITStaffViewModel.Id
   name: Id
   href: api/ITHelpDeskSystem.ViewModels.ITStaffViewModel.html#ITHelpDeskSystem_ViewModels_ITStaffViewModel_Id
@@ -7324,6 +7363,19 @@ references:
   isSpec: "True"
   fullName: ITHelpDeskSystem.ViewModels.TicketViewModel.TicketViewModel
   nameWithType: TicketViewModel.TicketViewModel
+- uid: ITHelpDeskSystem.ViewModels.TicketViewModel.Accelerated
+  name: Accelerated
+  href: api/ITHelpDeskSystem.ViewModels.TicketViewModel.html#ITHelpDeskSystem_ViewModels_TicketViewModel_Accelerated
+  commentId: P:ITHelpDeskSystem.ViewModels.TicketViewModel.Accelerated
+  fullName: ITHelpDeskSystem.ViewModels.TicketViewModel.Accelerated
+  nameWithType: TicketViewModel.Accelerated
+- uid: ITHelpDeskSystem.ViewModels.TicketViewModel.Accelerated*
+  name: Accelerated
+  href: api/ITHelpDeskSystem.ViewModels.TicketViewModel.html#ITHelpDeskSystem_ViewModels_TicketViewModel_Accelerated_
+  commentId: Overload:ITHelpDeskSystem.ViewModels.TicketViewModel.Accelerated
+  isSpec: "True"
+  fullName: ITHelpDeskSystem.ViewModels.TicketViewModel.Accelerated
+  nameWithType: TicketViewModel.Accelerated
 - uid: ITHelpDeskSystem.ViewModels.TicketViewModel.AccelerationComment
   name: AccelerationComment
   href: api/ITHelpDeskSystem.ViewModels.TicketViewModel.html#ITHelpDeskSystem_ViewModels_TicketViewModel_AccelerationComment

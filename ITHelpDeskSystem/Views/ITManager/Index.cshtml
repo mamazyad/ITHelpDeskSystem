@@ -3,42 +3,94 @@
 @{
     ViewBag.Title = "Summary";
 }
-
-<h2>Summary</h2>
-
-<table class="table">
-    <tr>
-
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryLoad)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TicketLoad)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryLoad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TicketLoad)
-            </td>
-            <td>
-                @Html.ActionLink("Details", "TechnicianTickets", new { id = item.Id }, null)
-                @Html.ActionLink("Feedbacks", "FeedbackIndex","Feedback", new { id = item.Id }, null)
-            </td>
-        </tr>
+<style>
+    table.dataTable thead .sorting,
+    table.dataTable thead .sorting_asc,
+    table.dataTable thead .sorting_desc {
+        background: none;
     }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        background: none;
+        color: gray;
+        border-radius: 4px;
+        border: 1px solid #828282;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:active {
+        background: none;
+        color: gray !important;
+    }
+</style>
+
+<link href="~/Content/Site.css" rel="stylesheet" />
+
+<h2 style="margin-top:1em">IT Staff Load</h2>
+
+<table class="table table-hover table-stripe" id="staffTable">
+    <thead>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.FullName2)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryLoad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TicketLoad)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName2)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryLoad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TicketLoad)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "TechnicianTickets", new { id = item.Id }, null) |
+                    @Html.ActionLink("Feedbacks", "FeedbackIndex", "Feedback", new { id = item.Id }, null)
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
+
+@section scripts
+{
+    <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/jquery.dataTables.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/dataTables.scroller.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/dataTables.bootstrap.min.js")"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#staffTable').DataTable();
+        });
+        $('#staffTable').dataTable({
+            "columnDefs": [
+                { "orderable": false, "targets": -1 }
+            ]
+        });
+        $('.dataTables_filter input').attr("placeholder", "Seach IT staffs")
+
+    </script>
+
+}
+
+@section styles
+{
+    <link href="@Url.Content("/Content/DataTables/css/jquery.dataTables.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("/Content/DataTables/css/dataTables.scroller.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("/Content/DataTables/css/dataTables.bootstrap.min.css")" rel="stylesheet" />
+}

@@ -1,0 +1,100 @@
+﻿@model IEnumerable<ITHelpDeskSystem.ViewModels.KnowledgeBaseViewModel>
+
+@{
+    ViewBag.Title = "IndexSearch";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Topic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IncidentTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IncidentDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SolutionDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KBAttachmentFilePath)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EditionDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EditedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EditedByName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedByName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ITStaffId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Search)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Topic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IncidentTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IncidentDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SolutionDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KBAttachmentFilePath)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EditionDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EditedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EditedByName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedByName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ITStaffId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Search)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

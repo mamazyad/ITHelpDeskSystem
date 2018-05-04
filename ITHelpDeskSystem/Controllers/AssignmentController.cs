@@ -96,7 +96,5 @@ namespace ITHelpDeskSystem.Controllers
             }
             return View(model);
         }
-
-
     }
 }

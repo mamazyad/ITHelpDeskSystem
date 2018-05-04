@@ -1,11 +1,11 @@
 ﻿@model ITHelpDeskSystem.ViewModels.KnowledgeBaseViewModel
 
 @{
-    ViewBag.Title = "Delete solution";
+    ViewBag.Title = "Delete Solution";
 }
 
 <link href="~/Content/Site.css" rel="stylesheet" />
-<h2 style="margin-top:1em;">Are you sure you want to delete <b>@Html.DisplayFor(model => model.Topic) </b> solution permanently?</h2>
+<h2 style="margin-top:1em;">Are you sure you want to delete solution permanently?</h2>
 
 <div>
     <fieldset class="fieldset-border">
@@ -67,7 +67,7 @@
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.IncidentDescription)
+                @Html.Raw(Model.IncidentDescription)
             </dd>
         </dl>
     </fieldset>

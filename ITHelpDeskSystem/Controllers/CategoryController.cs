@@ -235,5 +235,22 @@ namespace ITHelpDeskSystem.Controllers
             }
             base.Dispose(disposing);
         }
+
+        [Authorize(Roles = "Admin")]
+        public PartialViewResult ITLoadPartial()
+        {
+            var ITstaffs = db.ITStaffs.Where(m => m.IsManager == false).ToList();
+            var model = new List<ITStaffViewModel>();
+            foreach (var item in ITstaffs)
+            {
+                model.Add(new ITStaffViewModel
+                {
+                    Id = item.Id,
+                    FirstName = item.FullName,
+                    CategoryLoad = db.Categories.Count(m => m.ITStaffId == item.Id),
+                });
+            }
+            return PartialView(model);
+        }
     }
 }

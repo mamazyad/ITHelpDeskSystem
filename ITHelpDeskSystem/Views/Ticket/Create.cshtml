@@ -1,7 +1,7 @@
 ﻿@model ITHelpDeskSystem.ViewModels.TicketViewModel
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Report Issues";
 }
 
 @*<head>
@@ -15,7 +15,7 @@
         <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
     </head>*@
 
-<h2 style="margin-top:1em;">Create a ticket</h2>
+<h2 style="margin-top:1em;">Report issues</h2>
 @using (Html.BeginForm("Create", "Ticket", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()

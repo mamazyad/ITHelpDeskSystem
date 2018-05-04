@@ -11,9 +11,8 @@
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("styles", required: false)
 </head>
-
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" style="height:69px">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="height:69px; ">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -22,58 +21,65 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                    <a  class="navbar-brand" style="margin-top:-5.5px" href="@Url.Action("Index", "Home")">
-                        <image src="~/Content/Image/crop.png"/>
-                    </a>
-
-                @*@Html.ActionLink("IT Help Desk", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+                <a class="navbar-brand" style="margin-top:-5.5px" href="@Url.Action("Index", "Home")">
+                    <img src="~/Content/Image/NavbarLogo.png" />
+                </a>
+               
 
             </div>
-            <div class="navbar-collapse collapse" >
+            <div class="navbar-collapse collapse" style="background-color:#023f57; border-color:#023f57;">
                 <ul class="nav navbar-nav" style="margin-top:1em; ">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Knowledge Base", "Index", "KnowledgeBase")</li>
+                    @*<li>@Html.ActionLink("Knowledge Base", "Index", "KnowledgeBase")</li>*@
+                    @if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Tickets", "Index", "Ticket")</li>
+                        <li>@Html.Action("GetCountAdminAcceleratedPartial", "Ticket", null)</li>
+                    }
+                    @if (ViewContext.HttpContext.User.IsInRole("Staff"))
+                    {
+                        <li>@Html.ActionLink("Tickets", "Index", "Ticket")</li>
+                    }
+                    @if (ViewContext.HttpContext.User.IsInRole("Staff"))
+                    {
+                        <li>@Html.ActionLink("Report Issues", "Create", "Ticket")</li>
+                    }
+                    @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Create Ticket", "CreateOnBehalf", "Ticket")</li>
+                    }
                     @if (ViewContext.HttpContext.User.IsInRole("Admin"))
                     {
                         <li>@Html.ActionLink("Users", "AllUsers", "Home")</li>
                         <li>@Html.ActionLink("Categories", "Index", "Category")</li>
                     }
-                    @if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin") || ViewContext.HttpContext.User.IsInRole("Staff"))
-                    {
-                        <li>@Html.ActionLink("Tickets", "Index", "Ticket")</li>
-                    }
+
                     @if (ViewContext.HttpContext.User.IsInRole("Admin"))
                     {
                         <li>@Html.ActionLink("Criteria", "Index", "Criterion")</li>
                     }
-                    @if (ViewContext.HttpContext.User.IsInRole("Staff"))
-                    {
-                        <li>@Html.ActionLink("Report issues", "Create", "Ticket")</li>
-                    }
-                    @if (ViewContext.HttpContext.User.IsInRole("Admin"))
-                    {
-                        <li>@Html.ActionLink("Report issues", "CreateOnBehalf", "Ticket")</li>
-                    }
+
                     @if (ViewContext.HttpContext.User.IsInRole("ITManager"))
                     {
                         <li>@Html.ActionLink("Reports", "Index", "ITManager")</li>
                         <li>@Html.ActionLink("All tickets", "AllTickets", "ITManager")</li>
                     }
+                    <li>@Html.ActionLink("Knowledge Base", "Index", "KnowledgeBase")</li>
                 </ul>
 
-                <div class="pull-right" style="display:inline-block; margin-top:13px">@Html.Partial("_LoginPartial")</div>
+                <div style=" margin-top:13px">@Html.Partial("_LoginPartial")</div>
 
             </div>
         </div>
     </div>
-    <div class="container body-content" >
+    <div class="container body-content">
         @RenderBody()
         <div style="position: fixed static ; bottom:2em; display:inline-block;   width: 100%;">
             <hr />
-                <footer >
-                    <p style="display:inline-block">&copy; @DateTime.Now.Year  IT Help Desk System</p>
-                    <div style="display:inline-block" class="pull-right"><a href="~/Content/UserManaual/UserManual.pdf">Help</a> </div>
-                </footer>
+            <footer>
+                <p style="display:inline-block">&copy; @DateTime.Now.Year  IT Help Desk System</p>
+                <div style="display:inline-block" class="pull-right"><a href="~/Content/UserManaual/UserManual.pdf">Help</a> </div>
+            </footer>
         </div>
     </div>
     @Scripts.Render("~/bundles/jquery")

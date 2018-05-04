@@ -19,14 +19,19 @@ namespace ITHelpDeskSystem.ViewModels
     {
         public int Id { get; set; }
 
+        [Required]
         public string Topic { get; set; }
 
+        [Required]
         [Display(Name = "Incident Title")]
         public string IncidentTitle { get; set; }
 
+        [Required]
         [Display(Name = "Incident Description")]
+        [DataType(DataType.MultilineText)]
         public string IncidentDescription { get; set; }
 
+        [Required]
         [Display(Name = "Solution Description")]
         [DataType(DataType.MultilineText)]
         public string SolutionDescription { get; set; }
@@ -40,7 +45,7 @@ namespace ITHelpDeskSystem.ViewModels
         [DisplayFormat(DataFormatString = "{0:dd / MM - hh:mm}")]
         public DateTime? CreationDate { get; set; }
 
-        [Display(Name = "Updated on")]
+        [Display(Name = "Updated On")]
         [DisplayFormat(DataFormatString = "{0:dd / MM - hh:mm}", NullDisplayText = "Not updated")]
         public DateTime? EditionDate { get; set; }
 

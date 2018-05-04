@@ -343,5 +343,27 @@ namespace ITHelpDeskSystem.Controllers
 
             return View("Index");
         }
+
+        //public ActionResult IndexSearch(string lookup)
+        //{
+        //    var knowledgeBase = db.KnowledgeBases.Where(p => p.IncidentTitle.Contains(lookup)).ToList();
+        //    var model = new List<KnowledgeBaseViewModel>();
+        //    foreach (var item in knowledgeBase)
+        //    {
+        //        model.Add(new KnowledgeBaseViewModel
+        //        {
+        //            Id = item.KnowledgeBaseId,
+        //            CreationDate = item.CreationDate,
+        //            EditionDate = item.EditionDate,
+        //            Topic = item.Topic,
+        //            IncidentTitle = item.IncidentTitle,
+        //            IncidentDescription = item.IncidentDescription,
+        //            SolutionDescription = item.SolutionDescription,
+        //        });
+        //    }
+        //    return View(model);
+        //}
+
+
     }
 }

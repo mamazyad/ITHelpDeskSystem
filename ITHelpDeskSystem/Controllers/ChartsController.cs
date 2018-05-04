@@ -30,25 +30,25 @@ namespace ITHelpDeskSystem.Controllers
             // x-axes: Department names that contain one or more faculties
             // y-axes: Number of faculties in each department
 
-            var TotalTickets = db.Tickets.Where(m => m.Status == TicketStatus.Open).ToList();
-            var ClosedTickets = db.Tickets.Where(m=>m.Status == TicketStatus.Closed).ToList();
-            int count = 0;
+            var itstaffs = db.ITStaffs.ToList();
+            var feedback = db.Feedbacks.Select(p=>p.Grade).Sum();
+            decimal? count = 0;
             var labels = new List<string>();
-            var data = new List<int>();
-            foreach (var item in TotalTickets)
+            var data = new List<decimal?>();
+            foreach (var item in itstaffs)
             {
                 // Find the number of faculties in the current department
-                count = ClosedTickets.Count();
+                count = feedback;
                 if (count != 0)
                 {
-                    labels.Add(item.IncidentDescription);
+                    labels.Add(item.FullName);
                     data.Add(count);
                 }
             }
 
+            // Convert labels and data from lists to arrays and save them in ViewBag
             ViewBag.Labels = labels.ToArray();
             ViewBag.Data = data.ToArray();
-
             return View();
         }
 

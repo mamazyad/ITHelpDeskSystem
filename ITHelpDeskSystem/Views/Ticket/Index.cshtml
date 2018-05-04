@@ -16,14 +16,14 @@
 {
     <a style="margin-bottom:15px;" , href="@Url.Action("Create", "Ticket")" class="btn btn-success btn-sm pull-right">
         <span class="glyphicon glyphicon-plus "></span>
-        Create a ticket
+       Report an issue
     </a>
 }
 @if (ViewContext.HttpContext.User.IsInRole("Admin"))
 {
     <a style="margin-bottom:15px;" , href="@Url.Action("CreateOnBehalf", "Ticket")" class="btn btn-success btn-sm pull-right">
         <span class="glyphicon glyphicon-plus "></span>
-        Report an issue
+        Create a ticket
     </a>
 }
 

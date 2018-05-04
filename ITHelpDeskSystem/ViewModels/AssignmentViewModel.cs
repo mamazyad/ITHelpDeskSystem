@@ -25,9 +25,10 @@ namespace ITHelpDeskSystem.ViewModels
 
         public int? AssignedBy { get; set; }
 
-        [Display(Name = "Assigned by")]
+        [Display(Name = "Assigned By")]
         public string AssignedByName { get; set; }
 
+        [Required]
         [Display(Name = "Comment")]
         [DataType(DataType.MultilineText)]
         public string AssignmentComment { get; set; }
@@ -36,7 +37,7 @@ namespace ITHelpDeskSystem.ViewModels
 
         public string CategoryName { get; set; }
 
-        [Display(Name = "Assigned to")]
+        [Display(Name = "Assigned To")]
         public string AssignedTo { get; set; }
 
         public int TicketId { get; set; }

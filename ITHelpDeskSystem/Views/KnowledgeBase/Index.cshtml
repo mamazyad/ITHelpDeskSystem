@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<ITHelpDeskSystem.ViewModels.KnowledgeBaseViewModel>
 
 @{
-    ViewBag.Title = "All solutions";
+    ViewBag.Title = "All Solutions";
 }
 
 <link href="~/Content/Site.css" rel="stylesheet" />
-<h2>All solutions</h2>
+<h2 style="margin-top:1em;">All Solutions</h2>
 
 @if (ViewContext.HttpContext.User.IsInRole("ITStaff") || ViewContext.HttpContext.User.IsInRole("Admin"))
 {

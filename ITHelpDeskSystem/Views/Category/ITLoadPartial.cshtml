@@ -1,0 +1,30 @@
+﻿@model IEnumerable<ITHelpDeskSystem.ViewModels.ITStaffViewModel>
+
+<h4 style="margin-bottom:-1em">Category Load</h4>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FullName2)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryLoad)
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.FullName2)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryLoad)
+        </td>
+        
+    </tr>
+}
+
+</table>

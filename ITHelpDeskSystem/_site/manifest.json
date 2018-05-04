@@ -141,7 +141,7 @@
       "output": {
         ".html": {
           "relative_path": "api/ITHelpDeskSystem.Controllers.CategoryController.html",
-          "hash": "azlksEemvPLNVk6mHAAE3g=="
+          "hash": "PFIBxuanIy0BDbzlUu9VgQ=="
         }
       },
       "is_incremental": true,
@@ -201,7 +201,7 @@
       "output": {
         ".html": {
           "relative_path": "api/ITHelpDeskSystem.Controllers.FeedbackController.html",
-          "hash": "GEbxsWsy1clwGLnoIcIPpA=="
+          "hash": "cV2nORYiv1UwAOq0Uwiaww=="
         }
       },
       "is_incremental": true,
@@ -321,7 +321,7 @@
       "output": {
         ".html": {
           "relative_path": "api/ITHelpDeskSystem.Controllers.TicketController.html",
-          "hash": "a0EwzxCRj4Ky3g18/0lx+A=="
+          "hash": "QEhoPluGxmXxj3PWAtw2LQ=="
         }
       },
       "is_incremental": true,
@@ -897,7 +897,7 @@
       "output": {
         ".html": {
           "relative_path": "api/ITHelpDeskSystem.ViewModels.AccelerateTicketViewModel.html",
-          "hash": "/qMs/R6Cm0YJ/x4kBUs6Pg=="
+          "hash": "HxHj6cp8gsHRrMbg2j//+A=="
         }
       },
       "is_incremental": true,
@@ -921,7 +921,7 @@
       "output": {
         ".html": {
           "relative_path": "api/ITHelpDeskSystem.ViewModels.AssignmentViewModel.html",
-          "hash": "+vO6lPu6ZOX7ZoxyZlzs7A=="
+          "hash": "nP51oLOxo++xg4v3qUgGEg=="
         }
       },
       "is_incremental": true,
@@ -933,7 +933,7 @@
       "output": {
         ".html": {
           "relative_path": "api/ITHelpDeskSystem.ViewModels.CategoryViewModel.html",
-          "hash": "R4EeJ5CTpik/1v7TI6OlOQ=="
+          "hash": "ZOQrAiKw05HGQjwB7I7JIQ=="
         }
       },
       "is_incremental": true,
@@ -945,7 +945,7 @@
       "output": {
         ".html": {
           "relative_path": "api/ITHelpDeskSystem.ViewModels.CommentViewModel.html",
-          "hash": "gz29OCVqTbnQiXygBGUMwA=="
+          "hash": "//W9yU64BfePyc0W/t2IFw=="
         }
       },
       "is_incremental": true,
@@ -969,7 +969,7 @@
       "output": {
         ".html": {
           "relative_path": "api/ITHelpDeskSystem.ViewModels.EditTicketViewModel.html",
-          "hash": "Gx1JYE+oeKu1wPuQ83BOkQ=="
+          "hash": "xrbZ4GLyibU/0yaow/50dA=="
         }
       },
       "is_incremental": true,
@@ -993,7 +993,7 @@
       "output": {
         ".html": {
           "relative_path": "api/ITHelpDeskSystem.ViewModels.FeedbackViewModel.html",
-          "hash": "vzExUrUf5sBvqxLWSmzpJA=="
+          "hash": "FXTGyUCFB2D0PcQgbwBdLA=="
         }
       },
       "is_incremental": true,
@@ -1005,7 +1005,7 @@
       "output": {
         ".html": {
           "relative_path": "api/ITHelpDeskSystem.ViewModels.ITHelpDeskAdminViewModel.html",
-          "hash": "mzaYOIAvm8YB5qeg7qRpQw=="
+          "hash": "5MW5aCbJNxQ28TOhQ4FS9g=="
         }
       },
       "is_incremental": true,
@@ -1017,7 +1017,7 @@
       "output": {
         ".html": {
           "relative_path": "api/ITHelpDeskSystem.ViewModels.ITStaffViewModel.html",
-          "hash": "glHLzfhGTOzTS2Pw5vGtpw=="
+          "hash": "vAva4ymB2li4ZAgJVJeqCA=="
         }
       },
       "is_incremental": true,
@@ -1029,7 +1029,7 @@
       "output": {
         ".html": {
           "relative_path": "api/ITHelpDeskSystem.ViewModels.KnowledgeBaseViewModel.html",
-          "hash": "w+TXYPbUbD5eJCSax5zldQ=="
+          "hash": "kXCNBXcUEOvLKlx1xzmb+g=="
         }
       },
       "is_incremental": true,
@@ -1041,7 +1041,7 @@
       "output": {
         ".html": {
           "relative_path": "api/ITHelpDeskSystem.ViewModels.StaffViewModel.html",
-          "hash": "TeA3eMGUCguewIALT92cyw=="
+          "hash": "bQ8ZHG3eUwuZcLr8CXiygQ=="
         }
       },
       "is_incremental": true,
@@ -1053,7 +1053,7 @@
       "output": {
         ".html": {
           "relative_path": "api/ITHelpDeskSystem.ViewModels.TicketViewModel.html",
-          "hash": "9Wnq1s1eGSYKP6U4ZulDtw=="
+          "hash": "S0Z0X25yjovKzxoNDOfl5Q=="
         }
       },
       "is_incremental": true,
@@ -1115,17 +1115,17 @@
         "incrementalPhase": "build"
       },
       "processors": {
-        "TocDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor TocDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build"
-        },
         "ConceptualDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build"
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
+          "incrementalPhase": "build"
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         }
       }

@@ -1,11 +1,11 @@
 ﻿@model ITHelpDeskSystem.ViewModels.KnowledgeBaseViewModel
 
 @{
-    ViewBag.Title = "Solution details";
+    ViewBag.Title = "Solution Details";
 }
 
 <link href="~/Content/Site.css" rel="stylesheet" />
-<h2>Knowledge Base - Solution details</h2>
+<h2 style="margin-top:1em;">Knowledge Base - Solution details</h2>
 
 <div>
     <fieldset class="fieldset-border">
@@ -53,7 +53,7 @@
         </dl>
     </fieldset>
     <fieldset class="fieldset-border">
-        <legend class="legend-border">Incident details</legend>
+        <legend class="legend-border">Incident Details</legend>
         <dl class="dl-horizontal">
             <dt>
                 @Html.DisplayNameFor(model => model.IncidentTitle)
@@ -67,13 +67,13 @@
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.IncidentDescription)
+                @Html.Raw(Model.IncidentDescription)
             </dd>
         </dl>
     </fieldset>
 
     <fieldset class="fieldset-border">
-        <legend class="legend-border">Solution details</legend>
+        <legend class="legend-border">Solution Details</legend>
         <dl class="dl-horizontal">
             <dt>
                 @Html.DisplayNameFor(model => model.SolutionDescription)

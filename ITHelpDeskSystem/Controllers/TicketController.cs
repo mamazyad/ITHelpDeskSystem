@@ -648,5 +648,17 @@ namespace ITHelpDeskSystem.Controllers
             }
             return PartialView(model);
         }
+
+        /// <summary>
+        /// This partial view counts the number of accelerated tickets
+        /// </summary>
+        /// <returns>Partial view with number of accelerated tickets.</returns>
+        public ActionResult GetCountAdminAcceleratedPartial()
+        {
+            int count = db.Tickets.Count(p => p.Accelerated == true);
+            return PartialView(count);
+        }
+
+
     }
 }

@@ -39,13 +39,13 @@ namespace ITHelpDeskSystem.ViewModels
 
         public string AttachmentFilePath { get; set; }
 
-        [Display(Name = "Creation date")]
+        [Display(Name = "Creation Date")]
         [DisplayFormat(DataFormatString = "{0:dd / MM - hh:mm}")]
         public DateTime CreationDate { get; set; }
 
         public int? CreatedBy { get; set; }
 
-        [Display(Name = "Created by")]
+        [Display(Name = "Created By")]
         public string CreatedByName { get; set; }
 
         public int CategoryId { get; set; }
@@ -64,7 +64,7 @@ namespace ITHelpDeskSystem.ViewModels
         [Display(Name = "IT Staff Responsible")]
         public string ITStaffResponsibleName { get; set; }
 
-        [Display(Name = "Staff managerial level")]
+        [Display(Name = "Staff Managerial Level")]
         public string importance { get; set; }
 
         [Display(Name = "Email")]
@@ -116,6 +116,8 @@ namespace ITHelpDeskSystem.ViewModels
         [DataType(DataType.MultilineText)]
         public string AccelerationComment { get; set; }
 
+        public bool Accelerated { get; set; }
+
         [Display(Name = "Email")]
         public string Email { get; set; }
 
@@ -150,7 +152,7 @@ namespace ITHelpDeskSystem.ViewModels
 
         public int? AssignedBy { get; set; }
 
-        [Display(Name = "Assigned by")]
+        [Display(Name = "Assigned By")]
         public string AssignedByName { get; set; }
 
         [Display(Name = "Comment")]

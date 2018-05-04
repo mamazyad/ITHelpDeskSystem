@@ -28,11 +28,11 @@
         <div id="Comment"></div>
 
         <div class="form-actions no-color">
-            <input type="submit" value="Done" class="btn btn-success pull-right" />
+            <button class="btn btn-success pull-right "> <span class="glyphicon glyphicon-check" type="submit"></span> Done</button>
             <div class="pull-left" style="display:inline; margin-right:40px">@Html.ActionLink("Back to all tickets", "Index", "Ticket", null, new { @class = "btn btn-info" })</div>
-            <div style="display:inline; margin-right:40px; " class="btn btn-group-xs btn-default pull-left">@Ajax.ActionLink("IT staff info", "ITStaffInfoPartial", "Ticket", new { id = Model.Id }, new AjaxOptions { UpdateTargetId = "IT", HttpMethod = "GET", InsertionMode = InsertionMode.Replace })</div>
-            <div style="display:inline; margin-right:40px; " class="btn btn-group-xs btn-default pull-left">@Ajax.ActionLink("Ticket info", "TicketInfoPartial", "Ticket", new { id = Model.Id }, new AjaxOptions { UpdateTargetId = "Ticket", HttpMethod = "GET", InsertionMode = InsertionMode.Replace })</div>
-            <div style="display:inline; margin-right:40px; " class="btn btn-group-xs btn-default pull-left">@Ajax.ActionLink("All comments", "CommentPartial", "Ticket", new { id = Model.Id }, new AjaxOptions { UpdateTargetId = "Comment", HttpMethod = "GET", InsertionMode = InsertionMode.Replace })</div>
+            <div style="display:inline; margin-right:40px; " class="btn btn-group-xs btn-default pull-left">@Ajax.ActionLink("IT Staff Information", "ITStaffInfoPartial", "Ticket", new { id = Model.Id }, new AjaxOptions { UpdateTargetId = "IT", HttpMethod = "GET", InsertionMode = InsertionMode.Replace })</div>
+            <div style="display:inline; margin-right:40px; " class="btn btn-group-xs btn-default pull-left">@Ajax.ActionLink("Ticket Information", "TicketInfoPartial", "Ticket", new { id = Model.Id }, new AjaxOptions { UpdateTargetId = "Ticket", HttpMethod = "GET", InsertionMode = InsertionMode.Replace })</div>
+            <div style="display:inline; margin-right:40px; " class="btn btn-group-xs btn-default pull-left">@Ajax.ActionLink("All Comments", "CommentPartial", "Ticket", new { id = Model.Id }, new AjaxOptions { UpdateTargetId = "Comment", HttpMethod = "GET", InsertionMode = InsertionMode.Replace })</div>
         </div>
     </div>
 }

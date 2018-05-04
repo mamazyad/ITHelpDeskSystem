@@ -74,10 +74,10 @@
 @model ITHelpDeskSystem.ViewModels.TicketViewModel
 
 @{
-    ViewBag.Title = "Create on behalf";
+    ViewBag.Title = "Create ticket";
 }
 
-<h2 style="margin-top:1em;">Create a ticket on behalf of staff</h2>
+<h2 style="margin-top:1em;">Create ticket for staff</h2>
 @using (Html.BeginForm("CreateOnBehalf", "Ticket", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
@@ -114,7 +114,7 @@
         @Html.ValidationMessageFor(model => model.IncidentDescription, "", new { @class = "text-danger" })
     </div>
     <div class="form-actions no-color">
-        <input type="submit" value="Done" class="btn btn-success pull-right" />
+        <button class="btn btn-success pull-right "> <span class="glyphicon glyphicon-check" type="submit"></span> Done</button>
         <div style="display:inline; margin-right:40px">@Html.ActionLink("Back to all tickets", "Index", null, new { @class = "btn btn-info" })</div>
     </div>
 }

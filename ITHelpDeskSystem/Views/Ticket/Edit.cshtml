@@ -55,46 +55,45 @@
     ViewBag.Title = "Edit ticket";
 }
 
-<h2>Edit ticket</h2>
+<h2 style="margin-top:1em">Edit Ticket</h2>
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
+<div class="form-horizontal">
 
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Priority, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.Priority, htmlAttributes: new { @class = "form-control", required = "required" })
-                @Html.ValidationMessageFor(model => model.Priority, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Priority, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EnumDropDownListFor(model => model.Priority, htmlAttributes: new { @class = "form-control", required = "required" })
+            @Html.ValidationMessageFor(model => model.Priority, "", new { @class = "text-danger" })
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.IncidentSolution, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.IncidentSolution, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.IncidentSolution, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <button class="btn btn-success pull-right "> <span class="glyphicon glyphicon-check" type="submit"></span> Done</button>
-            </div>
-        </div>
-
-
     </div>
-}<div id="Ticket"></div>
-<div class="pull-left" style="display:inline; margin-right:40px">@Html.ActionLink("Back to all tickets", "Index", "Ticket", null, new { @class = "btn btn-info" })</div>
-<div style="display:inline; margin-right:40px;" class="btn btn-group-xs btn-default pull-left">@Ajax.ActionLink("Ticket info", "TicketInfoPartial", "Ticket", new { id = Model.Id }, new AjaxOptions { UpdateTargetId = "Ticket", HttpMethod = "GET", InsertionMode = InsertionMode.Replace })</div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.IncidentSolution, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.IncidentSolution, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.IncidentSolution, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    
+    <div id="Ticket"></div>
+    <div class="form-actions no-color">
+        <button class="btn btn-success pull-right "> <span class="glyphicon glyphicon-check" type="submit"></span> Done</button>
+        <div class="pull-left" style="display:inline; margin-right:40px">@Html.ActionLink("Back to all tickets", "Index", "Ticket", null, new { @class = "btn btn-info" })</div>
+        <div style="display:inline; margin-right:40px; " class="btn btn-group-xs btn-default pull-left">@Ajax.ActionLink("Ticket Information", "TicketInfoPartial", "Ticket", new { id = Model.Id }, new AjaxOptions { UpdateTargetId = "Ticket", HttpMethod = "GET", InsertionMode = InsertionMode.Replace })</div>
+    </div>
+
+</div>
+}
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

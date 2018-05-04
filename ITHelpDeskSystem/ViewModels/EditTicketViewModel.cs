@@ -21,8 +21,8 @@ namespace ITHelpDeskSystem.ViewModels
     {
        public int Id { get; set; }
 
+        [Required]
         [Display(Name = "Ticket Priority")]
-        [DefaultValue(TicketPriority.Medium)]
         public TicketPriority? Priority { get; set; }
 
         [Required]

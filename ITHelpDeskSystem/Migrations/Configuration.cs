@@ -86,11 +86,11 @@ namespace ITHelpDeskSystem.Migrations
                 }
 
                 var usertemp = userManager.FindByName(ITstaff.UserName);
-                if (!userManager.IsInRole(usertemp.Id, roles[1])&& ITstaff.IsManager == false)
+                if (!userManager.IsInRole(usertemp.Id, roles[1]) && ITstaff.IsManager == false)
                 {
                     userManager.AddToRole(usertemp.Id, roles[1]);
                 }
-                if (ITstaff.IsManager==true)
+                if (ITstaff.IsManager == true)
                 {
                     userManager.AddToRole(usertemp.Id, roles[3]);
                 }
@@ -165,20 +165,28 @@ namespace ITHelpDeskSystem.Migrations
 
             var knowledgeBase = new List<KnowledgeBase>
             {
-                new KnowledgeBase { CreatedBy= ITstaffs.Single(d=>d.UserName=="itstaff1").Id, ITStaffId = ITstaffs.Single(d=>d.UserName=="itstaff1").Id, Topic = "Software", CreationDate=DateTime.Now, IncidentTitle="Uninstall software", IncidentDescription ="For windows users facing any troubles while uninstalling a software", SolutionDescription="Select a program you wish to uninstall from Control Panel and click either Remove, or Change/Remove." },
+                new KnowledgeBase { CreatedBy= ITstaffs.Single(d=>d.UserName=="itstaff1").Id, ITStaffId = ITstaffs.Single(d=>d.UserName=="itstaff1").Id, Topic = "Software", CreationDate=DateTime.Now, IncidentTitle="Uninstall software", IncidentDescription ="For windows users facing any troubles while uninstalling a software", SolutionDescription="Select a program you wish to uninstall from Control Panel and click either Remove, or Change/Remove" },
+
+                new KnowledgeBase { CreatedBy= ITstaffs.Single(d=>d.UserName=="itstaff").Id, ITStaffId = ITstaffs.Single(d=>d.UserName=="itstaff").Id, Topic = "Hardware", CreationDate=DateTime.Now, IncidentTitle="Connect to projector", IncidentDescription ="Mac users cannot connect to projector", SolutionDescription="Connect the video cable then select System Preferences and click the Detect Displays" },
+
+                new KnowledgeBase { CreatedBy= ITstaffs.Single(d=>d.UserName=="itstaff2").Id, ITStaffId = ITstaffs.Single(d=>d.UserName=="itstaff2").Id, Topic = "WiFi", CreationDate=DateTime.Now, IncidentTitle="Connect to WiFi", IncidentDescription ="Connecting mobile devices to WiFi", SolutionDescription="Go to your device settings, WiFi options then enter your username and password" },
+
+                 new KnowledgeBase { CreatedBy= ITstaffs.Single(d=>d.UserName=="itstaff").Id, ITStaffId = ITstaffs.Single(d=>d.UserName=="itstaff").Id, Topic = "Hardware", CreationDate=DateTime.Now, IncidentTitle="Rebooting error from disck", IncidentDescription ="Error disck at booting", SolutionDescription="If you can hear a repeated scraping noise, power off the computer as soon as possible, as there may be a physical problem with the hard disk and you may lose data." },
+
+                      new KnowledgeBase { CreatedBy= ITstaffs.Single(d=>d.UserName=="itstaff").Id, ITStaffId = ITstaffs.Single(d=>d.UserName=="itstaff").Id, Topic = "Hardware", CreationDate=DateTime.Now, IncidentTitle="Rebooting error from disck", IncidentDescription ="Error disck at booting", SolutionDescription="If you can hear a repeated scraping noise, power off the computer as soon as possible, as there may be a physical problem with the hard disk and you may lose data." },
             };
             knowledgeBase.ForEach(s => context.KnowledgeBases.AddOrUpdate(p => p.Topic, s));
             context.SaveChanges();
 
-            //var comment = new List<Comment>
-            //{
-            //    new Comment {
-            //        TicketId =1,
-            //        CommentText=""
-            //    },
-            //};
-            //comment.ForEach(s => context.Comments.AddOrUpdate(p => p.CommentText, s));
-            //context.SaveChanges();
+            var criteria = new List<Criterion>
+            {
+                new Criterion { CreationDate=DateTime.Now, ActiveCriterion = true, CriterionDescription = "Waiting time", EditionDate = DateTime.Now },
+                new Criterion { CreationDate=DateTime.Now, ActiveCriterion = true, CriterionDescription = "Effectiveness of the solution", EditionDate = DateTime.Now },
+                new Criterion { CreationDate=DateTime.Now, ActiveCriterion = true, CriterionDescription = "Friendliness of IT staff", EditionDate = DateTime.Now },
+                new Criterion { CreationDate=DateTime.Now, ActiveCriterion = true, CriterionDescription = "Overall satisfaction", EditionDate = DateTime.Now },
+            };
+            criteria.ForEach(s => context.Criteria.AddOrUpdate(p => p.CriterionDescription, s));
+            context.SaveChanges();
         }
     }
 }

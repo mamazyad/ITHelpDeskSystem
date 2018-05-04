@@ -4,7 +4,7 @@
     ViewBag.Title = "TicketDetails";
 }
 
-<h2>Ticket Details</h2>
+<h2 style="margin-top:1em">Ticket Details</h2>
 
 <div>
     <fieldset class="fieldset-border">
@@ -71,7 +71,7 @@
         </dl>
     </fieldset>
     <fieldset class="fieldset-border">
-        <legend class="legend-border">Incident details</legend>
+        <legend class="legend-border">Incident Details</legend>
         <dl class="dl-horizontal">
             <dt>
                 @Html.DisplayNameFor(model => model.Subject)
@@ -98,7 +98,7 @@
     </fieldset>
 
     <fieldset class="fieldset-border">
-        <legend class="legend-border">Solution details</legend>
+        <legend class="legend-border">Solution Details</legend>
         <dl class="dl-horizontal">
             <dt>
                 @Html.DisplayNameFor(model => model.IncidentSolution)
@@ -132,7 +132,7 @@
     </fieldset>
 
     <fieldset class="fieldset-border">
-        <legend class="legend-border">Acceleration details</legend>
+        <legend class="legend-border">Acceleration Details</legend>
         <dl class="dl-horizontal">
             <dt>
                 @Html.DisplayNameFor(model => model.AccelerationDate)
@@ -163,4 +163,4 @@
     <a class="btn btn-info pull-left" href="javascript:void(0);" onclick="history.go(-1);">Back</a>
 </p>
 
-<div style="display:inline; margin-right:35px; margin-left:5em" class="btn btn-group-xs btn-default pull-left">@Ajax.ActionLink("Assignments", "AssignPartial", "ITManager", new { id = Model.Id }, new AjaxOptions { UpdateTargetId = "Comment", HttpMethod = "GET", InsertionMode = InsertionMode.Replace })</div>
+<div style="display:inline; margin-right:35px; margin-left:5em" class="btn btn-group-xs btn-default pull-left">@Ajax.ActionLink("Assignments Information", "AssignPartial", "ITManager", new { id = Model.Id }, new AjaxOptions { UpdateTargetId = "Comment", HttpMethod = "GET", InsertionMode = InsertionMode.Replace })</div>

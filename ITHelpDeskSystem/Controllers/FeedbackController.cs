@@ -129,7 +129,8 @@ namespace ITHelpDeskSystem.Controllers
                 ticket.Status = TicketStatus.Resolved;
                 ticket.FeedbackGiven = true;
 
-                db.Feedbacks.Add(feedback);  db.Entry(ticket).State = EntityState.Modified;
+                db.Feedbacks.Add(feedback);
+                db.Entry(ticket).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index", "Ticket");
             }

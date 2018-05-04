@@ -1,12 +1,10 @@
 ﻿@{
     ViewBag.Title = "Chart Summery";
 }
-
-<div class="container" style="margin-top: 20px;">
+<h2 style="margin-top:1em;">IT staffs' feedback</h2>
+<div class="container" style="margin-top: 5%; margin-right:30%">
     <div class="row">
-        <div class="col-md-6">
-            <canvas id="chart1"></canvas>
-        </div>
+        
         <div class="col-md-6">
             <canvas id="chart2"></canvas>
         </div>
@@ -43,8 +41,8 @@
         ];
 
         // Second chart
-        chartTitle = "Number of tickets closed";
-        getChart("chart2", "pie", bgColors, borderColors, chartTitle, labels, data);
+        chartTitle = "Feedback total grade";
+        getChart("chart2", "bar", bgColors, borderColors, chartTitle, labels, data);
 
         // Global definitions of charts
         Chart.defaults.global.title.display = true;
@@ -60,7 +58,7 @@
                 data: {
                     labels: labels,
                     datasets: [{
-                        label: 'Number of tickets',
+                        label: '',
                         data: data, // Data displayed
                         backgroundColor: bgColors,
                         borderColor: borderColors,

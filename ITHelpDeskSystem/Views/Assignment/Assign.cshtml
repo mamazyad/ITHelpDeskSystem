@@ -1,10 +1,10 @@
 ﻿@model ITHelpDeskSystem.ViewModels.AssignmentViewModel
 
 @{
-    ViewBag.Title = "Assign ticket";
+    ViewBag.Title = "Assign Ticket";
 }
 
-<h2>Assign ticket</h2>
+<h2 style="margin-top:1em">Assign Ticket</h2>
 
 
 @using (Html.BeginForm())
@@ -32,19 +32,14 @@
         </div>
     </div>
 
+    <div id="Ticket"></div>
     <div class="form-actions no-color">
         <button class="btn btn-success pull-right "> <span class="glyphicon glyphicon-check" type="submit"></span> Done</button>
-        <div style="display:inline; margin-right:40px">@Html.ActionLink("Back to all staff", "Index", null, new { @class = "btn btn-info" })</div>
+        <div class="pull-left" style="display:inline; margin-right:40px">@Html.ActionLink("Back to all tickets", "Index", "Ticket", null, new { @class = "btn btn-info" })</div>
     </div>
+
 </div>
 }
-<div id="Ticket"></div>
-<div style="background-color:lightblue">
-    @*<div style="display:inline; margin-right:40px; background-color:lightblue;" class="btn btn-group-xs  pull-left">@Ajax.ActionLink("Ticket info", "TicketInfoPartial", "Ticket", new { id = Model.Id }, new AjaxOptions { UpdateTargetId = "Ticket", HttpMethod = "GET", InsertionMode = InsertionMode.Replace })</div>*@
-
-    @*@Ajax.ActionLink("Display ticket details", "TicketInfoPartial", "Ticket", new { id = Model.Id }, new AjaxOptions { UpdateTargetId = "Ticket", HttpMethod = "GET", InsertionMode = InsertionMode.Replace })*@
-
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
