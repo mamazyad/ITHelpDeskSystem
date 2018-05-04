@@ -118,7 +118,7 @@
     <a href="https://github.com/mamazyad/ITHelpDeskSystem/new/master/apiSpec/new?filename=ITHelpDeskSystem_ViewModels_AssignmentViewModel_AssignedBy.md&amp;value=---%0Auid%3A%20ITHelpDeskSystem.ViewModels.AssignmentViewModel.AssignedBy%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/mamazyad/ITHelpDeskSystem/blob/master/ITHelpDeskSystem/ViewModels/AssignmentViewModel.cs/#L26">View Source</a>
+    <a href="https://github.com/mamazyad/ITHelpDeskSystem/blob/master/ITHelpDeskSystem/ViewModels/AssignmentViewModel.cs/#L27">View Source</a>
   </span>
   <a id="ITHelpDeskSystem_ViewModels_AssignmentViewModel_AssignedBy_" data-uid="ITHelpDeskSystem.ViewModels.AssignmentViewModel.AssignedBy*"></a>
   <h4 id="ITHelpDeskSystem_ViewModels_AssignmentViewModel_AssignedBy" data-uid="ITHelpDeskSystem.ViewModels.AssignmentViewModel.AssignedBy">AssignedBy</h4>
@@ -148,7 +148,7 @@
     <a href="https://github.com/mamazyad/ITHelpDeskSystem/new/master/apiSpec/new?filename=ITHelpDeskSystem_ViewModels_AssignmentViewModel_AssignedByName.md&amp;value=---%0Auid%3A%20ITHelpDeskSystem.ViewModels.AssignmentViewModel.AssignedByName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/mamazyad/ITHelpDeskSystem/blob/master/ITHelpDeskSystem/ViewModels/AssignmentViewModel.cs/#L28">View Source</a>
+    <a href="https://github.com/mamazyad/ITHelpDeskSystem/blob/master/ITHelpDeskSystem/ViewModels/AssignmentViewModel.cs/#L29">View Source</a>
   </span>
   <a id="ITHelpDeskSystem_ViewModels_AssignmentViewModel_AssignedByName_" data-uid="ITHelpDeskSystem.ViewModels.AssignmentViewModel.AssignedByName*"></a>
   <h4 id="ITHelpDeskSystem_ViewModels_AssignmentViewModel_AssignedByName" data-uid="ITHelpDeskSystem.ViewModels.AssignmentViewModel.AssignedByName">AssignedByName</h4>
@@ -179,7 +179,7 @@ public string AssignedByName { get; set; }</code></pre>
     <a href="https://github.com/mamazyad/ITHelpDeskSystem/new/master/apiSpec/new?filename=ITHelpDeskSystem_ViewModels_AssignmentViewModel_AssignedTo.md&amp;value=---%0Auid%3A%20ITHelpDeskSystem.ViewModels.AssignmentViewModel.AssignedTo%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/mamazyad/ITHelpDeskSystem/blob/master/ITHelpDeskSystem/ViewModels/AssignmentViewModel.cs/#L40">View Source</a>
+    <a href="https://github.com/mamazyad/ITHelpDeskSystem/blob/master/ITHelpDeskSystem/ViewModels/AssignmentViewModel.cs/#L41">View Source</a>
   </span>
   <a id="ITHelpDeskSystem_ViewModels_AssignmentViewModel_AssignedTo_" data-uid="ITHelpDeskSystem.ViewModels.AssignmentViewModel.AssignedTo*"></a>
   <h4 id="ITHelpDeskSystem_ViewModels_AssignmentViewModel_AssignedTo" data-uid="ITHelpDeskSystem.ViewModels.AssignmentViewModel.AssignedTo">AssignedTo</h4>
@@ -210,7 +210,7 @@ public string AssignedTo { get; set; }</code></pre>
     <a href="https://github.com/mamazyad/ITHelpDeskSystem/new/master/apiSpec/new?filename=ITHelpDeskSystem_ViewModels_AssignmentViewModel_AssignmentComment.md&amp;value=---%0Auid%3A%20ITHelpDeskSystem.ViewModels.AssignmentViewModel.AssignmentComment%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/mamazyad/ITHelpDeskSystem/blob/master/ITHelpDeskSystem/ViewModels/AssignmentViewModel.cs/#L31">View Source</a>
+    <a href="https://github.com/mamazyad/ITHelpDeskSystem/blob/master/ITHelpDeskSystem/ViewModels/AssignmentViewModel.cs/#L32">View Source</a>
   </span>
   <a id="ITHelpDeskSystem_ViewModels_AssignmentViewModel_AssignmentComment_" data-uid="ITHelpDeskSystem.ViewModels.AssignmentViewModel.AssignmentComment*"></a>
   <h4 id="ITHelpDeskSystem_ViewModels_AssignmentViewModel_AssignmentComment" data-uid="ITHelpDeskSystem.ViewModels.AssignmentViewModel.AssignmentComment">AssignmentComment</h4>
@@ -251,7 +251,8 @@ public string AssignmentComment { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DisplayFormat(DataFormatString = &quot;{0:dd / MM - hh:mm}&quot;, NullDisplayText = &quot;Not set&quot;)]
+    <pre><code class="lang-csharp hljs">[Display(Name = &quot;Assigned On&quot;)]
+[DisplayFormat(DataFormatString = &quot;{0:dd / MM - hh:mm}&quot;, NullDisplayText = &quot;Not set&quot;)]
 public DateTime? AssignmentDate { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
@@ -274,7 +275,7 @@ public DateTime? AssignmentDate { get; set; }</code></pre>
     <a href="https://github.com/mamazyad/ITHelpDeskSystem/new/master/apiSpec/new?filename=ITHelpDeskSystem_ViewModels_AssignmentViewModel_Category.md&amp;value=---%0Auid%3A%20ITHelpDeskSystem.ViewModels.AssignmentViewModel.Category%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/mamazyad/ITHelpDeskSystem/blob/master/ITHelpDeskSystem/ViewModels/AssignmentViewModel.cs/#L45">View Source</a>
+    <a href="https://github.com/mamazyad/ITHelpDeskSystem/blob/master/ITHelpDeskSystem/ViewModels/AssignmentViewModel.cs/#L46">View Source</a>
   </span>
   <a id="ITHelpDeskSystem_ViewModels_AssignmentViewModel_Category_" data-uid="ITHelpDeskSystem.ViewModels.AssignmentViewModel.Category*"></a>
   <h4 id="ITHelpDeskSystem_ViewModels_AssignmentViewModel_Category" data-uid="ITHelpDeskSystem.ViewModels.AssignmentViewModel.Category">Category</h4>
@@ -304,7 +305,7 @@ public DateTime? AssignmentDate { get; set; }</code></pre>
     <a href="https://github.com/mamazyad/ITHelpDeskSystem/new/master/apiSpec/new?filename=ITHelpDeskSystem_ViewModels_AssignmentViewModel_CategoryId.md&amp;value=---%0Auid%3A%20ITHelpDeskSystem.ViewModels.AssignmentViewModel.CategoryId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/mamazyad/ITHelpDeskSystem/blob/master/ITHelpDeskSystem/ViewModels/AssignmentViewModel.cs/#L36">View Source</a>
+    <a href="https://github.com/mamazyad/ITHelpDeskSystem/blob/master/ITHelpDeskSystem/ViewModels/AssignmentViewModel.cs/#L37">View Source</a>
   </span>
   <a id="ITHelpDeskSystem_ViewModels_AssignmentViewModel_CategoryId_" data-uid="ITHelpDeskSystem.ViewModels.AssignmentViewModel.CategoryId*"></a>
   <h4 id="ITHelpDeskSystem_ViewModels_AssignmentViewModel_CategoryId" data-uid="ITHelpDeskSystem.ViewModels.AssignmentViewModel.CategoryId">CategoryId</h4>
@@ -334,7 +335,7 @@ public DateTime? AssignmentDate { get; set; }</code></pre>
     <a href="https://github.com/mamazyad/ITHelpDeskSystem/new/master/apiSpec/new?filename=ITHelpDeskSystem_ViewModels_AssignmentViewModel_CategoryName.md&amp;value=---%0Auid%3A%20ITHelpDeskSystem.ViewModels.AssignmentViewModel.CategoryName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/mamazyad/ITHelpDeskSystem/blob/master/ITHelpDeskSystem/ViewModels/AssignmentViewModel.cs/#L38">View Source</a>
+    <a href="https://github.com/mamazyad/ITHelpDeskSystem/blob/master/ITHelpDeskSystem/ViewModels/AssignmentViewModel.cs/#L39">View Source</a>
   </span>
   <a id="ITHelpDeskSystem_ViewModels_AssignmentViewModel_CategoryName_" data-uid="ITHelpDeskSystem.ViewModels.AssignmentViewModel.CategoryName*"></a>
   <h4 id="ITHelpDeskSystem_ViewModels_AssignmentViewModel_CategoryName" data-uid="ITHelpDeskSystem.ViewModels.AssignmentViewModel.CategoryName">CategoryName</h4>
@@ -394,7 +395,7 @@ public DateTime? AssignmentDate { get; set; }</code></pre>
     <a href="https://github.com/mamazyad/ITHelpDeskSystem/new/master/apiSpec/new?filename=ITHelpDeskSystem_ViewModels_AssignmentViewModel_Ticket.md&amp;value=---%0Auid%3A%20ITHelpDeskSystem.ViewModels.AssignmentViewModel.Ticket%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/mamazyad/ITHelpDeskSystem/blob/master/ITHelpDeskSystem/ViewModels/AssignmentViewModel.cs/#L47">View Source</a>
+    <a href="https://github.com/mamazyad/ITHelpDeskSystem/blob/master/ITHelpDeskSystem/ViewModels/AssignmentViewModel.cs/#L48">View Source</a>
   </span>
   <a id="ITHelpDeskSystem_ViewModels_AssignmentViewModel_Ticket_" data-uid="ITHelpDeskSystem.ViewModels.AssignmentViewModel.Ticket*"></a>
   <h4 id="ITHelpDeskSystem_ViewModels_AssignmentViewModel_Ticket" data-uid="ITHelpDeskSystem.ViewModels.AssignmentViewModel.Ticket">Ticket</h4>
@@ -424,7 +425,7 @@ public DateTime? AssignmentDate { get; set; }</code></pre>
     <a href="https://github.com/mamazyad/ITHelpDeskSystem/new/master/apiSpec/new?filename=ITHelpDeskSystem_ViewModels_AssignmentViewModel_TicketId.md&amp;value=---%0Auid%3A%20ITHelpDeskSystem.ViewModels.AssignmentViewModel.TicketId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/mamazyad/ITHelpDeskSystem/blob/master/ITHelpDeskSystem/ViewModels/AssignmentViewModel.cs/#L43">View Source</a>
+    <a href="https://github.com/mamazyad/ITHelpDeskSystem/blob/master/ITHelpDeskSystem/ViewModels/AssignmentViewModel.cs/#L44">View Source</a>
   </span>
   <a id="ITHelpDeskSystem_ViewModels_AssignmentViewModel_TicketId_" data-uid="ITHelpDeskSystem.ViewModels.AssignmentViewModel.TicketId*"></a>
   <h4 id="ITHelpDeskSystem_ViewModels_AssignmentViewModel_TicketId" data-uid="ITHelpDeskSystem.ViewModels.AssignmentViewModel.TicketId">TicketId</h4>

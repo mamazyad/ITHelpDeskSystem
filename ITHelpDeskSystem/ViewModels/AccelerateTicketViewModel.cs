@@ -25,7 +25,7 @@ namespace ITHelpDeskSystem.ViewModels
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd / MM - hh:mm}", NullDisplayText = "Not set")]
-        [Display(Name = "Acceleration Date")]
+        [Display(Name = "Accelerated On")]
         public DateTime? AccelerationDate { get; set; }
 
         [Required]

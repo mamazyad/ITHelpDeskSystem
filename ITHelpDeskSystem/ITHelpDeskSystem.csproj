@@ -403,6 +403,7 @@
     <Content Include="Content\Image\OldLogoBig.png" />
     <Content Include="Content\Image\ITstaff.png" />
     <Content Include="Content\StyleSheet1.css" />
+    <Content Include="Content\w3 stylesheet.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

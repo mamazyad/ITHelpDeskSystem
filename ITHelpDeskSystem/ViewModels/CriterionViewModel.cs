@@ -32,7 +32,7 @@ namespace ITHelpDeskSystem.ViewModels
 
         public string Text { get; set; }
 
-        [Display(Name = "Creation Date")]
+        [Display(Name = "Created On")]
         [DisplayFormat(DataFormatString = "{0:dd / MM - hh:mm}", NullDisplayText = "Not set")]
         public DateTime CreationDate { get; set; }
 

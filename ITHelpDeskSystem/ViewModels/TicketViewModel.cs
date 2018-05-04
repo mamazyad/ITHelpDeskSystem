@@ -39,7 +39,7 @@ namespace ITHelpDeskSystem.ViewModels
 
         public string AttachmentFilePath { get; set; }
 
-        [Display(Name = "Creation Date")]
+        [Display(Name = "Created On")]
         [DisplayFormat(DataFormatString = "{0:dd / MM - hh:mm}")]
         public DateTime CreationDate { get; set; }
 
@@ -109,7 +109,7 @@ namespace ITHelpDeskSystem.ViewModels
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd / MM - hh:mm}", NullDisplayText = "Not set")]
-        [Display(Name = "Acceleration Date")]
+        [Display(Name = "Accelerated On")]
         public DateTime? AccelerationDate { get; set; }
 
         [Display(Name = "Acceleration Comment")]

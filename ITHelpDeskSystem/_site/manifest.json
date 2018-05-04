@@ -897,7 +897,7 @@
       "output": {
         ".html": {
           "relative_path": "api/ITHelpDeskSystem.ViewModels.AccelerateTicketViewModel.html",
-          "hash": "HxHj6cp8gsHRrMbg2j//+A=="
+          "hash": "Gtks71uBqs/szAKLTLnVlA=="
         }
       },
       "is_incremental": true,
@@ -921,7 +921,7 @@
       "output": {
         ".html": {
           "relative_path": "api/ITHelpDeskSystem.ViewModels.AssignmentViewModel.html",
-          "hash": "nP51oLOxo++xg4v3qUgGEg=="
+          "hash": "gPC2ZEEgdolng4FNUina0Q=="
         }
       },
       "is_incremental": true,
@@ -957,7 +957,7 @@
       "output": {
         ".html": {
           "relative_path": "api/ITHelpDeskSystem.ViewModels.CriterionViewModel.html",
-          "hash": "i/DMcfnJ0OIu9O6H+mMirQ=="
+          "hash": "b4bjWvyaE0HFBi7M2QSLIg=="
         }
       },
       "is_incremental": true,
@@ -1029,7 +1029,7 @@
       "output": {
         ".html": {
           "relative_path": "api/ITHelpDeskSystem.ViewModels.KnowledgeBaseViewModel.html",
-          "hash": "kXCNBXcUEOvLKlx1xzmb+g=="
+          "hash": "/X+RjF0032p4NR70hm/Epw=="
         }
       },
       "is_incremental": true,
@@ -1053,7 +1053,7 @@
       "output": {
         ".html": {
           "relative_path": "api/ITHelpDeskSystem.ViewModels.TicketViewModel.html",
-          "hash": "S0Z0X25yjovKzxoNDOfl5Q=="
+          "hash": "cuBWNkRTt3jglhV/LLjraA=="
         }
       },
       "is_incremental": true,

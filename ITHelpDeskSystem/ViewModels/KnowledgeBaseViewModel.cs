@@ -41,7 +41,7 @@ namespace ITHelpDeskSystem.ViewModels
         [Display(Name = "Attachment")]
         public HttpPostedFileBase KBAttachment { get; set; }
 
-        [Display(Name = "Creation Date")]
+        [Display(Name = "Created On")]
         [DisplayFormat(DataFormatString = "{0:dd / MM - hh:mm}")]
         public DateTime? CreationDate { get; set; }
 
