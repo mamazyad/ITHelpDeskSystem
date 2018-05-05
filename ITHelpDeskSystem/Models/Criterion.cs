@@ -12,7 +12,7 @@ namespace ITHelpDeskSystem.Models
     using System.Data.Entity.Spatial;
 
     /// <summary>
-    /// Criterion class is the basis on which ticket feedback is provided.
+    ///  Criterion class is the basis on which ticket feedback is provided.
     /// </summary>
 
     [Table("Criterion")]
